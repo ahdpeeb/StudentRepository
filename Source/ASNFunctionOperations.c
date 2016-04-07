@@ -79,14 +79,13 @@ void ANSPrintingOfStringComponents(char *string){
     printf("the number of characters in the stringArray - %lu\n",strlen(string));
     
     for (int index = 0; index < strlen(string); index++){
-        printf ("%c\n",string[index]);
+        printf ("%c\n", string[index]);
     }
 }
 
-bool ANSOutputMomOfDad(int value){
-    bool successfuloperation = true;
+void ANSOutputMomOfDad(int value){
     (value % 15 == 0) ? printf("mama\n")
         :(value % 5 == 0) ? printf("papa\n")
-            :(value % 3 == 0) ? printf("mamapapa\n") : successfuloperation == false;
-    return successfuloperation;
+            :(value % 3 == 0) ? printf("mamapapa\n") : printf("");
+  
 }
