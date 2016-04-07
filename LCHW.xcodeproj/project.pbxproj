@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
+		93080C7C1CB6DB7F00D52D9C /* ASNPrintingOperations.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C7A1CB6DB7F00D52D9C /* ASNPrintingOperations.c */; };
+		93080C7F1CB6DBD400D52D9C /* ASNFunctionOperations.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
 		93080C6C1CB6DA2000D52D9C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		93080C7A1CB6DB7F00D52D9C /* ASNPrintingOperations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ASNPrintingOperations.c; sourceTree = "<group>"; };
+		93080C7B1CB6DB7F00D52D9C /* ASNPrintingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNPrintingOperations.h; sourceTree = "<group>"; };
+		93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ASNFunctionOperations.c; sourceTree = "<group>"; };
+		93080C7E1CB6DBD400D52D9C /* ASNFunctionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNFunctionOperations.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 		93080C601CB6DA2000D52D9C = {
 			isa = PBXGroup;
 			children = (
+				93080C791CB6DB5900D52D9C /* Source */,
 				93080C6B1CB6DA2000D52D9C /* LCHW */,
 				93080C6A1CB6DA2000D52D9C /* Products */,
 			);
@@ -60,6 +67,17 @@
 				93080C6C1CB6DA2000D52D9C /* main.c */,
 			);
 			path = LCHW;
+			sourceTree = "<group>";
+		};
+		93080C791CB6DB5900D52D9C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				93080C7A1CB6DB7F00D52D9C /* ASNPrintingOperations.c */,
+				93080C7B1CB6DB7F00D52D9C /* ASNPrintingOperations.h */,
+				93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */,
+				93080C7E1CB6DBD400D52D9C /* ASNFunctionOperations.h */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +137,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93080C6D1CB6DA2000D52D9C /* main.c in Sources */,
+				93080C7F1CB6DBD400D52D9C /* ASNFunctionOperations.c in Sources */,
+				93080C7C1CB6DB7F00D52D9C /* ASNPrintingOperations.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +257,7 @@
 				93080C721CB6DA2000D52D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
