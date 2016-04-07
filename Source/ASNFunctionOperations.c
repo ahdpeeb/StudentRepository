@@ -9,34 +9,29 @@
 #include "ASNFunctionOperations.h"
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <string.h>
+#include <stdbool.h>
 
-void ANSPrintBoolStrint(bool boolValue){
-    (boolValue == 1) ? printf("true\n") : printf("falce\n");
+void ANSPrintBoolStrint(bool boolValue) {
+    (boolValue) ? puts("true") : puts("falce");
 }
 
 void ANSIdentifyDisease(bool redDotes, float bodyTemperature) {
-    if ((redDotes == true) && (bodyTemperature >= 38.f) && (bodyTemperature < 42.f)){
-        printf("the patient has malaria\n");
+    if ((redDotes) && (bodyTemperature >= 38.f) && (bodyTemperature < 42.f)) {
+        puts("the patient has malaria");
     }
     else if ((redDotes != true) && (bodyTemperature >= 37.f) && (bodyTemperature < 42.f)) {
-        printf("the patient has flu\n");
+        puts("the patient has flu");
     }
-    else if ((bodyTemperature >= 42.f) || (redDotes == true)){
-        printf("panient dead\n");
+    else if ((bodyTemperature >= 42.f) || (redDotes)) {
+        puts("panient dead");
     } else {
-        printf("healthy patient\n");
+        puts("healthy patient");
     }
 }
 
 void ANSPrintMamaOfDad(int firstValue, int secondValue){
-    (firstValue > secondValue) ?  printf("Mama\n") : printf("Dad\n");
-}
-
-void ANSDefineDeputyHonesty(int salary) {
-    
-    
+    (firstValue > secondValue) ?  puts("Mama") : puts("Dad");
 }
 
 /*  исходные данные Вор: (статок > зп * 100)/
@@ -73,9 +68,9 @@ void ANSPrintStateEmployeeHonesty (ANSStateEmployeeHonesty EmployeeType){
 
 void ANSDefineStateEmployeeHonesty(int salary, int capital){
     ANSStateEmployeeHonesty EmployeeType =
-    (capital > salary * 100) ? ANSStateEmployeeThief :
-    (capital > salary * 10) ? ANSStateEmployeeFraudster :
-    (capital > salary) ? ANSStateEmployeeHoly : ANSStateEmployeeСorpse;
+    (capital > salary * 100) ? ANSStateEmployeeThief
+        :(capital > salary * 10) ? ANSStateEmployeeFraudster
+            :(capital > salary) ? ANSStateEmployeeHoly : ANSStateEmployeeСorpse;
     
     ANSPrintStateEmployeeHonesty(EmployeeType);
 }
@@ -88,10 +83,10 @@ void ANSPrintingOfStringComponents(char *string){
     }
 }
 
-bool ANSOutputMamOfDad(int value){
+bool ANSOutputMomOfDad(int value){
     bool successfuloperation = true;
-    (value % 15 == 0) ? printf("mama\n") :
-    (value % 5 == 0) ? printf("papa\n") :
-    (value % 3 == 0) ? printf("mamapapa\n") : successfuloperation == false;
+    (value % 15 == 0) ? printf("mama\n")
+        :(value % 5 == 0) ? printf("papa\n")
+            :(value % 3 == 0) ? printf("mamapapa\n") : successfuloperation == false;
     return successfuloperation;
 }

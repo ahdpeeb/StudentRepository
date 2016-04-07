@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
-		93080C7C1CB6DB7F00D52D9C /* ASNPrintingOperations.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C7A1CB6DB7F00D52D9C /* ASNPrintingOperations.c */; };
 		93080C7F1CB6DBD400D52D9C /* ASNFunctionOperations.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */; };
 /* End PBXBuildFile section */
 
@@ -27,8 +26,6 @@
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
 		93080C6C1CB6DA2000D52D9C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		93080C7A1CB6DB7F00D52D9C /* ASNPrintingOperations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ASNPrintingOperations.c; sourceTree = "<group>"; };
-		93080C7B1CB6DB7F00D52D9C /* ASNPrintingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNPrintingOperations.h; sourceTree = "<group>"; };
 		93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ASNFunctionOperations.c; sourceTree = "<group>"; };
 		93080C7E1CB6DBD400D52D9C /* ASNFunctionOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNFunctionOperations.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,10 +69,8 @@
 		93080C791CB6DB5900D52D9C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				93080C7A1CB6DB7F00D52D9C /* ASNPrintingOperations.c */,
-				93080C7B1CB6DB7F00D52D9C /* ASNPrintingOperations.h */,
-				93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */,
 				93080C7E1CB6DBD400D52D9C /* ASNFunctionOperations.h */,
+				93080C7D1CB6DBD400D52D9C /* ASNFunctionOperations.c */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -138,7 +133,6 @@
 			files = (
 				93080C6D1CB6DA2000D52D9C /* main.c in Sources */,
 				93080C7F1CB6DBD400D52D9C /* ASNFunctionOperations.c in Sources */,
-				93080C7C1CB6DB7F00D52D9C /* ASNPrintingOperations.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
