@@ -20,7 +20,7 @@ void ANSIdentifyDisease(bool redDotes, float bodyTemperature) {
     if ((redDotes) && (bodyTemperature >= 38.f) && (bodyTemperature < 42.f)) {
         puts("the patient has malaria");
     }
-    else if ((redDotes != true) && (bodyTemperature >= 37.f) && (bodyTemperature < 42.f)) {
+    else if ((!redDotes) && (bodyTemperature >= 37.f) && (bodyTemperature < 42.f)) {
         puts("the patient has flu");
     }
     else if ((bodyTemperature >= 42.f) || (redDotes)) {
@@ -46,7 +46,7 @@ typedef enum  {
     ANSStateEmployeeСorpse
 } ANSStateEmployeeHonesty;
 
-void ANSPrintStateEmployeeHonesty (ANSStateEmployeeHonesty EmployeeType){
+void ANSPrintStateEmployeeHonesty(ANSStateEmployeeHonesty EmployeeType) {
     switch (EmployeeType) {
         case ANSStateEmployeeThief:
             puts("Our state employee - thief.");
@@ -66,7 +66,7 @@ void ANSPrintStateEmployeeHonesty (ANSStateEmployeeHonesty EmployeeType){
     }
 }
 
-void ANSDefineStateEmployeeHonesty(int salary, int capital){
+void ANSDefineStateEmployeeHonesty(int salary, int capital) {
     ANSStateEmployeeHonesty EmployeeType =
     (capital > salary * 100) ? ANSStateEmployeeThief
         :(capital > salary * 10) ? ANSStateEmployeeFraudster
@@ -75,17 +75,51 @@ void ANSDefineStateEmployeeHonesty(int salary, int capital){
     ANSPrintStateEmployeeHonesty(EmployeeType);
 }
 
-void ANSPrintingOfStringComponents(char *string){
+void ANSPrintingOfStringComponents(char *string) {
     printf("the number of characters in the stringArray - %lu\n",strlen(string));
     
-    for (int index = 0; index < strlen(string); index++){
+    for (int index = 0; index < strlen(string); index++) {
         printf ("%c\n", string[index]);
     }
 }
 
-void ANSOutputMomOfDad(int value){
-    (value % 15 == 0) ? printf("mama\n")
-        :(value % 5 == 0) ? printf("papa\n")
-            :(value % 3 == 0) ? printf("mamapapa\n") : printf("");
-  
+void ANSPrintLastElementNumber(char *string) {
+    int amountOfElements = sizeof(string)/sizeof(string[0]) - 1;
+    printf("%d\n",amountOfElements);
 }
+
+typedef enum {
+    ANSСonditionMama,
+    ANSСonditionPapa,
+    ANSСonditionMamaPapa,
+    ANSСonditionNothing,
+} ANSСondition;
+
+void ANSPrintCondition(ANSСondition condition) {
+    switch (condition) {
+        case ANSСonditionMama:
+            printf("Mama\n");
+            break;
+            
+        case ANSСonditionPapa:
+            printf("Papa\n");
+            break;
+            
+        case ANSСonditionMamaPapa:
+            printf("MamaPapa\n");
+            break;
+            
+        default:
+            break;
+    }
+}
+
+void ANSDifineCondition(int value) {
+    ANSСondition condition = (value % 15 == 0) ? ANSСonditionMamaPapa
+        :(value % 5 == 0) ? ANSСonditionPapa
+            :(value % 3 == 0) ? ANSСonditionMama : ANSСonditionNothing;
+    
+    ANSPrintCondition(condition);
+}
+
+

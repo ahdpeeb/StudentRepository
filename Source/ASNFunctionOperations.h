@@ -20,15 +20,15 @@ void ANSIdentifyDisease(bool redDotes, float bodyTemperature);
 // print Mam of Dad
 void ANSPrintMamaOfDad(int firstValue, int secondValue);
 
-// define deputy honesty
-void ANSDefineDeputyHonesty(int salary);
-
 // define the type of state employee by comparing their capital
 void ANSDefineStateEmployeeHonesty(int salary, int capital);
 
 // it's count and displays the character-string
 void ANSPrintingOfStringComponents(char *string);
 
-bool ANSOutputMamOfDad(int value);
+// determines number of the last item in array
+void ANSPrintLastElementNumber(char *string);
 
+// determines the condition of division
+void ANSDifineCondition(int value);
 #endif /* ASNFunctionOperations_h */
