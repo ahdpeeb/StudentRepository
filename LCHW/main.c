@@ -13,17 +13,30 @@
 
 #include "ASNFunctionOperations.h"
 
-int main(int argc, const char * argv[]) {
+void runCycleWithInt(int minValue, int maxValue, int stepsValue);
 
-    //__________________5th lecture______________________
-    char string[] = "Hello, how are you";
-    ANSPrintBoolStrint(0);
-    ANSIdentifyDisease(true, 36);
-    ANSPrintMamaOfDad(5, 10);
-    ANSDefineStateEmployeeHonesty(1500, 131243423);
-    ANSPrintingOfStringComponents(string);
-    ANSPrintLastElementNumber(string);
-    ANSDifineCondition(45);
-   
+int main(int argc, const char * argv[]) {
+//
+//    //__________________5th lecture______________________
+//    char string[] = "Hello, how are you";
+//    ANSPrintBoolStrint(0);
+//    ANSIdentifyDisease(true, 36);
+//    ANSPrintMamaOfDad(5, 10);
+//    ANSDefineStateEmployeeHonesty(1500, 131243423);
+//    ANSPrintingOfStringComponents(string);
+//    ANSPrintLastElementNumber(string);
+//    ANSDifineCondition(45);
+    runCycleWithInt(0, 100, 100);
+
 }
 
+void runCycleWithInt(int minValue, int maxValue, int stepsValue) {
+    int steps = minValue + stepsValue; // начальный шаг, + кол-во шагов
+    while (maxValue > minValue) {
+        minValue++;
+        if (minValue % 3 == 0) continue; {
+            printf("%d\n",minValue);
+        }
+    }
+    
+}

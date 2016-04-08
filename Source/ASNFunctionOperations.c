@@ -122,4 +122,16 @@ void ANSDifineCondition(int value) {
     ANSPrintCondition(condition);
 }
 
+void runAllFuncitons(void) {
+       //__________________5th lecture______________________
+        char string[] = "Hello, how are you";
+        ANSPrintBoolStrint(0);
+        ANSIdentifyDisease(true, 36);
+        ANSPrintMamaOfDad(5, 10);
+        ANSDefineStateEmployeeHonesty(1500, 131243423);
+        ANSPrintingOfStringComponents(string);
+        ANSPrintLastElementNumber(string);
+        ANSDifineCondition(45);
+}
+
 

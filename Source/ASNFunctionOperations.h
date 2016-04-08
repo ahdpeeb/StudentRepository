@@ -32,3 +32,6 @@ void ANSPrintLastElementNumber(char *string);
 // determines the condition of division
 void ANSDifineCondition(int value);
 #endif /* ASNFunctionOperations_h */
+
+// run all class functions 
+void runAllFuncitons(void);
