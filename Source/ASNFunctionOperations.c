@@ -68,9 +68,9 @@ void ANSPrintStateEmployeeHonesty(ANSStateEmployeeHonesty EmployeeType) {
 
 void ANSDefineStateEmployeeHonesty(int salary, int capital) {
     ANSStateEmployeeHonesty EmployeeType =
-    (capital > salary * 100) ? ANSStateEmployeeThief
-        :(capital > salary * 10) ? ANSStateEmployeeFraudster
-            :(capital > salary) ? ANSStateEmployeeHoly : ANSStateEmployeeСorpse;
+        (capital > salary * 100) ? ANSStateEmployeeThief
+            :(capital > salary * 10) ? ANSStateEmployeeFraudster
+                :(capital > salary) ? ANSStateEmployeeHoly : ANSStateEmployeeСorpse;
     
     ANSPrintStateEmployeeHonesty(EmployeeType);
 }
@@ -89,23 +89,23 @@ void ANSPrintLastElementNumber(char *string) {
 }
 
 typedef enum {
-    ANSСonditionMama,
-    ANSСonditionPapa,
-    ANSСonditionMamaPapa,
-    ANSСonditionNothing,
-} ANSСondition;
-
-void ANSPrintCondition(ANSСondition condition) {
+    ANSConditionMama,
+    ANSConditionPapa,
+    ANSConditionMamaPapa,
+    ANSConditionNothing,
+} ANSCondition;
+// работает неправильно.
+void ANSPrintCondition(ANSCondition condition) {
     switch (condition) {
-        case ANSСonditionMama:
+        case ANSConditionMama:
             printf("Mama\n");
             break;
             
-        case ANSСonditionPapa:
+        case ANSConditionPapa:
             printf("Papa\n");
             break;
             
-        case ANSСonditionMamaPapa:
+        case ANSConditionMamaPapa:
             printf("MamaPapa\n");
             break;
             
@@ -115,11 +115,23 @@ void ANSPrintCondition(ANSСondition condition) {
 }
 
 void ANSDifineCondition(int value) {
-    ANSСondition condition = (value % 15 == 0) ? ANSСonditionMamaPapa
-        :(value % 5 == 0) ? ANSСonditionPapa
-            :(value % 3 == 0) ? ANSСonditionMama : ANSСonditionNothing;
+    ANSCondition condition = (value % 15 == 0) ? ANSConditionMamaPapa
+        :(value % 5 == 0) ? ANSConditionPapa
+            :(value % 3 == 0) ? ANSConditionMama : ANSConditionNothing;
     
     ANSPrintCondition(condition);
+}
+
+void runAllFuncitons(void) {// изменить название функций
+       //__________________5th lecture______________________
+        char string[] = "Hello, how are you";
+        ANSPrintBoolStrint(1);
+        ANSIdentifyDisease(true, 36);
+        ANSPrintMamaOfDad(5, 10);
+        ANSDefineStateEmployeeHonesty(1500, 131243423);
+        ANSPrintingOfStringComponents(string);
+        ANSPrintLastElementNumber(string);
+        ANSDifineCondition(45);
 }
 
 
