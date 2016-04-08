@@ -125,7 +125,7 @@ void ANSDifineCondition(int value) {
 void runAllFuncitons(void) {
        //__________________5th lecture______________________
         char string[] = "Hello, how are you";
-        ANSPrintBoolStrint(0);
+        ANSPrintBoolStrint(1);
         ANSIdentifyDisease(true, 36);
         ANSPrintMamaOfDad(5, 10);
         ANSDefineStateEmployeeHonesty(1500, 131243423);
