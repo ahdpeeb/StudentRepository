@@ -7,13 +7,13 @@
 //
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 #include "ANSMacrosDeclaration.h"
 
-ANSGenerateFuncton(int, d)
+ANSGenerateFuncton(float, f)
 
 int main(int argc, const char * argv[]) {
   
-
-    
 }
