@@ -14,7 +14,8 @@
 int main(int argc, const char * argv[]) {
     
     ANSCallFunction(intValue)
-    ANSPrint_intValue();
+    ANSCallFunction(floatValue)
+    ANSCallFunction(charValue)
     
        return 0;
 }
