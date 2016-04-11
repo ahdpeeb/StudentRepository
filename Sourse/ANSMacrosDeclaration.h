@@ -22,6 +22,7 @@ printf("I have to print some informatino " #string" "#string2" "#string3"\n");
     void ANSOutput_ ##type(type value) { \
     printf(#type " value = %" #qualifier "\n", value); \
     }
+
 // macros call function, that preciously was created by macros "ANSGenerateFuncton"
 #define ANSCallFunction(functionType) \
     ANSPrint_ ##functionType();
