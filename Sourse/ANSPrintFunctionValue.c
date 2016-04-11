@@ -11,12 +11,12 @@
 
 #include <stdio.h>
 // function generation
-ANSGenerateFuncton(char, c);
-ANSGenerateFuncton(int, d);
-ANSGenerateFuncton(float, f)
+ANSGeneratePrintingFuncton(char, c);
+ANSGeneratePrintingFuncton(int, d);
+ANSGeneratePrintingFuncton(float, f)
 
-void ANSPrint_intValue(void) {
-    ANSOutput_int(5);
+void ANSPrint_intValue(value) {
+    ANSOutput_int(5.5);
 }
 
 void ANSPrint_floatValue(void) {
