@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
-		934FE0C01CBBEEAC007B702E /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0BE1CBBEEAC007B702E /* ANSPrintFunctionValue.c */; };
+		934FE0CC1CBCF1A5007B702E /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */; };
+		934FE0CD1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0CA1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,9 +27,11 @@
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
 		93080C6C1CB6DA2000D52D9C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		934FE0BD1CBBEEAC007B702E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
-		934FE0BE1CBBEEAC007B702E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
-		934FE0BF1CBBEEAC007B702E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
+		934FE0C61CBCF1A5007B702E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
+		934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
+		934FE0C81CBCF1A5007B702E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
+		934FE0CA1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintMamaPapaSoluiton.c; sourceTree = "<group>"; };
+		934FE0CB1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintMamaPapaSoluiton.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +48,7 @@
 		93080C601CB6DA2000D52D9C = {
 			isa = PBXGroup;
 			children = (
-				934FE0BC1CBBEEAC007B702E /* Sourse */,
+				934FE0C41CBCF1A5007B702E /* Sourse */,
 				93080C6B1CB6DA2000D52D9C /* LCHW */,
 				93080C6A1CB6DA2000D52D9C /* Products */,
 			);
@@ -67,14 +70,32 @@
 			path = LCHW;
 			sourceTree = "<group>";
 		};
-		934FE0BC1CBBEEAC007B702E /* Sourse */ = {
+		934FE0C41CBCF1A5007B702E /* Sourse */ = {
 			isa = PBXGroup;
 			children = (
-				934FE0BD1CBBEEAC007B702E /* ANSMacrosDeclaration.h */,
-				934FE0BE1CBBEEAC007B702E /* ANSPrintFunctionValue.c */,
-				934FE0BF1CBBEEAC007B702E /* ANSPrintFunctionValue.h */,
+				934FE0C51CBCF1A5007B702E /* ANSMacrosDeclaration */,
+				934FE0C91CBCF1A5007B702E /* ANSPrintMamaPapaSolution */,
 			);
 			path = Sourse;
+			sourceTree = "<group>";
+		};
+		934FE0C51CBCF1A5007B702E /* ANSMacrosDeclaration */ = {
+			isa = PBXGroup;
+			children = (
+				934FE0C61CBCF1A5007B702E /* ANSMacrosDeclaration.h */,
+				934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */,
+				934FE0C81CBCF1A5007B702E /* ANSPrintFunctionValue.h */,
+			);
+			path = ANSMacrosDeclaration;
+			sourceTree = "<group>";
+		};
+		934FE0C91CBCF1A5007B702E /* ANSPrintMamaPapaSolution */ = {
+			isa = PBXGroup;
+			children = (
+				934FE0CB1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.h */,
+				934FE0CA1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c */,
+			);
+			path = ANSPrintMamaPapaSolution;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				934FE0C01CBBEEAC007B702E /* ANSPrintFunctionValue.c in Sources */,
+				934FE0CC1CBCF1A5007B702E /* ANSPrintFunctionValue.c in Sources */,
 				93080C6D1CB6DA2000D52D9C /* main.c in Sources */,
+				934FE0CD1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

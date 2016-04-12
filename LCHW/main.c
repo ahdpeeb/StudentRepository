@@ -10,11 +10,13 @@
 
 #include "ANSMacrosDeclaration.h"
 #include "ANSPrintFunctionValue.h"
+#include "ANSPrintMamaPapaSoluiton.h"
 
 int main(int argc, const char * argv[]) {
-    ANSCallFunction(intValue)
-    ANSCallFunction(floatValue)
-    ANSCallFunction(charValue)
-       return 0;
+   // ANSCallFunction(intValue)
+   // ANSCallFunction(floatValue)
+   // ANSCallFunction(charValue)
+    
+ 
 }
 
