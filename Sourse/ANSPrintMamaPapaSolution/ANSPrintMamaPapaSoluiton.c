@@ -9,6 +9,13 @@
 #include <string.h>
 
 #include "ANSPrintMamaPapaSoluiton.h"
+void PrintMama(void) {
+    printf("Mama");
+}
+
+void PrintPapa(void) {
+    printf("Papa");
+}
 
 void ANSPrintMamaPapaShortSolution(int value) {
     printf("%s%s \n", value % 3 == 0 ? "Mama": "", value % 5 == 0 ? "Papa" : "");
@@ -30,10 +37,11 @@ void ANSPrintDefinedCondition2(int value) {
             : (value % 5 == 0) ? ANSPapaCondition : ANSBlankCondition;
     
     if (condition == ANSMamaCondition) {
-        printf("Mama");
+        PrintMama();
     } else if  (condition == ANSPapaCondition) {
-        printf("Papa");
+        PrintPapa();
     } else if (condition == ANSMamaPapaCondition) {
-        printf("MamaPapa");
+        PrintMama();
+        PrintPapa();
     }
 }
