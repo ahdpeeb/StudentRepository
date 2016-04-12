@@ -10,12 +10,16 @@
 #define ANSPrintMamaPapaSoluiton_h
 
 typedef enum{
-    ANSPrintMamaSolution,
-    ANSPrintPapaSolution,
-    ANSPrnitBlankSolution
-}ANSPrintingSolution;
+    ANSMamaCondition = 1,
+    ANSPapaCondition = 2,
+    ANSMamaPapaCondition = 3,
+    ANSBlankCondition = 4,
+}ANSConditions;
 
+void ANSPrintMamaPapaShortSolution(int value);
 
-void ANSPrintMamaPapaShortSoluiton(int value);
+void ANSPrintDefinedCondition(int value);
+
+void ANSPrintDefinedCondition2(int value);
 
 #endif /* ANSPrintMamaPapaSoluiton_h */

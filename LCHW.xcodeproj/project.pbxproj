@@ -83,8 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				934FE0C61CBCF1A5007B702E /* ANSMacrosDeclaration.h */,
-				934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */,
 				934FE0C81CBCF1A5007B702E /* ANSPrintFunctionValue.h */,
+				934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */,
 			);
 			path = ANSMacrosDeclaration;
 			sourceTree = "<group>";

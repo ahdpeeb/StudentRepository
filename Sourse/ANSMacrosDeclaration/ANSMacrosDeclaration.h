@@ -15,7 +15,7 @@
 // test macros, that assume values
 #define ANSPrintTestString(string, string2, string3) \
 printf("I have to print some information " #string" "#string2" "#string3"\n");
-#endif /* ANSMacrosDeclaration_h */
+
 
 // macros create function generation
 #define ANSGeneratePrintingFuncton(type, qualifier) \
@@ -27,3 +27,13 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
 #define ANSCallFunction(functionType) \
     ANSPrint_ ##functionType();
 
+// macros create function (Print sizeOfValue)
+#define ANSGeneretePrintSizeOfValue(type, qualifier) \
+void ANSPrintSizeOf_##typeValue(void) { \
+do { \
+_##type value; \
+printf("Size of "#type" value = %" #qualifier, value); \
+} while (0); \
+} \
+
+#endif /* ANSMacrosDeclaration_h */

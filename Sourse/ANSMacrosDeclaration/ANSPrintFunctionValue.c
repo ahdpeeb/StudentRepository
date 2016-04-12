@@ -9,6 +9,7 @@
 #include "ANSPrintFunctionValue.h"
 #include "ANSMacrosDeclaration.h"
 
+
 #include <stdio.h>
 // function generation
 ANSGeneratePrintingFuncton(char, c);
