@@ -12,11 +12,9 @@
 #include "ANSPrintFunctionValue.h"
 #include "ANSPrintMamaPapaSoluiton.h"
 
-    ANSGeneretePrintSizeOfValue(int, d);
+
 
 int main(int argc, const char * argv[]) {
-    ANSCallFunction(intValue)
-    ANSCallFunction(floatValue)
-    ANSCallFunction(charValue)
 
+    ANSPrintDefinedCondition2(3);
 }

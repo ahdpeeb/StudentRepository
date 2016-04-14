@@ -28,12 +28,10 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
     ANSPrint_ ##functionType();
 
 // macros create function (Print sizeOfValue)
-#define ANSGeneretePrintSizeOfValue(type, qualifier) \
-void ANSPrintSizeOf_##typeValue(void) { \
-do { \
-_##type value; \
-printf("Size of "#type" value = %" #qualifier, value); \
-} while (0); \
-} \
+#define ANSGenereteFunctionPrintSizeOfValue(type, qualifier) \
+            do { \
+                type value; \
+                printf("Size of"#type" value = %"#qualifier"\n", sizeof(value)); \
+            } while (0)
 
 #endif /* ANSMacrosDeclaration_h */

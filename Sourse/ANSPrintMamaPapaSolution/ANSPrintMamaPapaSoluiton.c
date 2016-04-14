@@ -36,12 +36,13 @@ void ANSPrintDefinedCondition2(int value) {
     ANSConditions condition = (value % 3 == 0) ? (value % 5 == 0) ? ANSMamaCondition | ANSPapaCondition : ANSMamaCondition
             : (value % 5 == 0) ? ANSPapaCondition : ANSBlankCondition;
     
-    if (condition == ANSMamaCondition) {
-        PrintMama();
-    } else if  (condition == ANSPapaCondition) {
-        PrintPapa();
-    } else if (condition == ANSMamaPapaCondition) {
-        PrintMama();
-        PrintPapa();
+    if (condition & ANSMamaCondition) {
+        printf("mama");
+    }   else { printf("\n");
     }
+    if (condition & ANSPapaCondition) {
+        printf("papa");
+    }   else { printf("\n");
+    }
+
 }

@@ -10,10 +10,9 @@
 #define ANSPrintMamaPapaSoluiton_h
 
 typedef enum{
-    ANSMamaCondition = 1,
-    ANSPapaCondition = 2,
-    ANSMamaPapaCondition = 3,
-    ANSBlankCondition = 4,
+    ANSBlankCondition       = 1 << 0,
+    ANSMamaCondition        = 1 << 1,
+    ANSPapaCondition        = 1 << 2,
 }ANSConditions;
 
 void ANSPrintMamaPapaShortSolution(int value);
