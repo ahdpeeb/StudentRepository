@@ -16,5 +16,5 @@
 
 int main(int argc, const char * argv[]) {
 
-    ANSPrintDefinedCondition2(3);
+    ANSPrintDefinedCondition(15);
 }
