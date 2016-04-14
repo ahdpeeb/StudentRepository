@@ -16,7 +16,6 @@
 #define ANSPrintTestString(string, string2, string3) \
 printf("I have to print some information " #string" "#string2" "#string3"\n");
 
-
 // macros create function generation
 #define ANSGeneratePrintingFuncton(type, qualifier) \
     void ANSOutput_ ##type(type value) { \
