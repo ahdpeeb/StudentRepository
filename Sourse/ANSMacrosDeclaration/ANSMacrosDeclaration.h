@@ -19,12 +19,16 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
 // macros create function generation
 #define ANSGeneratePrintingFuncton(type, qualifier) \
     void ANSOutput_ ##type(type value) { \
-        printf(#type " value = %" #qualifier "\n", value); \
+        printf(#type " value = %" #qualifier "\n", value) \
         }
 
 // macros call function, that preciously was created by macros "ANSGenerateFuncton"
 #define ANSCallGeneretedFunction(functionType) \
     ANSPrint_ ##functionType();
+
+#define ANSOutputFunction(type, value) \
+    ANSOutput_##type(value)
+
 
 // macros create function (Print sizeOfValue)
 #define ANSGenereteFunctionPrintSizeOfValue(type) \
