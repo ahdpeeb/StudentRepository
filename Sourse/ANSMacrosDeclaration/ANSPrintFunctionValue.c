@@ -14,7 +14,7 @@
 // function generation
 ANSGeneratePrintingFuncton(char, c);
 ANSGeneratePrintingFuncton(int, d);
-ANSGeneratePrintingFuncton(float, f)
+ANSGeneratePrintingFuncton(float, f);
 
 void ANSPrint_intValue(void) {
     ANSOutput_int(5.5);

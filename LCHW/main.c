@@ -8,13 +8,7 @@
 
 #include <stdio.h>
 
-#include "ANSMacrosDeclaration.h"
-#include "ANSPrintFunctionValue.h"
-#include "ANSPrintMamaPapaSoluiton.h"
-
-
-
+#include "ANSStructureTest.h"
 int main(int argc, const char * argv[]) {
-
-    ANSPrintDefinedCondition(3);
+    ANSRunAllAplicaitons('A');
 }

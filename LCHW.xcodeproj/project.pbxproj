@@ -105,8 +105,8 @@
 		934FE0ED1CC0F1E1007B702E /* ANSStructureTest */ = {
 			isa = PBXGroup;
 			children = (
-				934FE0EE1CC0F1E1007B702E /* ANSStructureTest.c */,
 				934FE0EF1CC0F1E1007B702E /* ANSStructureTest.h */,
+				934FE0EE1CC0F1E1007B702E /* ANSStructureTest.c */,
 			);
 			name = ANSStructureTest;
 			path = ANSPrintMamaPapaSolution/ANSStructureTest;
