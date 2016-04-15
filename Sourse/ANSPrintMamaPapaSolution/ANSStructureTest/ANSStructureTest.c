@@ -11,19 +11,27 @@
 #include "ANSStructureTest.h"
 
 void ANSPrintShiftStructureField(void) {
-
     ANSMacrosImplementsShiftOutput(intValue)
-    ANSMacrosImplementsShiftOutput(boolValue1)
     ANSMacrosImplementsShiftOutput(floatValue)
     ANSMacrosImplementsShiftOutput(llValue)
     ANSMacrosImplementsShiftOutput(shortValue1)
     ANSMacrosImplementsShiftOutput(testString)
     ANSMacrosImplementsShiftOutput(testDouble)
-    ANSMacrosImplementsShiftOutput(boolValue3)
     ANSMacrosImplementsShiftOutput(shortValue3)
-    ANSMacrosImplementsShiftOutput(boolValue4)
-    ANSMacrosImplementsShiftOutput(boolValue5)
-    ANSMacrosImplementsShiftOutput(boolValue6)
-    
-
+    ANSMacrosImplementsShiftOutput(bitField)
+    ANSMacrosImplementsShiftOutput(flags);
 }
+
+void ANSPrintSizeOfStructure(void) {
+    printf("Size of structure - %lu \n",sizeof(ANSStructureTest));
+}
+
+void ANSprintBiraryRepresentationOfCharValue(unsigned char charValue) {
+    printf("[ ");
+    for (uint8_t iterator = 8; iterator > 0; -- iterator) {
+        uint8_t shiftedValue = charValue >> (iterator - 1);
+        (shiftedValue & 1) ? printf("1 ") : printf("0 ");
+    }
+    printf("]\n");
+}
+

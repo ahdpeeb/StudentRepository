@@ -9,8 +9,9 @@
 #include <stdio.h>
 
 #include "ANSStructureTest.h"
-
 int main(int argc, const char * argv[]) {
+      //  ANSPrintShiftStructureField();
+      //  ANSPrintSizeOfStructure();
   
-    ANSPrintShiftStructureField();
+    ANSprintBiraryRepresentationOfCharValue(255);
 }

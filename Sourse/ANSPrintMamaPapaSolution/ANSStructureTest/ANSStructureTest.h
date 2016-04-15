@@ -14,27 +14,43 @@
 } ANSCar;*/
 
 #define ANSMacrosImplementsShiftOutput(typeValue) \
-printf(#typeValue"= %lu \n", offsetof(ANSStructTest, typeValue));
-
-struct ANSStructTest {
-    int intValue;
-    bool boolValue1;
-    float floatValue;
-    long long llValue;
+printf(#typeValue"= %lu \n", offsetof(ANSStructureTest, typeValue));
+//initial size 56 bytes;
+// than 48;
+// than 40;
+// uint8_t bitField - 
+struct ANSStructureTest {
+    char *testString;   //8
+    long long llValue;  //8
+    double testDouble;  //8
+    float floatValue;   //4
+    int intValue;       //4
     short shortValue1;
-    bool boolValue2;
     short shortValue2;
-    char *testString;
-    double testDouble;
-    bool boolValue3;
     short shortValue3;
-    bool boolValue4;
-    bool boolValue5;
-    bool boolValue6;
+        union {
+            struct boolStructure {
+                bool boolValue1:1;
+                bool boolValue2:1;
+                bool boolValue3:1;
+                bool boolValue4:1;
+                bool boolValue5:1;
+                bool boolValue6:1;
+            } flags;
+            uint8_t bitField;
+        };
 };
 
-typedef struct ANSStructTest ANSStructTest;
+typedef struct ANSStructureTest ANSStructureTest;
 
 //Function print structure field shifting from the begingn of structure;
 void ANSPrintShiftStructureField(void);
+
+// Function print Size of any Structure
+void ANSPrintSizeOfStructure(void);
+
+void ANSprintBiraryRepresentationOfCharValue(unsigned char charValue);
+
 #endif /* ANSStructureTest_h */
+
+
