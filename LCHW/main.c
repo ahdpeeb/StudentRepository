@@ -10,8 +10,5 @@
 
 #include "ANSStructureTest.h"
 int main(int argc, const char * argv[]) {
-      //  ANSPrintShiftStructureField();
-      //  ANSPrintSizeOfStructure();
-  
-    ANSprintBiraryRepresentationOfCharValue(255);
+    ANSRunAllAplicaitons('A');
 }

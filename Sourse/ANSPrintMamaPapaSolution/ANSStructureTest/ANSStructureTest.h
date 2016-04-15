@@ -49,7 +49,9 @@ void ANSPrintShiftStructureField(void);
 // Function print Size of any Structure
 void ANSPrintSizeOfStructure(void);
 
-void ANSprintBiraryRepresentationOfCharValue(unsigned char charValue);
+void ANSPrintBiraryRepresentationOfCharValue(unsigned char charValue);
+
+void ANSRunAllAplicaitons(unsigned char charValue);
 
 #endif /* ANSStructureTest_h */
 

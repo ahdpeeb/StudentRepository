@@ -10,6 +10,12 @@
 
 #include "ANSStructureTest.h"
 
+void ANSRunAllAplicaitons(unsigned char charValue) {
+    ANSPrintShiftStructureField();
+    ANSPrintSizeOfStructure();
+    ANSPrintBiraryRepresentationOfCharValue(charValue);
+}
+
 void ANSPrintShiftStructureField(void) {
     ANSMacrosImplementsShiftOutput(intValue)
     ANSMacrosImplementsShiftOutput(floatValue)
@@ -26,7 +32,7 @@ void ANSPrintSizeOfStructure(void) {
     printf("Size of structure - %lu \n",sizeof(ANSStructureTest));
 }
 
-void ANSprintBiraryRepresentationOfCharValue(unsigned char charValue) {
+void ANSPrintBiraryRepresentationOfCharValue(unsigned char charValue) {
     printf("[ ");
     for (uint8_t iterator = 8; iterator > 0; -- iterator) {
         uint8_t shiftedValue = charValue >> (iterator - 1);
