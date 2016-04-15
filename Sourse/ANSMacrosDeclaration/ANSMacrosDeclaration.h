@@ -19,7 +19,7 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
 // macros create function generation
 #define ANSGeneratePrintingFuncton(type, qualifier) \
     void ANSOutput_ ##type(type value) { \
-        printf(#type " value = %" #qualifier "\n", value) \
+        printf(#type " value = %" #qualifier "\n", value); \
         }
 
 // macros call function, that preciously was created by macros "ANSGenerateFuncton"
@@ -27,7 +27,7 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
     ANSPrint_ ##functionType();
 
 #define ANSOutputFunction(type, value) \
-    ANSOutput_##type(value)
+    ANSOutput_##type(value);
 
 
 // macros create function (Print sizeOfValue)
@@ -35,6 +35,6 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
             do { \
                 type value; \
                 printf("Size of"#type" value = %lu", sizeof(value)); \
-            } while (0)
+            } while (0);
 
 #endif /* ANSMacrosDeclaration_h */
