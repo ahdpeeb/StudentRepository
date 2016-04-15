@@ -17,6 +17,6 @@ typedef enum {
 
 void ANSPrintMamaPapaShortSolution(int value);
 
-void ANSPrintDefinedCondition(int value);
+ANSConditions ANSPrintDefinedCondition(int value);
 
 #endif /* ANSPrintMamaPapaSoluiton_h */

@@ -14,17 +14,22 @@ void ANSPrintMamaPapaShortSolution(int value) {
     printf("%s%s \n", value % 3 == 0 ? "Mama": "", value % 5 == 0 ? "Papa" : "");
     }
 
-void ANSPrintDefinedCondition(int value) {
-    ANSConditions condition = (value % 3 == 0) ? (value % 5 == 0) ? ANSMamaCondition | ANSPapaCondition : ANSMamaCondition
-            : (value % 5 == 0) ? ANSPapaCondition : ANSBlankCondition;
+ANSConditions ANSPrintDefinedCondition(int value) {
+    ANSConditions condition = ANSBlankCondition;
     
-    if (condition & ANSMamaCondition) {
+    if (0 == value % 3) {
         printf("Mama");
-    }   else { printf("\n");
+        condition |=ANSMamaCondition;
     }
-    if (condition & ANSPapaCondition) {
+    
+    if (0 == value % 5) {
         printf("Papa");
-    }   else { printf("\n");
+        condition |=ANSPapaCondition;
     }
-
+    
+    if (value !=ANSBlankCondition) {
+        printf("\n");
+    }
+    
+    return condition;
 }
