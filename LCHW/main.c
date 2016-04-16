@@ -8,7 +8,10 @@
 
 #include <stdio.h>
 
-#include "ANSStructureTest.h"
+#include "ANSPrintFunctionValue.h"
+#include "ANSMacrosDeclaration.h"
+
 int main(int argc, const char * argv[]) {
-    ANSRunAllAplicaitons('A');
+    
 }
+

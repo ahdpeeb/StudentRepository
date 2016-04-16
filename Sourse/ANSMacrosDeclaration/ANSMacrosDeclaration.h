@@ -23,10 +23,8 @@ printf("I have to print some information " #string" "#string2" "#string3"\n");
         }
 
 // macros call function, that preciously was created by macros "ANSGenerateFuncton"
-#define ANSCallGeneretedFunction(functionType) \
-    ANSPrint_ ##functionType();
 
-#define ANSOutputFunction(type, value) \
+#define ANSOutputValue(type, value) \
     ANSOutput_##type(value);
 
 

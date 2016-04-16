@@ -9,8 +9,9 @@
 #ifndef ANSPrintFunctionValue_h
 #define ANSPrintFunctionValue_h
 
-void ANSPrint_intValue(void);
-void ANSPrint_floatValue(void);
-void ANSPrint_charValue(void);
+void ANSOutput_int(int value);
+void ANSOutput_char(char value);
+void ANSOutput_float(float value);
 
+void ANSRunApplication(int intValue, char charValue, float floatValue);
 #endif /* ANSPrintFunctionValue_h */

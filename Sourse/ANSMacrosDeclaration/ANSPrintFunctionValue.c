@@ -9,21 +9,15 @@
 #include "ANSPrintFunctionValue.h"
 #include "ANSMacrosDeclaration.h"
 
-
 #include <stdio.h>
 // function generation
-ANSGeneratePrintingFuncton(char, c);
-ANSGeneratePrintingFuncton(int, d);
-ANSGeneratePrintingFuncton(float, f);
 
-void ANSPrint_intValue(void) {
-    ANSOutput_int(5.5);
-}
+ANSGeneratePrintingFuncton(int, d)
+ANSGeneratePrintingFuncton(char, c)
+ANSGeneratePrintingFuncton(float, f)
 
-void ANSPrint_floatValue(void) {
-    ANSOutput_float(5.5);
-}
-
-void ANSPrint_charValue(void) {
-    ANSOutput_char('A');
+void ANSRunApplication(int intValue, char charValue, float floatValue) {
+    ANSOutputValue(int, intValue)
+    ANSOutputValue(char, charValue)
+    ANSOutputValue(float, floatValue)
 }
