@@ -10,11 +10,6 @@
 #define ANSStructureTest_h
 
 #include <stdbool.h>
-typedef enum {
-    ANSProcessorTypeLittleEndian,
-    ANSProcessorTypeBigEndian
-}ANSProcessorType;
-
 
 //initial size 56 bytes;
 // than 48;
@@ -52,7 +47,7 @@ void ANSPrintSizeOfStructure(void);
 
 void ANSCharBitOutput(char *charValue);
 
-void ANSNumberBitOutputDepindingOnProcessorType(void *byteAdress, size_t size);
+void ANSValueBitOutputDepindingOnProcessorType(void *byteAdress, size_t size);
 
 void ANSValueBitOutput(void *byteAdress, size_t size);
 

@@ -19,9 +19,9 @@ void ANSRunApplications(unsigned char charValue) {
     // ANSPrintBiraryRepresentationOfCharValue(charValue);
 }
 
-void ANSNumberBitOutputDepindingOnProcessorType(void *byteAdress, size_t size) {
+void ANSValueBitOutputDepindingOnProcessorType(void *byteAdress, size_t size) {
     unsigned int testValue  = 1;
-    int value = (((char *)&testValue)[0]);
+    uint8_t value = (((char *)&testValue)[0]);
     size_t processorValue = (1 == value) ? (processorValue = 1) : (processorValue = size);
         for (uint16_t index = size ; index > 0; index--) {
             char byte = ((char*)byteAdress)[index-processorValue];
