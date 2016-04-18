@@ -12,7 +12,6 @@
 
 int main(int argc, const char * argv[]) {
     
-    int value = 255;
-    ANSValueBitOutputDepindingOnProcessorType(&value, sizeof(value));
+
 }
 

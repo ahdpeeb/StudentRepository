@@ -14,7 +14,6 @@
 //initial size 56 bytes;
 // than 48;
 // than 40;
-// uint8_t bitField - 
 struct ANSStructureTest {
     char *testString;   //8
     long long llValue;  //8

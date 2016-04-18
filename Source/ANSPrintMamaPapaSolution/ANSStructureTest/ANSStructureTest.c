@@ -10,10 +10,10 @@
 
 #include "ANSStructureTest.h"
 
-//hiden
-
-
+#pragma mark - public
 void ANSRunApplications(unsigned char charValue) {
+    int value = 255;
+    ANSValueBitOutputDepindingOnProcessorType(&value, sizeof(value));
     ANSPrintOffset();
     ANSPrintSizeOfStructure();
     // ANSPrintBiraryRepresentationOfCharValue(charValue);
@@ -23,7 +23,7 @@ void ANSValueBitOutputDepindingOnProcessorType(void *byteAdress, size_t size) {
     unsigned int testValue  = 1;
     uint8_t value = (((char *)&testValue)[0]);
     size_t processorValue = (1 == value) ? (processorValue = 1) : (processorValue = size);
-        for (uint16_t index = size ; index > 0; index--) {
+    for (uint16_t index = size ; index > 0; index--) {
             char byte = ((char*)byteAdress)[index-processorValue];
             ANSCharBitOutput(&byte);
         }
