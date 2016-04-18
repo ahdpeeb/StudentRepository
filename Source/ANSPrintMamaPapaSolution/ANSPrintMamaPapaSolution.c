@@ -8,26 +8,26 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ANSPrintMamaPapaSoluiton.h"
+#include "ANSPrintMamaPapaSolution.h"
 
 void ANSPrintMamaPapaShortSolution(int value) {
     printf("%s%s \n", value % 3 == 0 ? "Mama": "", value % 5 == 0 ? "Papa" : "");
     }
-
-ANSConditions ANSPrintDefinedCondition(int value) {
-    ANSConditions condition = ANSBlankCondition;
+// подумать над названием
+ANSState ANSPrintState(int value) {
+    ANSState condition = ANSStateBlank;
     
     if (0 == value % 3) {
         printf("Mama");
-        condition |=ANSMamaCondition;
+        condition |= ANSStateMama;
     }
     
     if (0 == value % 5) {
         printf("Papa");
-        condition |=ANSPapaCondition;
+        condition |= ANSStatePapa;
     }
     
-    if (value !=ANSBlankCondition) {
+    if (value != ANSStateBlank) {
         printf("\n");
     }
     

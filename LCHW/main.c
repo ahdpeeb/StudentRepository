@@ -8,10 +8,11 @@
 
 #include <stdio.h>
 
-#include "ANSPrintFunctionValue.h"
-#include "ANSMacrosDeclaration.h"
+#include "ANSStructureTest.h"
 
 int main(int argc, const char * argv[]) {
     
+    int value = 5;
+    ANSNumberBitOutputDepindingOnProcessorType(&value, sizeof(value));
 }
 

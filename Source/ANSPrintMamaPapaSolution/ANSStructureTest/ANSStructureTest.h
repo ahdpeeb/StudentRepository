@@ -10,11 +10,12 @@
 #define ANSStructureTest_h
 
 #include <stdbool.h>
-/*typedef struct {
-} ANSCar;*/
+typedef enum {
+    ANSProcessorTypeLittleEndian,
+    ANSProcessorTypeBigEndian
+}ANSProcessorType;
 
-#define ANSMacrosImplementsShiftOutput(typeValue) \
-printf(#typeValue"= %lu \n", offsetof(ANSStructureTest, typeValue));
+
 //initial size 56 bytes;
 // than 48;
 // than 40;
@@ -29,7 +30,7 @@ struct ANSStructureTest {
     short shortValue2;
     short shortValue3;
         union {
-            struct boolStructure {
+            struct {
                 bool boolValue1:1;
                 bool boolValue2:1;
                 bool boolValue3:1;
@@ -44,14 +45,16 @@ struct ANSStructureTest {
 typedef struct ANSStructureTest ANSStructureTest;
 
 //Function print structure field shifting from the begingn of structure;
-void ANSPrintShiftStructureField(void);
+void ANSPrintOffset(void);
 
 // Function print Size of any Structure
 void ANSPrintSizeOfStructure(void);
 
-void ANSPrintBiraryRepresentationOfCharValue(unsigned char charValue);
+void ANSCharBitOutput(char *charValue);
 
-void ANSRunAllAplicaitons(unsigned char charValue);
+void ANSNumberBitOutputDepindingOnProcessorType(void *byteAdress, size_t size);
+
+void ANSValueBitOutput(void *byteAdress, size_t size);
 
 #endif /* ANSStructureTest_h */
 
