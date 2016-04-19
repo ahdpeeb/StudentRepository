@@ -11,7 +11,7 @@
 #include "ANSStructureTest.h"
 
 int main(int argc, const char * argv[]) {
-    
-
+    ANSRunApplications(255);
+   
 }
 

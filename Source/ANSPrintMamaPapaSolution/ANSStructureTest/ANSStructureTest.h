@@ -11,6 +11,11 @@
 
 #include <stdbool.h>
 
+typedef enum {
+    ANSLitteleEndianness = 1,
+    ANSBigEndEndianness
+} ASNEndiannessType;
+
 //initial size 56 bytes;
 // than 48;
 // than 40;
@@ -43,11 +48,7 @@ void ANSPrintOffset(void);
 // Function print Size of any Structure
 void ANSPrintSizeOfStructure(void);
 
-void ANSCharBitOutput(char *charValue);
-
-void ANSBitOutputAccordingToEndiannes(void *byteAdress, size_t size);
-
-void ANSValueBitOutput(void *byteAdress, size_t size);
+void ANSRunApplications(unsigned char charValue);
 
 #endif /* ANSStructureTest_h */
 
