@@ -11,6 +11,15 @@
 
 #include "ANSTest.h"
 
+void ANSFunctonPointerTest(void) {
+    
+}
+
+
+#pragma mark - Privat
+
+int arifmeticFunction(int argument1, int argument2);
+
 void ANSAlloctionTest(void) {
     const int count = 1000000;
     void *allocatedDataPointers[count]; // array of pointers on stack (includes 100 members)

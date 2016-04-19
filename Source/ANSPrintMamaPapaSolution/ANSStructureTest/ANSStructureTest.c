@@ -10,14 +10,20 @@
 
 #include "ANSStructureTest.h"
 
+static
+void ANSCharBitOutput(uint8_t value);
 
-static void ANSCharBitOutput(uint8_t value);
+static
+ASNEndiannessType ANSGetEndiannes(void);
 
-static ASNEndiannessType ANSDefineCPUType(void);
+static
+void ANSPrintValueBitsWithEndianness(void *address, size_t size, ASNEndiannessType endianness);
 
-static void __ANSPrintValueBits(void *byteAdress, size_t size);
+static
+void __ANSPrintValueBits(void *address, size_t size);
 
-#pragma mark - Public
+#pragma mark -
+#pragma mark Public Implementetion
 
 #define ANSPrintValueBits(value) \
 __ANSPrintValueBits(&value, sizeof(value))
@@ -30,11 +36,16 @@ void ANSRunApplications(unsigned char charValue) {
 #pragma mark - Privat
 
 void __ANSPrintValueBits(void *address, size_t size) {
+    ANSPrintValueBitsWithEndianness(address, size, ANSGetEndiannes());
+}
+
+void ANSPrintValueBitsWithEndianness(void *address, size_t size, ASNEndiannessType endianness){
     uint8_t *value = (unsigned char *)address;
-    for (uint16_t index = size ; index > 0; index--) {
-        // как мне во втором случае вычесть size? еще один терннарник?
-            ANSCharBitOutput(value[index - ANSDefineCPUType()]);
-        }
+    for (size_t iterator = 0; iterator < size; iterator++) {
+        size_t index = endianness == ANSBigEndEndianness ? iterator : size - iterator - 1;
+        ANSCharBitOutput(value[index]);
+    }
+    
     printf("\n");
 }
 
@@ -42,7 +53,7 @@ void ANSCharBitOutput(uint8_t value) {
     const uint8_t bitCount = 8;
     printf("[ ");
     for (uint8_t iterator = 0; iterator < bitCount; iterator++) {
-        uint8_t shiftedValue = value >> (bitCount - (iterator +1));
+        uint8_t shiftedValue = value >> (bitCount - (iterator + 1));
         printf("%d ",shiftedValue & 1);
     }
     printf("] ");
@@ -77,11 +88,9 @@ void ANSPrintSizeOfStructure(void) {
     printf("Size of structure - %lu \n", sizeof(ANSStructureTest));
 }
 
-ASNEndiannessType ANSDefineCPUType(void) {
+ASNEndiannessType ANSGetEndiannes(void) {
     unsigned short testValue = 1;
     uint8_t value = (((char *)&testValue)[0]);
-    ASNEndiannessType processorValue = (1 == value) ? (processorValue = ANSLitteleEndianness)
-        : (processorValue = ANSBigEndEndianness);
     
-    return processorValue;
+    return (1 == value) ? ANSLitteleEndianness :  ANSBigEndEndianness;
 }
