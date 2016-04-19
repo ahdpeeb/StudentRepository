@@ -35,7 +35,6 @@ struct ANSStructureTest {
             uint8_t bitField;
         };
 };
-
 typedef struct ANSStructureTest ANSStructureTest;
 
 //Function print structure field shifting from the begingn of structure;
@@ -46,7 +45,7 @@ void ANSPrintSizeOfStructure(void);
 
 void ANSCharBitOutput(char *charValue);
 
-void ANSValueBitOutputDepindingOnProcessorType(void *byteAdress, size_t size);
+void ANSBitOutputAccordingToEndiannes(void *byteAdress, size_t size);
 
 void ANSValueBitOutput(void *byteAdress, size_t size);
 

@@ -13,7 +13,7 @@
 void ANSPrintMamaPapaShortSolution(int value) {
     printf("%s%s \n", value % 3 == 0 ? "Mama": "", value % 5 == 0 ? "Papa" : "");
     }
-// подумать над названием
+
 ANSState ANSPrintState(int value) {
     ANSState condition = ANSStateBlank;
     
