@@ -14,16 +14,15 @@
 
 // test macros, that assume values
 #define ANSPrintTestString(string, string2, string3) \
-printf("I have to print some information " #string" "#string2" "#string3"\n");
+    printf("I have to print some information " #string" "#string2" "#string3"\n");
 
 // macros create function generation
 #define ANSGeneratePrintingFuncton(type, qualifier) \
     void ANSOutput_ ##type(type value) { \
         printf(#type " value = %" #qualifier "\n", value); \
-        }
+    }
 
 // macros call function, that preciously was created by macros "ANSGenerateFuncton"
-
 #define ANSOutputValue(type, value) \
     ANSOutput_##type(value);
 

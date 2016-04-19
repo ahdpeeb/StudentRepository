@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
-		934FE0CC1CBCF1A5007B702E /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */; };
-		934FE0CD1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0CA1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c */; };
-		934FE0F01CC0F1E1007B702E /* ANSStructureTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0EE1CC0F1E1007B702E /* ANSStructureTest.c */; };
+		934FE0FF1CC2CE8F007B702E /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0F41CC2CE8F007B702E /* ANSPrintFunctionValue.c */; };
+		934FE1001CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0F71CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c */; };
+		934FE1011CC2CE8F007B702E /* ANSStructureTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0FA1CC2CE8F007B702E /* ANSStructureTest.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,13 +28,15 @@
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
 		93080C6C1CB6DA2000D52D9C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		934FE0C61CBCF1A5007B702E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
-		934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
-		934FE0C81CBCF1A5007B702E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
-		934FE0CA1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintMamaPapaSoluiton.c; sourceTree = "<group>"; };
-		934FE0CB1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintMamaPapaSoluiton.h; sourceTree = "<group>"; };
-		934FE0EE1CC0F1E1007B702E /* ANSStructureTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSStructureTest.c; sourceTree = "<group>"; };
-		934FE0EF1CC0F1E1007B702E /* ANSStructureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSStructureTest.h; sourceTree = "<group>"; };
+		934FE0F31CC2CE8F007B702E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
+		934FE0F41CC2CE8F007B702E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
+		934FE0F51CC2CE8F007B702E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
+		934FE0F71CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintMamaPapaSolution.c; sourceTree = "<group>"; };
+		934FE0F81CC2CE8F007B702E /* ANSPrintMamaPapaSolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintMamaPapaSolution.h; sourceTree = "<group>"; };
+		934FE0FA1CC2CE8F007B702E /* ANSStructureTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSStructureTest.c; sourceTree = "<group>"; };
+		934FE0FB1CC2CE8F007B702E /* ANSStructureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSStructureTest.h; sourceTree = "<group>"; };
+		93D1932F1CC650CE004A0B42 /* ANSTest.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ANSTest.c; sourceTree = "<group>"; };
+		93D193301CC650CE004A0B42 /* ANSTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANSTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,7 @@
 		93080C601CB6DA2000D52D9C = {
 			isa = PBXGroup;
 			children = (
-				934FE0C41CBCF1A5007B702E /* Sourse */,
+				934FE0F11CC2CE8F007B702E /* Source */,
 				93080C6B1CB6DA2000D52D9C /* LCHW */,
 				93080C6A1CB6DA2000D52D9C /* Products */,
 			);
@@ -73,43 +75,53 @@
 			path = LCHW;
 			sourceTree = "<group>";
 		};
-		934FE0C41CBCF1A5007B702E /* Sourse */ = {
+		934FE0F11CC2CE8F007B702E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				934FE0C51CBCF1A5007B702E /* ANSMacrosDeclaration */,
-				934FE0C91CBCF1A5007B702E /* ANSPrintMamaPapaSolution */,
-				934FE0ED1CC0F1E1007B702E /* ANSStructureTest */,
+				93D1932E1CC650CE004A0B42 /* ANSTest */,
+				934FE0F21CC2CE8F007B702E /* ANSMacrosDeclaration */,
+				934FE0F61CC2CE8F007B702E /* ANSPrintMamaPapaSolution */,
+				934FE0F91CC2CE8F007B702E /* ANSStructureTest */,
 			);
-			path = Sourse;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		934FE0C51CBCF1A5007B702E /* ANSMacrosDeclaration */ = {
+		934FE0F21CC2CE8F007B702E /* ANSMacrosDeclaration */ = {
 			isa = PBXGroup;
 			children = (
-				934FE0C61CBCF1A5007B702E /* ANSMacrosDeclaration.h */,
-				934FE0C81CBCF1A5007B702E /* ANSPrintFunctionValue.h */,
-				934FE0C71CBCF1A5007B702E /* ANSPrintFunctionValue.c */,
+				934FE0F31CC2CE8F007B702E /* ANSMacrosDeclaration.h */,
+				934FE0F41CC2CE8F007B702E /* ANSPrintFunctionValue.c */,
+				934FE0F51CC2CE8F007B702E /* ANSPrintFunctionValue.h */,
 			);
 			path = ANSMacrosDeclaration;
 			sourceTree = "<group>";
 		};
-		934FE0C91CBCF1A5007B702E /* ANSPrintMamaPapaSolution */ = {
+		934FE0F61CC2CE8F007B702E /* ANSPrintMamaPapaSolution */ = {
 			isa = PBXGroup;
 			children = (
-				934FE0CB1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.h */,
-				934FE0CA1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c */,
+				934FE0F71CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c */,
+				934FE0F81CC2CE8F007B702E /* ANSPrintMamaPapaSolution.h */,
 			);
 			path = ANSPrintMamaPapaSolution;
 			sourceTree = "<group>";
 		};
-		934FE0ED1CC0F1E1007B702E /* ANSStructureTest */ = {
+		934FE0F91CC2CE8F007B702E /* ANSStructureTest */ = {
 			isa = PBXGroup;
 			children = (
-				934FE0EF1CC0F1E1007B702E /* ANSStructureTest.h */,
-				934FE0EE1CC0F1E1007B702E /* ANSStructureTest.c */,
+				934FE0FB1CC2CE8F007B702E /* ANSStructureTest.h */,
+				934FE0FA1CC2CE8F007B702E /* ANSStructureTest.c */,
 			);
 			name = ANSStructureTest;
 			path = ANSPrintMamaPapaSolution/ANSStructureTest;
+			sourceTree = "<group>";
+		};
+		93D1932E1CC650CE004A0B42 /* ANSTest */ = {
+			isa = PBXGroup;
+			children = (
+				93D1932F1CC650CE004A0B42 /* ANSTest.c */,
+				93D193301CC650CE004A0B42 /* ANSTest.h */,
+			);
+			path = ANSTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,10 +180,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				934FE0CC1CBCF1A5007B702E /* ANSPrintFunctionValue.c in Sources */,
+				934FE1001CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c in Sources */,
+				934FE0FF1CC2CE8F007B702E /* ANSPrintFunctionValue.c in Sources */,
+				934FE1011CC2CE8F007B702E /* ANSStructureTest.c in Sources */,
 				93080C6D1CB6DA2000D52D9C /* main.c in Sources */,
-				934FE0F01CC0F1E1007B702E /* ANSStructureTest.c in Sources */,
-				934FE0CD1CBCF1A5007B702E /* ANSPrintMamaPapaSoluiton.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

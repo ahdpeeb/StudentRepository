@@ -8,10 +8,9 @@
 
 #include <stdio.h>
 
-#include "ANSPrintFunctionValue.h"
-#include "ANSMacrosDeclaration.h"
+#include "ANSStructureTest.h"
 
 int main(int argc, const char * argv[]) {
-    
+   
 }
 
