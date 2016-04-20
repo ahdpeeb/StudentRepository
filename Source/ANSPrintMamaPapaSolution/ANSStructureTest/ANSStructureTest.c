@@ -10,6 +10,9 @@
 
 #include "ANSStructureTest.h"
 
+#pragma mark -
+#pragma mark Private Declatation
+
 static
 void ANSCharBitOutput(uint8_t value);
 
@@ -33,7 +36,8 @@ void ANSRunApplications(unsigned char charValue) {
     ANSPrintValueBits(value);
 }
 
-#pragma mark - Privat
+#pragma mark -
+#pragma mark Privat Implementation
 
 void __ANSPrintValueBits(void *address, size_t size) {
     ANSPrintValueBitsWithEndianness(address, size, ANSGetEndiannes());
@@ -56,6 +60,7 @@ void ANSCharBitOutput(uint8_t value) {
         uint8_t shiftedValue = value >> (bitCount - (iterator + 1));
         printf("%d ",shiftedValue & 1);
     }
+    
     printf("] ");
 }
 
@@ -64,6 +69,7 @@ void ANSValueBitOutput(void *byteAdress, size_t size) {
         char byte = ((char *)byteAdress)[index - 1];
         ANSCharBitOutput(byte);
     }
+    
     printf("\n");
 }
 
