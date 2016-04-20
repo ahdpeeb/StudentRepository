@@ -12,6 +12,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+const int ASNHumanChildrenCount = 20;
+
 typedef enum {
     ANSGenderMale,
     ANSGenderFemale
@@ -22,12 +24,16 @@ struct ANSHuman {
     char* _name;
     uint8_t _age;
     ANSGender _gender;
-    uint8_t _amountOfChildren;
-    bool _isMaried;
-    ANSHuman *spouse;
-    ANSHuman *parant;
-    void *children[20];
+    
+    uint8_t _childrenCount;
+    bool _maried;
+    
+    ANSHuman *_spouse;
+    ANSHuman *_mother;
+    ANSHuman *_father;
+
+    ANSHuman *_children[ASNHumanChildrenCount];
 };
-typedef struct ANSHuman ANSHuman;
+
 
 #endif /* ANSHumanTest_h */

@@ -11,7 +11,7 @@
 #include "ANSStructureTest.h"
 
 #pragma mark -
-#pragma mark Private Declatation
+#pragma mark Forvard Declaration
 
 static
 void ANSCharBitOutput(uint8_t value);
@@ -96,7 +96,6 @@ void ANSPrintSizeOfStructure(void) {
 
 ASNEndiannessType ANSGetEndiannes(void) {
     unsigned short testValue = 1;
-    uint8_t value = (((char *)&testValue)[0]);
-    
+    uint8_t value = (((uint8_t *)&testValue)[0]);
     return (1 == value) ? ANSLitteleEndianness :  ANSBigEndEndianness;
 }

@@ -11,12 +11,8 @@
 
 #include "ANSTest.h"
 
-void ANSFunctonPointerTest(void) {
-    
-}
-
-
-#pragma mark - Privat
+#pragma mark -
+#pragma mark Memory allocation
 
 int arifmeticFunction(int argument1, int argument2);
 
@@ -37,4 +33,12 @@ void ANSAlloctionTest(void) {
     for (uint64_t index = 0; index < count; index++)  {
         free(allocatedDataPointers[index]); // menory
     }
+}
+
+#pragma mark -
+#pragma mark Selector
+
+
+void ANSFunctionPointerTest(void){
+    
 }
