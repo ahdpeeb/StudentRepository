@@ -30,6 +30,7 @@
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
 		93080C6C1CB6DA2000D52D9C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		934811961CC7A9AF00708B80 /* iOS Study Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS Study Plan.txt"; sourceTree = "<group>"; };
 		934FE0F31CC2CE8F007B702E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
 		934FE0F41CC2CE8F007B702E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
 		934FE0F51CC2CE8F007B702E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		93080C601CB6DA2000D52D9C = {
 			isa = PBXGroup;
 			children = (
+				934811961CC7A9AF00708B80 /* iOS Study Plan.txt */,
 				934FE0F11CC2CE8F007B702E /* Source */,
 				93080C6B1CB6DA2000D52D9C /* LCHW */,
 				93080C6A1CB6DA2000D52D9C /* Products */,
