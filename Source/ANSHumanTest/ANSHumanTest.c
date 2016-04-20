@@ -14,9 +14,13 @@
 #pragma mark -
 #pragma mark Public implementation
 
+void ANSHumanDealloc(ANSHuman *human) {
+    
+}
 ANSHuman *ANSCreateHuman(void) {
     ANSHuman *human = calloc(1, sizeof(ANSHuman));
     
+    //что-то тут нужно сделать
     assert(NULL != human);
     
     human->_name = "NameNotFound";
@@ -27,7 +31,7 @@ ANSHuman *ANSCreateHuman(void) {
     
     return human;
 }
-
+//нужно завладеть объектом. 
 void ASN_SetName(ANSHuman *human, char* name) {
     human->_name = name;
 }
@@ -73,7 +77,7 @@ void ASN_SetSpouses(ANSHuman *human, ANSHuman *spouse) {
     human->_spouse = spouse;
 }
 
-ANSHuman* ASN_GetSpouse(ANSHuman *human) {
+ANSHuman *ASN_GetSpouse(ANSHuman *human) {
     return human->_spouse;
 }
 
@@ -81,7 +85,7 @@ void ASN_SetMother(ANSHuman *human, ANSHuman *mother) {
     human->_mother = mother;
 }
 
-ANSHuman* ASN_GetMother(ANSHuman *human) {
+ANSHuman *ASN_GetMother(ANSHuman *human) {
     return human->_mother;
 }
 
@@ -89,18 +93,17 @@ void ASN_SetFather(ANSHuman *human, ANSHuman *father) {
     human->_father = father;
 }
 
-ANSHuman* ASN_GetFather(ANSHuman *human) {
+ANSHuman *ASN_GetFather(ANSHuman *human) {
     return human->_father;
 }
 
+// полодижить в массив, детей. при удалении детей не должно быть дырок.(если убрать детей по индексу не должно быть смещений)
 void ASN_SetChildren(ANSHuman *human, ANSHuman *children[ASNHumanChildrenCount]) {
     human->_children[ASNHumanChildrenCount] = children[ASNHumanChildrenCount];
 }
 
-ANSHuman* ASN_GetChildren(ANSHuman *human) {
+ANSHuman *ASN_GetChildren(ANSHuman *human) {
     return human->_children[ASNHumanChildrenCount];
 }
 
-void ANSHumanDealloc(ANSHuman *human) {
-    
-}
+

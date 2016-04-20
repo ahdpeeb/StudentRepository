@@ -29,7 +29,7 @@ void __ANSPrintValueBits(void *address, size_t size);
 #pragma mark Public Implementetion
 
 #define ANSPrintValueBits(value) \
-__ANSPrintValueBits(&value, sizeof(value))
+    __ANSPrintValueBits(&value, sizeof(value))
 
 void ANSRunApplications(unsigned char charValue) {
     int value = 255;
@@ -46,7 +46,7 @@ void __ANSPrintValueBits(void *address, size_t size) {
 void ANSPrintValueBitsWithEndianness(void *address, size_t size, ASNEndiannessType endianness){
     uint8_t *value = (unsigned char *)address;
     for (size_t iterator = 0; iterator < size; iterator++) {
-        size_t index = endianness == ANSBigEndEndianness ? iterator : size - iterator - 1;
+        size_t index = endianness == ANSBigEndian ? iterator : size - iterator - 1;
         ANSCharBitOutput(value[index]);
     }
     
@@ -74,7 +74,7 @@ void ANSValueBitOutput(void *byteAdress, size_t size) {
 }
 
 #define PrintShiftOfValue(typeValue) \
-printf(#typeValue"= %lu \n", offsetof(ANSStructureTest, typeValue))
+    printf(#typeValue"= %lu \n", offsetof(ANSStructureTest, typeValue))
 
 void ANSPrintOffset(void) {
     PrintShiftOfValue(intValue);
@@ -88,7 +88,7 @@ void ANSPrintOffset(void) {
     PrintShiftOfValue(flags);
 }
 
-#undef ANSMacrosImplementsShiftOutput
+#undef PrintShiftOfValue
 
 void ANSPrintSizeOfStructure(void) {
     printf("Size of structure - %lu \n", sizeof(ANSStructureTest));
@@ -97,5 +97,6 @@ void ANSPrintSizeOfStructure(void) {
 ASNEndiannessType ANSGetEndiannes(void) {
     unsigned short testValue = 1;
     uint8_t value = (((uint8_t *)&testValue)[0]);
-    return (1 == value) ? ANSLitteleEndianness :  ANSBigEndEndianness;
+    
+    return (1 == value) ? ANSLitteleEndian :  ANSBigEndian;
 }

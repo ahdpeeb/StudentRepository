@@ -12,8 +12,8 @@
 #include <stdbool.h>
 
 typedef enum {
-    ANSLitteleEndianness = 1,
-    ANSBigEndEndianness
+    ANSLitteleEndian,
+    ANSBigEndian
 } ASNEndiannessType;
 
 //initial size 56 bytes;

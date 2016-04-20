@@ -5,7 +5,7 @@
 //  Created by Nikola Andriiev on 19.04.16.
 //  Copyright © 2016 Anfriiev.Mykola. All rights reserved.
 //
-
+// нельзя использовать нижнее подчеркивание
 #ifndef ANSHumanTest_h
 #define ANSHumanTest_h
 
@@ -21,12 +21,12 @@ typedef enum {
 
 typedef struct ANSHuman ANSHuman;
 struct ANSHuman {
-    char* _name;
+    char *_name;
     uint8_t _age;
     ANSGender _gender;
     
     uint8_t _childrenCount;
-    bool _maried;
+    bool _maried; // убрать
     
     ANSHuman *_spouse;
     ANSHuman *_mother;
@@ -35,8 +35,12 @@ struct ANSHuman {
     ANSHuman *_children[ASNHumanChildrenCount];
 };
 
+// dealloc object on heap
+void ANSHumanDeallocate(ANSHuman *human);
+
 // alloc => init object on heap
 ANSHuman *ANSCreateHuman(void);
+
 // setter/ getter-> name
 void ASN_SetName(ANSHuman *human, char* name);
 char *ASN_GetName(ANSHuman *human);
@@ -48,7 +52,7 @@ uint8_t ASN_GetAge(ANSHuman *human);
 // setter/ getter-> gender
 void ASN_SetGender(ANSHuman *human, ANSGender gender);
 ANSGender ASN_GetGender(ANSHuman *human);
-
+// приватный метод
 // setter/ getter-> childrenCount
 void ASN_SetChildrenCount(ANSHuman *human, uint8_t childrenCount);
 uint8_t ASN_GetChildrenCount(ANSHuman *human);
@@ -59,16 +63,14 @@ bool ASN_GetMariedStatus(ANSHuman *human);
 
 // setter/ getter-> spouse
 void ASN_SetSpouse(ANSHuman *human, ANSHuman *spouse);
-ANSHuman* ASN_GetSpouse(ANSHuman *human);
+ANSHuman *ASN_GetSpouse(ANSHuman *human);
 
 // setter/ getter-> mother
 void ASN_SetMother(ANSHuman *human, ANSHuman *mother);
-ANSHuman* ASN_GetMother(ANSHuman *human);
+ANSHuman *ASN_GetMother(ANSHuman *human);
 
 // setter/ getter-> father
 void ASN_SetFather(ANSHuman *human, ANSHuman *father);
-ANSHuman* ASN_GetFather(ANSHuman *human);
+ANSHuman *ASN_GetFather(ANSHuman *human);
 
-// dealloc object on heap
-void ANSHumanDealloc(ANSHuman *human);
 #endif /* ANSHumanTest_h */

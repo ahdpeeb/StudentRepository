@@ -20,7 +20,7 @@
 #define ANSGeneratePrintingFuncton(type, qualifier) \
     void ANSOutput_ ##type(type value) { \
         printf(#type " value = %" #qualifier "\n", value); \
-}
+    }
 
 // macros call function, that preciously was created by macros "ANSGenerateFuncton"
 #define ANSOutputValue(type, value) \
