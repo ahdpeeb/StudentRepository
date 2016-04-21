@@ -6,8 +6,8 @@
 //  Copyright © 2016 Anfriiev.Mykola. All rights reserved.
 //
 // нельзя использовать нижнее подчеркивание
-#ifndef ANSHumanTest_h
-#define ANSHumanTest_h
+#ifndef ANSHuman_h
+#define ANSHuman_h
 
 #include <stdbool.h>
 #include <string.h>
@@ -42,35 +42,31 @@ void ANSHumanDeallocate(ANSHuman *human);
 ANSHuman *ANSCreateHuman(void);
 
 // setter/ getter-> name
-void ASN_SetName(ANSHuman *human, char* name);
-char *ASN_GetName(ANSHuman *human);
+void ASNSetName(ANSHuman *human, char* name);
+char *ASNGetName(ANSHuman *human);
 
 // setter/ getter-> age
-void ASN_SetAge(ANSHuman *human, uint8_t _age);
-uint8_t ASN_GetAge(ANSHuman *human);
+void ASNSetAge(ANSHuman *human, uint8_t _age);
+uint8_t ASNGetAge(ANSHuman *human);
 
 // setter/ getter-> gender
-void ASN_SetGender(ANSHuman *human, ANSGender gender);
+void ASNSetGender(ANSHuman *human, ANSGender gender);
 ANSGender ASN_GetGender(ANSHuman *human);
 // приватный метод
 // setter/ getter-> childrenCount
-void ASN_SetChildrenCount(ANSHuman *human, uint8_t childrenCount);
-uint8_t ASN_GetChildrenCount(ANSHuman *human);
-
-// setter/ getter-> MariedStatus
-void ASN_SetMariedStatus(ANSHuman *human, bool maried);
-bool ASN_GetMariedStatus(ANSHuman *human);
+void ASNSetChildrenCount(ANSHuman *human, uint8_t childrenCount);
+uint8_t ASNGetChildrenCount(ANSHuman *human);
 
 // setter/ getter-> spouse
-void ASN_SetSpouse(ANSHuman *human, ANSHuman *spouse);
-ANSHuman *ASN_GetSpouse(ANSHuman *human);
+void ASNSetSpouse(ANSHuman *human, ANSHuman *spouse);
+ANSHuman *ASNGetSpouse(ANSHuman *human);
 
 // setter/ getter-> mother
-void ASN_SetMother(ANSHuman *human, ANSHuman *mother);
-ANSHuman *ASN_GetMother(ANSHuman *human);
+void ASNSetMother(ANSHuman *human, ANSHuman *mother);
+ANSHuman *ASNGetMother(ANSHuman *human);
 
 // setter/ getter-> father
-void ASN_SetFather(ANSHuman *human, ANSHuman *father);
-ANSHuman *ASN_GetFather(ANSHuman *human);
+void ASNSetFather(ANSHuman *human, ANSHuman *father);
+ANSHuman *ASNGetFather(ANSHuman *human);
 
-#endif /* ANSHumanTest_h */
+#endif /* ANSHuman_h */

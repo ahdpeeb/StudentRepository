@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "ANSHumanTest.h"
+#include "ANSHuman.h"
 
 #pragma mark -
 #pragma mark Public implementation
@@ -32,77 +32,77 @@ ANSHuman *ANSCreateHuman(void) {
     return human;
 }
 //нужно завладеть объектом. 
-void ASN_SetName(ANSHuman *human, char* name) {
+void ASNSetName(ANSHuman *human, char* name) {
     human->_name = name;
 }
 
-char *ASN_GetName(ANSHuman *human) {
+char *ASNGetName(ANSHuman *human) {
     return human->_name;
 }
 
-void ASN_SetAge(ANSHuman *human, uint8_t age) {
+void ASNSetAge(ANSHuman *human, uint8_t age) {
     human->_age = age;
 }
 
-uint8_t ASN_GetAge(ANSHuman *human) {
+uint8_t ASNGetAge(ANSHuman *human) {
     return human->_age;
 }
 
-void ASN_SetGender(ANSHuman *human, ANSGender gender) {
+void ASNSetGender(ANSHuman *human, ANSGender gender) {
     human->_gender = gender;
 }
 
-ANSGender ASN_GetGender(ANSHuman *human) {
+ANSGender ASNGetGender(ANSHuman *human) {
     return human->_gender;
 }
 
-void ASN_SetChildrenCount(ANSHuman *human, uint8_t childrenCount) {
+void ASNSetChildrenCount(ANSHuman *human, uint8_t childrenCount) {
     human->_childrenCount = childrenCount;
 }
 
-uint8_t ASN_GetChildrenCount(ANSHuman *human) {
+uint8_t ASNGetChildrenCount(ANSHuman *human) {
     return human->_childrenCount;
 }
 
-void ASN_SetMariedStatus(ANSHuman *human, bool maried) {
+void ASNSetMariedStatus(ANSHuman *human, bool maried) {
     human->_maried = maried;
 }
 
-bool ASN_GetMariedStatus(ANSHuman *human) {
+bool ASNGetMariedStatus(ANSHuman *human) {
     return human->_maried;
 }
 
 
-void ASN_SetSpouses(ANSHuman *human, ANSHuman *spouse) {
+void ASNSetSpouses(ANSHuman *human, ANSHuman *spouse) {
     human->_spouse = spouse;
 }
 
-ANSHuman *ASN_GetSpouse(ANSHuman *human) {
+ANSHuman *ASNGetSpouse(ANSHuman *human) {
     return human->_spouse;
 }
 
-void ASN_SetMother(ANSHuman *human, ANSHuman *mother) {
+void ASNSetMother(ANSHuman *human, ANSHuman *mother) {
     human->_mother = mother;
 }
 
-ANSHuman *ASN_GetMother(ANSHuman *human) {
+ANSHuman *ASNGetMother(ANSHuman *human) {
     return human->_mother;
 }
 
-void ASN_SetFather(ANSHuman *human, ANSHuman *father) {
+void ASNSetFather(ANSHuman *human, ANSHuman *father) {
     human->_father = father;
 }
 
-ANSHuman *ASN_GetFather(ANSHuman *human) {
+ANSHuman *ASNGetFather(ANSHuman *human) {
     return human->_father;
 }
 
 // полодижить в массив, детей. при удалении детей не должно быть дырок.(если убрать детей по индексу не должно быть смещений)
-void ASN_SetChildren(ANSHuman *human, ANSHuman *children[ASNHumanChildrenCount]) {
+void ASNSetChildren(ANSHuman *human, ANSHuman *children[ASNHumanChildrenCount]) {
     human->_children[ASNHumanChildrenCount] = children[ASNHumanChildrenCount];
 }
 
-ANSHuman *ASN_GetChildren(ANSHuman *human) {
+ANSHuman *ASNGetChildren(ANSHuman *human) {
     return human->_children[ASNHumanChildrenCount];
 }
 

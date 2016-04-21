@@ -8,10 +8,8 @@
 
 #include <stdio.h>
 
-#include "ANSStructureTest.h"
-#include "ANSTest.h"
-
 int main(int argc, const char * argv[]) {
-    ANSAlloctionTest();
+    
+    return 0;
 }
 
