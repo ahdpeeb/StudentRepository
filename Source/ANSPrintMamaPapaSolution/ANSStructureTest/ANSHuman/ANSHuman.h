@@ -36,21 +36,29 @@ struct ANSHuman {
 };
 
 // dealloc object on heap
+extern
 void ANSHumanDeallocate(ANSHuman *human);
 
 // alloc => init object on heap
+extern
 ANSHuman *ANSCreateHuman(void);
 
 // setter/ getter-> name
+extern
 void ANSSetName(ANSHuman *human, char* name);
+extern
 char *ANSGetName(ANSHuman *human);
 
 // setter/ getter-> age
+extern
 void ANSSetAge(ANSHuman *human, uint8_t _age);
+extern
 uint8_t ANSGetAge(ANSHuman *human);
 
 // setter/ getter-> gender
+extern
 void ANSSetGender(ANSHuman *human, ANSGender gender);
+extern
 ANSGender ANSGetGender(ANSHuman *human);
 
 

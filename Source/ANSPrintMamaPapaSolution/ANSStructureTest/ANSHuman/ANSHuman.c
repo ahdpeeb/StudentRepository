@@ -33,8 +33,6 @@ void ANSSetFather(ANSHuman *human, ANSHuman *father);
 static
 ANSHuman *ANSGetFather(ANSHuman *human);
 
-
-
 #pragma mark -
 #pragma mark Public implementation
 
