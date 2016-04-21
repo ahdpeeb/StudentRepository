@@ -61,7 +61,7 @@ ANSHuman *ANSCreateHuman(void) {
     return human;
 }
 //________________________________Name____________________________________________
-void ANSSetName(ANSHuman *human, char* name) {
+void ANSSetName(ANSHuman *human, char *name) {
     if (NULL != human) {
         if (NULL != human->_name) {
             free(human->_name);

@@ -12,7 +12,7 @@
 #include <stdbool.h>
 
 typedef enum {
-    ANSLitteleEndian,
+    ANSLittleEndian,
     ANSBigEndian
 } ASNEndiannessType;
 

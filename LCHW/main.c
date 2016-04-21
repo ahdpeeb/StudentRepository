@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 
+#include "ANSHuman.h"
 
 int main(int argc, const char * argv[]) {
     

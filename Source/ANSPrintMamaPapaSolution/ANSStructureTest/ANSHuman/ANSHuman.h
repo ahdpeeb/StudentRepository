@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-const int ANSHumanChildrenCount = 20;
+static const int ANSHumanChildrenCount = 20;
 
 typedef enum {
     ANSGenderNotDefined,

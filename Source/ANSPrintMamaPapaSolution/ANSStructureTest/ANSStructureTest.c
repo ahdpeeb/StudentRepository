@@ -73,22 +73,22 @@ void ANSValueBitOutput(void *byteAdress, size_t size) {
     printf("\n");
 }
 
-#define PrintShiftOfValue(typeValue) \
+#define ANSPrintValueOffset(typeValue) \
     printf(#typeValue"= %lu \n", offsetof(ANSStructureTest, typeValue))
 
 void ANSPrintOffset(void) {
-    PrintShiftOfValue(intValue);
-    PrintShiftOfValue(floatValue);
-    PrintShiftOfValue(llValue);
-    PrintShiftOfValue(shortValue1);
-    PrintShiftOfValue(testString);
-    PrintShiftOfValue(testDouble);
-    PrintShiftOfValue(shortValue3);
-    PrintShiftOfValue(bitField);
-    PrintShiftOfValue(flags);
+    ANSPrintValueOffset(intValue);
+    ANSPrintValueOffset(floatValue);
+    ANSPrintValueOffset(llValue);
+    ANSPrintValueOffset(shortValue1);
+    ANSPrintValueOffset(testString);
+    ANSPrintValueOffset(testDouble);
+    ANSPrintValueOffset(shortValue3);
+    ANSPrintValueOffset(bitField);
+    ANSPrintValueOffset(flags);
 }
 
-#undef PrintShiftOfValue
+#undef ANSPrintValueOffset
 
 void ANSPrintSizeOfStructure(void) {
     printf("Size of structure - %lu \n", sizeof(ANSStructureTest));
@@ -98,5 +98,5 @@ ASNEndiannessType ANSGetEndiannes(void) {
     unsigned short testValue = 1;
     uint8_t value = (((uint8_t *)&testValue)[0]);
     
-    return (1 == value) ? ANSLitteleEndian :  ANSBigEndian;
+    return (1 == value) ? ANSLittleEndian :  ANSBigEndian;
 }
