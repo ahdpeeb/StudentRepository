@@ -46,17 +46,10 @@ void ANSHumanDeallocate(ANSHuman *human) {
 }
 
 ANSHuman *ANSCreateHuman(void) {
-    ANSHuman *human = calloc(1, sizeof(ANSHuman));
-    
-    //что-то тут нужно сделать
+    ANSHuman *human = calloc(1, sizeof(ANSHuman)); 
     if (NULL == human) {
         return NULL;
     }
-    
-        human->_name = "NameNotFound";
-        human->_age = 0;
-        human->_gender = ANSGenderNotDefined;
-        human->_childrenCount = 0;
     
     return human;
 }
@@ -98,7 +91,7 @@ void ANSSetGender(ANSHuman *human, ANSGender gender) {
 }
 
 ANSGender ANSGetGender(ANSHuman *human) {
-    return (NULL == human) ? ANSGenderNotDefined : human->_gender;
+    return (NULL == human) ? ANSGenderNotDefined : human->_gender; // or ANSGND = NULL
 }
 
 #pragma mark -
@@ -114,16 +107,22 @@ void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount) {
 uint8_t ANSGetChildrenCount(ANSHuman *human) {
     return human->_childrenCount;
 }
-//______________________________ChildrenCount_____________________________________
+//___________________________________spouse_________________________________________
 void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human) {
-        exit(1);
+    if (NULL != human) {
+        if (human->_spouse) {
+      //    ASNObjectReleace (human->_spouse); //метод развладеть объектом. (forvard method)
+            human->_spouse = NULL;
+        }
+        
+        human->_spouse = spouse;
+     //   ANSObjectRetain(human);// метод завладеть объектом.,
     }
-    human->_spouse = spouse;
+        
 }
 
 ANSHuman *ANSGetSpouse(ANSHuman *human) {
-    return human->_spouse;
+    return (NULL == human) ? NULL : human->_spouse;
 }
 //______________________________Mother__________________________________________
 void ANSSetMother(ANSHuman *human, ANSHuman *mother) {

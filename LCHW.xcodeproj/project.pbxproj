@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
 		9348119E1CC8EC9D00708B80 /* ANSHuman.c in Sources */ = {isa = PBXBuildFile; fileRef = 9348119C1CC8EC9D00708B80 /* ANSHuman.c */; };
+		934811A81CCA52C000708B80 /* ANSObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 934811A61CCA52C000708B80 /* ANSObject.c */; };
 		934FE0FF1CC2CE8F007B702E /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0F41CC2CE8F007B702E /* ANSPrintFunctionValue.c */; };
 		934FE1001CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0F71CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c */; };
 		934FE1011CC2CE8F007B702E /* ANSStructureTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 934FE0FA1CC2CE8F007B702E /* ANSStructureTest.c */; };
@@ -32,6 +33,8 @@
 		934811961CC7A9AF00708B80 /* iOS Study Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS Study Plan.txt"; sourceTree = "<group>"; };
 		9348119C1CC8EC9D00708B80 /* ANSHuman.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSHuman.c; sourceTree = "<group>"; };
 		9348119D1CC8EC9D00708B80 /* ANSHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSHuman.h; sourceTree = "<group>"; };
+		934811A61CCA52C000708B80 /* ANSObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSObject.c; sourceTree = "<group>"; };
+		934811A71CCA52C000708B80 /* ANSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSObject.h; sourceTree = "<group>"; };
 		934FE0F31CC2CE8F007B702E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
 		934FE0F41CC2CE8F007B702E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
 		934FE0F51CC2CE8F007B702E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
@@ -88,12 +91,23 @@
 			path = ANSPrintMamaPapaSolution/ANSStructureTest/ANSHuman;
 			sourceTree = "<group>";
 		};
+		934811A51CCA52C000708B80 /* ASNObject */ = {
+			isa = PBXGroup;
+			children = (
+				934811A61CCA52C000708B80 /* ANSObject.c */,
+				934811A71CCA52C000708B80 /* ANSObject.h */,
+			);
+			name = ASNObject;
+			path = ANSPrintMamaPapaSolution/ANSStructureTest/ASNObject;
+			sourceTree = "<group>";
+		};
 		934FE0F11CC2CE8F007B702E /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				934FE0F21CC2CE8F007B702E /* ANSMacrosDeclaration */,
 				934FE0F61CC2CE8F007B702E /* ANSPrintMamaPapaSolution */,
 				934FE0F91CC2CE8F007B702E /* ANSStructureTest */,
+				934811A51CCA52C000708B80 /* ASNObject */,
 				9348119B1CC8EC9D00708B80 /* ANSHuman */,
 			);
 			path = Source;
@@ -185,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9348119E1CC8EC9D00708B80 /* ANSHuman.c in Sources */,
+				934811A81CCA52C000708B80 /* ANSObject.c in Sources */,
 				934FE1001CC2CE8F007B702E /* ANSPrintMamaPapaSolution.c in Sources */,
 				934FE0FF1CC2CE8F007B702E /* ANSPrintFunctionValue.c in Sources */,
 				934FE1011CC2CE8F007B702E /* ANSStructureTest.c in Sources */,
