@@ -9,6 +9,7 @@
 #include <stdio.h>
 
 #include "ANSHuman.h"
+#include "ANSObject.h"
 
 int main(int argc, const char * argv[]) {
     

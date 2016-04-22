@@ -36,20 +36,17 @@ ANSHuman *ANSGetFather(ANSHuman *human);
 #pragma mark -
 #pragma mark Public implementation
 
-void ANSHumanDeallocate(ANSHuman *human) {
+void _ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
     ANSSetSpouse(human, NULL);
     ANSSetMother(human, NULL);
     ANSSetFather(human, NULL);
     
-    free(human);
+    __ANSObjectDeallocate(human);
 }
 
 ANSHuman *ANSCreateHuman(void) {
-    ANSHuman *human = calloc(1, sizeof(ANSHuman)); 
-    if (NULL == human) {
-        return NULL;
-    }
+    ANSHuman *human = ANSObjectCreate(sizeof(ANSHuman), _ANSHumanDeallocate);
     
     return human;
 }
@@ -111,12 +108,12 @@ uint8_t ANSGetChildrenCount(ANSHuman *human) {
 void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
     if (NULL != human) {
         if (human->_spouse) {
-      //    ASNObjectReleace (human->_spouse); //метод развладеть объектом. (forvard method)
+            ANSObjectReleace (human->_spouse); //метод развладеть объектом. (forvard method)
             human->_spouse = NULL;
         }
         
         human->_spouse = spouse;
-     //   ANSObjectRetain(human);// метод завладеть объектом.,
+        ANSObjectRetain(human);// метод завладеть объектом.,
     }
         
 }

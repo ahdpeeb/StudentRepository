@@ -12,6 +12,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "ANSObject.h"
+
 static const int ANSHumanChildrenCount = 20;
 
 typedef enum {
@@ -22,6 +24,7 @@ typedef enum {
 
 typedef struct ANSHuman ANSHuman;
 struct ANSHuman {
+    ANSObject _super;
     char *_name;
     uint8_t _age;
     ANSGender _gender;
@@ -37,7 +40,7 @@ struct ANSHuman {
 
 // dealloc object on heap
 extern
-void ANSHumanDeallocate(ANSHuman *human);
+void _ANSHumanDeallocate(void *human);
 
 // alloc => init object on heap
 extern
