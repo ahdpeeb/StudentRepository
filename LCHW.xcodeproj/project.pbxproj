@@ -94,8 +94,8 @@
 		934811A51CCA52C000708B80 /* ASNObject */ = {
 			isa = PBXGroup;
 			children = (
-				934811A61CCA52C000708B80 /* ANSObject.c */,
 				934811A71CCA52C000708B80 /* ANSObject.h */,
+				934811A61CCA52C000708B80 /* ANSObject.c */,
 			);
 			name = ASNObject;
 			path = ANSPrintMamaPapaSolution/ANSStructureTest/ASNObject;
