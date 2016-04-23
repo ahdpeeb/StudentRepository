@@ -9,11 +9,12 @@
 #include "ANSObject.h"
 
 #include <assert.h>
+#include <stdio.h>
 
 #pragma mark -
 #pragma mark Public Implementation 
 
-void *ANSObjectCreate(size_t objectSize, ANSObjectDeallocator dealocator) {
+void *__ANSObjectCreate(size_t objectSize, ANSObjectDeallocator dealocator) {
     assert(0 != objectSize);
     assert(NULL != dealocator);
     ANSObject *object = calloc(1, objectSize );

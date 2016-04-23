@@ -40,7 +40,7 @@ struct ANSHuman {
 
 // dealloc object on heap
 extern
-void _ANSHumanDeallocate(void *human);
+void __ANSHumanDeallocate(void *human);
 
 // alloc => init object on heap
 extern

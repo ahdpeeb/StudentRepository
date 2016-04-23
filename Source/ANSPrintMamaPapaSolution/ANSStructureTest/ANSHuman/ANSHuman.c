@@ -19,6 +19,11 @@ void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount);
 uint8_t ANSGetChildrenCount(ANSHuman *human);
 
 static
+void ANSSetStrongSpouse (ANSHuman *human, ANSHuman *spouse);//сильный партнер.
+static
+void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse); // слабый партнер
+
+static
 void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse);
 static
 ANSHuman *ANSGetSpouse(ANSHuman *human);
@@ -36,7 +41,7 @@ ANSHuman *ANSGetFather(ANSHuman *human);
 #pragma mark -
 #pragma mark Public implementation
 
-void _ANSHumanDeallocate(void *human) {
+void __ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
     ANSSetSpouse(human, NULL);
     ANSSetMother(human, NULL);
@@ -46,7 +51,7 @@ void _ANSHumanDeallocate(void *human) {
 }
 
 ANSHuman *ANSCreateHuman(void) {
-    ANSHuman *human = ANSObjectCreate(sizeof(ANSHuman), _ANSHumanDeallocate);
+    ANSHuman *human = ANSObjectCreateOfType(ANSHuman);
     
     return human;
 }
@@ -105,17 +110,31 @@ uint8_t ANSGetChildrenCount(ANSHuman *human) {
     return human->_childrenCount;
 }
 //___________________________________spouse_________________________________________
-void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
-    if (NULL != human) {
-        if (human->_spouse) {
-            ANSObjectReleace (human->_spouse); //метод развладеть объектом. (forvard method)
-            human->_spouse = NULL;
-        }
-        
-        human->_spouse = spouse;
-        ANSObjectRetain(human);// метод завладеть объектом.,
+static
+void ANSSetStrongSpouse (ANSHuman *human, ANSHuman *spouse) {
+    if (NULL == human || NULL == spouse) {
+        exit(1);
     }
-        
+    if (human->_spouse == NULL) {
+        human->_spouse = spouse;
+        ANSObjectRetain(human->_spouse); // корректно ли писать просто spouse? 
+    } else {
+        ANSObjectReleace(human->_spouse);
+        human->_spouse = spouse;
+        ANSObjectRetain(human->_spouse);
+    }
+}
+static
+void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse) {
+    if (NULL == human || NULL == spouse) {
+        exit(1);
+    }
+    human->_spouse = spouse;
+}
+
+void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
+    (human->_gender == ANSGenderMale) ? ANSSetStrongSpouse(human, spouse)
+        : ANSSetWeakSpouse(human, spouse);
 }
 
 ANSHuman *ANSGetSpouse(ANSHuman *human) {

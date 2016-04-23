@@ -7,12 +7,18 @@
 //
 
 #include <stdio.h>
+#include <assert.h>
 
 #include "ANSHuman.h"
 #include "ANSObject.h"
 
 int main(int argc, const char * argv[]) {
     
+    ANSHuman *human = ANSObjectCreateOfType(ANSHuman);
+    ANSObjectRetain(human);
+    assert(NULL != human);
+    assert(2 == ANSObjectGetRetainCount(human));
+    ANSObjectReleace(human);
+    
     return 0;
 }
-
