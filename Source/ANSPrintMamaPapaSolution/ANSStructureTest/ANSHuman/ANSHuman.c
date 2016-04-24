@@ -100,32 +100,33 @@ ANSGender ANSGetGender(ANSHuman *human) {
 //_______________________________Get Married, GetDivorsed__________________________
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse) {
     if (NULL == human || NULL == spouse || ANSGetGender(human) == ANSGetGender(spouse)) {
-        printf("lesbians or gays \n");
+        puts("lesbians or gays \n");
         exit(1);
     }
     
     ANSSetSpouse(human, spouse);
     char consoleString [256];
-    printf("Will you marry me!? YES ? \n");
+    puts("Will you marry me!? YES ? \n");
     fgets(consoleString, 256, stdin);
     if (strncmp(consoleString, "YES", 3) == 0) {
         ANSSetSpouse(spouse, human);
-        printf("successful marriage! \n");
+        puts("successful marriage! \n");
     } else {
-        printf("She refused! \n");
+        puts("She refused! \n");
         exit(1);
     }
 }
 
 void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse) {
     if ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) {
+        puts("something is wrong");
         exit(1);
     }
     
     spouse->_spouse = NULL;
     ANSObjectReleace(human->_spouse);
     human->_spouse = NULL;
-    printf("successful divorse");
+    puts("successful divorse!");
 }
 
 #pragma mark -

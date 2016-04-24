@@ -25,9 +25,7 @@ int main(int argc, const char * argv[]) {
     ANSSetAge(Female, 25);
     
     ANSHumanAndSpouseGetMarried(Female, Man);
-    
-    
-    
+    ANSHumanAndSpouseGetDivorsed(Man, Female);
     
     return 0;
 }
