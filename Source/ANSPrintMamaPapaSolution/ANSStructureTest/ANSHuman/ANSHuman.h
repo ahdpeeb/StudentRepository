@@ -64,6 +64,13 @@ void ANSSetGender(ANSHuman *human, ANSGender gender);
 extern
 ANSGender ANSGetGender(ANSHuman *human);
 
+extern
+void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse); // 3 LVL
 
+extern
+void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse);
+
+extern
+ANSHuman *ANSGetSpouse(ANSHuman *human); // 1 lvl
 
 #endif /* ANSHuman_h */

@@ -14,11 +14,20 @@
 
 int main(int argc, const char * argv[]) {
     
-    ANSHuman *human = ANSObjectCreateOfType(ANSHuman);
-    ANSObjectRetain(human);
-    assert(NULL != human);
-    assert(2 == ANSObjectGetRetainCount(human));
-    ANSObjectReleace(human);
+    ANSHuman *Man = ANSObjectCreateOfType(ANSHuman);
+    ANSSetGender(Man, ANSGenderMale);
+    ANSSetName(Man, "Nick");
+    ANSSetAge(Man, 27);
+    
+    ANSHuman *Female = ANSObjectCreateOfType(ANSHuman);
+    ANSSetGender(Female, ANSGenderFemale);
+    ANSSetName(Female, "Julia");
+    ANSSetAge(Female, 25);
+    
+    ANSHumanAndSpouseGetMarried(Female, Man);
+    
+    
+    
     
     return 0;
 }
