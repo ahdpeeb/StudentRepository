@@ -17,12 +17,12 @@ int main(int argc, const char * argv[]) {
     ANSHuman *Man = ANSObjectCreateOfType(ANSHuman);
     ANSSetGender(Man, ANSGenderMale);
     ANSSetName(Man, "Sergey");
-    ANSSetAge(Man, 27);
+    ANSSetAge(Man, 30);
     
     ANSHuman *Female = ANSObjectCreateOfType(ANSHuman);
     ANSSetGender(Female, ANSGenderFemale);
     ANSSetName(Female, "Vika");
-    ANSSetAge(Female, 25);
+    ANSSetAge(Female, 32);
     
     ANSHuman *childOne = ANSObjectCreateOfType(ANSHuman);
     ANSSetGender(childOne, ANSGenderMale);
@@ -37,12 +37,21 @@ int main(int argc, const char * argv[]) {
     ANSHuman *childThree = ANSObjectCreateOfType(ANSHuman);
     ANSSetGender(childThree, ANSGenderFemale);
     ANSSetName(childThree, "Picec");
-    ANSSetAge(childThree, 2);
+    ANSSetAge(childThree, 3);
     
     ANSHumanAndSpouseGetMarried(Man, Female);
     ANSParantsGotChild(Man, Female, childOne);
     ANSParantsGotChild(Female, Man, childTwo);
-   // ANSHumanAndSpouseGetDivorsed(Man, Female);
+    ANSParantsGotChild(Man, Female, childThree);
+   
     
+    printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
+    
+    ANSRemoveChild(childTwo);
+    ANSRemoveChild(childOne);
+    
+    printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
+
+    ANSHumanAndSpouseGetDivorsed(Man, Female);
     return 0;
 }

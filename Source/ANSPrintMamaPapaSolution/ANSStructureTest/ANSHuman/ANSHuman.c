@@ -17,19 +17,23 @@
 
 static char ANSConsoleString [256];
 
-//static
-//void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount);
 static
-uint8_t ANSGetChildrenCount(ANSHuman *human);
+void ANSSetStrongSpouse (ANSHuman *human, ANSHuman *spouse); //  1 LVL
 
 static
-void ANSSetStrongSpouse (ANSHuman *human, ANSHuman *spouse); // strong partner. 1 LVL
-static
-void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse); // weak partner 1 LVL
+void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse); // 1 LVL
+
 static
 void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse); // 2 LVL
+
 static
-void ANSSetParant(ANSHuman *child, ANSHuman *parant);
+void ANSSetParant(ANSHuman *child, ANSHuman *parant); // 1 LVL
+
+static
+void ANSSetChildren(ANSHuman *human, ANSHuman *child);
+
+static
+void ANSRemoveChildFromParant (ANSHuman *parant, ANSHuman *child); // 2 lvl
 
 #pragma mark -
 #pragma mark Public implementation
@@ -38,13 +42,13 @@ void __ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
     ANSSetSpouse(human, NULL);
     ANSSetParant(human, NULL);
-    
     __ANSObjectDeallocate(human);
 }
 
 ANSHuman *ANSCreateHuman(void) {
     ANSHuman *human = ANSObjectCreateOfType(ANSHuman);
     human->_gender = ANSGenderNotDefined;
+    
     
     return human;
 }
@@ -122,6 +126,32 @@ void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse) {
     puts("successful divorse!");
 }
 
+void ANSKillChild(ANSHuman *child) {
+    if (NULL == child) {
+        exit(1);
+    }
+    
+    ANSHuman *mother = ANSGetMother(child);
+    ANSHuman *father = ANSGetFather(child);
+    child->_mother = NULL;
+    child->_father = NULL;
+    ANSRemoveChildFromParant(mother, child);
+    ANSRemoveChildFromParant(father, child);
+}
+
+void ANSParantsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
+    if ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) {
+        puts("it seems they are not married");
+        exit(1);
+    }
+    
+    ANSSetChildren(human, child);
+    ANSSetChildren(spouse, child);
+    ANSSetParant(child, human);
+    ANSSetParant(child, spouse);
+    printf("They got a child successfully, her name %s \n", ANSGetName(child));
+}
+
 ANSHuman *ANSGetSpouse(ANSHuman *human) {
     return (NULL == human) ? NULL : human->_spouse;
 }
@@ -137,18 +167,19 @@ ANSHuman *ANSGetFather(ANSHuman *human) {
 ANSHuman *ANSGetChildren(ANSHuman *human, uint8_t index) {
     return human->_children[index];
 }
-#pragma mark -
-#pragma mark Privat implementation
-//______________________________ChildrenCount_____________________________________
 
 uint8_t ANSGetChildrenCount(ANSHuman *human) {
     return human->_childrenCount;
 }
-//___________________________________spouse_________________________________________
+
+#pragma mark -
+#pragma mark Privat implementation
+
+//___________________________________SetSpouse_________________________________________
 
 static
 void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human || NULL == spouse || human->_spouse == spouse) {
+    if (NULL == human || human->_spouse == spouse) {
         exit(1);
     }
     
@@ -161,9 +192,9 @@ void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
         ANSObjectRetain(spouse);
     }
 }
-static
+
 void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human || NULL == spouse || human->_spouse == spouse) {
+    if (NULL == human || human->_spouse == spouse) {
         exit(1);
     }
     
@@ -181,16 +212,19 @@ void ANSSetParant(ANSHuman *child, ANSHuman *parant) {
         exit(1);
     }
     
-    if (ANSGetGender(parant) == ANSGenderMale) {
+    if (NULL == parant) {
+            child->_father = NULL;
+            child->_mother = NULL;
+    } else if (ANSGetGender(parant) == ANSGenderMale) {
         child->_father = parant;
     } else { child->_mother = parant;
     }
 }
 
-//______________________________ANSSetChildren___________________________________
-// полодижить в массив, детей. при удалении детей не должно быть дырок.(если убрать детей по индексу не должно быть смещений)
+//______________________________ANSSet/Remove___________________________________
+
 void ANSSetChildren(ANSHuman *human, ANSHuman *child) {
-    if (NULL == human || NULL == child || human == child) {
+    if (NULL == human || human == child) {
         exit(1);
     }
     
@@ -206,15 +240,22 @@ void ANSSetChildren(ANSHuman *human, ANSHuman *child) {
     }
 }
 
-void ANSParantsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
-    if ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) {
-        puts("it seems they are not married");
+void ANSRemoveChildFromParant (ANSHuman *parant, ANSHuman *child) {
+    if (NULL == parant) {
         exit(1);
     }
-    ANSSetChildren(human, child);
-    ANSSetChildren(spouse, child);
-    ANSSetParant(child, human);
-    ANSSetParant(child, spouse);
-    puts("They got a child successfully");
+    
+    for (int index = 0; index < ANSHumanChildrenCount; index++) {
+        if (parant->_children[index] == child) {
+            ANSObjectReleace(child);
+            parant->_children[index] = NULL;
+            parant->_childrenCount--;
+            parant->_children[index] = parant->_children[index + 1];
+            parant->_children[index + 1] = NULL;
+        } else {
+            continue;
+        }
+    }
 }
+
 

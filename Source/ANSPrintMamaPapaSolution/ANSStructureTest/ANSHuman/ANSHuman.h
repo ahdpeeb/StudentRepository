@@ -60,6 +60,9 @@ extern
 ANSGender ANSGetGender(ANSHuman *human);
 
 extern
+uint8_t ANSGetChildrenCount(ANSHuman *human); // 1 LVL
+
+extern
 ANSHuman *ANSGetSpouse(ANSHuman *human); // 1 lvl
 
 extern
@@ -73,6 +76,9 @@ extern
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse); // 3 LVL
 
 extern
-void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse);
+void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse); // 3 LVL
+
+extern
+void ANSKillChild(ANSHuman *child); // 3 LVL
 
 #endif /* ANSHuman_h */
