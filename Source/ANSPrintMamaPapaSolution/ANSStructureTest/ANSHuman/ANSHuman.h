@@ -14,7 +14,7 @@
 
 #include "ANSObject.h"
 
-static const int ANSHumanChildrenCount = 20;
+static const uint8_t ANSHumanChildrenCount = 20;
 
 typedef enum {
     ANSGenderNotDefined,
@@ -38,39 +38,41 @@ struct ANSHuman {
     ANSHuman *_children[ANSHumanChildrenCount];
 };
 
-// dealloc object on heap
 extern
 void __ANSHumanDeallocate(void *human);
 
-// alloc => init object on heap
 extern
 ANSHuman *ANSCreateHuman(void);
 
-// setter/ getter-> name
 extern
 void ANSSetName(ANSHuman *human, char* name);
 extern
 char *ANSGetName(ANSHuman *human);
 
-// setter/ getter-> age
 extern
 void ANSSetAge(ANSHuman *human, uint8_t _age);
 extern
 uint8_t ANSGetAge(ANSHuman *human);
 
-// setter/ getter-> gender
 extern
 void ANSSetGender(ANSHuman *human, ANSGender gender);
 extern
 ANSGender ANSGetGender(ANSHuman *human);
 
 extern
+ANSHuman *ANSGetSpouse(ANSHuman *human); // 1 lvl
+
+extern
+ANSHuman *ANSGetMother(ANSHuman *human); // 1 LVL
+extern
+ANSHuman *ANSGetFather(ANSHuman *human); // 1 LVL
+
+void ANSParantsGotChild(ANSHuman *Papa, ANSHuman *Mama, ANSHuman *child);  // 3 LVL
+
+extern
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse); // 3 LVL
 
 extern
 void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse);
-
-extern
-ANSHuman *ANSGetSpouse(ANSHuman *human); // 1 lvl
 
 #endif /* ANSHuman_h */

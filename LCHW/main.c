@@ -16,16 +16,33 @@ int main(int argc, const char * argv[]) {
     
     ANSHuman *Man = ANSObjectCreateOfType(ANSHuman);
     ANSSetGender(Man, ANSGenderMale);
-    ANSSetName(Man, "Nick");
+    ANSSetName(Man, "Sergey");
     ANSSetAge(Man, 27);
     
     ANSHuman *Female = ANSObjectCreateOfType(ANSHuman);
     ANSSetGender(Female, ANSGenderFemale);
-    ANSSetName(Female, "Julia");
+    ANSSetName(Female, "Vika");
     ANSSetAge(Female, 25);
     
-    ANSHumanAndSpouseGetMarried(Female, Man);
-    ANSHumanAndSpouseGetDivorsed(Man, Female);
+    ANSHuman *childOne = ANSObjectCreateOfType(ANSHuman);
+    ANSSetGender(childOne, ANSGenderMale);
+    ANSSetName(childOne, "Bulka");
+    ANSSetAge(childOne, 1);
+    
+    ANSHuman *childTwo = ANSObjectCreateOfType(ANSHuman);
+    ANSSetGender(childTwo, ANSGenderFemale);
+    ANSSetName(childTwo, "Sopelka");
+    ANSSetAge(childTwo, 2);
+    
+    ANSHuman *childThree = ANSObjectCreateOfType(ANSHuman);
+    ANSSetGender(childThree, ANSGenderFemale);
+    ANSSetName(childThree, "Picec");
+    ANSSetAge(childThree, 2);
+    
+    ANSHumanAndSpouseGetMarried(Man, Female);
+    ANSParantsGotChild(Man, Female, childOne);
+    ANSParantsGotChild(Female, Man, childTwo);
+   // ANSHumanAndSpouseGetDivorsed(Man, Female);
     
     return 0;
 }

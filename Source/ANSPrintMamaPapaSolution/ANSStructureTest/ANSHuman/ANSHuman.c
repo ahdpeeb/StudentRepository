@@ -15,6 +15,8 @@
 #pragma mark -
 #pragma mark Privat declaration
 
+static char ANSConsoleString [256];
+
 static
 void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount);
 static
@@ -26,16 +28,8 @@ static
 void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse); // weak partner 1 LVL
 static
 void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse); // 2 LVL
-
 static
-void ANSSetMother(ANSHuman *human, ANSHuman *mother); // 1 LVL
-static
-ANSHuman *ANSGetMother(ANSHuman *human); // 1 LVL
-
-static
-void ANSSetFather(ANSHuman *human, ANSHuman *father); // 1 LVL
-static
-ANSHuman *ANSGetFather(ANSHuman *human); // 1 LVL
+void ANSSetParant(ANSHuman *child, ANSHuman *parant);
 
 #pragma mark -
 #pragma mark Public implementation
@@ -43,14 +37,14 @@ ANSHuman *ANSGetFather(ANSHuman *human); // 1 LVL
 void __ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
     ANSSetSpouse(human, NULL);
-    ANSSetMother(human, NULL);
-    ANSSetFather(human, NULL);
+    ANSSetParant(human, NULL);
     
     __ANSObjectDeallocate(human);
 }
 
 ANSHuman *ANSCreateHuman(void) {
     ANSHuman *human = ANSObjectCreateOfType(ANSHuman);
+    human->_gender = ANSGenderNotDefined;
     
     return human;
 }
@@ -105,10 +99,9 @@ void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse) {
     }
     
     ANSSetSpouse(human, spouse);
-    char consoleString [256];
     puts("Will you marry me!? YES ? \n");
-    fgets(consoleString, 256, stdin);
-    if (strncmp(consoleString, "YES", 3) == 0) {
+    fgets(ANSConsoleString, 256, stdin);
+    if (strncmp(ANSConsoleString, "YES", 3) == 0) {
         ANSSetSpouse(spouse, human);
         puts("successful marriage! \n");
     } else {
@@ -129,16 +122,21 @@ void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse) {
     puts("successful divorse!");
 }
 
+ANSHuman *ANSGetSpouse(ANSHuman *human) {
+    return (NULL == human) ? NULL : human->_spouse;
+}
+
+ANSHuman *ANSGetMother(ANSHuman *human) {
+    return human->_mother;
+}
+
+ANSHuman *ANSGetFather(ANSHuman *human) {
+    return human->_father;
+}
+
 #pragma mark -
 #pragma mark Privat implementation
 //______________________________ChildrenCount_____________________________________
-void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount) {
-    if (NULL == human) {
-        exit(1);
-    }
-    
-    human->_childrenCount = childrenCount;
-}
 
 uint8_t ANSGetChildrenCount(ANSHuman *human) {
     return human->_childrenCount;
@@ -147,72 +145,78 @@ uint8_t ANSGetChildrenCount(ANSHuman *human) {
 
 static
 void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human || NULL == spouse) {
+    if (NULL == human || NULL == spouse || human->_spouse == spouse) {
         exit(1);
     }
     
     if (ANSGetSpouse(human) == NULL) {
         human->_spouse = spouse;
-        ANSObjectRetain(human->_spouse); // корректно ли писать просто spouse?
+        ANSObjectRetain(spouse);
     } else {
         ANSObjectReleace(human->_spouse);
         human->_spouse = spouse;
-        ANSObjectRetain(human->_spouse);
+        ANSObjectRetain(spouse);
     }
 }
 static
 void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human || NULL == spouse) {
+    if (NULL == human || NULL == spouse || human->_spouse == spouse) {
         exit(1);
     }
     
     human->_spouse = spouse;
 }
 
-void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human || NULL == spouse) {
-        exit(1);
-    }
-    
+void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {    
     (human->_gender == ANSGenderMale) ? ANSSetStrongSpouse(human, spouse)
         : ANSSetWeakSpouse(human, spouse);
 }
 
-ANSHuman *ANSGetSpouse(ANSHuman *human) {
-    return (NULL == human) ? NULL : human->_spouse;
-}
-
-//______________________________Mother__________________________________________
-void ANSSetMother(ANSHuman *human, ANSHuman *mother) {
-    if (NULL == human) {
+//______________________________SetParant_____________________________________
+void ANSSetParant(ANSHuman *child, ANSHuman *parant) {
+    if (NULL == child || ANSGetGender(parant) == ANSGenderNotDefined) {
         exit(1);
     }
     
-    human->_mother = mother;
-}
-
-ANSHuman *ANSGetMother(ANSHuman *human) {
-    return human->_mother;
-}
-//______________________________Father__________________________________________
-void ANSSetFather(ANSHuman *human, ANSHuman *father) {
-    if (NULL == human) {
-        exit(1);
+    if (ANSGetGender(parant) == ANSGenderMale) {
+        child->_father = parant;
+    } else { child->_mother = parant;
     }
-    
-    human->_father = father;
 }
 
-ANSHuman *ANSGetFather(ANSHuman *human) {
-    return human->_father;
-}
 //______________________________ANSSetChildren___________________________________
 // полодижить в массив, детей. при удалении детей не должно быть дырок.(если убрать детей по индексу не должно быть смещений)
-void ANSSetChildren(ANSHuman *human, ANSHuman *children[ANSHumanChildrenCount]) {
-    human->_children[ANSHumanChildrenCount] = children[ANSHumanChildrenCount];
+void ANSSetChildren(ANSHuman *human, ANSHuman *child) {
+    if (NULL == human || NULL == child || human == child) {
+        exit(1);
+    }
+    
+    for (uint8_t index = 0; index < ANSHumanChildrenCount; index ++) {
+        if (human->_children[index] == child) {
+            index++;
+        } else {
+            human->_children[index] = child;
+            ANSObjectRetain(child);
+            human->_childrenCount++;
+            break;
+        }
+    }
 }
 
-ANSHuman *ANSGetChildren(ANSHuman *human) {
-    return human->_children[ANSHumanChildrenCount];
+void ANSParantsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
+    if ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) {
+        puts("it seems they are not married");
+        exit(1);
+    }
+    ANSSetChildren(human, child);
+    ANSSetChildren(spouse, child);
+    ANSSetParant(child, human);
+    ANSSetParant(child, spouse);
+    puts("They got a child successfully");
+}
+
+
+ANSHuman *ANSGetChildren(ANSHuman *human, uint8_t index) {
+    return human->_children[index];
 }
 
