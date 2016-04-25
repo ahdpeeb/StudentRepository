@@ -17,8 +17,8 @@
 
 static char ANSConsoleString [256];
 
-static
-void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount);
+//static
+//void ANSSetChildrenCount(ANSHuman *human, uint8_t childrenCount);
 static
 uint8_t ANSGetChildrenCount(ANSHuman *human);
 
@@ -134,6 +134,9 @@ ANSHuman *ANSGetFather(ANSHuman *human) {
     return human->_father;
 }
 
+ANSHuman *ANSGetChildren(ANSHuman *human, uint8_t index) {
+    return human->_children[index];
+}
 #pragma mark -
 #pragma mark Privat implementation
 //______________________________ChildrenCount_____________________________________
@@ -191,9 +194,9 @@ void ANSSetChildren(ANSHuman *human, ANSHuman *child) {
         exit(1);
     }
     
-    for (uint8_t index = 0; index < ANSHumanChildrenCount; index ++) {
-        if (human->_children[index] == child) {
-            index++;
+    for (int index = 0; index < ANSHumanChildrenCount; index ++) {
+        if (human->_children[index] != NULL) {
+            continue;
         } else {
             human->_children[index] = child;
             ANSObjectRetain(child);
@@ -213,10 +216,5 @@ void ANSParantsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
     ANSSetParant(child, human);
     ANSSetParant(child, spouse);
     puts("They got a child successfully");
-}
-
-
-ANSHuman *ANSGetChildren(ANSHuman *human, uint8_t index) {
-    return human->_children[index];
 }
 
