@@ -77,7 +77,7 @@ extern
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse); // 3 LVL
 
 extern
-void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse); // 3 LVL
+void ANSHumanAndSpouseGetDivorsed(ANSHuman *human); // 3 LVL
 
 extern
 void ANSKillChild(ANSHuman *child); // 3 LVL

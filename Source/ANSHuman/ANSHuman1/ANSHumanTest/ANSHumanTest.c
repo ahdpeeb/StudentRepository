@@ -46,7 +46,8 @@ void ANSTest(void) {
     
     ANSKillChild(childTwo);
     ANSKillChild(childOne);
+    
     printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
     
-    ANSHumanAndSpouseGetDivorsed(Man, Female);
+    ANSHumanAndSpouseGetDivorsed(Man);
 }
