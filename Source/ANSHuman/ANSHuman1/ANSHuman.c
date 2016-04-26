@@ -130,18 +130,15 @@ void ANSKillChild(ANSHuman *child) {
 }
 
 ANSHuman *ANSParentsCreateChild(ANSHuman *human) {
-    ANSHuman *child = ANSObjectCreateWithType(ANSHuman);
-    assert(child && human);
-    
     ANSHuman *partner = ANSGetSpouse(human);
-    assert (partner);
+    ANSHuman *child = ANSObjectCreateWithType(ANSHuman);
+    assert(child && human && partner);
     
     if (ANSAreTheyMaried(human, partner)) {
         ANSSetChild(human, child);
         ANSSetChild(partner, child);
         ANSSetParent(child, human);
         ANSSetParent(child, partner);
-        printf("They got a child successfully, her name %s \n", ANSGetName(child));
     } else {
         return NULL;
     }
@@ -172,8 +169,6 @@ uint8_t ANSGetChildrenCount(ANSHuman *child) {
 #pragma mark -
 #pragma mark Privat implementation
 
-//___________________________________SetSpouse_________________________________________
-
 static
 void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
     assert(human);
@@ -202,7 +197,6 @@ void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
     }
 }
 
-//______________________________SetParents_____________________________________
 void ANSSetMother(ANSHuman *human, ANSHuman *mother) {
     assert(human);
     
@@ -228,8 +222,6 @@ void ANSSetParent(ANSHuman *child, ANSHuman *parent) {
         ANSSetMother(child, parent);
     }
 }
-
-//______________________________ANSSet/Remove___________________________________
 
 void ANSSetChild(ANSHuman *human, ANSHuman *child) {
     assert(human && child);
