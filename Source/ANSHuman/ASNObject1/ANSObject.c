@@ -46,7 +46,7 @@ void *ANSObjectRetain(void *object) {
     return object;
 }
 
-void ANSObjectReleace(void *object) {
+void ANSObjectRelease(void *object) {
     if (NULL != object) {
        ((ANSObject*)object)->_retainCount--;
         if (0 == ((ANSObject*)object)->_retainCount) {

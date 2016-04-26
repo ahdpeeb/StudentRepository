@@ -16,7 +16,6 @@ typedef void (*ANSObjectDeallocator)(void *object);
 typedef struct {
     uint64_t _retainCount;
     ANSObjectDeallocator _deallocatorFunctionPointer;
-    
 } ANSObject;
 
 #define ANSObjectCreateWithType(type) __ANSObjectCreate(sizeof(type), __ ##type ##Deallocate) 
@@ -34,6 +33,6 @@ extern
 void *ANSObjectRetain(void *object);
 
 extern
-void ANSObjectReleace(void *object);
+void ANSObjectRelease(void *object);
 
 #endif /* ANSObject_h */

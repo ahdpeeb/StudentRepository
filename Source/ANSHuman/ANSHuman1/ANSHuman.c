@@ -120,7 +120,7 @@ void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse) {
     }
     
     spouse->_spouse = NULL;
-    ANSObjectReleace(human->_spouse);
+    ANSObjectRelease(human->_spouse);
     human->_spouse = NULL;
     puts("successful divorse!");
 }
@@ -186,7 +186,8 @@ void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
         human->_spouse = spouse;
         ANSObjectRetain(spouse);
     } else {
-        ANSObjectReleace(human->_spouse);
+        ANSObjectRelease
+        (human->_spouse);
         human->_spouse = spouse;
         ANSObjectRetain(spouse);
     }
@@ -246,7 +247,7 @@ void ANSRemoveChildFromParant (ANSHuman *parant, ANSHuman *child) {
     
     for (int index = 0; index < ANSHumanChildrenCount; index++) {
         if (parant->_children[index] == child) {
-            ANSObjectReleace(child);
+            ANSObjectRelease(child);
             parant->_children[index] = NULL;
             parant->_childrenCount--;
             parant->_children[index] = parant->_children[index + 1];
