@@ -255,13 +255,9 @@ void ANSRemoveChildFromParent (ANSHuman *parent, ANSHuman *child) {
 }
 
 bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse) {
-    bool boolValue = ((ANSGetSpouse(human) == spouse) && (ANSGetSpouse(spouse) == human)) ? true : false;
-    
-    return boolValue;
+    return ((ANSGetSpouse(human) == spouse) && (ANSGetSpouse(spouse) == human)) ? true : false;
 }
 
 bool ANSAreTheyGetero(ANSHuman *human, ANSHuman *spouse) {
-    bool boolValue = ANSGetGender(human) != ANSGetGender(spouse) ? true : false;
-    
-    return boolValue;
+    return ANSGetGender(human) != ANSGetGender(spouse) ? true : false;
 }
