@@ -54,8 +54,7 @@ void ANSObjectRelease(void *object) {
     if (NULL != anObject) {
        anObject->_retainCount--;
         if (0 == anObject->_retainCount) {
-            anObject->_deallocatorFunctionPointer(object);
-
+            anObject->_deallocatorFunctionPointer(anObject);
             puts("ObjectReleased");
         }
     }
