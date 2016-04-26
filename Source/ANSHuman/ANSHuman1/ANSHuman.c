@@ -253,7 +253,7 @@ void ANSRemoveChildFromParent (ANSHuman *parent, ANSHuman *child) {
         if (parent->_children[index] == child) {
             ANSObjectRelease(child);
             parent->_children[index] = NULL;
-            parent->_childrenCount--;
+            parent->_childrenCount --;
             parent->_children[index] = parent->_children[index + 1];
             parent->_children[index + 1] = NULL;
         } else {

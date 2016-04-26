@@ -11,20 +11,22 @@
 #include <assert.h>
 #include <stdio.h>
 
+
 #pragma mark -
 #pragma mark Public Implementation 
 
 void *__ANSObjectCreate(size_t objectSize, ANSObjectDeallocator dealocator) {
     assert(0 != objectSize);
     assert(NULL != dealocator);
-    ANSObject *object = calloc(1, objectSize );
+    
+    ANSObject *object = calloc(1, objectSize);
     
     assert(NULL != object);
     
     object->_retainCount = 1;
     object->_deallocatorFunctionPointer = dealocator;
     
-    return object; //return pointer; 
+    return object;
 }
 
 void __ANSObjectDeallocate(void *object) {
@@ -52,9 +54,9 @@ void ANSObjectRelease(void *object) {
     if (NULL != anObject) {
        anObject->_retainCount--;
         if (0 == anObject->_retainCount) {
-            ANSObjectDeallocator dealocator = anObject->_deallocatorFunctionPointer;
-            dealocator(object);
-            puts("ANSObjectRelease");
+            anObject->_deallocatorFunctionPointer(object);
+
+            puts("ObjectReleased");
         }
     }
 }
