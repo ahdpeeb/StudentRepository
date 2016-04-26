@@ -23,9 +23,7 @@ void ANSTest(void) {
     ANSSetAge(Woman, 32);
     
     ANSHumanAndSpouseGetMarried(Woman, Man);
-    
     ANSParentsCreateChild(Man);
-    
     printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
    
     ANSHumanAndSpouseGetDivorsed(Woman);

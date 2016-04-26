@@ -57,7 +57,6 @@ ANSHuman *ANSCreateHuman(void) {
     return human;
 }
 
-//________________________________Name____________________________________________
 void ANSSetName(ANSHuman *human, char *name) {
     if (NULL != human) {
         if (NULL != human->_name) {
@@ -74,7 +73,7 @@ void ANSSetName(ANSHuman *human, char *name) {
 char *ANSGetName(ANSHuman *human) {
     return (NULL == human) ? NULL : human->_name;
 }
-//________________________________Age____________________________________________
+
 void ANSSetAge(ANSHuman *human, uint8_t age) {
     assert(human);
     
@@ -85,7 +84,6 @@ uint8_t ANSGetAge(ANSHuman *human) {
     return (NULL == human) ? 0 : human->_age;
 }
 
-//______________________________Gender____________________________________________
 void ANSSetGender(ANSHuman *human, ANSGender gender) {
     assert(human);
     
@@ -95,7 +93,7 @@ void ANSSetGender(ANSHuman *human, ANSGender gender) {
 ANSGender ANSGetGender(ANSHuman *human) {
     return (!human) ? ANSGenderNotDefined : human->_gender; //
 }
-//_______________________________Get Married, GetDivorsed__________________________
+
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse) {
     if (ANSAreTheyGetero(human, spouse)) {
         ANSSetSpouse(human, spouse);
@@ -238,7 +236,7 @@ void ANSSetChild(ANSHuman *human, ANSHuman *child) {
     }
 }
 
-void ANSRemoveChildFromParent (ANSHuman *parent, ANSHuman *child) {
+void ANSRemoveChildFromParent(ANSHuman *parent, ANSHuman *child) {
     assert(parent);
     
     for (int index = 0; index < ANSHumanChildrenCount; index++) {
@@ -252,6 +250,10 @@ void ANSRemoveChildFromParent (ANSHuman *parent, ANSHuman *child) {
             continue;
         }
     }
+}
+
+void ANSRemoveAllChildren(ANSHuman *child, ANSHuman *parent) {
+
 }
 
 bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse) {

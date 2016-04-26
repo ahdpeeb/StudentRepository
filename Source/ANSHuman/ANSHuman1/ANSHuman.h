@@ -89,4 +89,6 @@ void ANSHumanAndSpouseGetDivorsed(ANSHuman *human);
 extern
 void ANSKillChild(ANSHuman *child);
 
+extern
+void ANSRemoveAllChildren(ANSHuman *child, ANSHuman *parent)
 #endif /* ANSHuman_h */
