@@ -38,9 +38,9 @@ void ANSTest(void) {
     ANSSetAge(childThree, 3);
     
     ANSHumanAndSpouseGetMarried(Man, Female);
-    ANSParantsGotChild(Man, Female, childOne);
-    ANSParantsGotChild(Female, Man, childTwo);
-    ANSParantsGotChild(Man, Female, childThree);
+    ANSParentsGotChild(Man, Female, childOne);
+    ANSParentsGotChild(Female, Man, childTwo);
+    ANSParentsGotChild(Man, Female, childThree);
     
     printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
     

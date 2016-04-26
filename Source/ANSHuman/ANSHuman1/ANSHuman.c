@@ -9,13 +9,12 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "ANSHuman.h"
 
 #pragma mark -
 #pragma mark Privat declaration
-
-static char ANSConsoleString [256];
 
 static
 void ANSSetStrongSpouse (ANSHuman *human, ANSHuman *spouse); //  1 LVL
@@ -27,13 +26,16 @@ static
 void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse); // 2 LVL
 
 static
-void ANSSetParant(ANSHuman *child, ANSHuman *parant); // 1 LVL
+void ANSSetParent(ANSHuman *child, ANSHuman *parent); // 1 LVL
 
 static
 void ANSSetChildren(ANSHuman *human, ANSHuman *child);
 
 static
-void ANSRemoveChildFromParant (ANSHuman *parant, ANSHuman *child); // 2 lvl
+void ANSRemoveChildFromParent (ANSHuman *parent, ANSHuman *child); // 2 lvl
+
+static
+bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse);
 
 #pragma mark -
 #pragma mark Public implementation
@@ -41,7 +43,7 @@ void ANSRemoveChildFromParant (ANSHuman *parant, ANSHuman *child); // 2 lvl
 void __ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
     ANSSetSpouse(human, NULL);
-    ANSSetParant(human, NULL);
+    ANSSetParent(human, NULL);
     __ANSObjectDeallocate(human);
 }
 
@@ -71,9 +73,7 @@ char *ANSGetName(ANSHuman *human) {
 }
 //________________________________Age____________________________________________
 void ANSSetAge(ANSHuman *human, uint8_t age) {
-    if (NULL == human) {
-        exit(1);
-    }
+    assert(human);
     
     human->_age = age;
 }
@@ -84,36 +84,27 @@ uint8_t ANSGetAge(ANSHuman *human) {
 
 //______________________________Gender____________________________________________
 void ANSSetGender(ANSHuman *human, ANSGender gender) {
-    if (NULL == human) {
-        exit(1);
-    }
+    assert(human);
     
     human->_gender = gender;
 }
 
 ANSGender ANSGetGender(ANSHuman *human) {
-    return (NULL == human) ? ANSGenderNotDefined : human->_gender; // or ANSGND = NULL
+    return (!human) ? ANSGenderNotDefined : human->_gender; //
 }
 //_______________________________Get Married, GetDivorsed__________________________
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse) {
-    if (NULL == human || NULL == spouse || ANSGetGender(human) == ANSGetGender(spouse)) {
-        puts("lesbians or gays \n");
-        exit(1);
-    }
-    
-    ANSSetSpouse(human, spouse);
-    puts("Will you marry me!? YES ? \n");
-    fgets(ANSConsoleString, 256, stdin);
-    if (strncmp(ANSConsoleString, "YES", 3) == 0) {
+    assert(human || spouse);
+    if (ANSAreTheyMaried(human, spouse)) {
+        ANSSetSpouse(human, spouse);
         ANSSetSpouse(spouse, human);
-        puts("successful marriage! \n");
     } else {
-        puts("She refused! \n");
         exit(1);
     }
 }
 
 void ANSHumanAndSpouseGetDivorsed(ANSHuman *human, ANSHuman *spouse) {
+    // развести по одному родителю.
     if ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) {
         puts("something is wrong");
         exit(1);
@@ -134,11 +125,11 @@ void ANSKillChild(ANSHuman *child) {
     ANSHuman *father = ANSGetFather(child);
     child->_mother = NULL;
     child->_father = NULL;
-    ANSRemoveChildFromParant(mother, child);
-    ANSRemoveChildFromParant(father, child);
+    ANSRemoveChildFromParent(mother, child);
+    ANSRemoveChildFromParent(father, child);
 }
 
-void ANSParantsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
+void ANSParentsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
     if ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) {
         puts("it seems they are not married");
         exit(1);
@@ -146,8 +137,8 @@ void ANSParantsGotChild(ANSHuman *human, ANSHuman *spouse, ANSHuman *child) {
     
     ANSSetChildren(human, child);
     ANSSetChildren(spouse, child);
-    ANSSetParant(child, human);
-    ANSSetParant(child, spouse);
+    ANSSetParent(child, human);
+    ANSSetParent(child, spouse);
     printf("They got a child successfully, her name %s \n", ANSGetName(child));
 }
 
@@ -206,18 +197,18 @@ void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
         : ANSSetWeakSpouse(human, spouse);
 }
 
-//______________________________SetParant_____________________________________
-void ANSSetParant(ANSHuman *child, ANSHuman *parant) {
-    if (NULL == child || ANSGetGender(parant) == ANSGenderNotDefined) {
+//______________________________SetParent_____________________________________
+void ANSSetParent(ANSHuman *child, ANSHuman *parent) {
+    if (NULL == child || ANSGetGender(parent) == ANSGenderNotDefined) {
         exit(1);
     }
     
-    if (NULL == parant) {
+    if (NULL == parent) {
             child->_father = NULL;
             child->_mother = NULL;
-    } else if (ANSGetGender(parant) == ANSGenderMale) {
-        child->_father = parant;
-    } else { child->_mother = parant;
+    } else if (ANSGetGender(parent) == ANSGenderMale) {
+        child->_father = parent;
+    } else { child->_mother = parent;
     }
 }
 
@@ -240,22 +231,28 @@ void ANSSetChildren(ANSHuman *human, ANSHuman *child) {
     }
 }
 
-void ANSRemoveChildFromParant (ANSHuman *parant, ANSHuman *child) {
-    if (NULL == parant) {
+void ANSRemoveChildFromParent (ANSHuman *parent, ANSHuman *child) {
+    if (NULL == parent) {
         exit(1);
     }
     
     for (int index = 0; index < ANSHumanChildrenCount; index++) {
-        if (parant->_children[index] == child) {
+        if (parent->_children[index] == child) {
             ANSObjectRelease(child);
-            parant->_children[index] = NULL;
-            parant->_childrenCount--;
-            parant->_children[index] = parant->_children[index + 1];
-            parant->_children[index + 1] = NULL;
+            parent->_children[index] = NULL;
+            parent->_childrenCount--;
+            parent->_children[index] = parent->_children[index + 1];
+            parent->_children[index + 1] = NULL;
         } else {
             continue;
         }
     }
 }
 
+// метод возвращает женаты они или неm? да или нет
+bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse) {
+    bool boolValue = ((ANSGetSpouse(human) != spouse) || (ANSGetSpouse(spouse) != human)) ? true : false;
+    
+    return boolValue;
+}
 

@@ -46,11 +46,13 @@ void *ANSObjectRetain(void *object) {
     return object;
 }
 
+//! cut it
 void ANSObjectRelease(void *object) {
-    if (NULL != object) {
-       ((ANSObject*)object)->_retainCount--;
-        if (0 == ((ANSObject*)object)->_retainCount) {
-            ANSObjectDeallocator dealocator = ((ANSObject*)object)->_deallocatorFunctionPointer;
+    ANSObject *anObject = ((ANSObject*)object);
+    if (NULL != anObject) {
+       anObject->_retainCount--;
+        if (0 == anObject->_retainCount) {
+            ANSObjectDeallocator dealocator = anObject->_deallocatorFunctionPointer;
             dealocator(object);
         }
     }

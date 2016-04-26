@@ -71,7 +71,7 @@ extern
 ANSHuman *ANSGetFather(ANSHuman *human); // 1 LVL
 
 extern
-void ANSParantsGotChild(ANSHuman *Papa, ANSHuman *Mama, ANSHuman *child);  // 3 LVL
+void ANSParentsGotChild(ANSHuman *Papa, ANSHuman *Mama, ANSHuman *child);  // 3 LVL
 
 extern
 void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse); // 3 LVL
