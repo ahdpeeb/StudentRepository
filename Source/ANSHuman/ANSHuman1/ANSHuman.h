@@ -70,6 +70,7 @@ ANSHuman *ANSGetMother(ANSHuman *human); // 1 LVL
 extern
 ANSHuman *ANSGetFather(ANSHuman *human); // 1 LVL
 
+extern
 void ANSParantsGotChild(ANSHuman *Papa, ANSHuman *Mama, ANSHuman *child);  // 3 LVL
 
 extern

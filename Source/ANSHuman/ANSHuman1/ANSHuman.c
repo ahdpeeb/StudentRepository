@@ -46,9 +46,8 @@ void __ANSHumanDeallocate(void *human) {
 }
 
 ANSHuman *ANSCreateHuman(void) {
-    ANSHuman *human = ANSObjectCreateOfType(ANSHuman);
+    ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
     human->_gender = ANSGenderNotDefined;
-    
     
     return human;
 }

@@ -118,8 +118,8 @@
 		93BAD6FA1CCE604900B29543 /* ANSHumanTest */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD6FB1CCE604900B29543 /* ANSHumanTest.c */,
 				93BAD6FC1CCE604900B29543 /* ANSHumanTest.h */,
+				93BAD6FB1CCE604900B29543 /* ANSHumanTest.c */,
 			);
 			name = ANSHumanTest;
 			path = ANSHuman1/ANSHumanTest;
@@ -128,8 +128,8 @@
 		93BAD7001CCE604900B29543 /* ASNObject */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7011CCE604900B29543 /* ANSObject.c */,
 				93BAD7021CCE604900B29543 /* ANSObject.h */,
+				93BAD7011CCE604900B29543 /* ANSObject.c */,
 			);
 			name = ASNObject;
 			path = ASNObject1;

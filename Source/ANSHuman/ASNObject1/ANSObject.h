@@ -19,7 +19,7 @@ typedef struct {
     
 } ANSObject;
 
-#define ANSObjectCreateOfType(type) __ANSObjectCreate(sizeof(type), __ ##type ##Deallocate) 
+#define ANSObjectCreateWithType(type) __ANSObjectCreate(sizeof(type), __ ##type ##Deallocate) 
 
 extern
 void *__ANSObjectCreate(size_t objectSize, ANSObjectDeallocator dealocator);
