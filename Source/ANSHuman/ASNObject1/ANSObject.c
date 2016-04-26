@@ -54,6 +54,7 @@ void ANSObjectRelease(void *object) {
         if (0 == anObject->_retainCount) {
             ANSObjectDeallocator dealocator = anObject->_deallocatorFunctionPointer;
             dealocator(object);
+            puts("ANSObjectRelease");
         }
     }
 }

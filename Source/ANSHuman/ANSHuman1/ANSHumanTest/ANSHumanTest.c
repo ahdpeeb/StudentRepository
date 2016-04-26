@@ -17,37 +17,17 @@ void ANSTest(void) {
     ANSSetName(Man, "Sergey");
     ANSSetAge(Man, 30);
     
-    ANSHuman *Female = ANSObjectCreateWithType(ANSHuman);
-    ANSSetGender(Female, ANSGenderFemale);
-    ANSSetName(Female, "Vika");
-    ANSSetAge(Female, 32);
+    ANSHuman *Woman = ANSObjectCreateWithType(ANSHuman);
+    ANSSetGender(Woman, ANSGenderFemale);
+    ANSSetName(Woman, "Vika");
+    ANSSetAge(Woman, 32);
     
-    ANSHuman *childOne = ANSObjectCreateWithType(ANSHuman);
-    ANSSetGender(childOne, ANSGenderMale);
-    ANSSetName(childOne, "Bulka");
-    ANSSetAge(childOne, 1);
+    ANSHumanAndSpouseGetMarried(Woman, Man);
     
-    ANSHuman *childTwo = ANSObjectCreateWithType(ANSHuman);
-    ANSSetGender(childTwo, ANSGenderFemale);
-    ANSSetName(childTwo, "Sopelka");
-    ANSSetAge(childTwo, 2);
-    
-    ANSHuman *childThree = ANSObjectCreateWithType(ANSHuman);
-    ANSSetGender(childThree, ANSGenderFemale);
-    ANSSetName(childThree, "Picec");
-    ANSSetAge(childThree, 3);
-    
-    ANSHumanAndSpouseGetMarried(Man, Female);
-    ANSParentsGotChild(Man, Female, childOne);
-    ANSParentsGotChild(Female, Man, childTwo);
-    ANSParentsGotChild(Man, Female, childThree);
+    ANSParentsCreateChild(Man);
     
     printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
+   
+    ANSHumanAndSpouseGetDivorsed(Woman);
     
-    ANSKillChild(childTwo);
-    ANSKillChild(childOne);
-    
-    printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
-    
-    ANSHumanAndSpouseGetDivorsed(Man);
 }

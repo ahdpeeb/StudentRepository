@@ -46,40 +46,47 @@ ANSHuman *ANSCreateHuman(void);
 
 extern
 void ANSSetName(ANSHuman *human, char* name);
+
 extern
 char *ANSGetName(ANSHuman *human);
 
 extern
 void ANSSetAge(ANSHuman *human, uint8_t _age);
+
 extern
 uint8_t ANSGetAge(ANSHuman *human);
 
 extern
 void ANSSetGender(ANSHuman *human, ANSGender gender);
+
 extern
 ANSGender ANSGetGender(ANSHuman *human);
 
 extern
-uint8_t ANSGetChildrenCount(ANSHuman *human); // 1 LVL
+uint8_t ANSGetChildrenCount(ANSHuman *child);
 
 extern
-ANSHuman *ANSGetSpouse(ANSHuman *human); // 1 lvl
+ANSHuman *ANSGetSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetMother(ANSHuman *human); // 1 LVL
-extern
-ANSHuman *ANSGetFather(ANSHuman *human); // 1 LVL
+ANSHuman *ANSGetMother(ANSHuman *human);
 
 extern
-void ANSParentsGotChild(ANSHuman *Papa, ANSHuman *Mama, ANSHuman *child);  // 3 LVL
+ANSHuman *ANSGetFather(ANSHuman *human);
 
 extern
-void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse); // 3 LVL
+ANSHuman *ANSGetChild(ANSHuman *child, uint8_t index);
 
 extern
-void ANSHumanAndSpouseGetDivorsed(ANSHuman *human); // 3 LVL
+ANSHuman *ANSParentsCreateChild(ANSHuman *human);
 
 extern
-void ANSKillChild(ANSHuman *child); // 3 LVL
+void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse);
+
+extern
+void ANSHumanAndSpouseGetDivorsed(ANSHuman *human);
+
+extern
+void ANSKillChild(ANSHuman *child);
 
 #endif /* ANSHuman_h */
