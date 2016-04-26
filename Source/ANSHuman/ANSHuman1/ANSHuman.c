@@ -252,7 +252,7 @@ void ANSRemoveChildFromParent(ANSHuman *parent, ANSHuman *child) {
     }
 }
 
-void ANSRemoveAllChildren(ANSHuman *child, ANSHuman *parent) {
+void ANSRemoveAllChildren(ANSHuman *parent) {
 
 }
 
