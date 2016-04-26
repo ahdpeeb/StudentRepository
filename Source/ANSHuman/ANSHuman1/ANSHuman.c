@@ -253,7 +253,14 @@ void ANSRemoveChildFromParent(ANSHuman *parent, ANSHuman *child) {
 }
 
 void ANSRemoveAllChildren(ANSHuman *parent) {
-
+    assert(parent);
+    for (int index = 0; index < ANSHumanChildrenCount; index++) {
+        if (parent->_children[index] != NULL) {
+        //  ANSGetChildOfIndex
+            ANSObjectRelease(parent->_children[index]);
+            parent->_children[index] = NULL;
+        }
+    }
 }
 
 bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse) {

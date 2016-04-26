@@ -90,6 +90,6 @@ extern
 void ANSKillChild(ANSHuman *child);
 
 extern
-void ANSRemoveAllChildren(ANSHuman *parent)
+void ANSRemoveAllChildren(ANSHuman *parent);
 
 #endif /* ANSHuman_h */
