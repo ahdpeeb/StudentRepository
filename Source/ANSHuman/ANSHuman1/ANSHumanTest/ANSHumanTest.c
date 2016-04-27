@@ -23,10 +23,20 @@ void ANSTest(void) {
     ANSSetAge(Woman, 32);
     
     ANSHumanGetMarriedWithSpouse(Man, Woman);
-  //ANSHumanGetDivorsedWithSpouse(Woman);
-    ANSParentsCreateChild(Man);
-  
-   
     
+    ANSHuman *Child1 = ANSParentsCreateChild(Woman);
+    ANSSetName(Child1, "Первый");
+    ANSHuman *Child2 = ANSParentsCreateChild(Woman);
+    ANSSetName(Child2, "Второй");
+    ANSHuman *Child3 = ANSParentsCreateChild(Woman);
+    ANSSetName(Child3, "Третий");
+    ANSHuman *Child4 = ANSParentsCreateChild(Woman);
+    ANSSetName(Child4, "Четвертный");
+    ANSHuman *Child5 = ANSParentsCreateChild(Woman);
+    ANSSetName(Child5, "Пятый");
     
+    ANSRemoveChildFromParants(Child1);
+    ANSRemoveChildFromParants(Child2);
+    
+    ANSHumanGetDivorsedWithSpouse(Woman);
 }

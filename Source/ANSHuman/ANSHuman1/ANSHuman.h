@@ -75,7 +75,7 @@ extern
 ANSHuman *ANSGetFather(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetChildOfIndex(ANSHuman *child, uint8_t index);
+ANSHuman *ANSGetChildOfIndex(ANSHuman *human, uint8_t index);
 
 extern
 void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse);
@@ -88,8 +88,5 @@ ANSHuman *ANSParentsCreateChild(ANSHuman *human);
 
 extern
 void ANSRemoveChildFromParants(ANSHuman *child);
-
-extern
-void ANSRemoveAllChildren(ANSHuman *parent);
 
 #endif /* ANSHuman_h */
