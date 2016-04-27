@@ -38,7 +38,7 @@ static
 bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse);
 
 static
-bool ANSAreTheyGetero(ANSHuman *human, ANSHuman *spouse);
+bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse);
 
 #pragma mark -
 #pragma mark Public implementation
@@ -47,6 +47,7 @@ void __ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
     ANSSetSpouse(human, NULL);
     ANSSetParent(human, NULL);
+    
     __ANSObjectDeallocate(human);
 }
 
@@ -81,7 +82,7 @@ void ANSSetAge(ANSHuman *human, uint8_t age) {
 }
 
 uint8_t ANSGetAge(ANSHuman *human) {
-    return (NULL == human) ? 0 : human->_age;
+    return (!human) ? 0 : human->_age;
 }
 
 void ANSSetGender(ANSHuman *human, ANSGender gender) {
@@ -94,24 +95,22 @@ ANSGender ANSGetGender(ANSHuman *human) {
     return (!human) ? ANSGenderNotDefined : human->_gender; //
 }
 
-void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse) {
-    if (ANSAreTheyGetero(human, spouse)) {
+//___________________Get married/ GetDivorsed
+void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse) {
+    bool status = ANSHumanCanGetMarried(human, spouse);
+    assert(status);
+    if (status) {
         ANSSetSpouse(human, spouse);
         ANSSetSpouse(spouse, human);
-    } else {
-        exit(1);
+        puts("successful marriage!");
     }
 }
 
-void ANSHumanAndSpouseGetDivorsed(ANSHuman *human) {
-    assert(human);
-    
+void ANSHumanGetDivorsedWithSpouse(ANSHuman *human) {
     ANSHuman *partner = ANSGetSpouse(human);
-        assert(partner);
     if (ANSAreTheyMaried(human, partner)) {
         ANSSetSpouse(partner, NULL);
         ANSSetSpouse(human, NULL);
-        ANSObjectRelease(human->_spouse);
         puts("successful divorse!");
     }
 }
@@ -167,7 +166,7 @@ uint8_t ANSGetChildrenCount(ANSHuman *child) {
 #pragma mark -
 #pragma mark Privat implementation
 
-static
+//_____________________Set partner___________________________
 void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
     assert(human);
     
@@ -194,7 +193,7 @@ void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
         ANSSetWeakSpouse(human, spouse);
     }
 }
-
+// ___________________Set Paranats________________________
 void ANSSetMother(ANSHuman *human, ANSHuman *mother) {
     assert(human);
     
@@ -264,9 +263,9 @@ void ANSRemoveAllChildren(ANSHuman *parent) {
 }
 
 bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse) {
-    return ((ANSGetSpouse(human) == spouse) && (ANSGetSpouse(spouse) == human)) ? true : false;
+    return ((ANSGetSpouse(human) == spouse) && (ANSGetSpouse(spouse) == human));
 }
 
-bool ANSAreTheyGetero(ANSHuman *human, ANSHuman *spouse) {
-    return ANSGetGender(human) != ANSGetGender(spouse) ? true : false;
+bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse) {
+    return ANSGetGender(human) != ANSGetGender(spouse);
 }

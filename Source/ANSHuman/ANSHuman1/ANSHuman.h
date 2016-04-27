@@ -81,7 +81,7 @@ extern
 ANSHuman *ANSParentsCreateChild(ANSHuman *human);
 
 extern
-void ANSHumanAndSpouseGetMarried(ANSHuman *human, ANSHuman *spouse);
+void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse);
 
 extern
 void ANSHumanAndSpouseGetDivorsed(ANSHuman *human);

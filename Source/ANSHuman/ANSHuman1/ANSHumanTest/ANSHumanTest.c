@@ -22,10 +22,11 @@ void ANSTest(void) {
     ANSSetName(Woman, "Vika");
     ANSSetAge(Woman, 32);
     
-    ANSHumanAndSpouseGetMarried(Woman, Man);
-    ANSParentsCreateChild(Man);
-    printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
-   
+    ANSHumanGetMarriedWithSpouse(Man, Woman);
     ANSHumanAndSpouseGetDivorsed(Woman);
+  //  ANSParentsCreateChild(Man);
+  // printf("MAN amountOfChildren = %d \n", ANSGetChildrenCount(Man)); // test
+   
+    
     
 }
