@@ -45,34 +45,34 @@ extern
 ANSHuman *ANSCreateHuman(void);
 
 extern
-void ANSSetName(ANSHuman *human, char* name);
+void ANSSetHumanName(ANSHuman *human, char* name);
 
 extern
-char *ANSGetName(ANSHuman *human);
+char *ANSGetHumanName(ANSHuman *human);
 
 extern
-void ANSSetAge(ANSHuman *human, int _age);
+void ANSSetHumanAge(ANSHuman *human, int _age);
 
 extern
-int ANSGetAge(ANSHuman *human);
+int ANSGetHumanAge(ANSHuman *human);
 
 extern
-void ANSSetGender(ANSHuman *human, ANSGender gender);
+void ANSSetHumanGender(ANSHuman *human, ANSGender gender);
 
 extern
-ANSGender ANSGetGender(ANSHuman *human);
+ANSGender ANSGetHumanGender(ANSHuman *human);
 
 extern
 int ANSGetChildrenCount(ANSHuman *child);
 
 extern
-ANSHuman *ANSGetSpouse(ANSHuman *human);
+ANSHuman *ANSGetHumanSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetMother(ANSHuman *human);
+ANSHuman *ANSGetHumanMother(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetFather(ANSHuman *human);
+ANSHuman *ANSGetHumanFather(ANSHuman *human);
 
 extern
 ANSHuman *ANSGetChildOfIndex(ANSHuman *human, int index);
@@ -84,7 +84,7 @@ extern
 void ANSHumanGetDivorsedWithSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSParentsCreateChild(ANSHuman *human);
+ANSHuman *ANSParentsCreateChild(ANSHuman *parant);
 
 extern
 void ANSRemoveChildFromParents(ANSHuman *child);

@@ -26,19 +26,19 @@ static
 void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse);
 
 static
-void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse);
+void ANSSetHumanSpouse(ANSHuman *human, ANSHuman *spouse);
 
 static
-void ANSSetMother(ANSHuman *child, ANSHuman *mother);
+void ANSSetChildMother(ANSHuman *child, ANSHuman *mother);
 
 static
-void ANSSetFather(ANSHuman *child, ANSHuman *father);
+void ANSSetChildFather(ANSHuman *child, ANSHuman *father);
 
 static
-void ANSSetParent(ANSHuman *child, ANSHuman *parent);
+void ANSSetChildParent(ANSHuman *child, ANSHuman *parent);
 
 static
-void ANSSetChild(ANSHuman *human, ANSHuman *child);
+void ANSSetHumanChild(ANSHuman *human, ANSHuman *child);
 
 static
 void ANSSetChildOfIndex(ANSHuman *human, ANSHuman *child, int index);
@@ -47,7 +47,7 @@ static
 void ANSRemoveAllChildren(ANSHuman *parent);
 
 static
-bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse);
+bool ANSAreHumanAndSpouseMaried(ANSHuman *human, ANSHuman *spouse);
 
 static
 bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse);
@@ -62,12 +62,12 @@ void ANSReorderChildrenInHuman(ANSHuman *human, int indexOfRemovedChild);
 #pragma mark Public implementation
 
 void __ANSHumanDeallocate(void *human) {
-    ANSSetName(human, NULL);
-    ANSSetAge(human, 0);
-    ANSSetGender(human, ANSGenderNotDefined);
-    ANSSetSpouse(human, NULL);
-    ANSSetMother(human, NULL);
-    ANSSetFather(human, NULL);
+    ANSSetHumanName(human, NULL);
+    ANSSetHumanAge(human, 0);
+    ANSSetHumanGender(human, ANSGenderNotDefined);
+    ANSSetHumanSpouse(human, NULL);
+    ANSSetChildMother(human, NULL);
+    ANSSetChildFather(human, NULL);
     ANSRemoveAllChildren(human);
     
     __ANSObjectDeallocate(human);
@@ -80,7 +80,7 @@ ANSHuman *ANSCreateHuman(void) {
     return human;
 }
 
-void ANSSetName(ANSHuman *human, char *name) {
+void ANSSetHumanName(ANSHuman *human, char *name) {
     if (NULL != human) {
         if (NULL != human->_name) {
             free(human->_name);
@@ -93,40 +93,40 @@ void ANSSetName(ANSHuman *human, char *name) {
     }
 }
 
-char *ANSGetName(ANSHuman *human) {
+char *ANSGetHumanName(ANSHuman *human) {
     return (NULL == human) ? NULL : human->_name;
 }
 
-void ANSSetAge(ANSHuman *human, int age) {
+void ANSSetHumanAge(ANSHuman *human, int age) {
     assert(human);
     
     human->_age = age;
 }
 
-int ANSGetAge(ANSHuman *human) {
+int ANSGetHumanAge(ANSHuman *human) {
     return (!human) ? 0 : human->_age;
 }
 
-void ANSSetGender(ANSHuman *human, ANSGender gender) {
+void ANSSetHumanGender(ANSHuman *human, ANSGender gender) {
     assert(human);
     
     human->_gender = gender;
 }
 
-ANSGender ANSGetGender(ANSHuman *human) {
+ANSGender ANSGetHumanGender(ANSHuman *human) {
     return (!human) ? ANSGenderNotDefined : human->_gender; //
 }
 
 
-ANSHuman *ANSGetSpouse(ANSHuman *human) {
+ANSHuman *ANSGetHumanSpouse(ANSHuman *human) {
     return (NULL == human) ? NULL : human->_spouse;
 }
 
-ANSHuman *ANSGetMother(ANSHuman *human) {
+ANSHuman *ANSGetHumanMother(ANSHuman *human) {
     return human->_mother;
 }
 
-ANSHuman *ANSGetFather(ANSHuman *human) {
+ANSHuman *ANSGetHumanFather(ANSHuman *human) {
     return human->_father;
 }
 
@@ -142,31 +142,31 @@ void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse) {
     bool status = ANSHumanCanGetMarried(human, spouse);
     assert(status);
     if (status) {
-        ANSSetSpouse(human, spouse);
-        ANSSetSpouse(spouse, human);
+        ANSSetHumanSpouse(human, spouse);
+        ANSSetHumanSpouse(spouse, human);
         puts("successful marriage!");
     }
 }
 
 void ANSHumanGetDivorsedWithSpouse(ANSHuman *human) {
-    ANSHuman *partner = ANSGetSpouse(human);
-    if (ANSAreTheyMaried(human, partner)) {
-        ANSSetSpouse(partner, NULL);
-        ANSSetSpouse(human, NULL);
+    ANSHuman *partner = ANSGetHumanSpouse(human);
+    if (ANSAreHumanAndSpouseMaried(human, partner)) {
+        ANSSetHumanSpouse(partner, NULL);
+        ANSSetHumanSpouse(human, NULL);
         puts("successful divorse!");
     }
 }
 
 ANSHuman *ANSParentsCreateChild(ANSHuman *human) {
-    ANSHuman *partner = ANSGetSpouse(human);
+    ANSHuman *partner = ANSGetHumanSpouse(human);
     ANSHuman *child = ANSObjectCreateWithType(ANSHuman);
     assert(child);
     
-    if (ANSAreTheyMaried(human, partner)) {
-        ANSSetChild(human, child);
-        ANSSetChild(partner, child);
-        ANSSetParent(child, human);
-        ANSSetParent(child, partner);
+    if (ANSHumanCanGetMarried(human, partner)) {
+        ANSSetHumanChild(human, child);
+        ANSSetHumanChild(partner, child);
+        ANSSetChildParent(child, human);
+        ANSSetChildParent(child, partner);
         ANSSetChildrenCount(human, 1);
         ANSSetChildrenCount(partner, 1);
     }
@@ -175,10 +175,10 @@ ANSHuman *ANSParentsCreateChild(ANSHuman *human) {
 }
 
 void ANSRemoveChildFromParents(ANSHuman *child) {
-    ANSHuman *mother = ANSGetMother(child);
-    ANSSetMother(child, NULL);
-    ANSHuman *father = ANSGetFather(child);
-    ANSSetFather(child, NULL);
+    ANSHuman *mother = ANSGetHumanMother(child);
+    ANSSetChildMother(child, NULL);
+    ANSHuman *father = ANSGetHumanFather(child);
+    ANSSetChildFather(child, NULL);
     ANSReorderChildrenInHuman(father, ANSRemoveChildReturnItsIndex(father, child));
     ANSReorderChildrenInHuman(mother, ANSRemoveChildReturnItsIndex(mother, child));
 }
@@ -190,7 +190,7 @@ void ANSRemoveChildFromParents(ANSHuman *child) {
 void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
     assert(human);
     
-    if (ANSGetSpouse(human) != human) {
+    if (ANSGetHumanSpouse(human) != human) {
         ANSObjectRelease(human->_spouse);
         human->_spouse = spouse;
         ANSObjectRetain(spouse);
@@ -200,43 +200,43 @@ void ANSSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
 void ANSSetWeakSpouse (ANSHuman *human, ANSHuman *spouse) {
     assert(human);
     
-    if (ANSGetSpouse(human) != human) {
+    if (ANSGetHumanSpouse(human) != human) {
         human->_spouse = spouse;
     }
 }
 
-void ANSSetSpouse(ANSHuman *human, ANSHuman *spouse) {
-    assert(ANSGetGender(human) != ANSGenderNotDefined);
-    if (ANSGetGender(human) == ANSGenderMale) {
+void ANSSetHumanSpouse(ANSHuman *human, ANSHuman *spouse) {
+    assert(ANSGetHumanGender(human) != ANSGenderNotDefined);
+    if (ANSGetHumanGender(human) == ANSGenderMale) {
         ANSSetStrongSpouse(human, spouse);
     } else {
         ANSSetWeakSpouse(human, spouse);
     }
 }
 // ___________________Set Paranats________________________
-void ANSSetMother(ANSHuman *child, ANSHuman *mother) {
+void ANSSetChildMother(ANSHuman *child, ANSHuman *mother) {
     assert(child);
     
-    if (ANSGetMother(child) != mother) {
+    if (ANSGetHumanMother(child) != mother) {
         child->_mother = mother;
     }
 }
 
-void ANSSetFather(ANSHuman *child, ANSHuman *father) {
+void ANSSetChildFather(ANSHuman *child, ANSHuman *father) {
     assert(child);
     
-    if (ANSGetFather(child) != father) {
+    if (ANSGetHumanFather(child) != father) {
         child->_father = father;
     }
 }
 
-void ANSSetParent(ANSHuman *child, ANSHuman *parent) {
+void ANSSetChildParent(ANSHuman *child, ANSHuman *parent) {
     assert(child);
 
-     if (ANSGetGender(parent) == ANSGenderMale) {
-        ANSSetFather(child, parent);
+     if (ANSGetHumanGender(parent) == ANSGenderMale) {
+        ANSSetChildFather(child, parent);
     } else {
-        ANSSetMother(child, parent);
+        ANSSetChildMother(child, parent);
     }
 }
 #pragma mark -
@@ -254,7 +254,7 @@ void ANSSetChildrenCount(ANSHuman *human, int count) {
     human->_childrenCount += count;
 }
 
-void ANSSetChild(ANSHuman *human, ANSHuman *child) {
+void ANSSetHumanChild(ANSHuman *human, ANSHuman *child) {
     for (int index = 0; index < ANSHumanChildrenCount; index ++) {
         if (ANSGetChildOfIndex (human, index) != NULL) {
             continue;
@@ -287,7 +287,7 @@ void ANSRemoveAllChildren(ANSHuman *parent) {
     for (int index = 0; index < ANSHumanChildrenCount; index++) {
         ANSHuman *child = ANSGetChildOfIndex(parent, index);
         if (child != NULL) {
-            ANSSetParent(parent, NULL);
+            ANSSetChildParent(parent, NULL);
             ANSObjectRelease(child);
             ANSSetChildOfIndex(parent, NULL, index);
             ANSSetChildrenCount(parent, -1);
@@ -298,12 +298,12 @@ void ANSRemoveAllChildren(ANSHuman *parent) {
 #pragma mark -
 #pragma mark accessory functions
 
-bool ANSAreTheyMaried(ANSHuman *human, ANSHuman *spouse) {
-    return ((ANSGetSpouse(human) == spouse) && (ANSGetSpouse(spouse) == human));
+bool ANSAreHumanAndSpouseMaried(ANSHuman *human, ANSHuman *spouse) {
+    return ((ANSGetHumanSpouse(human) == spouse) && (ANSGetHumanSpouse(spouse) == human));
 }
 
 bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse) {
-    return ANSGetGender(human) != ANSGetGender(spouse);
+    return ANSGetHumanGender(human) != ANSGetHumanGender(spouse);
 }
 
 //reorder children in human
