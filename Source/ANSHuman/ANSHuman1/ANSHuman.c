@@ -44,9 +44,6 @@ static
 void ANSSetChildOfIndex(ANSHuman *human, ANSHuman *child, int index);
 
 static
-void ANSRemoveAllChildren(ANSHuman *parent);
-
-static
 bool ANSAreHumanAndSpouseMaried(ANSHuman *human, ANSHuman *spouse);
 
 static
@@ -55,9 +52,11 @@ bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse);
 static
 int ANSRemoveChildReturnItsIndex(ANSHuman *human, ANSHuman *child);
 
-//static
+static
 void ANSReorderChildrenInHuman(ANSHuman *human, int indexOfRemovedChild);
 
+static
+void ANSRemoveAllChildren(ANSHuman *parent);
 #pragma mark -
 #pragma mark Public implementation
 
@@ -281,13 +280,12 @@ int ANSRemoveChildReturnItsIndex(ANSHuman *human, ANSHuman *child) {
     return 0; // правильно ли это?
 }
 
-// not finished!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void ANSRemoveAllChildren(ANSHuman *parent) {
     assert(parent);
     for (int index = 0; index < ANSHumanChildrenCount; index++) {
         ANSHuman *child = ANSGetChildOfIndex(parent, index);
         if (child != NULL) {
-            ANSSetChildParent(parent, NULL);
+            ANSSetChildParent(child, NULL);
             ANSObjectRelease(child);
             ANSSetChildOfIndex(parent, NULL, index);
             ANSSetChildrenCount(parent, -1);
