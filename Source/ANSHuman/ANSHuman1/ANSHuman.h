@@ -51,10 +51,10 @@ extern
 char *ANSGetName(ANSHuman *human);
 
 extern
-void ANSSetAge(ANSHuman *human, uint8_t _age);
+void ANSSetAge(ANSHuman *human, int _age);
 
 extern
-uint8_t ANSGetAge(ANSHuman *human);
+int ANSGetAge(ANSHuman *human);
 
 extern
 void ANSSetGender(ANSHuman *human, ANSGender gender);
@@ -63,7 +63,7 @@ extern
 ANSGender ANSGetGender(ANSHuman *human);
 
 extern
-uint8_t ANSGetChildrenCount(ANSHuman *child);
+int ANSGetChildrenCount(ANSHuman *child);
 
 extern
 ANSHuman *ANSGetSpouse(ANSHuman *human);
@@ -75,7 +75,7 @@ extern
 ANSHuman *ANSGetFather(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetChildOfIndex(ANSHuman *human, uint8_t index);
+ANSHuman *ANSGetChildOfIndex(ANSHuman *human, int index);
 
 extern
 void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse);
@@ -87,6 +87,6 @@ extern
 ANSHuman *ANSParentsCreateChild(ANSHuman *human);
 
 extern
-void ANSRemoveChildFromParants(ANSHuman *child);
+void ANSRemoveChildFromParents(ANSHuman *child);
 
 #endif /* ANSHuman_h */
