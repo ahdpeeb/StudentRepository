@@ -63,8 +63,12 @@ void ANSReorderChildrenInHuman(ANSHuman *human, int indexOfRemovedChild);
 
 void __ANSHumanDeallocate(void *human) {
     ANSSetName(human, NULL);
+    ANSSetAge(human, 0);
+    ANSSetGender(human, ANSGenderNotDefined);
     ANSSetSpouse(human, NULL);
-    ANSSetParent(human, NULL);
+    ANSSetMother(human, NULL);
+    ANSSetFather(human, NULL);
+    ANSRemoveAllChildren(human);
     
     __ANSObjectDeallocate(human);
 }
@@ -163,6 +167,8 @@ ANSHuman *ANSParentsCreateChild(ANSHuman *human) {
         ANSSetChild(partner, child);
         ANSSetParent(child, human);
         ANSSetParent(child, partner);
+        ANSSetChildrenCount(human, 1);
+        ANSSetChildrenCount(partner, 1);
     }
     
     return child;
@@ -255,7 +261,6 @@ void ANSSetChild(ANSHuman *human, ANSHuman *child) {
         } else {
             ANSSetChildOfIndex(human, child, index);
             ANSObjectRetain(child);
-            ANSSetChildrenCount(human, 1);
             break;
         }
     }
@@ -276,15 +281,16 @@ int ANSRemoveChildReturnItsIndex(ANSHuman *human, ANSHuman *child) {
     return 0; // правильно ли это?
 }
 
-
 // not finished!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void ANSRemoveAllChildren(ANSHuman *parent) {
     assert(parent);
     for (int index = 0; index < ANSHumanChildrenCount; index++) {
-        if (parent->_children[index] != NULL) {
-        //  ANSGetChildOfIndex
-            ANSObjectRelease(parent->_children[index]);
-            parent->_children[index] = NULL;
+        ANSHuman *child = ANSGetChildOfIndex(parent, index);
+        if (child != NULL) {
+            ANSSetParent(parent, NULL);
+            ANSObjectRelease(child);
+            ANSSetChildOfIndex(parent, NULL, index);
+            ANSSetChildrenCount(parent, -1);
         }
     }
 }
