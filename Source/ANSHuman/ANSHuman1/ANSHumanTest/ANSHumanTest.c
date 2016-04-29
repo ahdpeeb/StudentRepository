@@ -35,7 +35,6 @@ void ANSTest(void) {
     ANSHuman *Child4 = ANSParentsCreateChild(Woman);
     ANSSetHumanName(Child4, "Четвертный");
     
-    ANSRemoveAllChildren(Woman);
 //    ANSRemoveChildFromParents(Child1);
 //    ANSRemoveChildFromParents(Child3);
 //    ANSRemoveChildFromParents(Child2);

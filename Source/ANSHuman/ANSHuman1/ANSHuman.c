@@ -176,10 +176,13 @@ ANSHuman *ANSParentsCreateChild(ANSHuman *human) {
 void ANSRemoveChildFromParents(ANSHuman *child) {
     ANSHuman *mother = ANSGetHumanMother(child);
     ANSSetChildMother(child, NULL);
+    int ChildIndexFromMother = ANSRemoveChildReturnItsIndex(mother, child);
+    ANSReorderChildrenInHuman(mother, ChildIndexFromMother);
+    
     ANSHuman *father = ANSGetHumanFather(child);
     ANSSetChildFather(child, NULL);
-    ANSReorderChildrenInHuman(father, ANSRemoveChildReturnItsIndex(father, child));
-    ANSReorderChildrenInHuman(mother, ANSRemoveChildReturnItsIndex(mother, child));
+    int ChildIndexFromFather = ANSRemoveChildReturnItsIndex(father, child);
+    ANSReorderChildrenInHuman(father, ChildIndexFromFather);
 }
 
 #pragma mark -
@@ -307,7 +310,7 @@ bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse) {
 //reorder children in human
 void ANSReorderChildrenInHuman(ANSHuman *human, int indexOfRemovedChild) {
     for (int index = ANSHumanChildrenCount - 1; index >= 0; index--) {
-        if (ANSGetChildOfIndex(human, index) != NULL|| index == indexOfRemovedChild + 1) {
+        if (ANSGetChildOfIndex(human, index) != NULL || index == indexOfRemovedChild + 1) {
             ANSHuman *child = ANSGetChildOfIndex(human, index);
             ANSSetChildOfIndex(human, child, indexOfRemovedChild);
             ANSSetChildOfIndex(human, NULL, index);
