@@ -29,9 +29,9 @@
 
 // macros create function (Print sizeOfValue)
 #define ANSGenereteFunctionPrintSizeOfValue(type) \
-            do { \
-                type value; \
-                printf("Size of"#type" value = %lu", sizeof(value)); \
-            } while (0);
+    do { \
+        type value; \
+        printf("Size of"#type" value = %lu", sizeof(value)); \
+    } while (0);
 
 #endif /* ANSMacrosDeclaration_h */

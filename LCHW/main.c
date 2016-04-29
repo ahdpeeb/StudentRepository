@@ -7,12 +7,14 @@
 //
 
 #include <stdio.h>
+#include <assert.h>
 
-#include "ANSStructureTest.h"
-#include "ANSTest.h"
+#include "ANSHuman.h"
+#include "ANSObject.h"
+#include "ANSHumanTest.h"
 
 int main(int argc, const char * argv[]) {
-    ANSAlloctionTest();
+    ANSTest();
     
+    return 0;
 }
-
