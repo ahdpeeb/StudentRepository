@@ -39,7 +39,7 @@ void ANSTest(void) {
 //    ANSRemoveChildFromParents(Child3);
 //    ANSRemoveChildFromParents(Child2);
 //    ANSRemoveChildFromParents(Child0);
-//    ANSRemoveChildFromParents(Child4);
+    ANSRemoveChildFromParents(Child4);
     
     ANSHumanGetDivorsedWithSpouse(Woman);
 }
