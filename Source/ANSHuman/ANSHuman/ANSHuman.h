@@ -14,7 +14,7 @@
 
 #include "ANSObject.h"
 
-static const short ANSHumanChildrenCount = 20;
+static const unsigned short ANSHumanChildrenCount = 20;
 
 typedef enum {
     ANSGenderNotDefined,
@@ -26,10 +26,10 @@ typedef struct ANSHuman ANSHuman;
 struct ANSHuman {
     ANSObject _super;
     char *_name;
-    short _age;
+    unsigned short _age;
     ANSGender _gender;
     
-    short _childrenCount;
+    unsigned short _childrenCount;
     
     ANSHuman *_spouse;
     ANSHuman *_mother;
@@ -51,10 +51,10 @@ extern
 char *ANSGetHumanName(ANSHuman *human);
 
 extern
-void ANSSetHumanAge(ANSHuman *human, short _age);
+void ANSSetHumanAge(ANSHuman *human, unsigned short _age);
 
 extern
-short ANSGetHumanAge(ANSHuman *human);
+unsigned short ANSGetHumanAge(ANSHuman *human);
 
 extern
 void ANSSetHumanGender(ANSHuman *human, ANSGender gender);
@@ -63,7 +63,7 @@ extern
 ANSGender ANSGetHumanGender(ANSHuman *human);
 
 extern
-short ANSGetChildrenCount(ANSHuman *child);
+unsigned short ANSGetChildrenCount(ANSHuman *child);
 
 extern
 ANSHuman *ANSGetHumanSpouse(ANSHuman *human);
@@ -75,7 +75,7 @@ extern
 ANSHuman *ANSGetHumanFather(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetChildOfIndex(ANSHuman *human, short index);
+ANSHuman *ANSGetChildOfIndex(ANSHuman *human, unsigned short index);
 
 extern
 void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse);

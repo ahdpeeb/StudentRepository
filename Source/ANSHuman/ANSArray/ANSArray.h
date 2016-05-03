@@ -23,27 +23,29 @@ typedef struct {
 } ANSArray;
 
 extern
-void ANSArrayCreateWithCapacity(uint64_t capacity);
+void *ANSArrayCreateWithCapacity(uint64_t capacity);
 
 //returns index of added object
 extern
-uint64_t ANSArrayAddObject(ANSArray *array, void *object);
+void ANSArrayAddObject(ANSArray *array, void *object);
 
 extern
 uint64_t ANSArrayGetCount(ANSArray *array);
 
 extern
-bool ANSArrayContainsObject(ANSArray *array, void* object);
+bool ANSArrayContainsObject(ANSArray *array, void *object);
 
 extern
-uint64_t ANSArraGetIndexOfObject(ANSArray *array, void* object);
+uint64_t ANSArrayGetIndexOfObject(ANSArray *array, void *object);
 
 extern
-void ANSArraGetObjectAtIndex(ANSArray *array, uint64_t index);
+void *ANSArrayGetObjectAtIndex(ANSArray *array, uint64_t index);
 
 extern
-void ANSArraRemoveAllObjects(ANSArray *array, uint64_t index);
+void ANSArrayRemoveAllObjects(ANSArray *array);
 
+extern
 
+void __ANSArrayDeallocate(void *objext);
 
 #endif /* ANSArray_h */
