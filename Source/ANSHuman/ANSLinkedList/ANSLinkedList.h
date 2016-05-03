@@ -9,6 +9,4 @@
 #ifndef ANSLinkedList_h
 #define ANSLinkedList_h
 
-#include <stdio.h>
-
 #endif /* ANSLinkedList_h */

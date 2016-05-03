@@ -11,14 +11,15 @@
 
 #include <stdlib.h>
 
-typedef void (*ANSObjectDeallocator)(void *object);
+typedef void (*ANSObjectDeallocator)(void *);
 
 typedef struct {
     uint64_t _retainCount;
     ANSObjectDeallocator _deallocatorFunctionPointer;
 } ANSObject;
 
-#define ANSObjectCreateWithType(type) __ANSObjectCreate(sizeof(type), __ ##type ##Deallocate) 
+#define ANSObjectCreateWithType(type) \
+    __ANSObjectCreate(sizeof(type), (ANSObjectDeallocator)__##type##Deallocate)
 
 extern
 void *__ANSObjectCreate(size_t objectSize, ANSObjectDeallocator dealocator);
