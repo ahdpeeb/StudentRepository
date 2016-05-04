@@ -10,6 +10,7 @@
 #include "ANSHumanTest.h"
 #include "ANSHuman.h"
 #include "ANSObject.h"
+#include "ANSArray.h"
 
 void ANSTest(void) {
     ANSHuman *Man = ANSObjectCreateWithType(ANSHuman);

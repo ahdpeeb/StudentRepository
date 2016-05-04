@@ -311,7 +311,7 @@ bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse) {
 //reorder children in human
 void ANSReorderChildrenInHuman(ANSHuman *human, unsigned short indexOfRemovedChild) {
     for (unsigned short index = ANSHumanChildrenCount - 1; index >= 0; index--) {
-        if (ANSGetChildOfIndex(human, index) != NULL || index == indexOfRemovedChild + 1) {
+        if (ANSGetChildOfIndex(human, index) != NULL && index != indexOfRemovedChild + 1) {
             ANSHuman *child = ANSGetChildOfIndex(human, index);
             ANSSetChildOfIndex(human, child, indexOfRemovedChild);
             ANSSetChildOfIndex(human, NULL, index);
