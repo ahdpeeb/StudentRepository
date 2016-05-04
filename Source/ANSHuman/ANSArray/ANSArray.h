@@ -13,7 +13,7 @@
 
 #include "ANSObject.h"
 
-static const uint64_t ANSNotFound = UINT64_MAX;
+static const uint64_t kANSNotFound = UINT64_MAX;
 
 typedef struct {
     ANSObject _super;
@@ -45,7 +45,6 @@ extern
 void ANSArrayRemoveAllObjects(ANSArray *array);
 
 extern
-
 void __ANSArrayDeallocate(void *objext);
 
 #endif /* ANSArray_h */
