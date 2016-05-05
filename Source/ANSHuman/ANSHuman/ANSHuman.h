@@ -17,7 +17,7 @@
 static const unsigned short ANSHumanChildrenCount = 20;
 
 typedef enum {
-    ANSGenderNotDefined,
+    ANSGenderUndefined,
     ANSGenderMale,
     ANSGenderFemale
 } ANSGender;
@@ -63,19 +63,22 @@ extern
 ANSGender ANSHumanGetGender(ANSHuman *human);
 
 extern
-unsigned short ANSGetChildrenCount(ANSHuman *child);
+unsigned short ANSHumanGetChildrenCount(ANSHuman *human);
 
 extern
 ANSHuman *ANSHumanGetSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSHumanGetMother(ANSHuman *human);
+ANSHuman *ANSChildGetMother(ANSHuman *child);
 
 extern
-ANSHuman *ANSHumanGetFather(ANSHuman *human);
+ANSHuman *ANSChildGetFather(ANSHuman *child);
 
 extern
-ANSHuman *ANSGetChildOfIndex(ANSHuman *human, unsigned short index);
+ANSHuman *ANSHumanGetChildAtIndex(ANSHuman *human, unsigned short index);
+
+extern
+unsigned short ANSHumanGetIndexOfChild(ANSHuman *human, ANSHuman *child);
 
 extern
 void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse);
@@ -87,7 +90,6 @@ extern
 ANSHuman *ANSParentsCreateChild(ANSHuman *parant);
 
 extern
-void ANSRemoveChildFromParents(ANSHuman *child);
-
+void ANSRemoveChildFromParant(ANSHuman *human, ANSHuman *child);
 
 #endif /* ANSHuman_h */

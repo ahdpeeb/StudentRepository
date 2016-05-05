@@ -9,11 +9,8 @@
 #include "ANSHumanTest.h"
 
 int main(int argc, const char * argv[]) {
-
-<<<<<<< HEAD
+    
     ANSTest();
-=======
 
->>>>>>> b03da9e797e02bede186351b92ef7d665e21dc49
     return 0;
 }
