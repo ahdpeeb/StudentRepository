@@ -56,7 +56,7 @@ static
 void ANSHumanReorderChildren(ANSHuman *human);
 
 static
-void ANSChildRemoveParant(ANSHuman *child, ANSHuman *parant);
+void ANSChildRemoveParent(ANSHuman *child, ANSHuman *parent);
 
 #pragma mark -
 #pragma mark Public implementation
@@ -214,7 +214,7 @@ void ANSHumanSetSpouse(ANSHuman *human, ANSHuman *spouse) {
         ANSHumanSetWeakSpouse(human, spouse);
     }
 }
-// ___________________Set Parents________________________
+// ___________________Set/Remove parents
 void ANSChildSetMother(ANSHuman *child, ANSHuman *mother) {
     assert(child);
     
@@ -232,12 +232,20 @@ void ANSChildSetFather(ANSHuman *child, ANSHuman *father) {
 }
 
 void ANSChildSetParent(ANSHuman *child, ANSHuman *parent) {
-    assert(child && ANSHumanGetGender(parent) != ANSGenderUndefined);
+    assert(ANSHumanGetGender(parent) != ANSGenderUndefined);
 
      if (ANSHumanGetGender(parent) == ANSGenderMale) {
         ANSChildSetFather(child, parent);
     } else {
         ANSChildSetMother(child, parent);
+    }
+}
+void ANSChildRemoveParent(ANSHuman *child, ANSHuman *parent) {
+    assert(ANSHumanGetGender(parent) != ANSGenderUndefined);
+    if (ANSHumanGetGender(parent) == ANSGenderMale) {
+        ANSChildSetFather(child, NULL);
+    } else {
+        ANSChildSetMother(child, NULL);
     }
 }
 
@@ -271,8 +279,8 @@ void ANSHumanSetChild(ANSHuman *human, ANSHuman *child) {
     }
 }
     // removeChildFromParent 
-void ANSRemoveChildFromParant(ANSHuman *human, ANSHuman *child) {
-    ANSChildRemoveParant(child, human);
+void ANSRemoveChildFromParent(ANSHuman *human, ANSHuman *child) {
+    ANSChildRemoveParent(child, human);
     unsigned short indexOfChild = ANSHumanGetIndexOfChild(human, child);
     ANSHumanSetStrongChildAtIndex(human, NULL, indexOfChild);
     ANSHumanChildrenCountAddValue(human, -1);
@@ -305,7 +313,8 @@ bool ANSHumanCanGetMarried(ANSHuman *human, ANSHuman *spouse) {
 
 //reorder children in human
 void ANSHumanReorderChildren(ANSHuman *human) {
-
+    assert(human);
+    
     short indexOfLastChild = ANSHumanGetChildrenCount(human);
     for (short index = 0; index < indexOfLastChild; index ++) {
         if (ANSHumanGetChildAtIndex(human, index) == NULL) {
@@ -313,13 +322,5 @@ void ANSHumanReorderChildren(ANSHuman *human) {
             ANSHumanSetStrongChildAtIndex(human, child, index);
             ANSHumanSetStrongChildAtIndex(human, NULL, indexOfLastChild);
         }
-    }
-}
-
-void ANSChildRemoveParant(ANSHuman *child, ANSHuman *parant) {
-    if (ANSHumanGetGender(parant) == ANSGenderMale) {
-        child->_father = NULL;
-    } else {
-        child->_mother = NULL;
     }
 }

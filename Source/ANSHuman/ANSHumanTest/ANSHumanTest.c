@@ -36,9 +36,9 @@ void ANSTest(void) {
     ANSHuman *Child4 = ANSParentsCreateChild(Woman);
     ANSHumanSetName(Child4, "Четвертный");
     
-    ANSRemoveChildFromParant(Woman, Child4);
-    ANSRemoveChildFromParant(Woman, Child2);
-    ANSRemoveChildFromParant(Woman, Child1);
+    ANSRemoveChildFromParent(Woman, Child4);
+    ANSRemoveChildFromParent(Woman, Child2);
+    ANSRemoveChildFromParent(Woman, Child1);
     
     ANSHumanGetDivorsedWithSpouse(Woman);
 }

@@ -87,9 +87,9 @@ extern
 void ANSHumanGetDivorsedWithSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSParentsCreateChild(ANSHuman *parant);
+ANSHuman *ANSParentsCreateChild(ANSHuman *parent);
 
 extern
-void ANSRemoveChildFromParant(ANSHuman *human, ANSHuman *child);
+void ANSRemoveChildFromParent(ANSHuman *human, ANSHuman *child);
 
 #endif /* ANSHuman_h */
