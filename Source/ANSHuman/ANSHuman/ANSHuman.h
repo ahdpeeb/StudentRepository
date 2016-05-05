@@ -45,34 +45,34 @@ extern
 ANSHuman *ANSCreateHuman(void);
 
 extern
-void ANSSetHumanName(ANSHuman *human, char* name);
+void ANSHumanSetName(ANSHuman *human, char* name);
 
 extern
-char *ANSGetHumanName(ANSHuman *human);
+char *ANSHumanGetName(ANSHuman *human);
 
 extern
-void ANSSetHumanAge(ANSHuman *human, unsigned short _age);
+void ANSHumanSetAge(ANSHuman *human, unsigned short _age);
 
 extern
-unsigned short ANSGetHumanAge(ANSHuman *human);
+unsigned short ANSHumanGetAge(ANSHuman *human);
 
 extern
-void ANSSetHumanGender(ANSHuman *human, ANSGender gender);
+void ANSHumanSetGender(ANSHuman *human, ANSGender gender);
 
 extern
-ANSGender ANSGetHumanGender(ANSHuman *human);
+ANSGender ANSHumanGetGender(ANSHuman *human);
 
 extern
 unsigned short ANSGetChildrenCount(ANSHuman *child);
 
 extern
-ANSHuman *ANSGetHumanSpouse(ANSHuman *human);
+ANSHuman *ANSHumanGetSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetHumanMother(ANSHuman *human);
+ANSHuman *ANSHumanGetMother(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetHumanFather(ANSHuman *human);
+ANSHuman *ANSHumanGetFather(ANSHuman *human);
 
 extern
 ANSHuman *ANSGetChildOfIndex(ANSHuman *human, unsigned short index);
