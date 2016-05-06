@@ -25,20 +25,24 @@ void ANSTest(void) {
     
     ANSHumanGetMarriedWithSpouse(Man, Woman);
     
-    ANSHuman *Child0 = ANSParentsCreateChild(Woman);
+    ANSHuman *Child0 = ANSParentCreateChild(Woman);
     ANSHumanSetName(Child0, "Нулевой");
-    ANSHuman *Child1 = ANSParentsCreateChild(Woman);
+    ANSHuman *Child1 = ANSParentCreateChild(Woman);
     ANSHumanSetName(Child1, "Первый");
-    ANSHuman *Child2 = ANSParentsCreateChild(Woman);
+    ANSHuman *Child2 = ANSParentCreateChild(Woman);
     ANSHumanSetName(Child2, "Второй");
-    ANSHuman *Child3 = ANSParentsCreateChild(Woman);
+    ANSHuman *Child3 = ANSParentCreateChild(Woman);
     ANSHumanSetName(Child3, "Третий");
-    ANSHuman *Child4 = ANSParentsCreateChild(Woman);
+    ANSHuman *Child4 = ANSParentCreateChild(Woman);
     ANSHumanSetName(Child4, "Четвертный");
-    
+//________________________________________________
     ANSRemoveChildFromParent(Woman, Child4);
     ANSRemoveChildFromParent(Woman, Child2);
     ANSRemoveChildFromParent(Woman, Child1);
+//________________________________________________
+    
+    ANSHuman *Child5 = ANSParentCreateChild(Woman);
+    ANSHumanSetName(Child5, "Пятый");
     
     ANSHumanGetDivorsedWithSpouse(Woman);
 }

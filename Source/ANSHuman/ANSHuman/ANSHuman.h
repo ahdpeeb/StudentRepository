@@ -14,6 +14,8 @@
 
 #include "ANSObject.h"
 
+static const unsigned short kANSIndexNotFound = UINT16_MAX;
+
 static const unsigned short ANSHumanChildrenCount = 20;
 
 typedef enum {
@@ -87,7 +89,7 @@ extern
 void ANSHumanGetDivorsedWithSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSParentsCreateChild(ANSHuman *parent);
+ANSHuman *ANSParentCreateChild(ANSHuman *parent);
 
 extern
 void ANSRemoveChildFromParent(ANSHuman *human, ANSHuman *child);

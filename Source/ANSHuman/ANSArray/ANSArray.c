@@ -76,6 +76,7 @@ uint64_t ANSArrayGetIndexOfObject(ANSArray *array, void *object) {
     }
     
     if (NULL == object) {
+        
         return kANSNotFound;
     }
     
