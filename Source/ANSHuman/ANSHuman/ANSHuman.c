@@ -250,11 +250,11 @@ void ANSChildSetFather(ANSHuman *child, ANSHuman *father) {
 void ANSChildSetParent(ANSHuman *child, ANSHuman *value, ANSGender parentGender) {
     assert(parentGender != ANSGenderUndefined);
     
-        if (parentGender == ANSGenderMale) {
-            ANSChildSetFather(child, value);
-        } else {
-            ANSChildSetMother(child, value);
-        }
+    if (parentGender == ANSGenderMale) {
+        ANSChildSetFather(child, value);
+    } else {
+        ANSChildSetMother(child, value);
+    }
 }
 
 #pragma mark -
