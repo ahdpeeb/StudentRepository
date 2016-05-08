@@ -75,7 +75,7 @@ ANSHuman *ANSCreateHuman(void) {
 }
 
 void ANSHumanSetName(ANSHuman *human, char *name) {
-    assert(NULL != human);
+    assert(human);
     
     if (human->_name != name) {
         if (NULL != human->_name) {
@@ -90,7 +90,9 @@ void ANSHumanSetName(ANSHuman *human, char *name) {
 }
 
 char *ANSHumanGetName(ANSHuman *human) {
-    return (NULL == human) ? NULL : human->_name;
+    assert(human);
+    
+    return human->_name;
 }
 
 void ANSHumanSetAge(ANSHuman *human, unsigned short age) {
