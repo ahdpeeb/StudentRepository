@@ -10,36 +10,39 @@
 #include "ANSHumanTest.h"
 #include "ANSHuman.h"
 #include "ANSObject.h"
+#include "ANSArray.h"
 
 void ANSTest(void) {
     ANSHuman *Man = ANSObjectCreateWithType(ANSHuman);
-    ANSSetHumanGender(Man, ANSGenderMale);
-    ANSSetHumanName(Man, "Sergey");
-    ANSSetHumanAge(Man, 30);
+    ANSHumanSetGender(Man, ANSGenderMale);
+    ANSHumanSetName(Man, "Sergey");
+    ANSHumanSetAge(Man, 30);
     
     ANSHuman *Woman = ANSObjectCreateWithType(ANSHuman);
-    ANSSetHumanGender(Woman, ANSGenderFemale);
-    ANSSetHumanName(Woman, "Vika");
-    ANSSetHumanAge(Woman, 32);
+    ANSHumanSetGender(Woman, ANSGenderFemale);
+    ANSHumanSetName(Woman, "Vika");
+    ANSHumanSetAge(Woman, 32);
     
     ANSHumanGetMarriedWithSpouse(Man, Woman);
     
-    ANSHuman *Child0 = ANSParentsCreateChild(Woman);
-    ANSSetHumanName(Child0, "Нулевой");
-    ANSHuman *Child1 = ANSParentsCreateChild(Woman);
-    ANSSetHumanName(Child1, "Первый");
-    ANSHuman *Child2 = ANSParentsCreateChild(Woman);
-    ANSSetHumanName(Child2, "Второй");
-    ANSHuman *Child3 = ANSParentsCreateChild(Woman);
-    ANSSetHumanName(Child3, "Третий");
-    ANSHuman *Child4 = ANSParentsCreateChild(Woman);
-    ANSSetHumanName(Child4, "Четвертный");
+    ANSHuman *Child0 = ANSHumanCreateChild(Woman);
+    ANSHumanSetName(Child0, "Нулевой");
+    ANSHuman *Child1 = ANSHumanCreateChild(Woman);
+    ANSHumanSetName(Child1, "Первый");
+    ANSHuman *Child2 = ANSHumanCreateChild(Woman);
+    ANSHumanSetName(Child2, "Второй");
+    ANSHuman *Child3 = ANSHumanCreateChild(Woman);
+    ANSHumanSetName(Child3, "Третий");
+    ANSHuman *Child4 = ANSHumanCreateChild(Woman);
+    ANSHumanSetName(Child4, "Четвертный");
+//________________________________________________
+    ANSRemoveChildFromParent(Woman, Child4);
+    ANSRemoveChildFromParent(Woman, Child2);
+    ANSRemoveChildFromParent(Woman, Child1);
+//________________________________________________
     
-//    ANSRemoveChildFromParents(Child1);
-//    ANSRemoveChildFromParents(Child3);
-//    ANSRemoveChildFromParents(Child2);
-//    ANSRemoveChildFromParents(Child0);
-    ANSRemoveChildFromParents(Child4);
+    ANSHuman *Child5 = ANSHumanCreateChild(Woman);
+    ANSHumanSetName(Child5, "Пятый");
     
-    ANSHumanGetDivorsedWithSpouse(Woman);
+    ANSHumanDivorce(Man);
 }

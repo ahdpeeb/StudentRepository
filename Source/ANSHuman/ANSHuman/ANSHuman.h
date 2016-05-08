@@ -14,10 +14,12 @@
 
 #include "ANSObject.h"
 
-static const short ANSHumanChildrenCount = 20;
+static const unsigned short kANSIndexNotFound = UINT16_MAX;
+
+static const unsigned short ANSHumanChildrenCount = 20;
 
 typedef enum {
-    ANSGenderNotDefined,
+    ANSGenderUndefined,
     ANSGenderMale,
     ANSGenderFemale
 } ANSGender;
@@ -26,10 +28,10 @@ typedef struct ANSHuman ANSHuman;
 struct ANSHuman {
     ANSObject _super;
     char *_name;
-    short _age;
+    unsigned short _age;
     ANSGender _gender;
     
-    short _childrenCount;
+    unsigned short _childrenCount;
     
     ANSHuman *_spouse;
     ANSHuman *_mother;
@@ -45,49 +47,51 @@ extern
 ANSHuman *ANSCreateHuman(void);
 
 extern
-void ANSSetHumanName(ANSHuman *human, char* name);
+void ANSHumanSetName(ANSHuman *human, char* name);
 
 extern
-char *ANSGetHumanName(ANSHuman *human);
+char *ANSHumanGetName(ANSHuman *human);
 
 extern
-void ANSSetHumanAge(ANSHuman *human, short _age);
+void ANSHumanSetAge(ANSHuman *human, unsigned short _age);
 
 extern
-short ANSGetHumanAge(ANSHuman *human);
+unsigned short ANSHumanGetAge(ANSHuman *human);
 
 extern
-void ANSSetHumanGender(ANSHuman *human, ANSGender gender);
+void ANSHumanSetGender(ANSHuman *human, ANSGender gender);
 
 extern
-ANSGender ANSGetHumanGender(ANSHuman *human);
+ANSGender ANSHumanGetGender(ANSHuman *human);
 
 extern
-short ANSGetChildrenCount(ANSHuman *child);
+unsigned short ANSHumanGetChildrenCount(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetHumanSpouse(ANSHuman *human);
+ANSHuman *ANSHumanGetSpouse(ANSHuman *human);
 
 extern
-ANSHuman *ANSGetHumanMother(ANSHuman *human);
+ANSHuman *ANSChildGetMother(ANSHuman *child);
 
 extern
-ANSHuman *ANSGetHumanFather(ANSHuman *human);
+ANSHuman *ANSChildGetFather(ANSHuman *child);
 
 extern
-ANSHuman *ANSGetChildOfIndex(ANSHuman *human, short index);
+ANSHuman *ANSHumanGetChildAtIndex(ANSHuman *human, unsigned short index);
+
+extern
+unsigned short ANSHumanGetIndexOfChild(ANSHuman *human, ANSHuman *child);
 
 extern
 void ANSHumanGetMarriedWithSpouse(ANSHuman *human, ANSHuman *spouse);
 
 extern
-void ANSHumanGetDivorsedWithSpouse(ANSHuman *human);
+void ANSHumanDivorce(ANSHuman *human);
 
 extern
-ANSHuman *ANSParentsCreateChild(ANSHuman *parant);
+ANSHuman *ANSHumanCreateChild(ANSHuman *parent);
 
 extern
-void ANSRemoveChildFromParents(ANSHuman *child);
-
+void ANSRemoveChildFromParent(ANSHuman *human, ANSHuman *child);
 
 #endif /* ANSHuman_h */

@@ -50,11 +50,11 @@ void *ANSObjectRetain(void *object) {
 
 //! cut it
 void ANSObjectRelease(void *object) {
-    ANSObject *anObject = ((ANSObject*)object);
-    if (NULL != anObject) {
-       anObject->_retainCount--;
-        if (0 == anObject->_retainCount) {
-            anObject->_deallocatorFunctionPointer(anObject);
+    ANSObject *value = ((ANSObject*)object);
+    if (NULL != value) {
+       value->_retainCount--;
+        if (0 == value->_retainCount) {
+            value->_deallocatorFunctionPointer(value);
             puts("ObjectReleased");
         }
     }
