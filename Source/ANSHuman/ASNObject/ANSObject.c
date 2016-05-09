@@ -47,7 +47,6 @@ void *ANSObjectRetain(void *object) {
     return object;
 }
 
-//! cut it
 void ANSObjectRelease(void *object) {
     ANSObject *value = ((ANSObject*)object);
     if (NULL != value) {

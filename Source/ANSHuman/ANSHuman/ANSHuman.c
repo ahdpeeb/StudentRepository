@@ -205,7 +205,7 @@ return child;
 void ANSHumanSetStrongSpouse(ANSHuman *human, ANSHuman *spouse) {
     assert(human && ANSHumanGetSpouse(human) != spouse);
     
-    if (ANSHumanGetSpouse(human) != human) {
+    if (human->_spouse != human) {
         ANSObjectRelease(human->_spouse);
         human->_spouse = spouse;
         ANSObjectRetain(spouse);

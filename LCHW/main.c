@@ -9,8 +9,6 @@
 #include "ANSHumanTest.h"
 
 int main(int argc, const char * argv[]) {
-    
-    ANSTest();
 
     return 0;
 }

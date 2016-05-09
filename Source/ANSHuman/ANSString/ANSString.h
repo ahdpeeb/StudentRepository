@@ -15,17 +15,15 @@ typedef struct ANSString ANSString;
 struct ANSString {
     ANSObject _super;
     
-    char *value;
+    char *_value;
 };
 
 void __ANSStringDeallocate(void *string); 
 
-ANSString* ANSCreateString(void);
+ANSString* ANSStringCreateString(void);
 
-void ANSStringSetString(ANSString string, char *value);
+void ANSStringSetString(ANSString *string, char *value);
 
-char *ANSStringGetString(ANSString string);
-
-
+char *ANSStringGetString(ANSString *string);
 
 #endif /* ANSString_h */
