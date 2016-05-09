@@ -25,7 +25,6 @@ typedef struct {
 extern
 void *ANSArrayCreateWithCapacity(uint64_t capacity);
 
-//returns index of added object. Otherwise kANSNotFound
 extern
 void ANSArrayAddObject(ANSArray *array, void *object);
 
@@ -40,9 +39,6 @@ uint64_t ANSArrayGetIndexOfObject(ANSArray *array, void *object);
 
 extern
 void *ANSArrayGetObjectAtIndex(ANSArray *array, uint64_t index);
-
-extern
-void ANSArrayRemoveAllObjects(ANSArray *array);
 
 extern
 void __ANSArrayDeallocate(void *objext);

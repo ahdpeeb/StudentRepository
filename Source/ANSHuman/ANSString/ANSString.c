@@ -11,10 +11,12 @@
 
 #include "ANSString.h"
 
-void __ANSStringDeallocate(void *string) {
-    ANSStringSetString(string, NULL);
+size_t ANSStringGetStringLength(char *string);
+
+void __ANSStringDeallocate(void *object) {
+    ANSStringSetString(object, NULL);
     
-    __ANSObjectDeallocate(string);
+    __ANSObjectDeallocate(object);
 }
 
 ANSString* ANSStringCreateString(void) {
@@ -24,15 +26,16 @@ ANSString* ANSStringCreateString(void) {
 }
 
 void ANSStringSetString(ANSString *string, char *value) {
-    assert(string);
     
     if (string->_value != value) {
-        if (NULL != string->_value) {
+        if (string->_value) {
             free(string->_value);
             string->_value = NULL;
         }
         
         if (value) {
+            size_t fieldSize = ANSStringGetStringLength(value) + 1;
+            string->_value = malloc(fieldSize);
             string->_value = strdup(value);
         }
     }
@@ -42,4 +45,10 @@ char *ANSStringGetString(ANSString *string) {
     assert(string);
     
     return string->_value;
+}
+
+size_t ANSStringGetStringLength(char *string) {
+    assert(string);
+    
+    return strlen(string);
 }

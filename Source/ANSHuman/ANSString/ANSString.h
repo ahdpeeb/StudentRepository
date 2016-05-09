@@ -18,7 +18,7 @@ struct ANSString {
     char *_value;
 };
 
-void __ANSStringDeallocate(void *string); 
+void __ANSStringDeallocate(void *object);
 
 ANSString* ANSStringCreateString(void);
 

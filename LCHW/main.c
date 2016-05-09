@@ -7,8 +7,8 @@
 //
 
 #include "ANSHumanTest.h"
+#include "ANSArrayTest.h"
 
 int main(int argc, const char * argv[]) {
-
-    return 0;
+    ANSRunArrayTest(10000);
 }
