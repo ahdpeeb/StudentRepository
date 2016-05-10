@@ -34,9 +34,6 @@ void ANSArrayCountAddValue(ANSArray *array, uint64_t count);
 static
 void ANSArraySetObjectAtIndex(ANSArray *array,void *object, uint64_t index);
 
-static // unused
-__unused void ANSArrayRemoveObject(ANSArray *array);
-
 static
 void ANSArrayRemoveAllObjects(ANSArray *array);
 
@@ -178,10 +175,10 @@ uint64_t ANSArrayPrefferedCapacity(ANSArray *array) {
     }
     
     if (capacity > count * 2) {
-        return 1 + capacity + count;
+        return 1 + count + count / 4;
     }
 
-    return 1 + count * 2 + capacity;
+    return 1 + count + capacity;
 }
 
 void ANSArrayResizeIfNeeded(ANSArray *array) {
@@ -196,4 +193,10 @@ void ANSArrayCountAddValue(ANSArray *array, uint64_t count) {
        
     array->_count += count;
     ANSArrayResizeIfNeeded(array);
+}
+
+void ANSArrayRemoveObject(ANSArray *array, void *object) {
+    uint64_t index = ANSArrayGetIndexOfObject(array, object);
+    ANSArraySetObjectAtIndex(array, object, index);
+    ANSArrayCountAddValue(array, -1);
 }

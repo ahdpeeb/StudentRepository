@@ -32,6 +32,9 @@ extern
 void ANSArrayAddObject(ANSArray *array, void *object);
 
 extern
+void ANSArrayRemoveObject(ANSArray *array, void *object);
+
+extern
 uint64_t ANSArrayGetCount(ANSArray *array);
 
 extern
