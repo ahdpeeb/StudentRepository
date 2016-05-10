@@ -108,14 +108,10 @@ void ANSArrayRemoveObjectAtIndex(ANSArray *array, uint64_t index) {
     ANSArrayCountAddValue (array, - 1);
 }
 
-void ANSArrayRemoveAllObjects(ANSArray *array) {
-    assert(array);
-    
-    uint64_t count = ANSArrayGetCount(array);
-    for (uint64_t index = 0; index < count; index ++) {
-        ANSArraySetObjectAtIndex(array, NULL, index);
-        ANSArrayCountAddValue (array, - 1);
-    }
+void ANSArrayRemoveObject(ANSArray *array, void *object) {
+    uint64_t index = ANSArrayGetIndexOfObject(array, object);
+    ANSArraySetObjectAtIndex(array, NULL, index);
+    ANSArrayCountAddValue(array, -1);
 }
 
 #pragma mark -
@@ -195,8 +191,12 @@ void ANSArrayCountAddValue(ANSArray *array, uint64_t count) {
     ANSArrayResizeIfNeeded(array);
 }
 
-void ANSArrayRemoveObject(ANSArray *array, void *object) {
-    uint64_t index = ANSArrayGetIndexOfObject(array, object);
-    ANSArraySetObjectAtIndex(array, object, index);
-    ANSArrayCountAddValue(array, -1);
+void ANSArrayRemoveAllObjects(ANSArray *array) {
+    assert(array);
+    
+    uint64_t count = ANSArrayGetCount(array);
+    for (uint64_t index = 0; index < count; index ++) {
+        ANSArraySetObjectAtIndex(array, NULL, index);
+        ANSArrayCountAddValue (array, - 1);
+    }
 }
