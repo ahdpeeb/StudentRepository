@@ -11,21 +11,28 @@
 
 #include "ANSString.h"
 
-size_t ANSStringGetStringLength(char *string);
+#pragma mark -
+#pragma mark forvard declaration
+
+static
+void ANSStringSetValue(ANSString *string, char *value);
+
+#pragma mark -
+#pragma mark implementation
 
 void __ANSStringDeallocate(void *object) {
-    ANSStringSetString(object, NULL);
+    ANSStringSetValue(object, NULL);
     
     __ANSObjectDeallocate(object);
 }
 
-ANSString* ANSStringCreateString(void) {
+ANSString* ANSStringCreate(void) {
     ANSString *string = ANSObjectCreateWithType(ANSString);
     
     return string;
 }
 
-void ANSStringSetString(ANSString *string, char *value) {
+void ANSStringSetValue(ANSString *string, char *value) {
     
     if (string->_value != value) {
         if (string->_value) {
@@ -36,7 +43,7 @@ void ANSStringSetString(ANSString *string, char *value) {
         if (value) {
             size_t fieldSize = ANSStringGetStringLength(value) + 1;
             string->_value = malloc(fieldSize);
-            string->_value = strdup(value);
+            memcmp(string->_value, value, fieldSize);
         }
     }
 }
@@ -51,4 +58,11 @@ size_t ANSStringGetStringLength(char *string) {
     assert(string);
     
     return strlen(string);
+}
+
+ANSString *ASNReturnStringCopy(char *value) {
+    ANSString *object = ANSStringCreate();
+    ANSStringSetValue(object, value);
+    
+    return object;
 }

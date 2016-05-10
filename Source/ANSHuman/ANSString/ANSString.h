@@ -18,12 +18,20 @@ struct ANSString {
     char *_value;
 };
 
+extern
+ANSString *ASNReturnStringCopy(char *value);
+
+extern
 void __ANSStringDeallocate(void *object);
 
-ANSString* ANSStringCreateString(void);
+extern
+ANSString* ANSStringCreate(void);
 
-void ANSStringSetString(ANSString *string, char *value);
 
+extern
+size_t ANSStringGetStringLength(char *string);
+
+extern
 char *ANSStringGetString(ANSString *string);
 
 #endif /* ANSString_h */
