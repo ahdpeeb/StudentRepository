@@ -173,15 +173,15 @@ uint64_t ANSArrayPrefferedCapacity(ANSArray *array) {
     
     uint64_t count = ANSArrayGetCount(array);
     uint64_t capacity = ANSArrayGetCapacity(array);
-    if (capacity < count) {
+    if (capacity < count && capacity != count - 1) {
         return  count;
     }
     
-    if (capacity == count) {
-        return 10 + count * 2 + capacity / 2;
+    if (capacity > count * 2) {
+        return 1 + capacity + count;
     }
 
-    return 10 + count * 2 + capacity;
+    return 1 + count * 2 + capacity;
 }
 
 void ANSArrayResizeIfNeeded(ANSArray *array) {
