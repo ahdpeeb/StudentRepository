@@ -39,4 +39,3 @@ void ANSRunArrayTest(uint64_t NewCapacity) {
     
 puts("stop");
 }
-

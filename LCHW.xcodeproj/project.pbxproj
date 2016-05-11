@@ -147,9 +147,8 @@
 				93BAD7261CD4B99500B29543 /* ASNObject */,
 				93A1C6F81CDF6757001101D0 /* ANSString */,
 				9327DE891CD8D622005AF895 /* ANSArray */,
-				93BAD7231CD4B99500B29543 /* ANSLinkedList */,
 				93BAD71D1CD4B99500B29543 /* ANSHuman */,
-				93BAD7201CD4B99500B29543 /* ANSHumanTest */,
+				93BAD7231CD4B99500B29543 /* ANSLinkedList */,
 			);
 			path = ANSHuman;
 			sourceTree = "<group>";
@@ -193,6 +192,7 @@
 		93BAD71D1CD4B99500B29543 /* ANSHuman */ = {
 			isa = PBXGroup;
 			children = (
+				93BAD7201CD4B99500B29543 /* ANSHumanTest */,
 				93BAD71F1CD4B99500B29543 /* ANSHuman.h */,
 				93BAD71E1CD4B99500B29543 /* ANSHuman.c */,
 			);
@@ -205,8 +205,9 @@
 				93BAD7221CD4B99500B29543 /* ANSHumanTest.h */,
 				93BAD7211CD4B99500B29543 /* ANSHumanTest.c */,
 			);
-			path = ANSHumanTest;
-			sourceTree = "<group>";
+			name = ANSHumanTest;
+			path = Source/ANSHuman/ANSHumanTest;
+			sourceTree = SOURCE_ROOT;
 		};
 		93BAD7231CD4B99500B29543 /* ANSLinkedList */ = {
 			isa = PBXGroup;

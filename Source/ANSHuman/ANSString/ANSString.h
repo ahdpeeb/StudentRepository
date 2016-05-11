@@ -27,7 +27,6 @@ void __ANSStringDeallocate(void *object);
 extern
 ANSString* ANSStringCreate(void);
 
-
 extern
 size_t ANSStringGetStringLength(char *string);
 
