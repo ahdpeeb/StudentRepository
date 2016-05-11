@@ -43,7 +43,7 @@ void ANSStringSetValue(ANSString *string, char *value) {
         if (value) {
             size_t fieldSize = ANSStringGetStringLength(value) + 1;
             string->_value = malloc(fieldSize);
-            memcmp(string->_value, value, fieldSize);
+            memmove(string->_value, value, fieldSize);
         }
     }
 }

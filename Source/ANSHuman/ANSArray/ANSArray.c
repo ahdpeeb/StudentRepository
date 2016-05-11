@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Private Declaration
 
-static const uint64_t kANSArrayMaximumCapacity = UINT64_MAX - 1;
+__unused static const uint64_t kANSArrayMaximumCapacity = UINT64_MAX - 1;
 
 static
 void ANSArraySetCapacity(ANSArray *array, uint64_t capacity);
@@ -112,8 +112,7 @@ void ANSArrayRemoveObjectAtIndex(ANSArray *array, uint64_t index) {
 
 void ANSArrayRemoveObject(ANSArray *array, void *object) {
     uint64_t index = ANSArrayGetIndexOfObject(array, object);
-    ANSArraySetObjectAtIndex(array, NULL, index);
-    ANSArrayCountAddValue(array, -1);
+    ANSArrayRemoveObjectAtIndex(array, index);
 }
 
 #pragma mark -

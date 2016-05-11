@@ -23,11 +23,20 @@ void ANSRunArrayTest(uint64_t NewCapacity) {
         
     ANSArrayAddObject(array, human);
     uint64_t value = ANSArrayGetCount(array);
-        printf("numberOfObjects %llu", value);
+        printf("numberOfObjects %llu \n", value);
         
     ANSHuman *returnedHuman = ANSArrayGetObjectAtIndex(array, ANSArrayGetCount(array) - 1);
         assert(returnedHuman);
     }
     puts("stop");
+    
+    for (int index = 99; index >= 0; index --) {
+        ANSArrayGetObjectAtIndex(array, index);
+        ANSHuman *returnedHuman = ANSArrayGetObjectAtIndex(array, index);
+        ANSArrayRemoveObject(array, returnedHuman);
+        puts("stop");
+    }
+    
+puts("stop");
 }
 
