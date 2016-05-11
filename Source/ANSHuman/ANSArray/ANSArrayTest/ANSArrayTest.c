@@ -6,34 +6,28 @@
 //  Copyright © 2016 Anfriiev.Mykola. All rights reserved.
 //
 
+#include <stdio.h>
+#include <assert.h>
+
 #include "ANSArrayTest.h"
 #include "ANSHuman.h"
 
 void ANSRunArrayTest(uint64_t NewCapacity) {
     
-    //
     ANSArray *array = ANSArrayCreateWithCapacity(NewCapacity);
+    assert(array);
     
+    for (int index = 0; index < 100; index++) {
     ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
-    ANSHuman *human1 = ANSObjectCreateWithType(ANSHuman);
-    ANSHuman *human2 = ANSObjectCreateWithType(ANSHuman);
-    ANSHuman *human3 = ANSObjectCreateWithType(ANSHuman);
-    ANSHuman *human4 = ANSObjectCreateWithType(ANSHuman);
-    
+        assert(human);
+        
     ANSArrayAddObject(array, human);
-    ANSArrayGetCount(array);
-    
-    ANSArrayAddObject(array, human1);
-    ANSArrayGetCount(array);
-    
-    ANSArrayAddObject(array, human2);
-    ANSArrayGetCount(array);
-    
-    ANSArrayAddObject(array, human3);
-    ANSArrayGetCount(array);
-    
-    ANSArrayAddObject(array, human4);
-    ANSArrayGetCount(array);
-    
+    uint64_t value = ANSArrayGetCount(array);
+        printf("numberOfObjects %llu", value);
+        
+    ANSHuman *returnedHuman = ANSArrayGetObjectAtIndex(array, ANSArrayGetCount(array) - 1);
+        assert(returnedHuman);
+    }
+    puts("stop");
 }
 

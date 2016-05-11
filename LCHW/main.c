@@ -10,5 +10,5 @@
 #include "ANSArrayTest.h"
 
 int main(int argc, const char * argv[]) {
-    ANSRunArrayTest(0);
+    ANSRunArrayTest(1);
 }

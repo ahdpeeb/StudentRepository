@@ -66,7 +66,9 @@ void ANSArrayAddObject(ANSArray *array, void *object) {
 }
 
 uint64_t ANSArrayGetCount(ANSArray *array) {
-    return array ? array->_count : 0;
+    assert(array);
+    
+    return array->_count;
 }
 
 bool ANSArrayContainsObject(ANSArray *array, void *object) {
@@ -100,7 +102,7 @@ void ANSArrayRemoveObjectAtIndex(ANSArray *array, uint64_t index) {
     uint64_t count = ANSArrayGetCount(array);
     
     void **data = array->_data;
-    if (index < (count - 1)) {
+    if (index < (count)) {
         uint64_t elementsCount = count - (index + 1);
         memmove(&data[index], &data[index + 1], elementsCount * sizeof(*data));
     }
@@ -132,12 +134,12 @@ uint64_t ANSArrayGetCapacity(ANSArray *array) {
     return array->_capacity;
 }
 
-void ANSArraySetCapacity(ANSArray *array, uint64_t capacity) {
+void ANSArraySetCapacity(ANSArray *array, uint64_t newCapacity) {
     assert(array);
     
     uint64_t previousCapacity = ANSArrayGetCapacity(array);
-    if (previousCapacity != capacity) {
-        size_t size = capacity * sizeof(*array->_data);
+    if (previousCapacity != newCapacity) {
+        size_t size = newCapacity * sizeof(*array->_data);
         if (0 == size && array->_data) {
             free(array->_data);
             array->_data = NULL;
@@ -145,14 +147,14 @@ void ANSArraySetCapacity(ANSArray *array, uint64_t capacity) {
             array->_data = realloc(array->_data, size);
             assert(array->_data);
             
-            if (capacity > previousCapacity) {
-                for (uint64_t index = previousCapacity; index < capacity - 1; index ++) {
+            if (newCapacity > previousCapacity) {
+                for (uint64_t index = previousCapacity; index < newCapacity; index ++) {
                     array->_data[index] = NULL;
                 }
             }
         }
         
-        array->_capacity = capacity;
+        array->_capacity = newCapacity;
     }
 }
 
@@ -166,15 +168,19 @@ uint64_t ANSArrayPrefferedCapacity(ANSArray *array) {
     
     uint64_t count = ANSArrayGetCount(array);
     uint64_t capacity = ANSArrayGetCapacity(array);
-    if (capacity < count && capacity != count - 1) {
-        return  count;
+    if (capacity < count) {
+        return  count * 2;
+    }
+    
+    if (capacity == count) {
+       return capacity * 3 / 2;
     }
     
     if (capacity > count * 2) {
-        return 1 + count + count / 4;
+        return  capacity * 3 / 4;
     }
 
-    return 1 + count + capacity;
+    return capacity;
 }
 
 void ANSArrayResizeIfNeeded(ANSArray *array) {
