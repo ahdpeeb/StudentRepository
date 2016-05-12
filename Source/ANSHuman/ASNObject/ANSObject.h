@@ -36,4 +36,17 @@ void *ANSObjectRetain(void *object);
 extern
 void ANSObjectRelease(void *object);
 
+
+#define ANSAssingSetter(object, ivar, newIvar) \
+    assert(object); \
+    object->ivar = newIvar;
+
+#define ANSRetainSetter(object, ivar, newIvar) \
+    assert(object); \
+    if (object->ivar != newIvar) { \
+        ANSObjectRelease(object->ivar); \
+        object->ivar = newIvar; \
+        ANSObjectRetain(newIvar); \
+    }
+
 #endif /* ANSObject_h */

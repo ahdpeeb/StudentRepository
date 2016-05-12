@@ -33,7 +33,7 @@ ANSLinkedListNode *ANSLinkedListNodeGetNextNode(ANSLinkedListNode *node) {
 void ANSLinkedListNodeSetNextNode(ANSLinkedListNode *node, ANSLinkedListNode *NexNode) {
     assert(node);
     
-    if  (node->_nextNode != node) {
+    if (node->_nextNode != node) {
         ANSObjectRelease(node->_nextNode);
         node->_nextNode = NexNode;
         ANSObjectRetain(NexNode);

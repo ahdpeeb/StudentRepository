@@ -10,6 +10,8 @@
 		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
 		9327DE881CD8D615005AF895 /* ANSArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 9327DE861CD8D615005AF895 /* ANSArray.c */; };
 		939041CB1CE0B07000C16B9A /* ANSArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041C91CE0B07000C16B9A /* ANSArrayTest.c */; };
+		939041CF1CE4831000C16B9A /* ANSLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */; };
+		939041D31CE49A5E00C16B9A /* ANSLinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */; };
 		93A1C6F71CDF674C001101D0 /* ANSString.c in Sources */ = {isa = PBXBuildFile; fileRef = 93A1C6F51CDF674C001101D0 /* ANSString.c */; };
 		93BAD7161CCE604900B29543 /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7051CCE604900B29543 /* ANSPrintFunctionValue.c */; };
 		93BAD7171CCE604900B29543 /* ANSPrintMamaPapaSolution.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7081CCE604900B29543 /* ANSPrintMamaPapaSolution.c */; };
@@ -41,6 +43,10 @@
 		934811961CC7A9AF00708B80 /* iOS Study Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS Study Plan.txt"; sourceTree = "<group>"; };
 		939041C91CE0B07000C16B9A /* ANSArrayTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSArrayTest.c; sourceTree = "<group>"; };
 		939041CA1CE0B07000C16B9A /* ANSArrayTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSArrayTest.h; sourceTree = "<group>"; };
+		939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSLinkedListEnumerator.c; path = ANSLinkedListEnumerator/ANSLinkedListEnumerator.c; sourceTree = "<group>"; };
+		939041CE1CE4831000C16B9A /* ANSLinkedListEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListEnumerator.h; path = ANSLinkedListEnumerator/ANSLinkedListEnumerator.h; sourceTree = "<group>"; };
+		939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSLinkedListTest.c; path = ANSLinkedListTest/ANSLinkedListTest.c; sourceTree = "<group>"; };
+		939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListTest.h; path = ANSLinkedListTest/ANSLinkedListTest.h; sourceTree = "<group>"; };
 		93A1C6F51CDF674C001101D0 /* ANSString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSString.c; path = Source/ANSHuman/ANSString/ANSString.c; sourceTree = "<group>"; };
 		93A1C6F61CDF674C001101D0 /* ANSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSString.h; path = Source/ANSHuman/ANSString/ANSString.h; sourceTree = "<group>"; };
 		93BAD7041CCE604900B29543 /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
@@ -118,6 +124,24 @@
 			);
 			name = ANSArrayTest;
 			path = Source/ANSHuman/ANSArray/ANSArrayTest;
+			sourceTree = "<group>";
+		};
+		939041CC1CE482C600C16B9A /* ANSLinkedListEnumerator */ = {
+			isa = PBXGroup;
+			children = (
+				939041CE1CE4831000C16B9A /* ANSLinkedListEnumerator.h */,
+				939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */,
+			);
+			name = ANSLinkedListEnumerator;
+			sourceTree = "<group>";
+		};
+		939041D01CE49A2A00C16B9A /* ANSLinkedListTest */ = {
+			isa = PBXGroup;
+			children = (
+				939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */,
+				939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */,
+			);
+			name = ANSLinkedListTest;
 			sourceTree = "<group>";
 		};
 		93A1C6F81CDF6757001101D0 /* ANSString */ = {
@@ -215,6 +239,8 @@
 				93BAD7251CD4B99500B29543 /* ANSLinkedList.h */,
 				93BAD7241CD4B99500B29543 /* ANSLinkedList.c */,
 				93BAD72D1CD4C75500B29543 /* ANSLinkedListNode */,
+				939041CC1CE482C600C16B9A /* ANSLinkedListEnumerator */,
+				939041D01CE49A2A00C16B9A /* ANSLinkedListTest */,
 			);
 			path = ANSLinkedList;
 			sourceTree = "<group>";
@@ -300,10 +326,12 @@
 				939041CB1CE0B07000C16B9A /* ANSArrayTest.c in Sources */,
 				93BAD7161CCE604900B29543 /* ANSPrintFunctionValue.c in Sources */,
 				93BAD7301CD4C7A200B29543 /* ANSLinkedListNode.c in Sources */,
+				939041D31CE49A5E00C16B9A /* ANSLinkedListTest.c in Sources */,
 				93080C6D1CB6DA2000D52D9C /* main.c in Sources */,
 				93BAD7171CCE604900B29543 /* ANSPrintMamaPapaSolution.c in Sources */,
 				93BAD72C1CD4B99500B29543 /* ANSObject.c in Sources */,
 				93BAD7181CCE604900B29543 /* ANSStructureTest.c in Sources */,
+				939041CF1CE4831000C16B9A /* ANSLinkedListEnumerator.c in Sources */,
 				93BAD72B1CD4B99500B29543 /* ANSLinkedList.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,7 @@ struct ANSLinkedList {
     ANSObject _super;
     
     ANSLinkedListNode *_head;
+    uint64_t _mutationCount;
     uint64_t count;
 };
 

@@ -75,16 +75,28 @@ void ANSLinkedListRemoveFirstObject(ANSLinkedList *list) {
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     assert(list);
     
-    void *result = NULL;
-    // доделать
-    // взять объект, у которого count - 1;
-    return result;
+    if (!ANSLinkedListIsEmpty(list)) {   // check for truth (if false)
+        ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
+        void *previousObject = NULL;
+        do {
+            void *currentObject = ANSLinkedListNodeGetObject(currentNode);
+            if (object == currentObject) {
+                
+                return previousObject;
+            } else {
+                previousObject = currentObject;
+            }
+            
+        } while (NULL != (currentNode = ANSLinkedListNodeGetNextNode(currentNode)));
+    }
+    
+    return NULL;
 }
 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list) {
     assert(list);
     
-    return ANSLinkedListGetHead(list);
+    return !ANSLinkedListGetHead(list); // if it has one object+ => if (object = NULL) = truth
 }
 
 void ANSLinkedListAddObject(ANSLinkedList *list, void *object) {
@@ -101,10 +113,20 @@ void ANSLinkedListAddObject(ANSLinkedList *list, void *object) {
 
 
 void ANSLinkedListRemoveObject(ANSLinkedList *list, void *object) {
-    //find node with object
+    ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
+    ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(currentNode);
+    while (NULL != currentNode) {
+        void *currentObject = ANSLinkedListNodeGetObject(currentNode);
+        if (object == currentObject) {
+            ANSLinkedListNodeSetNextNode(currentNode, nextNode);
+            ANSLinkedListCountAddValue(list, -1);
+            
+            break;
+        }
+        currentNode = ANSLinkedListNodeGetNextNode(currentNode);
+    }
 }
 
-extern
 void ANSLinkedListRemoveAllObjects(ANSLinkedList *list) {
     assert(list);
     
@@ -116,9 +138,18 @@ extern
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
     assert(list);
     
-    bool result = false;
-    //enumerate all nodes to find node with with object
-    return result;
+    ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
+    ANSLinkedListNode *nexNode = ANSLinkedListNodeGetNextNode(currentNode);
+    while (NULL != currentNode) {
+        void *currentObject = ANSLinkedListNodeGetObject(currentNode);
+        if (object == currentObject) {
+            return true;
+        }
+        
+        currentNode = ANSLinkedListNodeGetNextNode(nexNode);
+    }
+    
+    return false;
 }
 
 extern
