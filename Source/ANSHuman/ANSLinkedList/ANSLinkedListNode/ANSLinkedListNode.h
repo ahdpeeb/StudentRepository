@@ -15,12 +15,13 @@
 typedef struct ANSLinkedListNode ANSLinkedListNode;
 struct ANSLinkedListNode {
     ANSObject _super;
+     
     ANSLinkedListNode *_nextNode;
-    ANSObject *_object;
+    void *_object;
 };
 
 extern
-ANSLinkedListNode *ANSLinkedListNodeCreateWithObject(ANSObject *object);
+ANSLinkedListNode *ANSLinkedListNodeCreateWithObject(void *object);
 
 extern
 ANSLinkedListNode *ANSLinkedListNodeGetNextNode(ANSLinkedListNode *node);
@@ -29,9 +30,12 @@ extern
 void ANSLinkedListNodeSetNextNode(ANSLinkedListNode *node, ANSLinkedListNode *NexNode);
 
 extern
-ANSObject *ANSLinkedListNodeGetObject(ANSLinkedListNode *node);
+void *ANSLinkedListNodeGetObject(ANSLinkedListNode *node);
 
 extern
-void ANSLinkedListNodeSetObject(ANSLinkedListNode *node, ANSObject *object);
+void ANSLinkedListNodeSetObject(ANSLinkedListNode *node, void *object);
+
+extern
+void __ANSLinkedListNodeDeallocate(void *object);
 
 #endif /* ANSLinkedListNode_h */

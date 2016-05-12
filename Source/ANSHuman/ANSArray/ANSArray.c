@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Private Declaration
 
-static const uint64_t kANSArrayMaximumCapacity = UINT64_MAX - 1;
+__unused static const uint64_t kANSArrayMaximumCapacity = UINT64_MAX - 1;
 
 static
 void ANSArraySetCapacity(ANSArray *array, uint64_t capacity);
@@ -29,174 +29,179 @@ static
 uint64_t ANSArrayPrefferedCapacity(ANSArray *array);
 
 static
-void ANSArraySetCount(ANSArray *array, uint64_t count);
+void ANSArrayCountAddValue(ANSArray *array, uint64_t count);
 
 static
 void ANSArraySetObjectAtIndex(ANSArray *array,void *object, uint64_t index);
 
+static
+void ANSArrayRemoveAllObjects(ANSArray *array);
+
 #pragma mark -
 #pragma mark Public Methods
 
+// create array with capacity(amount of elements)
 void *ANSArrayCreateWithCapacity(uint64_t capacity) {
-    ANSArray *result = ANSObjectCreateWithType(ANSArray);
-    ANSArraySetCapacity(result, capacity);
+    ANSArray *array = ANSObjectCreateWithType(ANSArray);
+    ANSArraySetCapacity(array, capacity);
     
-    return result;
+    return array;
 }
 
 void __ANSArrayDeallocate(void *objext) {
     ANSArrayRemoveAllObjects(objext);
     
-    
     __ANSObjectDeallocate(objext);
 }
 
 void ANSArrayAddObject(ANSArray *array, void *object) {
-    if (NULL != array && NULL != object) {
+    assert(array);
+    
+    if (object) {
+        ANSArrayCountAddValue(array, 1);
         uint64_t count = ANSArrayGetCount(array);
+        ANSArraySetObjectAtIndex(array, object, count - 1);
         
-        ANSArraySetCount(array, count + 1);
-        ANSArraySetObjectAtIndex(array, object, count);
     }
 }
 
 uint64_t ANSArrayGetCount(ANSArray *array) {
-    return NULL != array ? array->_count : 0;
+    assert(array);
+    
+    return array->_count;
 }
 
-extern
 bool ANSArrayContainsObject(ANSArray *array, void *object) {
     return kANSNotFound != ANSArrayGetIndexOfObject(array, object);
 }
 
-extern
 uint64_t ANSArrayGetIndexOfObject(ANSArray *array, void *object) {
-    if (NULL == array) {
-        return 0;
-    }
-    
-    if (NULL == object) {
-        
-        return kANSNotFound;
-    }
-    
-    uint64_t result = kANSNotFound;
+    assert(array && object);
+
     uint64_t count = ANSArrayGetCount(array);
     for (uint64_t index = 0; index < count; index ++) {
         if (ANSArrayGetObjectAtIndex(array, index) == object) {
-            result = index;
-            break;
+            return index;
         }
     }
     
-    return result;
+    return kANSNotFound;
 }
 
 void *ANSArrayGetObjectAtIndex(ANSArray *array, uint64_t index) {
-    void *result = NULL;
-    if (NULL != array) {
+    uint64_t count = ANSArrayGetCount(array);
+    assert(array && count >= index);
         
-        assert(ANSArrayGetCount(array) > index);
-        
-        result = array ->_data[index];
-    }
-        return result;
+    return array->_data[index];
 }
 
 void ANSArrayRemoveObjectAtIndex(ANSArray *array, uint64_t index) {
-    if (NULL != array) {
-        ANSArraySetObjectAtIndex(array, NULL, index);
-        uint64_t count = ANSArrayGetCount(array);
-        
-        void **data = array->_data;
-        if (index < (count - 1)) {
-            uint64_t elementsCount = count - (index + 1);
-            memmove(&data[index], &data[index + 1], elementsCount * sizeof(*data));
-        }
-        
-        data[count - 1] = NULL;
-        ANSArraySetCount(array, count - 1);
+    assert(array);
+    
+    ANSArraySetObjectAtIndex(array, NULL, index);
+    uint64_t count = ANSArrayGetCount(array);
+    
+    void **data = array->_data;
+    if (index < (count)) {
+        uint64_t elementsCount = count - (index + 1);
+        memmove(&data[index], &data[index + 1], elementsCount * sizeof(*data));
     }
-
+    
+    ANSArrayCountAddValue (array, - 1);
 }
 
-void ANSArrayRemoveAllObjects(ANSArray *array) {
-    if (NULL != array) {
-        uint64_t count = ANSArrayGetCount(array);
-        for (uint64_t index = 0; index < count; index ++) {
-            ANSArraySetObjectAtIndex(array, NULL, index);
-        }
-        
-        ANSArraySetCapacity(array, 0);
-    }
+void ANSArrayRemoveObject(ANSArray *array, void *object) {
+    uint64_t index = ANSArrayGetIndexOfObject(array, object);
+    ANSArrayRemoveObjectAtIndex(array, index);
 }
 
 #pragma mark -
 #pragma mark Private Implementation
 
-uint64_t ANSArrayGetCapacity(ANSArray *array) {
-    return (NULL != array) ? array->_capacity : 0;
+void ANSArraySetObjectAtIndex(ANSArray *array, void *object, uint64_t index) {
+    ANSObject *value = ANSArrayGetObjectAtIndex(array, index);
+    if (value != object) {
+        ANSObjectRelease(array->_data[index]);
+        array->_data[index] = object;
+        ANSObjectRetain(object);
+    }
 }
 
-void ANSArraySetCapacity(ANSArray *array, uint64_t capacity) {
-    if (NULL != array && array->_capacity != capacity) {
-        assert(kANSArrayMaximumCapacity >= capacity);
-        
-        size_t size = capacity * sizeof(*array->_data);
-        if (0 == size && NULL != array->_data) {
+uint64_t ANSArrayGetCapacity(ANSArray *array) {
+    assert(array);
+    
+    return array->_capacity;
+}
+
+void ANSArraySetCapacity(ANSArray *array, uint64_t newCapacity) {
+    assert(array);
+    
+    uint64_t previousCapacity = ANSArrayGetCapacity(array);
+    if (previousCapacity != newCapacity) {
+        size_t size = newCapacity * sizeof(*array->_data);
+        if (0 == size && array->_data) {
             free(array->_data);
             array->_data = NULL;
         } else {
             array->_data = realloc(array->_data, size);
+            assert(array->_data);
             
-            assert(NULL != array->_data);
+            if (newCapacity > previousCapacity) {
+                for (uint64_t index = previousCapacity; index < newCapacity; index ++) {
+                    array->_data[index] = NULL;
+                }
+            }
         }
         
-        if (capacity > array->_capacity) {
-            void *startPointer = array->_data + array->_capacity;
-            size_t numberOfBytes = (capacity - array->_capacity) * sizeof(*array->_data);
-            memset(startPointer, 0, numberOfBytes);
-        }
-        
-        array->_capacity = capacity;
+        array->_capacity = newCapacity;
     }
 }
 
 bool ANSArrayShouldResize(ANSArray *array) {
-     return (NULL != array);
+    assert(array);
+    return (ANSArrayGetCapacity(array) != ANSArrayPrefferedCapacity(array));
 }
 
 uint64_t ANSArrayPrefferedCapacity(ANSArray *array) {
-    if (NULL != array) {
-        uint64_t count = ANSArrayGetCount(array);
-        uint64_t capacity = ANSArrayGetCapacity(array);
-        if (count == capacity) {
-            return capacity;
-        }
-        
-        return capacity < count ? count : 2 * count;
+    assert(array);
+    
+    uint64_t count = ANSArrayGetCount(array);
+    uint64_t capacity = ANSArrayGetCapacity(array);
+    if (capacity < count) {
+        return  count * 2;
     }
     
-    return 0;
+    if (capacity == count) {
+       return capacity * 3 / 2;
+    }
+    
+    if (capacity > count * 2) {
+        return  capacity * 3 / 4;
+    }
+
+    return capacity;
 }
 
 void ANSArrayResizeIfNeeded(ANSArray *array) {
     if (ANSArrayShouldResize(array)) {
-        ANSArraySetCapacity(array, ANSArrayPrefferedCapacity(array));
-    
+        uint64_t prefferedCapacity = ANSArrayPrefferedCapacity(array);
+        ANSArraySetCapacity(array, prefferedCapacity);
     }
 }
 
-void ANSArraySetCount(ANSArray *array, uint64_t count) {
-   if (NULL != array) {
-       assert(kANSArrayMaximumCapacity >= count);
+void ANSArrayCountAddValue(ANSArray *array, uint64_t count) {
+    assert(array);
        
-       array->_count = count;
-
-       ANSArrayResizeIfNeeded(array);
-    }
+    array->_count += count;
+    ANSArrayResizeIfNeeded(array);
 }
 
-void ANSArraySetObjectAtIndex(ANSArray *array,void *object, uint64_t index) {
-     // доделать
+void ANSArrayRemoveAllObjects(ANSArray *array) {
+    assert(array);
+    
+    uint64_t count = ANSArrayGetCount(array);
+    for (uint64_t index = 0; index < count; index ++) {
+        ANSArraySetObjectAtIndex(array, NULL, index);
+        ANSArrayCountAddValue (array, - 1);
+    }
 }

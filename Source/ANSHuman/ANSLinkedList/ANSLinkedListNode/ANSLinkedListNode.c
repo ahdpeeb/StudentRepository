@@ -5,6 +5,7 @@
 //  Created by Nikola Andriiev on 30.04.16.
 //  Copyright © 2016 Anfriiev.Mykola. All rights reserved.
 //
+#include <assert.h>
 
 #include "ANSLinkedListNode.h"
 
@@ -18,7 +19,7 @@ void __ANSLinkedListNodeDeallocate(void *object) {
     __ANSObjectDeallocate(object);
 }
 
-ANSLinkedListNode *ANSLinkedListNodeCreateWithObject(ANSObject *object) {
+ANSLinkedListNode *ANSLinkedListNodeCreateWithObject(void *object) {
     ANSLinkedListNode *result = ANSObjectCreateWithType(ANSLinkedListNode);
     ANSLinkedListNodeSetObject(result, object);
         
@@ -26,23 +27,33 @@ ANSLinkedListNode *ANSLinkedListNodeCreateWithObject(ANSObject *object) {
 }
 
 ANSLinkedListNode *ANSLinkedListNodeGetNextNode(ANSLinkedListNode *node) {
-    return NULL != node ? node->_nextNode : NULL;
+    return node ? node->_nextNode : NULL;
 }
 
 void ANSLinkedListNodeSetNextNode(ANSLinkedListNode *node, ANSLinkedListNode *NexNode) {
-    if (NULL != node && (node->_nextNode != node)) {
-        ANSObjectRetain(NexNode);
+    assert(node);
+    
+    if (node->_nextNode != node) {
         ANSObjectRelease(node->_nextNode);
-        
         node->_nextNode = NexNode;
-       
+        ANSObjectRetain(NexNode);
         }
 }
-// смотреть Session 11 - 1. Autorelease pool concept, linked list implementation
-ANSObject *ANSLinkedListNodeGetObject(ANSLinkedListNode *node) {
-    return NULL;
+
+void *ANSLinkedListNodeGetObject(ANSLinkedListNode *node) {
+    assert(node);
+    
+    return  node->_object;
 }
 
-void ANSLinkedListNodeSetObject(ANSLinkedListNode *node, ANSObject *object) {
+void ANSLinkedListNodeSetObject(ANSLinkedListNode *node, void *object) {
+    assert(node && object);
+    assert(node != object);
+    
+    if (node->_object != object) {
+        ANSObjectRelease(node->_object);
+        node->_object = object;
+        ANSObjectRetain(object);
+    }
 
 }

@@ -23,11 +23,16 @@ typedef struct {
 } ANSArray;
 
 extern
+void __ANSArrayDeallocate(void *objext);
+
+extern
 void *ANSArrayCreateWithCapacity(uint64_t capacity);
 
-//returns index of added object
 extern
 void ANSArrayAddObject(ANSArray *array, void *object);
+
+extern
+void ANSArrayRemoveObject(ANSArray *array, void *object);
 
 extern
 uint64_t ANSArrayGetCount(ANSArray *array);
@@ -40,11 +45,5 @@ uint64_t ANSArrayGetIndexOfObject(ANSArray *array, void *object);
 
 extern
 void *ANSArrayGetObjectAtIndex(ANSArray *array, uint64_t index);
-
-extern
-void ANSArrayRemoveAllObjects(ANSArray *array);
-
-extern
-void __ANSArrayDeallocate(void *objext);
 
 #endif /* ANSArray_h */
