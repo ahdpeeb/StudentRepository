@@ -75,19 +75,20 @@ void ANSLinkedListRemoveFirstObject(ANSLinkedList *list) {
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     assert(list);
     
+    void *previousObject = NULL;
     if (!ANSLinkedListIsEmpty(list)) {   // check for truth (if false)
         ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
-        void *previousObject = NULL;
+        ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(currentNode);
+        void *currentObject = ANSLinkedListNodeGetObject(currentNode);
         do {
-            void *currentObject = ANSLinkedListNodeGetObject(currentNode);
             if (object == currentObject) {
                 
                 return previousObject;
-            } else {
-                previousObject = currentObject;
             }
             
-        } while (NULL != (currentNode = ANSLinkedListNodeGetNextNode(currentNode)));
+            previousObject = ANSLinkedListNodeGetObject(currentObject);
+            ANSLinkedListNodeSetNextNode(currentObject, nextNode);
+        } while (NULL != nextNode);
     }
     
     return NULL;
