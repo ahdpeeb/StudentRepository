@@ -8,7 +8,10 @@
 
 #include "ANSHumanTest.h"
 #include "ANSArrayTest.h"
+#include "ANSLinkedListTest.h"
 
 int main(int argc, const char * argv[]) {
    // ANSRunArrayTest(1);
+    ANSLinkedListTest();
+    return 0;
 }

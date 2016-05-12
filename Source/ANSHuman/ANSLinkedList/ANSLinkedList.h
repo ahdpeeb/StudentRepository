@@ -10,7 +10,6 @@
 #define ANSLinkedList_h
 
 #include <stdbool.h>
-
 #include "ANSObject.h"
 
 typedef struct ANSLinkedListNode ANSLinkedListNode;
@@ -25,35 +24,35 @@ struct ANSLinkedList {
 };
 
 //return pointer of firt object(any type of object)
-extern
+extern // works
 void *ANSLinkedListGetFirstObject(ANSLinkedList *list);
 
-extern
+extern // works
 void ANSLinkedListRemoveFirstObject(ANSLinkedList *list);
 
 //return pointer of previous object(any type of object)
 extern
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object);
 
-extern
+extern // works
 bool ANSLinkedListIsEmpty(ANSLinkedList *list);
 
-extern
+extern // works
 void ANSLinkedListAddObject(ANSLinkedList *list, void *object);
 
 extern
 void ANSLinkedListRemoveObject(ANSLinkedList *list, void *object);
 
-extern
+extern // works
 void ANSLinkedListRemoveAllObjects(ANSLinkedList *list);
 
-extern
+extern //doesn't work
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object);
 
-extern
+extern // works
 uint64_t ANSLinkedListGetCount(ANSLinkedList *list);
 
-extern
+extern // works
 void __ANSLinkedListDeallocate(void *object);
 
 #endif /* ANSLinkedList_h */

@@ -138,8 +138,8 @@
 		939041D01CE49A2A00C16B9A /* ANSLinkedListTest */ = {
 			isa = PBXGroup;
 			children = (
-				939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */,
 				939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */,
+				939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */,
 			);
 			name = ANSLinkedListTest;
 			sourceTree = "<group>";

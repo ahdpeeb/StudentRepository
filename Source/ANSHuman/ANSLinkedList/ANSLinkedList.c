@@ -15,7 +15,7 @@
 #pragma mark Private Declaration
 
 static
-void ANSLinkedListCountAddValue(ANSLinkedList *list, uint8_t value);
+void ANSLinkedListCountAddValue(ANSLinkedList *list, short value);
 
 static
 void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
@@ -27,7 +27,7 @@ ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list);
 #pragma mark Private Implementation
 
 static
-void ANSLinkedListCountAddValue(ANSLinkedList *list, uint8_t value) {
+void ANSLinkedListCountAddValue(ANSLinkedList *list, short value) {
     assert(list);
     
     list->count += value;
@@ -70,6 +70,7 @@ void ANSLinkedListRemoveFirstObject(ANSLinkedList *list) {
     ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(firstNode);
     
     ANSLinkedListSetHead(list, nextNode);
+    ANSLinkedListCountAddValue(list, -1);
 }
 
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
@@ -135,7 +136,6 @@ void ANSLinkedListRemoveAllObjects(ANSLinkedList *list) {
     list->count = 0;
 }
 
-extern
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
     assert(list);
     
@@ -146,14 +146,13 @@ bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
         if (object == currentObject) {
             return true;
         }
-        
+        ANSLinkedListNodeSetNextNode(currentNode, nexNode);
         currentNode = ANSLinkedListNodeGetNextNode(nexNode);
     }
     
     return false;
 }
 
-extern
 uint64_t ANSLinkedListGetCount(ANSLinkedList *list) {
     assert(list);
     
