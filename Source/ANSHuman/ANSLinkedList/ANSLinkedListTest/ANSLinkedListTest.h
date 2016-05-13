@@ -9,9 +9,8 @@
 #ifndef ANSLinkedListTest_h
 #define ANSLinkedListTest_h
 
-#include "ANSLinkedList.h"
-#include "ANSHuman.h"
-
 void ANSLinkedListTest(void);
+
+void ANSLinkedListEnumerationTest(void);
 
 #endif /* ANSLinkedListTest_h */

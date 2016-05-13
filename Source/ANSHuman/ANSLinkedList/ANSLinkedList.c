@@ -26,7 +26,6 @@ ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list);
 #pragma mark -
 #pragma mark Private Implementation
 
-static
 void ANSLinkedListCountAddValue(ANSLinkedList *list, short value) {
     assert(list);
     

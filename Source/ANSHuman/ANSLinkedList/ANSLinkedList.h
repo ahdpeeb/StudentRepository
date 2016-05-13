@@ -24,10 +24,10 @@ struct ANSLinkedList {
 };
 
 //return pointer of firt object(any type of object)
-extern // works
+extern
 void *ANSLinkedListGetFirstObject(ANSLinkedList *list);
 
-extern // works
+extern 
 void ANSLinkedListRemoveFirstObject(ANSLinkedList *list);
 
 //return pointer of previous object(any type of object)

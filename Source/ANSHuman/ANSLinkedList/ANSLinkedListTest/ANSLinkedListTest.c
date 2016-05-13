@@ -8,10 +8,13 @@
 #include <assert.h>
 #include <stdio.h>
 
+#include "ANSLinkedList.h"
+#include "ANSLinkedListEnumerator.h"
+#include "ANSHuman.h"
+
 #include "ANSLinkedListTest.h"
 
 void ANSLinkedListTest(void) {
-
     ANSLinkedList *linkedList = ANSObjectCreateWithType(ANSLinkedList);
     assert(linkedList);
     
@@ -36,10 +39,10 @@ void ANSLinkedListTest(void) {
     ANSLinkedListRemoveFirstObject(linkedList); // удалил 4ый объект
     assert(human1 = firstObject);
     
-    printf("count - %d \n",(int)ANSLinkedListGetCount(linkedList));
+    printf("count - %d \n", (int)ANSLinkedListGetCount(linkedList));
     
-      bool isEmpty = ANSLinkedListIsEmpty(linkedList);
-     if (!isEmpty) {
+    bool isEmpty = ANSLinkedListIsEmpty(linkedList);
+    if (!isEmpty) {
         puts("linkedList заполнен");
     }
     
@@ -52,6 +55,13 @@ void ANSLinkedListTest(void) {
      ANSLinkedListRemoveObject(linkedList, human3);
      printf("count - %d \n",(int)ANSLinkedListGetCount(linkedList));
     
-    ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human3);
+   __unused ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human3);
+    
+}
+
+void ANSLinkedListEnumerationTest(void) {
+    ANSLinkedListEnumerator *enumerator = ANSObjectCreateWithType(ANSLinkedListEnumerator);
+    assert(enumerator);
+    
     
 }

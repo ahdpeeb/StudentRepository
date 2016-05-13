@@ -4,7 +4,7 @@
 //
 //  Created by Nikola Andriiev on 12.05.16.
 //  Copyright © 2016 Anfriiev.Mykola. All rights reserved.
-//
+
 
 #ifndef ANSLinkedListEnumerator_h
 #define ANSLinkedListEnumerator_h
@@ -18,11 +18,11 @@ typedef struct ANSLinkedListNode ANSLinkedListNode;
 
 typedef struct ANSLinkedListEnumerator ANSLinkedListEnumerator;
 struct ANSLinkedListEnumerator {
-    ANSObject *_object;
+    ANSObject _super;
     
     ANSLinkedList *_list;
     ANSLinkedListNode *_node;
-    uint64_t _mutationCount;
+    uint64_t _mutationsCount;
     bool _isValid;
 };
 

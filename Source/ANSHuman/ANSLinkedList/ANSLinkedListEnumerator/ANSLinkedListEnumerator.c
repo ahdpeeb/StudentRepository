@@ -30,7 +30,7 @@ static
 void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationCount);
 
 static
-uint64_t *ANSLinkedListEnumeratotGetMutationsCount(ANSLinkedListEnumerator *enumerator);
+uint64_t ANSLinkedListEnumeratotGetMutationsCount(ANSLinkedListEnumerator *enumerator);
 
 #pragma mark -
 #pragma mark Privat implementation
@@ -55,18 +55,19 @@ ANSLinkedListNode *ANSLinkedListEnumeratorGetNode(ANSLinkedListEnumerator *enume
     return enumerator->_node;
 }
 
-void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationCount){
-    ANSAssingSetter(enumerator, _mutationCount, mutationCount);
+void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationsCount){
+    ANSAssingSetter(enumerator, _mutationsCount, mutationsCount);
 }
 
-uint64_t *ANSLinkedListEnumeratotGetMutationsCount(ANSLinkedListEnumerator *enumerator) {
-    return 0;
+uint64_t ANSLinkedListEnumeratotGetMutationsCount(ANSLinkedListEnumerator *enumerator) {
+    assert(enumerator);
+    
+    return enumerator->_mutationsCount;
 }
 
 #pragma mark -
 #pragma mark Public implementation 
-
-extern
+ 
 void __ANSLinkedListEnumeratorDeallocate(void* object) {
     ANSLinkedListEnumeratorSetNode(object, NULL);
     ANSLinkedListEnumeratorSetList(object, NULL);
@@ -74,7 +75,6 @@ void __ANSLinkedListEnumeratorDeallocate(void* object) {
     __ANSObjectDeallocate(object);
 }
 
-extern
 ANSLinkedListEnumerator *ANSLinkedListEnumeratorCreateWithList(ANSLinkedList *list) {
     ANSLinkedListEnumerator * enumeratot = ANSObjectCreateWithType(ANSLinkedListEnumerator);
     ANSLinkedListEnumeratorSetList(enumeratot, list);
