@@ -31,6 +31,9 @@ extern
 size_t ANSStringGetStringLength(char *string);
 
 extern
-char *ANSStringGetString(ANSString *string);
+ANSString *ANSStringWithCharString(char *value);
+
+extern
+ANSString *ASNStringCopy(ANSString *string);
 
 #endif /* ANSString_h */

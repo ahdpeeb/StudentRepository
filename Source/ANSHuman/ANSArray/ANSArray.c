@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Private Declaration
 
-__unused static const uint64_t kANSArrayMaximumCapacity = UINT64_MAX - 1;
+static const uint64_t kANSNotFound = UINT64_MAX;
 
 static
 void ANSArraySetCapacity(ANSArray *array, uint64_t capacity);
@@ -61,7 +61,6 @@ void ANSArrayAddObject(ANSArray *array, void *object) {
         ANSArrayCountAddValue(array, 1);
         uint64_t count = ANSArrayGetCount(array);
         ANSArraySetObjectAtIndex(array, object, count - 1);
-        
     }
 }
 
@@ -159,6 +158,7 @@ void ANSArraySetCapacity(ANSArray *array, uint64_t newCapacity) {
 
 bool ANSArrayShouldResize(ANSArray *array) {
     assert(array);
+    
     return (ANSArrayGetCapacity(array) != ANSArrayPrefferedCapacity(array));
 }
 

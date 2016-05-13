@@ -34,25 +34,25 @@ void ANSLinkedListRemoveFirstObject(ANSLinkedList *list);
 extern
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object);
 
-extern // works
+extern 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list);
 
-extern // works
+extern
 void ANSLinkedListAddObject(ANSLinkedList *list, void *object);
 
 extern
 void ANSLinkedListRemoveObject(ANSLinkedList *list, void *object);
 
-extern // works
+extern
 void ANSLinkedListRemoveAllObjects(ANSLinkedList *list);
 
-extern //doesn't work
+extern
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object);
 
-extern // works
+extern
 uint64_t ANSLinkedListGetCount(ANSLinkedList *list);
 
-extern // works
+extern
 void __ANSLinkedListDeallocate(void *object);
 
 #endif /* ANSLinkedList_h */

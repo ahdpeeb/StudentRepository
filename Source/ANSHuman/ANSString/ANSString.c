@@ -60,9 +60,17 @@ size_t ANSStringGetStringLength(char *string) {
     return strlen(string);
 }
 
-ANSString *ASNReturnStringCopy(char *value) {
+ANSString *ANSStringWithCharString(char *value) {
     ANSString *object = ANSStringCreate();
     ANSStringSetValue(object, value);
     
     return object;
 }
+
+ANSString *ASNStringCopy(ANSString *string) {
+    return ANSStringWithCharString(ANSStringGetString(string));
+}
+
+
+
+

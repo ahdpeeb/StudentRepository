@@ -77,22 +77,23 @@ void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     void *previousObject = NULL;
-    if (!ANSLinkedListIsEmpty(list)) {   // check for truth (if false)
+    if (ANSLinkedListContainsObject(list, object)) {   // check for truth (if false)
+        ANSLinkedListNode *previousNode = NULL;
         ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
-        ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(currentNode);
-        void *currentObject = ANSLinkedListNodeGetObject(currentNode);
+        
         do {
+            void* currentObject = ANSLinkedListNodeGetObject(currentNode);
             if (object == currentObject) {
-                
                 return previousObject;
             }
             
-            previousObject = ANSLinkedListNodeGetObject(currentObject);
-            ANSLinkedListNodeSetNextNode(currentObject, nextNode);
-        } while (NULL != nextNode);
+            previousNode = currentNode;
+            currentNode = ANSLinkedListNodeGetNextNode(currentNode);
+            previousObject = ANSLinkedListNodeGetObject(previousNode);
+        } while (currentNode);
     }
     
-    return NULL;
+    return previousObject;
 }
 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list) {
@@ -115,17 +116,26 @@ void ANSLinkedListAddObject(ANSLinkedList *list, void *object) {
 
 
 void ANSLinkedListRemoveObject(ANSLinkedList *list, void *object) {
+    ANSLinkedListNode *previousNode = NULL;
     ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
     ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(currentNode);
     while (NULL != currentNode) {
+        
         void *currentObject = ANSLinkedListNodeGetObject(currentNode);
         if (object == currentObject) {
-            ANSLinkedListNodeSetNextNode(currentNode, nextNode);
-            ANSLinkedListCountAddValue(list, -1);
+            if (previousNode) {
+                ANSLinkedListNodeSetNextNode(previousNode, nextNode);
+            } else {
+                ANSLinkedListSetHead(list, nextNode);
+            }
             
+            ANSLinkedListCountAddValue(list, -1);
             break;
         }
-        currentNode = ANSLinkedListNodeGetNextNode(currentNode);
+        
+        previousNode = currentNode;
+        currentNode = nextNode;
+        nextNode = ANSLinkedListNodeGetNextNode(currentNode);
     }
 }
 
@@ -140,14 +150,14 @@ bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
-    ANSLinkedListNode *nexNode = ANSLinkedListNodeGetNextNode(currentNode);
     while (NULL != currentNode) {
+      
         void *currentObject = ANSLinkedListNodeGetObject(currentNode);
         if (object == currentObject) {
             return true;
         }
-        ANSLinkedListNodeSetNextNode(currentNode, nexNode);
-        currentNode = ANSLinkedListNodeGetNextNode(nexNode);
+        
+        currentNode = ANSLinkedListNodeGetNextNode(currentNode);
     }
     
     return false;
