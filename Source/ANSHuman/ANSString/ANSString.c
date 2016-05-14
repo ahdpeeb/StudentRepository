@@ -70,7 +70,3 @@ ANSString *ANSStringWithCharString(char *value) {
 ANSString *ASNStringCopy(ANSString *string) {
     return ANSStringWithCharString(ANSStringGetString(string));
 }
-
-
-
-

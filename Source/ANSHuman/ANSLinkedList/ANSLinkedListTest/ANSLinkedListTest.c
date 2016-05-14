@@ -60,8 +60,27 @@ void ANSLinkedListTest(void) {
 }
 
 void ANSLinkedListEnumerationTest(void) {
-    ANSLinkedListEnumerator *enumerator = ANSObjectCreateWithType(ANSLinkedListEnumerator);
+    ANSLinkedList *linkedList = ANSObjectCreateWithType(ANSLinkedList);
+    assert(linkedList);
+    
+    for (uint32_t index = 0; index < 2; index ++) {
+        ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
+        ANSLinkedListAddObject(linkedList, human);
+    }
+    
+    ANSLinkedListEnumerator *enumerator = ANSLinkedListEnumeratorFromList(linkedList);
     assert(enumerator);
     
+    uint32_t iterationsCount = 0;
+    ANSHuman *human = ANSLinkedListEnumeratorGetNextObject(enumerator);
+    while (true == ANSLinkedListEnumeratorIsValid(enumerator)) {
+        iterationsCount ++;
+    human = ANSLinkedListEnumeratorGetNextObject(enumerator);
+    }
     
+    assert(2 == iterationsCount);
+    
+    
+    ANSObjectRelease(linkedList);
+    ANSObjectRelease(enumerator);
 }

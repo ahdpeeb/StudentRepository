@@ -27,10 +27,16 @@ static
 ANSLinkedListNode *ANSLinkedListEnumeratorGetNode(ANSLinkedListEnumerator *enumerator);
 
 static
-void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationCount);
+void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationsCount);
 
 static
-uint64_t ANSLinkedListEnumeratotGetMutationsCount(ANSLinkedListEnumerator *enumerator);
+uint64_t ANSLinkedListEnumeratorGetMutationsCount(ANSLinkedListEnumerator *enumerator);
+
+static
+void ANSLinkedListEnumeratorSetValidity(ANSLinkedListEnumerator *enumerator, bool isValid);
+
+static
+bool ANSLinkedListEnumeratorMutationsValidation(ANSLinkedListEnumerator *enumerator);
 
 #pragma mark -
 #pragma mark Privat implementation
@@ -56,13 +62,28 @@ ANSLinkedListNode *ANSLinkedListEnumeratorGetNode(ANSLinkedListEnumerator *enume
 }
 
 void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationsCount){
-    ANSAssingSetter(enumerator, _mutationsCount, mutationsCount);
+    ANSAssignSetter(enumerator, _mutationsCount, mutationsCount);
 }
 
-uint64_t ANSLinkedListEnumeratotGetMutationsCount(ANSLinkedListEnumerator *enumerator) {
+uint64_t ANSLinkedListEnumeratorGetMutationsCount(ANSLinkedListEnumerator *enumerator) {
     assert(enumerator);
     
     return enumerator->_mutationsCount;
+}
+
+void ANSLinkedListEnumeratorSetValidity(ANSLinkedListEnumerator *enumerator, bool isValid) {
+    ANSAssignSetter(enumerator, _isValid, isValid);
+}
+
+bool ANSLinkedListEnumeratorMutationsValidation(ANSLinkedListEnumerator *enumerator) {
+    if (ANSLinkedListEnumeratorIsValid(enumerator)) {
+        ANSLinkedList *list = ANSLinkedListEnumeratorGetList(enumerator);
+        assert(ANSLinkedListGetMutationsCount(list) == ANSLinkedListEnumeratorGetMutationsCount(enumerator));
+        
+        return true;
+    }
+    
+    return false;
 }
 
 #pragma mark -
@@ -76,23 +97,42 @@ void __ANSLinkedListEnumeratorDeallocate(void* object) {
 }
 
 ANSLinkedListEnumerator *ANSLinkedListEnumeratorCreateWithList(ANSLinkedList *list) {
-    ANSLinkedListEnumerator * enumeratot = ANSObjectCreateWithType(ANSLinkedListEnumerator);
-    ANSLinkedListEnumeratorSetList(enumeratot, list);
-    ANSLinkedListEnumeratorSetMutationsCount(enumeratot, list->_mutationCount);
+    assert(list);
     
-    return enumeratot;
+    ANSLinkedListEnumerator * enumerator = ANSObjectCreateWithType(ANSLinkedListEnumerator);
+    ANSLinkedListEnumeratorSetList(enumerator, list);
+    ANSLinkedListEnumeratorSetMutationsCount(enumerator, ANSLinkedListGetMutationsCount(list));
+    ANSLinkedListEnumeratorSetValidity(enumerator, true);
+    
+    return enumerator;
 }
 
-ANSLinkedListNode *ANSLinkedListEnumeratorGetNextNode(ANSLinkedListEnumerator *enumerator) {
+void *ANSLinkedListEnumeratorGetNextObject(ANSLinkedListEnumerator *enumerator) {
     assert(enumerator);
-    //NOTFinished
     
-    return 0;
+    if (ANSLinkedListEnumeratorMutationsValidation(enumerator)) {
+        ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
+        ANSLinkedList *list = ANSLinkedListEnumeratorGetList(enumerator);
+        if (!node) {
+            node = ANSLinkedListGetHead(list);
+        } else {
+            node = ANSLinkedListNodeGetNextNode(node);
+        }
+        
+        ANSLinkedListEnumeratorSetNode(enumerator, node);
+        if(!node) {
+            ANSLinkedListEnumeratorSetValidity(enumerator, false);
+            return NULL;
+        }
+        
+        return ANSLinkedListNodeGetObject(node);
+    }
+        
+    return NULL;
 }
 
 bool ANSLinkedListEnumeratorIsValid(ANSLinkedListEnumerator *enumerator) {
-    //NOTFinished
-    return 0;
+    assert(enumerator);
+    
+    return enumerator->_isValid;
 }
-
-

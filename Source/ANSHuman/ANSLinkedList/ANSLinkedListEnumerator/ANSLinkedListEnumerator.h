@@ -30,7 +30,7 @@ extern
 ANSLinkedListEnumerator *ANSLinkedListEnumeratorCreateWithList(ANSLinkedList *list);
 
 extern
-ANSLinkedListNode *ANSLinkedListEnumeratorGetNextNode(ANSLinkedListEnumerator *enumerator);
+void *ANSLinkedListEnumeratorGetNextObject(ANSLinkedListEnumerator *enumerator);
 
 extern
 bool ANSLinkedListEnumeratorIsValid(ANSLinkedListEnumerator *enumerator);

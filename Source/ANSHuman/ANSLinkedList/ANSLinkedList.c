@@ -10,6 +10,7 @@
 
 #include "ANSLinkedList.h"
 #include "ANSLinkedListNode.h"
+#include "ANSLinkedListEnumerator.h"
 
 #pragma mark -
 #pragma mark Private Declaration
@@ -18,39 +19,14 @@ static
 void ANSLinkedListCountAddValue(ANSLinkedList *list, short value);
 
 static
-void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
-
-static
-ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list);
-
-#pragma mark -
-#pragma mark Private Implementation
-
-void ANSLinkedListCountAddValue(ANSLinkedList *list, short value) {
-    assert(list);
-    
-    list->count += value;
-}
-
-void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head) {
-    assert(list);
-    
-    if (ANSLinkedListGetHead(list) != head) {
-        ANSObjectRelease(list->_head);
-        list->_head = head;
-        
-        ANSObjectRetain(head);
-    }
-}
-
-ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list) {
-    assert(list);
-    
-    return list->_head;
-}
+void ANSLinkedListSetCount(ANSLinkedList *list, uint64_t value);
 
 #pragma mark -
 #pragma mark Public Implementation 
+
+ANSLinkedListEnumerator *ANSLinkedListEnumeratorFromList(ANSLinkedList *list) {
+    return ANSLinkedListEnumeratorCreateWithList(list);
+}
 
 void __ANSLinkedListDeallocate(void *object) {
     ANSLinkedListSetHead(object, NULL);
@@ -142,7 +118,7 @@ void ANSLinkedListRemoveAllObjects(ANSLinkedList *list) {
     assert(list);
     
     ANSLinkedListSetHead(list, NULL);
-    list->count = 0;
+    ANSLinkedListSetCount(list, 0);
 }
 
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
@@ -168,11 +144,44 @@ uint64_t ANSLinkedListGetCount(ANSLinkedList *list) {
     return list->count;
 }
 
+uint64_t ANSLinkedListGetMutationsCount(ANSLinkedList *list) {
+    assert(list);
+    
+    return list->_mutationsCount;
+}
 
+#pragma mark -
+#pragma mark Private Implementation
 
+void ANSLinkedListSetCount(ANSLinkedList *list, uint64_t value) {
+    assert(list);
+    
+    list->count = value;
+}
 
+void ANSLinkedListCountAddValue(ANSLinkedList *list, short value) {
+    assert(list);
+    
+    list->count += value;
+}
 
+void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head) {
+    assert(list);
+    
+    if (ANSLinkedListGetHead(list) != head) {
+        ANSObjectRelease(list->_head);
+        list->_head = head;
+        
+        ANSObjectRetain(head);
+    }
+}
 
+ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list) {
+    assert(list);
+    
+    return list->_head;
+}
 
-
-
+void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count) {
+    ANSAssignSetter(list, _mutationsCount, count);
+}

@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include "ANSObject.h"
 
+typedef struct ANSLinkedListEnumerator ANSLinkedListEnumerator;
 typedef struct ANSLinkedListNode ANSLinkedListNode;
 
 typedef struct ANSLinkedList ANSLinkedList;
@@ -19,9 +20,11 @@ struct ANSLinkedList {
     ANSObject _super;
     
     ANSLinkedListNode *_head;
-    uint64_t _mutationCount;
+    uint64_t _mutationsCount;
     uint64_t count;
 };
+
+ANSLinkedListEnumerator *ANSLinkedListEnumeratorFromList(ANSLinkedList *list);
 
 //return pointer of firt object(any type of object)
 extern
@@ -54,5 +57,17 @@ uint64_t ANSLinkedListGetCount(ANSLinkedList *list);
 
 extern
 void __ANSLinkedListDeallocate(void *object);
+// вынести эти методы наружу
+extern
+void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
+
+extern
+ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list);
+
+extern
+uint64_t ANSLinkedListGetMutationsCount(ANSLinkedList *list);
+
+extern
+void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count);
 
 #endif /* ANSLinkedList_h */
