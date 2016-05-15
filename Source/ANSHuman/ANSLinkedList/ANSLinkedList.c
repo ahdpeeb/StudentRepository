@@ -12,6 +12,7 @@
 #include "ANSLinkedLisetPrivate.h"
 #include "ANSLinkedListNode.h"
 #include "ANSLinkedListEnumerator.h"
+#include "ANSLinkedListEnumeratorPrivate.h"
 
 #pragma mark -
 #pragma mark Private Declaration
@@ -195,3 +196,39 @@ void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count) {
 void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value) {
     list->_mutationsCount += value;
 }
+
+ANSLinkedListNode *ANSLinkedListGetNodeWithContext(ANSLinkedList *list,
+                                                   ANSLinkedListNodeComparisonFunction comparator,
+                                                   ANSLinkedListContext *context) {
+    ANSLinkedListNode *result = NULL;
+    if (list) {
+        ANSLinkedListEnumerator *enumerator = ANSLinkedListEnumeratorCreateWithList(list);
+        
+        while (ANSLinkedListEnumeratorIsValid(enumerator)) {
+            ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
+            context->node = node;
+            
+            if (ANSLinkedListNodeContainsObject(node, *context)) {
+                result = node;
+                break;
+            }
+            
+            context->previousNode = node;
+        }
+        
+        
+        ANSObjectRelease(enumerator);
+    }
+    
+    return result;
+}
+// comparator function
+bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext context) {
+    bool result = false;
+    if (node) {
+       return result = context.object == ANSLinkedListNodeGetObject(node);
+    }
+    
+    return result;
+}
+

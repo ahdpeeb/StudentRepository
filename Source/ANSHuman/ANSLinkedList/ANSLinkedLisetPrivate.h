@@ -11,6 +11,15 @@
 
 #include "ANSLinkedList.h"
 
+typedef struct ANSLinkedListContext ANSLinkedListContext;
+struct ANSLinkedListContext {
+    void *previousNode;
+    void *node;
+    void *object;
+};
+
+typedef bool (*ANSLinkedListNodeComparisonFunction)(ANSLinkedListNode *node, ANSLinkedListContext context);
+
 extern
 void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
 
@@ -25,5 +34,15 @@ void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count);
 
 extern
 void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value);
+
+extern
+ANSLinkedListNode *ANSLinkedListGetNodeWithContext(ANSLinkedList *list,
+                                                   ANSLinkedListNodeComparisonFunction comparator,
+                                                   ANSLinkedListContext *context);
+
+extern
+bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext context);
+
+
 
 #endif /* ANSLinkedLisetPrivate_h */

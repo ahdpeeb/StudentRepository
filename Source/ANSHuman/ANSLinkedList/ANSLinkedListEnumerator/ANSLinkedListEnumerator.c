@@ -8,6 +8,7 @@
 #include <assert.h>
 
 #include "ANSLinkedListEnumerator.h"
+#include "ANSLinkedListEnumeratorPrivate.h"
 #include "ANSLinkedList.h"
 #include "ANSLinkedLisetPrivate.h"
 #include "ANSLinkedListNode.h"
@@ -23,9 +24,6 @@ ANSLinkedList *ANSLinkedListEnumeratorGetList(ANSLinkedListEnumerator *enumerato
 
 static
 void ANSLinkedListEnumeratorSetNode(ANSLinkedListEnumerator *enumerator, ANSLinkedListNode *node);
-
-static
-ANSLinkedListNode *ANSLinkedListEnumeratorGetNode(ANSLinkedListEnumerator *enumerator);
 
 static
 void ANSLinkedListEnumeratorSetMutationsCount(ANSLinkedListEnumerator *enumerator, uint64_t mutationsCount);

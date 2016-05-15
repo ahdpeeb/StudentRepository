@@ -48,6 +48,7 @@
 		939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSLinkedListTest.c; path = ANSLinkedListTest/ANSLinkedListTest.c; sourceTree = "<group>"; };
 		939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListTest.h; path = ANSLinkedListTest/ANSLinkedListTest.h; sourceTree = "<group>"; };
 		939041D51CE8D28200C16B9A /* ANSLinkedLisetPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedLisetPrivate.h; sourceTree = "<group>"; };
+		939041D61CE8E7B300C16B9A /* ANSLinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
 		93A1C6F51CDF674C001101D0 /* ANSString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSString.c; path = Source/ANSHuman/ANSString/ANSString.c; sourceTree = "<group>"; };
 		93A1C6F61CDF674C001101D0 /* ANSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSString.h; path = Source/ANSHuman/ANSString/ANSString.h; sourceTree = "<group>"; };
 		93BAD7041CCE604900B29543 /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 			children = (
 				939041CE1CE4831000C16B9A /* ANSLinkedListEnumerator.h */,
 				939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */,
+				939041D61CE8E7B300C16B9A /* ANSLinkedListEnumeratorPrivate.h */,
 			);
 			name = ANSLinkedListEnumerator;
 			sourceTree = "<group>";
