@@ -33,11 +33,11 @@ void ANSLinkedListTest(void) {
     ANSHuman *human4 = ANSObjectCreateWithType(ANSHuman);
     ANSLinkedListAddObject(linkedList, human4);
     
-    ANSHuman *firstObject = ANSLinkedListGetFirstObject(linkedList);
-    assert(human2 = firstObject);
+ //   ANSHuman *firstObject = ANSLinkedListGetFirstObject(linkedList);
+ //   assert(human2 = firstObject);
     
-    ANSLinkedListRemoveFirstObject(linkedList); // удалил 4ый объект
-    assert(human1 = firstObject);
+ //   ANSLinkedListRemoveFirstObject(linkedList); // удалил 4ый объект
+ //   assert(human1 = firstObject);
     
     printf("count - %d \n", (int)ANSLinkedListGetCount(linkedList));
     
@@ -46,13 +46,13 @@ void ANSLinkedListTest(void) {
         puts("linkedList заполнен");
     }
     
-    ANSLinkedListRemoveAllObjects(linkedList);
-    printf("count - %d \n",(int)ANSLinkedListGetCount(linkedList));
+   // ANSLinkedListRemoveAllObjects(linkedList);
+   // printf("count - %d \n",(int)ANSLinkedListGetCount(linkedList));
     
-    bool value = ANSLinkedListContainsObject(linkedList, human2);
+    bool value = ANSLinkedListContainsObject(linkedList, human4);
     (value) ?  puts("Содержит") : puts("НЕ СОДЕРЖИТ");
 
-     ANSLinkedListRemoveObject(linkedList, human3);
+     ANSLinkedListRemoveObject(linkedList, human);
      printf("count - %d \n",(int)ANSLinkedListGetCount(linkedList));
     
    __unused ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human3);

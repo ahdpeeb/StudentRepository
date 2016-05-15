@@ -126,18 +126,13 @@ void ANSLinkedListRemoveAllObjects(ANSLinkedList *list) {
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
     assert(list);
     
-    ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
-    while (NULL != currentNode) {
-      
-        void *currentObject = ANSLinkedListNodeGetObject(currentNode);
-        if (object == currentObject) {
-            return true;
-        }
-        
-        currentNode = ANSLinkedListNodeGetNextNode(currentNode);
-    }
+    ANSLinkedListContext *context = calloc(1, sizeof(context));
+    context->object = object;
+    ANSLinkedListNode *node = ANSLinkedListGetNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
+    bool value = node;
+    free(context);
     
-    return false;
+    return value;
 }
 
 uint64_t ANSLinkedListGetCount(ANSLinkedList *list) {
@@ -203,12 +198,11 @@ ANSLinkedListNode *ANSLinkedListGetNodeWithContext(ANSLinkedList *list,
     ANSLinkedListNode *result = NULL;
     if (list) {
         ANSLinkedListEnumerator *enumerator = ANSLinkedListEnumeratorCreateWithList(list);
-        
-        while (ANSLinkedListEnumeratorIsValid(enumerator)) {
+        while (ANSLinkedListEnumeratorIsValid(enumerator) && ANSLinkedListEnumeratorGetNextObject(enumerator))  {
             ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
             context->node = node;
             
-            if (ANSLinkedListNodeContainsObject(node, *context)) {
+            if (comparator) {
                 result = node;
                 break;
             }
@@ -223,10 +217,10 @@ ANSLinkedListNode *ANSLinkedListGetNodeWithContext(ANSLinkedList *list,
     return result;
 }
 // comparator function
-bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext context) {
+bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context) {
     bool result = false;
     if (node) {
-       return result = context.object == ANSLinkedListNodeGetObject(node);
+       return result = context->object == ANSLinkedListNodeGetObject(node);
     }
     
     return result;

@@ -18,7 +18,7 @@ struct ANSLinkedListContext {
     void *object;
 };
 
-typedef bool (*ANSLinkedListNodeComparisonFunction)(ANSLinkedListNode *node, ANSLinkedListContext context);
+typedef bool (*ANSLinkedListNodeComparisonFunction)(ANSLinkedListNode *node, ANSLinkedListContext *context);
 
 extern
 void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
@@ -41,7 +41,7 @@ ANSLinkedListNode *ANSLinkedListGetNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListContext *context);
 
 extern
-bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext context);
+bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context);
 
 
 
