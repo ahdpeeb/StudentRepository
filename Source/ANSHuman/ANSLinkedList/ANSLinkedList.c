@@ -156,7 +156,12 @@ uint64_t ANSLinkedListGetMutationsCount(ANSLinkedList *list) {
 void ANSLinkedListSetCount(ANSLinkedList *list, uint64_t value) {
     assert(list);
     
+    if (0 == value) {
+        ANSLinkedListSetHead(list, NULL);
+    }
+    
     list->count = value;
+    ANSLinkedListMutationsCountAddValue(list, +1);
 }
 
 void ANSLinkedListCountAddValue(ANSLinkedList *list, short value) {
@@ -184,4 +189,8 @@ ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list) {
 
 void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count) {
     ANSAssignSetter(list, _mutationsCount, count);
+}
+
+void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value) {
+    list->_mutationsCount += value;
 }

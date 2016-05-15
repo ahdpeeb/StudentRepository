@@ -63,7 +63,7 @@ void ANSLinkedListEnumerationTest(void) {
     ANSLinkedList *linkedList = ANSObjectCreateWithType(ANSLinkedList);
     assert(linkedList);
     
-    for (uint32_t index = 0; index < 2; index ++) {
+    for (uint32_t index = 0; index < 5; index ++) {
         ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
         ANSLinkedListAddObject(linkedList, human);
     }
@@ -78,7 +78,7 @@ void ANSLinkedListEnumerationTest(void) {
     human = ANSLinkedListEnumeratorGetNextObject(enumerator);
     }
     
-    assert(2 == iterationsCount);
+    assert(5 == iterationsCount);
     
     
     ANSObjectRelease(linkedList);

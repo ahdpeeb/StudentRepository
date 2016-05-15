@@ -70,4 +70,7 @@ uint64_t ANSLinkedListGetMutationsCount(ANSLinkedList *list);
 extern
 void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count);
 
+extern
+void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value);
+
 #endif /* ANSLinkedList_h */
