@@ -58,19 +58,5 @@ uint64_t ANSLinkedListGetCount(ANSLinkedList *list);
 extern
 void __ANSLinkedListDeallocate(void *object);
 // вынести эти методы наружу
-extern
-void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
-
-extern
-ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list);
-
-extern
-uint64_t ANSLinkedListGetMutationsCount(ANSLinkedList *list);
-
-extern
-void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count);
-
-extern
-void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value);
 
 #endif /* ANSLinkedList_h */

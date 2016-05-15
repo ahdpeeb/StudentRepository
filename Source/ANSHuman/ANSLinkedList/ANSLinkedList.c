@@ -9,6 +9,7 @@
 #include <assert.h>
 
 #include "ANSLinkedList.h"
+#include "ANSLinkedLisetPrivate.h"
 #include "ANSLinkedListNode.h"
 #include "ANSLinkedListEnumerator.h"
 
@@ -81,6 +82,7 @@ void ANSLinkedListAddObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     ANSLinkedListNode *newNode = ANSLinkedListNodeCreateWithObject(object);
+    
     ANSLinkedListNode *headNode = ANSLinkedListGetHead(list);
     ANSLinkedListNodeSetNextNode(newNode, headNode);
     ANSLinkedListSetHead(list, newNode);
@@ -94,8 +96,7 @@ void ANSLinkedListRemoveObject(ANSLinkedList *list, void *object) {
     ANSLinkedListNode *previousNode = NULL;
     ANSLinkedListNode *currentNode = ANSLinkedListGetHead(list);
     ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(currentNode);
-    while (NULL != currentNode) {
-        
+    while (currentNode) {
         void *currentObject = ANSLinkedListNodeGetObject(currentNode);
         if (object == currentObject) {
             if (previousNode) {

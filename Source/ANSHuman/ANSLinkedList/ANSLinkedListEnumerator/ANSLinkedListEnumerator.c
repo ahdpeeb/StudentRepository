@@ -9,6 +9,7 @@
 
 #include "ANSLinkedListEnumerator.h"
 #include "ANSLinkedList.h"
+#include "ANSLinkedLisetPrivate.h"
 #include "ANSLinkedListNode.h"
 
 #pragma mark -
