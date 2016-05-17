@@ -13,7 +13,7 @@
 int main(int argc, const char * argv[]) {
    // ANSRunArrayTest(1);
    // ANSLinkedListEnumerationTest();
-    ANSLinkedListTest();
+   // ANSLinkedListTest();
     
     return 0;
 }

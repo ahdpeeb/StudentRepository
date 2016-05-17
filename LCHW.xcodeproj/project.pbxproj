@@ -12,6 +12,7 @@
 		939041CB1CE0B07000C16B9A /* ANSArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041C91CE0B07000C16B9A /* ANSArrayTest.c */; };
 		939041CF1CE4831000C16B9A /* ANSLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */; };
 		939041D31CE49A5E00C16B9A /* ANSLinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */; };
+		939041DB1CEB417400C16B9A /* IDPAutoreleasingStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041D91CEB417400C16B9A /* IDPAutoreleasingStack.c */; };
 		93A1C6F71CDF674C001101D0 /* ANSString.c in Sources */ = {isa = PBXBuildFile; fileRef = 93A1C6F51CDF674C001101D0 /* ANSString.c */; };
 		93BAD7161CCE604900B29543 /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7051CCE604900B29543 /* ANSPrintFunctionValue.c */; };
 		93BAD7171CCE604900B29543 /* ANSPrintMamaPapaSolution.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7081CCE604900B29543 /* ANSPrintMamaPapaSolution.c */; };
@@ -49,6 +50,8 @@
 		939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListTest.h; path = ANSLinkedListTest/ANSLinkedListTest.h; sourceTree = "<group>"; };
 		939041D51CE8D28200C16B9A /* ANSLinkedLisetPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedLisetPrivate.h; sourceTree = "<group>"; };
 		939041D61CE8E7B300C16B9A /* ANSLinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
+		939041D91CEB417400C16B9A /* IDPAutoreleasingStack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = IDPAutoreleasingStack.c; path = Source/IDPAutoreleasingStack/IDPAutoreleasingStack.c; sourceTree = "<group>"; };
+		939041DA1CEB417400C16B9A /* IDPAutoreleasingStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDPAutoreleasingStack.h; path = Source/IDPAutoreleasingStack/IDPAutoreleasingStack.h; sourceTree = "<group>"; };
 		93A1C6F51CDF674C001101D0 /* ANSString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSString.c; path = Source/ANSHuman/ANSString/ANSString.c; sourceTree = "<group>"; };
 		93A1C6F61CDF674C001101D0 /* ANSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSString.h; path = Source/ANSHuman/ANSString/ANSString.h; sourceTree = "<group>"; };
 		93BAD7041CCE604900B29543 /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
@@ -157,6 +160,16 @@
 			name = ANSLinkedList;
 			sourceTree = "<group>";
 		};
+		939041DC1CEB417A00C16B9A /* IDPAutoreleasingStack */ = {
+			isa = PBXGroup;
+			children = (
+				939041D91CEB417400C16B9A /* IDPAutoreleasingStack.c */,
+				939041DA1CEB417400C16B9A /* IDPAutoreleasingStack.h */,
+			);
+			name = IDPAutoreleasingStack;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		93A1C6F81CDF6757001101D0 /* ANSString */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +187,7 @@
 				93BAD7071CCE604900B29543 /* ANSPrintMamaPapaSolution */,
 				93BAD70A1CCE604900B29543 /* ANSStructureTest */,
 				93BAD6F31CCE604900B29543 /* ANSHuman */,
+				939041DC1CEB417A00C16B9A /* IDPAutoreleasingStack */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -333,6 +347,7 @@
 			files = (
 				9327DE881CD8D615005AF895 /* ANSArray.c in Sources */,
 				93BAD72A1CD4B99500B29543 /* ANSHumanTest.c in Sources */,
+				939041DB1CEB417400C16B9A /* IDPAutoreleasingStack.c in Sources */,
 				93BAD7291CD4B99500B29543 /* ANSHuman.c in Sources */,
 				93A1C6F71CDF674C001101D0 /* ANSString.c in Sources */,
 				939041CB1CE0B07000C16B9A /* ANSArrayTest.c in Sources */,
