@@ -27,12 +27,12 @@ void ANSLinkedListSetCount(ANSLinkedList *list, uint64_t value);
 #pragma mark -
 #pragma mark Public Implementation 
 
-ANSLinkedListEnumerator *ANSLinkedListEnumeratorFromList(ANSLinkedList *list) {
+ANSLinkedListEnumerator *ANSLinkedListCreateEnumeratorFromList(ANSLinkedList *list) {
     return ANSLinkedListEnumeratorCreateWithList(list);
 }
 
 void __ANSLinkedListDeallocate(void *object) {
-    ANSLinkedListSetHead(object, NULL);
+    ANSLinkedListSetCount(object, 0);
     
     __ANSObjectDeallocate(object);
 }
@@ -55,13 +55,11 @@ void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     void *previousObject = NULL;
-    ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, *context);
+    ANSLinkedListContext context = ANSLinkedListContextCreateWithObject(object);
+    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
     if (node) {
-        previousObject = ANSLinkedListNodeGetObject(context->previousNode);
+        previousObject = ANSLinkedListNodeGetObject(context.previousNode);
     }
-    
-    free(context);
     
     return previousObject;
 }
@@ -88,16 +86,14 @@ void ANSLinkedListAddObject(ANSLinkedList *list, void *object) {
 void ANSLinkedListRemoveObject(ANSLinkedList *list, void *object) {
     assert(list);
     
-    ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, *context);
+    ANSLinkedListContext context = ANSLinkedListContextCreateWithObject(object);
+    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
     if (node) {
-        ANSLinkedListNode *previousNode = context->previousNode;
+        ANSLinkedListNode *previousNode = context.previousNode;
         ANSLinkedListNode *nexNode =  ANSLinkedListNodeGetNextNode(node);
         ANSLinkedListNodeSetNextNode(previousNode, nexNode);
         ANSLinkedListCountAddValue(list, -1);
     }
-    
-    free(context);
 }
 
 void ANSLinkedListRemoveAllObjects(ANSLinkedList *list) {
@@ -109,10 +105,9 @@ void ANSLinkedListRemoveAllObjects(ANSLinkedList *list) {
 bool ANSLinkedListContainsObject(ANSLinkedList *list, void *object) {
     assert(list);
     
-    ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, *context);
+    ANSLinkedListContext context = ANSLinkedListContextCreateWithObject(object);
+    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
     bool value = node;
-    free(context);
     
     return value;
 }
@@ -152,12 +147,7 @@ void ANSLinkedListCountAddValue(ANSLinkedList *list, short value) {
 void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head) {
     assert(list);
     
-    if (ANSLinkedListGetHead(list) != head) {
-        ANSObjectRelease(list->_head);
-        list->_head = head;
-        
-        ANSObjectRetain(head);
-    }
+    ANSRetainSetter(list, _head, head);
 }
 
 ANSLinkedListNode *ANSLinkedListGetHead(ANSLinkedList *list) {
@@ -171,7 +161,8 @@ void ANSLinkedListSetMutationsCount(ANSLinkedList *list, uint64_t count) {
 }
 
 void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value) {
-    list->_mutationsCount += value;
+    uint64_t count = ANSLinkedListGetMutationsCount(list);
+    ANSLinkedListSetMutationsCount(list, count += value);
 }
 
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
@@ -184,7 +175,7 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
             ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
             context.node = node;
             
-            if (ANSLinkedListNodeContainsObject(node, &context)) {
+            if (comparator(node, &context)) {
                 result = node;
                 break;
             }
@@ -210,9 +201,10 @@ bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListConte
     return result;
 }
 
-ANSLinkedListContext* ANSLinkedListContextCreateWithObject(void *object) {
-    ANSLinkedListContext *context = calloc(1, sizeof(context));
-    context->object = object;
+ANSLinkedListContext ANSLinkedListContextCreateWithObject(void *object) {
+    ANSLinkedListContext context;
+    memset(&context, 0, sizeof(context));
+    context.object = object;
 
     return context;
 }

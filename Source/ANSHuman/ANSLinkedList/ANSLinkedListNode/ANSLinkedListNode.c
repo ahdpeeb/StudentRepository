@@ -27,17 +27,15 @@ ANSLinkedListNode *ANSLinkedListNodeCreateWithObject(void *object) {
 }
 
 ANSLinkedListNode *ANSLinkedListNodeGetNextNode(ANSLinkedListNode *node) {
-    return node ? node->_nextNode : NULL;
+    assert(node);
+    
+    return node->_nextNode;
 }
 
 void ANSLinkedListNodeSetNextNode(ANSLinkedListNode *node, ANSLinkedListNode *nextNode) {
     assert(node);
     
-    if (node->_nextNode != node) {
-        ANSObjectRetain(nextNode);
-        ANSObjectRelease(node->_nextNode);
-        node->_nextNode = nextNode;
-        }
+    ANSRetainSetter(node, _nextNode, nextNode);
 }
 
 void *ANSLinkedListNodeGetObject(ANSLinkedListNode *node) {
@@ -49,10 +47,5 @@ void *ANSLinkedListNodeGetObject(ANSLinkedListNode *node) {
 void ANSLinkedListNodeSetObject(ANSLinkedListNode *node, void *object) {
     assert(node); //object can be NULL
     
-    if (node->_object != object) {
-        ANSObjectRetain(object);
-        ANSObjectRelease(node->_object);
-        node->_object = object;
-    }
-
+    ANSRetainSetter(node, _object, object);
 }

@@ -24,7 +24,7 @@ struct ANSLinkedList {
     uint64_t count;
 };
 
-ANSLinkedListEnumerator *ANSLinkedListEnumeratorFromList(ANSLinkedList *list);
+ANSLinkedListEnumerator *ANSLinkedListCreateEnumeratorFromList(ANSLinkedList *list);
 
 //return pointer of firt object(any type of object)
 extern
@@ -57,6 +57,5 @@ uint64_t ANSLinkedListGetCount(ANSLinkedList *list);
 
 extern
 void __ANSLinkedListDeallocate(void *object);
-// вынести эти методы наружу
 
 #endif /* ANSLinkedList_h */

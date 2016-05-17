@@ -69,7 +69,7 @@ void ANSLinkedListEnumerationTest(void) {
         ANSLinkedListAddObject(linkedList, human);
     }
     
-    ANSLinkedListEnumerator *enumerator = ANSLinkedListEnumeratorFromList(linkedList);
+    ANSLinkedListEnumerator *enumerator = ANSLinkedListCreateEnumeratorFromList(linkedList);
     assert(enumerator);
     
     uint32_t iterationsCount = 0;

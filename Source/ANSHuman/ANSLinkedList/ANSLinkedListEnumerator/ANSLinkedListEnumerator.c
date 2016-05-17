@@ -32,10 +32,62 @@ static
 uint64_t ANSLinkedListEnumeratorGetMutationsCount(ANSLinkedListEnumerator *enumerator);
 
 static
-void ANSLinkedListEnumeratorSetValidity(ANSLinkedListEnumerator *enumerator, bool isValid);
+void ANSLinkedListEnumeratorSetValid(ANSLinkedListEnumerator *enumerator, bool isValid);
 
 static
-bool ANSLinkedListEnumeratorMutationsValidation(ANSLinkedListEnumerator *enumerator);
+bool ANSLinkedListEnumeratorMutationsValidate(ANSLinkedListEnumerator *enumerator);
+
+#pragma mark -
+#pragma mark Public implementation 
+ 
+void __ANSLinkedListEnumeratorDeallocate(void* object) {
+    ANSLinkedListEnumeratorSetNode(object, NULL);
+    ANSLinkedListEnumeratorSetList(object, NULL);
+    
+    __ANSObjectDeallocate(object);
+}
+
+ANSLinkedListEnumerator *ANSLinkedListEnumeratorCreateWithList(ANSLinkedList *list) {
+    assert(list);
+    
+    ANSLinkedListEnumerator * enumerator = ANSObjectCreateWithType(ANSLinkedListEnumerator);
+    ANSLinkedListEnumeratorSetList(enumerator, list);
+    ANSLinkedListEnumeratorSetMutationsCount(enumerator, ANSLinkedListGetMutationsCount(list));
+    ANSLinkedListEnumeratorSetValid(enumerator, true);
+    
+    return enumerator;
+}
+
+void *ANSLinkedListEnumeratorGetNextObject(ANSLinkedListEnumerator *enumerator) {
+    assert(enumerator);
+    
+    if (ANSLinkedListEnumeratorMutationsValidate(enumerator)) {
+        ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
+        ANSLinkedList *list = ANSLinkedListEnumeratorGetList(enumerator);
+        if (!node) {
+            node = ANSLinkedListGetHead(list);
+        } else {
+            node = ANSLinkedListNodeGetNextNode(node);
+        }
+        
+        ANSLinkedListEnumeratorSetNode(enumerator, node);
+        if(!node) {
+            ANSLinkedListEnumeratorSetValid(enumerator, false);
+            
+            return NULL;
+        }
+        
+        return ANSLinkedListNodeGetObject(node);
+    }
+        
+    return NULL;
+}
+
+bool ANSLinkedListEnumeratorIsValid(ANSLinkedListEnumerator *enumerator) {
+    assert(enumerator);
+    
+    return enumerator->_isValid;
+}
 
 #pragma mark -
 #pragma mark Privat implementation
@@ -70,11 +122,11 @@ uint64_t ANSLinkedListEnumeratorGetMutationsCount(ANSLinkedListEnumerator *enume
     return enumerator->_mutationsCount;
 }
 
-void ANSLinkedListEnumeratorSetValidity(ANSLinkedListEnumerator *enumerator, bool isValid) {
+void ANSLinkedListEnumeratorSetValid(ANSLinkedListEnumerator *enumerator, bool isValid) {
     ANSAssignSetter(enumerator, _isValid, isValid);
 }
 
-bool ANSLinkedListEnumeratorMutationsValidation(ANSLinkedListEnumerator *enumerator) {
+bool ANSLinkedListEnumeratorMutationsValidate(ANSLinkedListEnumerator *enumerator) {
     if (ANSLinkedListEnumeratorIsValid(enumerator)) {
         ANSLinkedList *list = ANSLinkedListEnumeratorGetList(enumerator);
         assert(ANSLinkedListGetMutationsCount(list) == ANSLinkedListEnumeratorGetMutationsCount(enumerator));
@@ -83,55 +135,4 @@ bool ANSLinkedListEnumeratorMutationsValidation(ANSLinkedListEnumerator *enumera
     }
     
     return false;
-}
-
-#pragma mark -
-#pragma mark Public implementation 
- 
-void __ANSLinkedListEnumeratorDeallocate(void* object) {
-    ANSLinkedListEnumeratorSetNode(object, NULL);
-    ANSLinkedListEnumeratorSetList(object, NULL);
-    
-    __ANSObjectDeallocate(object);
-}
-
-ANSLinkedListEnumerator *ANSLinkedListEnumeratorCreateWithList(ANSLinkedList *list) {
-    assert(list);
-    
-    ANSLinkedListEnumerator * enumerator = ANSObjectCreateWithType(ANSLinkedListEnumerator);
-    ANSLinkedListEnumeratorSetList(enumerator, list);
-    ANSLinkedListEnumeratorSetMutationsCount(enumerator, ANSLinkedListGetMutationsCount(list));
-    ANSLinkedListEnumeratorSetValidity(enumerator, true);
-    
-    return enumerator;
-}
-
-void *ANSLinkedListEnumeratorGetNextObject(ANSLinkedListEnumerator *enumerator) {
-    assert(enumerator);
-    
-    if (ANSLinkedListEnumeratorMutationsValidation(enumerator)) {
-        ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
-        ANSLinkedList *list = ANSLinkedListEnumeratorGetList(enumerator);
-        if (!node) {
-            node = ANSLinkedListGetHead(list);
-        } else {
-            node = ANSLinkedListNodeGetNextNode(node);
-        }
-        
-        ANSLinkedListEnumeratorSetNode(enumerator, node);
-        if(!node) {
-            ANSLinkedListEnumeratorSetValidity(enumerator, false);
-            return NULL;
-        }
-        
-        return ANSLinkedListNodeGetObject(node);
-    }
-        
-    return NULL;
-}
-
-bool ANSLinkedListEnumeratorIsValid(ANSLinkedListEnumerator *enumerator) {
-    assert(enumerator);
-    
-    return enumerator->_isValid;
 }

@@ -147,6 +147,16 @@
 			name = ANSLinkedListTest;
 			sourceTree = "<group>";
 		};
+		939041D81CE9FB5D00C16B9A /* ANSLinkedList */ = {
+			isa = PBXGroup;
+			children = (
+				939041D51CE8D28200C16B9A /* ANSLinkedLisetPrivate.h */,
+				93BAD7251CD4B99500B29543 /* ANSLinkedList.h */,
+				93BAD7241CD4B99500B29543 /* ANSLinkedList.c */,
+			);
+			name = ANSLinkedList;
+			sourceTree = "<group>";
+		};
 		93A1C6F81CDF6757001101D0 /* ANSString */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,9 +249,7 @@
 		93BAD7231CD4B99500B29543 /* ANSLinkedList */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7251CD4B99500B29543 /* ANSLinkedList.h */,
-				93BAD7241CD4B99500B29543 /* ANSLinkedList.c */,
-				939041D51CE8D28200C16B9A /* ANSLinkedLisetPrivate.h */,
+				939041D81CE9FB5D00C16B9A /* ANSLinkedList */,
 				93BAD72D1CD4C75500B29543 /* ANSLinkedListNode */,
 				939041CC1CE482C600C16B9A /* ANSLinkedListEnumerator */,
 				939041D01CE49A2A00C16B9A /* ANSLinkedListTest */,
