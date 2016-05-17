@@ -10,9 +10,9 @@
 #define ANSLinkedList_h
 
 #include <stdbool.h>
-
 #include "ANSObject.h"
 
+typedef struct ANSLinkedListEnumerator ANSLinkedListEnumerator;
 typedef struct ANSLinkedListNode ANSLinkedListNode;
 
 typedef struct ANSLinkedList ANSLinkedList;
@@ -20,22 +20,24 @@ struct ANSLinkedList {
     ANSObject _super;
     
     ANSLinkedListNode *_head;
-    uint64_t _mutationCount;
+    uint64_t _mutationsCount;
     uint64_t count;
 };
+
+ANSLinkedListEnumerator *ANSLinkedListCreateEnumeratorFromList(ANSLinkedList *list);
 
 //return pointer of firt object(any type of object)
 extern
 void *ANSLinkedListGetFirstObject(ANSLinkedList *list);
 
-extern
+extern 
 void ANSLinkedListRemoveFirstObject(ANSLinkedList *list);
 
 //return pointer of previous object(any type of object)
 extern
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object);
 
-extern
+extern 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list);
 
 extern

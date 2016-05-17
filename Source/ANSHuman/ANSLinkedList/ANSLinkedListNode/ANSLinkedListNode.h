@@ -27,7 +27,7 @@ extern
 ANSLinkedListNode *ANSLinkedListNodeGetNextNode(ANSLinkedListNode *node);
 
 extern
-void ANSLinkedListNodeSetNextNode(ANSLinkedListNode *node, ANSLinkedListNode *NexNode);
+void ANSLinkedListNodeSetNextNode(ANSLinkedListNode *node, ANSLinkedListNode *nextNode);
 
 extern
 void *ANSLinkedListNodeGetObject(ANSLinkedListNode *node);

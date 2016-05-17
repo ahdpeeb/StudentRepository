@@ -13,8 +13,6 @@
 
 #include "ANSObject.h"
 
-static const uint64_t kANSNotFound = UINT64_MAX;
-
 typedef struct {
     ANSObject _super;
     void **_data;

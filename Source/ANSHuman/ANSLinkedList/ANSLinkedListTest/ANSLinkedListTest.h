@@ -9,6 +9,8 @@
 #ifndef ANSLinkedListTest_h
 #define ANSLinkedListTest_h
 
-#include <stdio.h>
+void ANSLinkedListTest(void);
+
+void ANSLinkedListEnumerationTest(void);
 
 #endif /* ANSLinkedListTest_h */

@@ -37,7 +37,7 @@ extern
 void ANSObjectRelease(void *object);
 
 
-#define ANSAssingSetter(object, ivar, newIvar) \
+#define ANSAssignSetter(object, ivar, newIvar) \
     assert(object); \
     object->ivar = newIvar;
 
