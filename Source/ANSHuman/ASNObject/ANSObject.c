@@ -29,7 +29,7 @@ void *__ANSObjectCreate(size_t objectSize, ANSObjectDeallocator dealocator) {
 }
 
 void __ANSObjectDeallocate(void *object) {
-    if (NULL != object) {
+    if (object) {
         free(object);
     }
 }

@@ -17,15 +17,15 @@ typedef struct ANSAutoreleasingStack ANSAutoreleasingStack;
 struct ANSAutoreleasingStack {
     ANSObject _super;
     
-    void **_data; 
     void *_head;
-    
+    size_t _size;
+    void **_data;
 };
 
 typedef enum ANSAutoreleasingStackType ANSAutoreleasingStackType;
 enum ANSAutoreleasingStackType {
-    ANSAutoreleasingStackNull,
-    ANSAutoreleasingStackObject,
+    ANSAutoreleasingStackTypeNull,
+    ANSAutoreleasingStackTypeObject,
 };
 
 extern
@@ -38,12 +38,12 @@ extern
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack);
 
 extern
-void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack);
+void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object);
 
 extern
-void ANSAutoreleasingStackPullObject(ANSAutoreleasingStack *stack, void *object);
+ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stact);
 
 extern
-void ANSAutoreleasingStackPullAllObjects(ANSAutoreleasingStack *stack, void *object);
+void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack);
 
 #endif /* IDPAutoreleasingStack_h */

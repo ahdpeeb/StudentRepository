@@ -8,18 +8,3 @@
 
 #include "IDPAutoreleasingStackTest.h"
 
-//#pragma mark -
-//#pragma mark Public Implementation
-//
-//extern
-//void ANSAutoreleasingStackRunTest(void) {
-//    
-//}
-//
-//#pragma mark -
-//#pragma mark Private Implementation
-//
-//extern
-//void ANSAutoreleasingStackRunTest(void) {
-//    
-//}

@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
    // ANSLinkedListEnumerationTest();
    // ANSLinkedListTest();
     
-    char *string1 = "Hello"; 
+    char *string1 = "Helloooooo";
     char *string2 = "Mama";
     char *string3 = "Papa";
     char *array[3] = {string1, string2, string3};
@@ -29,8 +29,9 @@ int main(int argc, const char * argv[]) {
     printf("адрес указателя array -  %p \n",  &array);
     printf("значение *pointToArray - %p \n" , pointToArray);
     
-    char object = **pointToArray+3;
-    printf("object = %c \n", object);
+    char **object = &array[0];
+    
+    printf("object = %s \n", *object);
     
     return 0;
 }

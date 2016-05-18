@@ -9,6 +9,4 @@
 #ifndef IDPAutoreleasingStack_h
 #define IDPAutoreleasingStack_h
 
-
-
 #endif /* IDPAutoreleasingStack_h */

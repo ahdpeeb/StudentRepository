@@ -10,11 +10,11 @@
 #include "ANSLinkedListEnumerator.h"
 #include "ANSLinkedListEnumeratorPrivate.h"
 #include "ANSLinkedList.h"
-#include "ANSLinkedLisetPrivate.h"
+#include "ANSLinkedListPrivate.h"
 #include "ANSLinkedListNode.h"
 
 #pragma mark -
-#pragma mark Privat declaration
+#pragma mark Private declaration
 
 static
 void ANSLinkedListEnumeratorSetList(ANSLinkedListEnumerator *enumerator, ANSLinkedList *list);
