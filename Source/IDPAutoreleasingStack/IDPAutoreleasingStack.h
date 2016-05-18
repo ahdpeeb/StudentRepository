@@ -17,8 +17,8 @@ typedef struct ANSAutoreleasingStack ANSAutoreleasingStack;
 struct ANSAutoreleasingStack {
     ANSObject _super;
     
-    void *_head;
     size_t _size;
+    void *_head;
     void **_data;
 };
 
