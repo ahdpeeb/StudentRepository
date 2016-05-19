@@ -10,7 +10,7 @@
 #include <string.h>
 
 #include "ANSLinkedList.h"
-#include "ANSLinkedLisetPrivate.h"
+#include "ANSLinkedListPrivate.h"
 #include "ANSLinkedListEnumerator.h"
 #include "ANSLinkedListEnumeratorPrivate.h"
 #include "ANSLinkedListNode.h"
