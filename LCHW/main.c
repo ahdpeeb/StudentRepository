@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
     printf("адрес указателя array -  %p \n",  &array);
     printf("значение *pointToArray - %p \n" , pointToArray);
     
-    char **object = &array[0];
+    char **object = &array[1];
     
     printf("object = %s \n", *object);
     

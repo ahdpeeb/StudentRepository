@@ -92,12 +92,24 @@ void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack) {
 #pragma mark Accessors declaration
 
 void ANSAutoreleasingStackSetSize(ANSAutoreleasingStack *stack, size_t size) {
-    ANSAssignSetter(stack, _size, size)
-    if (0 == size) {
-        ANSAutoreleasingStackPopAllObjects(stack);
-    }
+    assert(stack);
     
-    memset(stack->_data, 0, size);
+    if (stack->_size != size) {
+        if (!size) {
+            ANSAutoreleasingStackPopAllObjects(stack);
+        }
+        
+        if (stack->_data) {
+            free(stack->_data);
+            stack->_data = NULL;
+        }
+        
+        if (size) {
+            stack->_data = calloc(1, size);
+        }
+        
+        ANSAssignSetter(stack, _size, size);
+    }
 }
 
 size_t ANSAutoreleasingStackGetSize(ANSAutoreleasingStack *stack) {
