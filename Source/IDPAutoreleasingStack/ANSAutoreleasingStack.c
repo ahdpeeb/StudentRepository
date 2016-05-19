@@ -1,5 +1,5 @@
 //
-//  IDPAutoreleasingStack.c
+//  ANSAutoreleasingStack.c
 //  LCHW
 //
 //  Created by Nikola Andriiev on 17.05.16.
@@ -8,7 +8,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "IDPAutoreleasingStack.h"
+#include "ANSAutoreleasingStack.h"
 
 #pragma mark -
 #pragma mark Accessors declaration
