@@ -67,24 +67,20 @@ void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object)
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
     assert(stack || !ANSAutoreleasingStackIsEmpty(stack));
     
-    ANSAutoreleasingStackType type;
-    void **head = ANSAutoreleasingStackGetHead(stack);
-    void *object = *head;
-    head -= 1;
-    ANSAutoreleasingStackSetHead(stack, head);
-    type = (object) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
-    ANSObjectRelease(object);
+    void *head = ANSAutoreleasingStackGetHead(stack);
+    void **nextHead = &head + 1;
+    ANSAutoreleasingStackSetHead(stack, nextHead);
+    ANSAutoreleasingStackType type = (head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
+    ANSObjectRelease(head);
     
     return type;
 }
 
 void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack) {
     assert(stack);
-    ANSAutoreleasingStackType type;
-    if (!ANSAutoreleasingStackIsEmpty(stack)) {
-        do {
-            type = ANSAutoreleasingStackPopObject(stack);
-        } while (type);
+    
+    while (!ANSAutoreleasingStackIsEmpty(stack)) {
+        ANSAutoreleasingStackPopObject(stack);
     }
 }
 
