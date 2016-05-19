@@ -46,4 +46,7 @@ ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *
 extern
 void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack);
 
+extern
+ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleasingStack *stack);
+
 #endif /* IDPAutoreleasingStack_h */

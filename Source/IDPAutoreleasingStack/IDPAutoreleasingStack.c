@@ -84,6 +84,18 @@ void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack) {
     }
 }
 
+
+ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleasingStack *stack) {
+    assert(stack);
+    
+    ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
+    do {
+        type = ANSAutoreleasingStackPopObject(stack);
+    } while ((type =! ANSAutoreleasingStackTypeNull) || !ANSAutoreleasingStackIsEmpty(stack));
+    
+    return type;
+}
+
 #pragma mark -
 #pragma mark Accessors declaration
 
