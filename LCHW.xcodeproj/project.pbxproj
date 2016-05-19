@@ -202,6 +202,7 @@
 				93BAD7071CCE604900B29543 /* ANSPrintMamaPapaSolution */,
 				93BAD70A1CCE604900B29543 /* ANSStructureTest */,
 				93BAD6F31CCE604900B29543 /* ANSHuman */,
+				93BAD7231CD4B99500B29543 /* ANSLinkedList */,
 				93E22A771CEE002500542CC1 /* ANSAutoreleasePool */,
 			);
 			path = Source;
@@ -214,7 +215,6 @@
 				93A1C6F81CDF6757001101D0 /* ANSString */,
 				9327DE891CD8D622005AF895 /* ANSArray */,
 				93BAD71D1CD4B99500B29543 /* ANSHuman */,
-				93BAD7231CD4B99500B29543 /* ANSLinkedList */,
 			);
 			path = ANSHuman;
 			sourceTree = "<group>";
@@ -283,7 +283,8 @@
 				939041CC1CE482C600C16B9A /* ANSLinkedListEnumerator */,
 				939041D01CE49A2A00C16B9A /* ANSLinkedListTest */,
 			);
-			path = ANSLinkedList;
+			name = ANSLinkedList;
+			path = ANSHuman/ANSLinkedList;
 			sourceTree = "<group>";
 		};
 		93BAD7261CD4B99500B29543 /* ASNObject */ = {
