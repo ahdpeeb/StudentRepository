@@ -9,6 +9,7 @@
 #include <assert.h>
 
 #include "ANSAutoreleasePool.h"
+#include "ANSObject.h"
 
 #pragma mark -
 #pragma mark Privat Declaration
@@ -27,34 +28,51 @@ void ANSAutoreleasePoolCountAddValue(ANSAutoreleasePool *pool, short value);
 static
 ANSLinkedList *ANSAutoreleasePoolGetList(ANSAutoreleasePool *pool);
 
-static
+static  //set Linkedlist to pool and retain in/
 void ANSAutoreleasePoolSetList(ANSAutoreleasePool *pool);
+
+static // create ANSAutoreleasingStack and add to poop->_list.
+ANSAutoreleasingStack *ANSAutoreleasePoolNewStackAddToList(ANSAutoreleasePool *pool);
+
+static //return pointer to HEAD stack
+ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
 
 #pragma mark -
 #pragma mark Publick Implementation
 
 void __ANSAutoreleasePoolDeallocate(ANSAutoreleasePool *pool) {
-    ANSAutoreleasePoolCleanUpPool(pool);
+    ANSAutoreleasePoolCleanUpPool(pool); // полностью очищает пул.
     
-    ANSObjectRelease(pool->_list);
     __ANSObjectDeallocate(pool);
 }
 
 ANSAutoreleasePool *ANSAutoreleasePoolCreatePool(void) {
     ANSAutoreleasePool *pool = ANSObjectCreateWithType(ANSAutoreleasePool);
+    ANSAutoreleasePoolSetList(pool);
     
+    ANSAutoreleasingStack *stack = ANSAutoreleasePoolNewStackAddToList(pool);
+    ANSAutoreleasingStackPushObject(stack, NULL);
+
     return pool;
 }
 
 void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
     assert(pool);
     
-//    if() {
-//        ANSAutoreleasingStack stack
-//    }
+    ANSAutoreleasingStack *stack = (ANSAutoreleasingStack*)ANSAutoreleasePoolGetHeadStack;
+    assert(stack);
+    
+    if (ANSAutoreleasingStackIsFull(stack)) {
+            stack = ANSAutoreleasePoolNewStackAddToList(pool);
+    }
+    
+    ANSAutoreleasingStackPushObject(stack, object);
+    ANSAutoreleasePoolCountAddValue(pool, +1);
 }
 
-void ANSAutoreleasePoolCleanUpPool(ANSAutoreleasePool *pool);
+void ANSAutoreleasePoolCleanUpPool(ANSAutoreleasePool *pool) {
+    //implementation
+}
 
 #pragma mark -
 #pragma mark Privat Implementation
@@ -73,14 +91,31 @@ void ANSAutoreleasePoolCountAddValue(ANSAutoreleasePool *pool, short value) {
     uint64_t count = ANSAutoreleasePoolGetCount(pool);
     ANSAutoreleasePoolSetCount(pool, count += value);
 }
-
+    //установить лист
 void ANSAutoreleasePoolSetList(ANSAutoreleasePool *pool) {
+    assert(pool);
     
     ANSLinkedList *list = ANSObjectCreateWithType(ANSLinkedList);
-    ANSRetainSetter(pool, _list, list);
+    ANSRetainSetter(pool, _list, list)
+    
+    ANSObjectRelease(list);
 }
 
 ANSLinkedList *ANSAutoreleasePoolGetList(ANSAutoreleasePool *pool) {
     return pool->_list;
 }
 
+
+ANSAutoreleasingStack *ANSAutoreleasePoolNewStackAddToList(ANSAutoreleasePool *pool) {
+    assert(pool);
+    
+    ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
+    ANSAutoreleasingStack *stack = ANSAutoreleasingStackCreateWithSize(kANSSizeOfStack);
+    ANSLinkedListAddObject(list, stack);
+    
+    return stack;
+}
+
+ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) {
+   return ANSLinkedListGetFirstObject(ANSAutoreleasePoolGetList(pool));
+}

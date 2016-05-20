@@ -10,12 +10,11 @@
 #define ANSAutoreleasePool_h
 
 #include "ANSAutoreleasingStack.h"
-#include "ANSObject.h"
 #include "ANSLinkedList.h"
 
 typedef struct ANSAutoreleasePool ANSAutoreleasePool;
 struct ANSAutoreleasePool {
-    ANSObject *_super;
+    ANSObject _super;
     
     ANSLinkedList *_list;
     uint64_t _count;

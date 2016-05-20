@@ -33,7 +33,7 @@ void __ANSAutoreleasingStackDeallocate(void *object) {
 }
 
 ANSAutoreleasingStack *ANSAutoreleasingStackCreateWithSize(size_t size) {
-    assert(!size);
+    assert(size);
     
     ANSAutoreleasingStack *stack = ANSObjectCreateWithType(ANSAutoreleasingStack);
     ANSAutoreleasingStackSetSize(stack, size);
@@ -57,18 +57,18 @@ bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
-    assert(stack);
+    assert(stack || !ANSAutoreleasingStackIsFull(stack));
     
     void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    headObject = object;
+    headObject = object; // may be &object ! 
     ANSAutoreleasingStackSetHead(stack, headObject);
 }
 
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
     assert(stack || !ANSAutoreleasingStackIsEmpty(stack));
     
-    void *head = ANSAutoreleasingStackGetHead(stack);
-    void **nextHead = &head + 1;
+    void **head = ANSAutoreleasingStackGetHead(stack);
+    void **nextHead = head +1;
     ANSAutoreleasingStackSetHead(stack, nextHead);
     ANSAutoreleasingStackType type = (head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
     ANSObjectRelease(head);
@@ -91,7 +91,7 @@ ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleas
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     do {
         type = ANSAutoreleasingStackPopObject(stack);
-    } while ((type =! ANSAutoreleasingStackTypeNull) || !ANSAutoreleasingStackIsEmpty(stack));
+    } while (type != ANSAutoreleasingStackTypeNull || !ANSAutoreleasingStackIsEmpty(stack));
     
     return type;
 }

@@ -9,4 +9,8 @@
 #ifndef ANSAutoreleasingStack_h
 #define ANSAutoreleasingStack_h
 
+#include "ANSAutoreleasePool.h"
+
+void ANSRunPoolTest(void);
+
 #endif /* ANSAutoreleasingStack_h */

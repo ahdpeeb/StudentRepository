@@ -7,4 +7,9 @@
 //
 
 #include "ANSAutoreleasingStackTest.h"
+#include "ANSObject.h"
+#include "ANSHuman.h"
 
+void ANSRunPoolTest(void) {
+    ANSAutoreleasePoolCreatePool();
+}
