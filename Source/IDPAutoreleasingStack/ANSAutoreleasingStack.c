@@ -52,15 +52,15 @@ bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack); // array of pointers
     size_t size = ANSAutoreleasingStackGetSize(stack); // размер 40
     void *head = ANSAutoreleasingStackGetHead(stack); // указатель на голову
-    void *dataTail = data[size / sizeof(data)];;
-    return dataTail == head;
+    void *lastObject = data[size / sizeof(*data) - 1];
+    return &lastObject == &head;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
     assert(stack || !ANSAutoreleasingStackIsFull(stack));
     
-    void *headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    headObject = object; // may be &object !
+    void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
+    *headObject = object;
     ANSAutoreleasingStackSetHead(stack, headObject);
 }
 

@@ -12,9 +12,10 @@
 
 void ANSRunPoolTest(uint64_t value) {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolCreatePool(); // successfully
-    ANSAutoreleasingStack *headStack = ANSAutoreleasePoolGetHeadStack(pool);
+    __unused ANSAutoreleasingStack *headStack = ANSAutoreleasePoolGetHeadStack(pool);
     for (uint64_t index = 0; index < value; index++) {
         ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
+        __unused ANSHuman **link = &human;
         ANSAutoreleasePoolAddObject(pool, human);
     }
 }

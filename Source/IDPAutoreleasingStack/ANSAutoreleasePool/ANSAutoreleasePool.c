@@ -61,9 +61,10 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
     
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
     assert(stack);
+    
     bool status = ANSAutoreleasingStackIsFull(stack);
     if (status) {
-            stack = ANSAutoreleasePoolNewStackAddToList(pool);
+        stack = ANSAutoreleasePoolNewStackAddToList(pool);
     }
     
     ANSAutoreleasingStackPushObject(stack, object);
