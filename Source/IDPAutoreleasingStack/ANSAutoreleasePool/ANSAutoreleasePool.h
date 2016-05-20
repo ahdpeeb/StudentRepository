@@ -34,4 +34,5 @@ void ANSAutoreleasePoolCleanUpPool(ANSAutoreleasePool *pool);
 
 extern  //Testing
 ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
+
 #endif /* ANSAutoreleasePool_h */

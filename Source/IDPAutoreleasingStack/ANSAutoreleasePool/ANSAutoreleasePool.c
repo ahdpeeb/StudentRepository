@@ -92,7 +92,7 @@ void ANSAutoreleasePoolCountAddValue(ANSAutoreleasePool *pool, short value) {
     uint64_t count = ANSAutoreleasePoolGetCount(pool);
     ANSAutoreleasePoolSetCount(pool, count += value);
 }
-    //установить лист
+
 void ANSAutoreleasePoolSetList(ANSAutoreleasePool *pool) {
     assert(pool);
     

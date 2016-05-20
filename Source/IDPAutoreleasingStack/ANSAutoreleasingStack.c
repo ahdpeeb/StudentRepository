@@ -50,7 +50,7 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
 
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack); // array of pointers
-    size_t size = ANSAutoreleasingStackGetSize(stack); // размер 40
+    size_t size = ANSAutoreleasingStackGetSize(stack); // 
     void *head = ANSAutoreleasingStackGetHead(stack); // указатель на голову
     void *lastObject = data[size / sizeof(*data) - 1];
     return &lastObject == &head;
