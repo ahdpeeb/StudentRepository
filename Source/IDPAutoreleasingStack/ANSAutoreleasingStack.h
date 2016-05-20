@@ -18,7 +18,7 @@ struct ANSAutoreleasingStack {
     ANSObject _super;
     
     size_t _size;
-    void **_head;
+    void *_head;
     void **_data;
 };
 
