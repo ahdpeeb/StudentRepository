@@ -10,6 +10,11 @@
 #include "ANSObject.h"
 #include "ANSHuman.h"
 
-void ANSRunPoolTest(void) {
-    ANSAutoreleasePoolCreatePool();
+void ANSRunPoolTest(uint64_t value) {
+    ANSAutoreleasePool *pool = ANSAutoreleasePoolCreatePool(); // successfully
+    ANSAutoreleasingStack *headStack = ANSAutoreleasePoolGetHeadStack(pool);
+    for (uint64_t index = 0; index < value; index++) {
+        ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
+        ANSAutoreleasePoolAddObject(pool, human);
+    }
 }

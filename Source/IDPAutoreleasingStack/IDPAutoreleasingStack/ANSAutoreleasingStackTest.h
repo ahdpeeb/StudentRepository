@@ -11,6 +11,6 @@
 
 #include "ANSAutoreleasePool.h"
 
-void ANSRunPoolTest(void);
+void ANSRunPoolTest(uint64_t value);
 
 #endif /* ANSAutoreleasingStack_h */

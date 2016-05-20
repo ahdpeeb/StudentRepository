@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
    // ANSRunArrayTest(1);
    // ANSLinkedListEnumerationTest();
    // ANSLinkedListTest();
-    ANSRunPoolTest();
+    ANSRunPoolTest(100);
     
     return 0;
 }

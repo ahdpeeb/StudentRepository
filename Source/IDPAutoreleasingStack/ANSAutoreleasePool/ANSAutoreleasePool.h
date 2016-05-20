@@ -32,4 +32,6 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object);
 extern
 void ANSAutoreleasePoolCleanUpPool(ANSAutoreleasePool *pool);
 
+extern  //Testing
+ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
 #endif /* ANSAutoreleasePool_h */

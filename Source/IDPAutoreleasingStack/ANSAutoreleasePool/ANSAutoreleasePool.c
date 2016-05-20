@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Privat Declaration
 
-static const size_t kANSSizeOfStack = 512;
+static const size_t kANSSizeOfStack = 40;
 
 static
 void ANSAutoreleasePoolSetCount(ANSAutoreleasePool *pool, uint64_t count);
@@ -34,8 +34,8 @@ void ANSAutoreleasePoolSetList(ANSAutoreleasePool *pool);
 static // create ANSAutoreleasingStack and add to poop->_list.
 ANSAutoreleasingStack *ANSAutoreleasePoolNewStackAddToList(ANSAutoreleasePool *pool);
 
-static //return pointer to HEAD stack
-ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
+//static //return pointer to HEAD stack
+//ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
 
 #pragma mark -
 #pragma mark Publick Implementation
@@ -59,10 +59,10 @@ ANSAutoreleasePool *ANSAutoreleasePoolCreatePool(void) {
 void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
     assert(pool);
     
-    ANSAutoreleasingStack *stack = (ANSAutoreleasingStack*)ANSAutoreleasePoolGetHeadStack;
+    ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
     assert(stack);
-    
-    if (ANSAutoreleasingStackIsFull(stack)) {
+    bool status = ANSAutoreleasingStackIsFull(stack);
+    if (status) {
             stack = ANSAutoreleasePoolNewStackAddToList(pool);
     }
     
@@ -117,5 +117,5 @@ ANSAutoreleasingStack *ANSAutoreleasePoolNewStackAddToList(ANSAutoreleasePool *p
 }
 
 ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) {
-   return ANSLinkedListGetFirstObject(ANSAutoreleasePoolGetList(pool));
+   return (ANSAutoreleasingStack *)ANSLinkedListGetFirstObject(ANSAutoreleasePoolGetList(pool));
 }

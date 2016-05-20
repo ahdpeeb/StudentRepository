@@ -49,18 +49,18 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
 }
 
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
-    void **data = ANSAutoreleasingStackGetData(stack); //array of pointers
-    void *head = ANSAutoreleasingStackGetHead(stack);
-    size_t size = ANSAutoreleasingStackGetSize(stack);
-    
-    return data[size / sizeof(*data) - 1] <= head; // last element in array <= head
+    void **data = ANSAutoreleasingStackGetData(stack); // array of pointers
+    size_t size = ANSAutoreleasingStackGetSize(stack); // размер 40
+    void *head = ANSAutoreleasingStackGetHead(stack); // указатель на голову
+    void *dataTail = data[size / sizeof(data)];;
+    return dataTail == head;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
     assert(stack || !ANSAutoreleasingStackIsFull(stack));
     
-    void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    headObject = object; // may be &object ! 
+    void *headObject = ANSAutoreleasingStackGetHead(stack) + 1;
+    headObject = object; // may be &object !
     ANSAutoreleasingStackSetHead(stack, headObject);
 }
 
