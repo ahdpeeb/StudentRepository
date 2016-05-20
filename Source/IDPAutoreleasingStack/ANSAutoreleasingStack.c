@@ -51,16 +51,16 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack); // array of pointers
     size_t size = ANSAutoreleasingStackGetSize(stack); // 
-    void *head = ANSAutoreleasingStackGetHead(stack); // указатель на голову
+    void *head = ANSAutoreleasingStackGetHead(stack); // pointer to head.
     void *lastObject = data[size / sizeof(*data) - 1];
-    return &lastObject == &head;
+    return lastObject == head;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
     assert(stack || !ANSAutoreleasingStackIsFull(stack));
     
-    void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    *headObject = object;
+    void *headObject = ANSAutoreleasingStackGetHead(stack) + 1;
+    headObject = object;
     ANSAutoreleasingStackSetHead(stack, headObject);
 }
 
@@ -68,7 +68,7 @@ ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *
     assert(stack || !ANSAutoreleasingStackIsEmpty(stack));
     
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **nextHead = head +1;
+    void **nextHead = head + 1;
     ANSAutoreleasingStackSetHead(stack, nextHead);
     ANSAutoreleasingStackType type = (head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
     ANSObjectRelease(head);
