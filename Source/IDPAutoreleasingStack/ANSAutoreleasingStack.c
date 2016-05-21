@@ -47,20 +47,24 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
     
     return ANSAutoreleasingStackGetHead(stack) == ANSAutoreleasingStackGetData(stack);
 }
-
+    /* 1) объекты пушит нормально, вот получает последний объект не нормально.
+     если я устанавливаю size = 8 - last object начало data
+     а если я ставлю размер 16, lastObject будет через 7 шагов и так далее 
+                            32  lastObject через 17 шагов */
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
-    void **data = ANSAutoreleasingStackGetData(stack); // array of pointers
-    size_t size = ANSAutoreleasingStackGetSize(stack); // 
-    void *head = ANSAutoreleasingStackGetHead(stack); // pointer to head.
-    void *lastObject = data[size / sizeof(*data) - 1];
-    return &lastObject == &head;
+    void **data = ANSAutoreleasingStackGetData(stack);
+    size_t size = ANSAutoreleasingStackGetSize(stack);
+    void *head = ANSAutoreleasingStackGetHead(stack);
+    void **lastObject = &data[size/sizeof(*data) - 1];
+    bool value = lastObject == head;
+    return value;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
     assert(stack || !ANSAutoreleasingStackIsFull(stack));
     
-    void *headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    headObject = object;
+    void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
+    *headObject = object;
     ANSAutoreleasingStackSetHead(stack, headObject);
 }
 
@@ -68,10 +72,10 @@ ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *
     assert(stack || !ANSAutoreleasingStackIsEmpty(stack));
     
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **nextHead = head + 1;
+    void **nextHead = head - 1;
     ANSAutoreleasingStackSetHead(stack, nextHead);
-    ANSAutoreleasingStackType type = (head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
-    ANSObjectRelease(head);
+    ANSAutoreleasingStackType type = (*head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
+    ANSObjectRelease(*head);
     
     return type;
 }

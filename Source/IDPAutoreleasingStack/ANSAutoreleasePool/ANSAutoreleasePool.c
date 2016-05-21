@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Privat Declaration
 
-static const size_t kANSSizeOfStack = 40;
+static const size_t kANSSizeOfStack = 8;
 
 static
 void ANSAutoreleasePoolSetCount(ANSAutoreleasePool *pool, uint64_t count);
