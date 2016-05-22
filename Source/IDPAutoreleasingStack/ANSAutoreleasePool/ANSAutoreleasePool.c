@@ -78,15 +78,18 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
 void ANSAutoreleasePoolDrain() {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
-    assert(pool || list);
+    ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
+    assert(pool && list && stack) ;
     
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
-        do {
-            ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
-            type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
-        } while (type == ANSAutoreleasingStackTypeObject && ANSAutoreleasePoolGetHeadStack(pool));
-
+    do {
+        type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
+    } while (type == ANSAutoreleasingStackTypeObject);
+    
+    if (1 != ANSLinkedListGetCount(list)) {
         ANSLinkedListRemoveFirstObject(list);
+        stack = ANSAutoreleasePoolGetHeadStack(pool);
+        }
 }
 
 #pragma mark -
@@ -119,7 +122,6 @@ void ANSAutoreleasePoolIninList(ANSAutoreleasePool *pool) {
 ANSLinkedList *ANSAutoreleasePoolGetList(ANSAutoreleasePool *pool) {
     return pool->_list;
 }
-
 
 ANSAutoreleasingStack *ANSAutoreleasePoolAddStackToList (ANSAutoreleasePool *pool) {
     assert(pool);
