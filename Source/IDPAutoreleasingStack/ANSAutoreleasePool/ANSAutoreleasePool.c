@@ -16,6 +16,8 @@
 
 static const size_t kANSSizeOfStack = 16;
 
+static ANSAutoreleasePool *__pool = NULL;
+
 static
 void ANSAutoreleasePoolSetCount(ANSAutoreleasePool *pool, uint64_t count);
 
@@ -46,12 +48,10 @@ void __ANSAutoreleasePoolDeallocate(ANSAutoreleasePool *pool) {
     __ANSObjectDeallocate(pool);
 }
 
-static ANSAutoreleasePool *__pool = NULL;
 ANSAutoreleasePool *ANSAutoreleasePoolCreate(void) {
     if (!__pool) {
     __pool = ANSObjectCreateWithType(ANSAutoreleasePool);
     ANSAutoreleasePoolIninList(__pool);
-        
     ANSAutoreleasePoolAddStackToList(__pool);
     }
     
@@ -80,11 +80,11 @@ void ANSAutoreleasePoolDrain() {
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
     assert(pool || list);
     
-    ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull; // тип нулевой
+    ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
         do {
             ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
             type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
-        } while (type = ANSAutoreleasingStackTypeObject, ANSAutoreleasePoolGetHeadStack(pool));
+        } while (type == ANSAutoreleasingStackTypeObject && ANSAutoreleasePoolGetHeadStack(pool));
 
         ANSLinkedListRemoveFirstObject(list);
 }
@@ -135,12 +135,11 @@ ANSAutoreleasingStack *ANSAutoreleasePoolAddStackToList (ANSAutoreleasePool *poo
 ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) {
    return (ANSAutoreleasingStack *)ANSLinkedListGetFirstObject(ANSAutoreleasePoolGetList(pool));
 }
-
+    // test
 ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool) {
 //    ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
     return NULL;
 }
-
 
 ANSAutoreleasePool* ANSAutoreleasePoolGetPool(void) {
     return __pool;
