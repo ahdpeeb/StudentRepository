@@ -1,4 +1,4 @@
-//
+ //
 //  ANSAutoreleasePool.h
 //  LCHW
 //
@@ -24,15 +24,15 @@ extern
 void __ANSAutoreleasePoolDeallocate(ANSAutoreleasePool *pool);
 
 extern
-ANSAutoreleasePool *ANSAutoreleasePoolCreatePool(void);
+ANSAutoreleasePool *ANSAutoreleasePoolCreate(void);
 
 extern
 void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object);
 
 extern
-void ANSAutoreleasePoolCleanUpPool(ANSAutoreleasePool *pool);
+void ANSAutoreleasePoolDrain();
 
-extern  //Testing
-ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
+extern
+ANSAutoreleasePool* ANSAutoreleasePoolGetPool(void);
 
 #endif /* ANSAutoreleasePool_h */

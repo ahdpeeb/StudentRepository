@@ -7,6 +7,7 @@
 //
 #include <assert.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "ANSAutoreleasingStack.h"
 
@@ -54,26 +55,27 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack);
     size_t size = ANSAutoreleasingStackGetSize(stack);
-    void *head = ANSAutoreleasingStackGetHead(stack);
+    void **head = ANSAutoreleasingStackGetHead(stack);
     void **lastObject = &data[size/sizeof(*data) - 1];
     bool value = lastObject == head;
     return value;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
-    assert(stack || !ANSAutoreleasingStackIsFull(stack));
-    
+    assert(stack && !ANSAutoreleasingStackIsFull(stack)); // TESTING
+    if (!ANSAutoreleasingStackIsFull(stack)) {
     void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
     *headObject = object;
     ANSAutoreleasingStackSetHead(stack, headObject);
+    }
 }
-
+// в значении nextHead захватываем два числа, следующий nextHead + еще 2 числа.
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
-    assert(stack || !ANSAutoreleasingStackIsEmpty(stack));
+    assert(stack && !ANSAutoreleasingStackIsEmpty(stack));
     
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **nextHead = head - 1;
-    ANSAutoreleasingStackSetHead(stack, nextHead);
+    void **nextHead = ANSAutoreleasingStackGetHead(stack) - 1;
+    ANSAutoreleasingStackSetHead(stack, *nextHead);
     ANSAutoreleasingStackType type = (*head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
     ANSObjectRelease(*head);
     
@@ -96,7 +98,9 @@ ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleas
     do {
         type = ANSAutoreleasingStackPopObject(stack);
     } while (type != ANSAutoreleasingStackTypeNull || !ANSAutoreleasingStackIsEmpty(stack));
-    
+    if (type == ANSAutoreleasingStackTypeNull) {
+        puts("I fount NULL VALUE");
+    }
     return type;
 }
 

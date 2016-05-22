@@ -36,6 +36,8 @@ void ANSLinkedListTest(void) {
     ANSHuman *firstObject = ANSLinkedListGetFirstObject(linkedList);
     assert(firstObject == human4);
     
+    __unused ANSHuman *nextObject = ANSLinkedListGetNextObject(linkedList, human);
+    __unused ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human3);
 //    ANSLinkedListRemoveFirstObject(linkedList); // удалил 4ый объект
 //    assert(human4);
     
@@ -56,7 +58,7 @@ void ANSLinkedListTest(void) {
 //     ANSLinkedListRemoveObject(linkedList, human);
 //     printf("count - %d \n",(int)ANSLinkedListGetCount(linkedList));
 //    
-//   __unused ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human3);
+
     
 }
 

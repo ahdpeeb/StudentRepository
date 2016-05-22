@@ -37,6 +37,10 @@ void ANSLinkedListRemoveFirstObject(ANSLinkedList *list);
 extern
 void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object);
 
+//return pointer of next object
+extern
+void *ANSLinkedListGetNextObject(ANSLinkedList *list, void *object);
+
 extern 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list);
 

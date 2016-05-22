@@ -58,10 +58,29 @@ void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     ANSLinkedListContext context = ANSLinkedListContextCreateWithObject(object);
     ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
     if (node) {
-        previousObject = ANSLinkedListNodeGetObject(context.previousNode);
+        ANSLinkedListNode *node = context.previousNode;
+        previousObject = ANSLinkedListNodeGetObject(node);
     }
     
     return previousObject;
+}
+
+void *ANSLinkedListGetNextObject(ANSLinkedList *list, void *object) {
+    assert(list);
+    
+    void *nextObject = NULL;
+    ANSLinkedListNode *node = ANSLinkedListGetHead(list);
+       while (ANSLinkedListNodeGetNextNode(node)) {
+           void *curentObject = ANSLinkedListNodeGetObject(node);
+           if (object == curentObject) {
+               nextObject = ANSLinkedListNodeGetObject(ANSLinkedListNodeGetNextNode(node));
+               break;
+           }
+           
+            node = ANSLinkedListNodeGetNextNode(node);
+    };
+    
+    return nextObject;
 }
 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list) {

@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Privat Declaration
 
-static const size_t kANSSizeOfStack = 8;
+static const size_t kANSSizeOfStack = 16;
 
 static
 void ANSAutoreleasePoolSetCount(ANSAutoreleasePool *pool, uint64_t count);
@@ -29,31 +29,35 @@ static
 ANSLinkedList *ANSAutoreleasePoolGetList(ANSAutoreleasePool *pool);
 
 static  //set Linkedlist to pool and retain in/
-void ANSAutoreleasePoolSetList(ANSAutoreleasePool *pool);
+void ANSAutoreleasePoolIninList(ANSAutoreleasePool *pool);
 
 static // create ANSAutoreleasingStack and add to poop->_list.
-ANSAutoreleasingStack *ANSAutoreleasePoolNewStackAddToList(ANSAutoreleasePool *pool);
+ANSAutoreleasingStack *ANSAutoreleasePoolAddStackToList(ANSAutoreleasePool *pool);
 
-//static //return pointer to HEAD stack
-//ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
+static //return pointer to HEAD stack
+ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
 
 #pragma mark -
 #pragma mark Publick Implementation
 
 void __ANSAutoreleasePoolDeallocate(ANSAutoreleasePool *pool) {
-    ANSAutoreleasePoolCleanUpPool(pool); // полностью очищает пул.
+     ANSAutoreleasePoolDrain(pool);
     
     __ANSObjectDeallocate(pool);
 }
 
-ANSAutoreleasePool *ANSAutoreleasePoolCreatePool(void) {
-    ANSAutoreleasePool *pool = ANSObjectCreateWithType(ANSAutoreleasePool);
-    ANSAutoreleasePoolSetList(pool);
+static ANSAutoreleasePool *__pool = NULL;
+ANSAutoreleasePool *ANSAutoreleasePoolCreate(void) {
+    if (!__pool) {
+    __pool = ANSObjectCreateWithType(ANSAutoreleasePool);
+    ANSAutoreleasePoolIninList(__pool);
+        
+    ANSAutoreleasePoolAddStackToList(__pool);
+    }
     
-    ANSAutoreleasingStack *stack = ANSAutoreleasePoolNewStackAddToList(pool);
-    ANSAutoreleasingStackPushObject(stack, NULL);
+    ANSAutoreleasePoolAddObject(__pool, NULL);
 
-    return pool;
+    return __pool;
 }
 
 void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
@@ -62,17 +66,27 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
     assert(stack);
     
-    bool status = ANSAutoreleasingStackIsFull(stack);
-    if (status) {
-        stack = ANSAutoreleasePoolNewStackAddToList(pool);
+    bool value = ANSAutoreleasingStackIsFull(stack);
+    if (value) {
+        stack = ANSAutoreleasePoolAddStackToList(pool);
     }
     
     ANSAutoreleasingStackPushObject(stack, object);
     ANSAutoreleasePoolCountAddValue(pool, +1);
 }
 
-void ANSAutoreleasePoolCleanUpPool(ANSAutoreleasePool *pool) {
-    //implementation
+void ANSAutoreleasePoolDrain() {
+    ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
+    ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
+    assert(pool || list);
+    
+    ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull; // тип нулевой
+        do {
+            ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
+            type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
+        } while (type = ANSAutoreleasingStackTypeObject, ANSAutoreleasePoolGetHeadStack(pool));
+
+        ANSLinkedListRemoveFirstObject(list);
 }
 
 #pragma mark -
@@ -93,7 +107,7 @@ void ANSAutoreleasePoolCountAddValue(ANSAutoreleasePool *pool, short value) {
     ANSAutoreleasePoolSetCount(pool, count += value);
 }
 
-void ANSAutoreleasePoolSetList(ANSAutoreleasePool *pool) {
+void ANSAutoreleasePoolIninList(ANSAutoreleasePool *pool) {
     assert(pool);
     
     ANSLinkedList *list = ANSObjectCreateWithType(ANSLinkedList);
@@ -107,16 +121,27 @@ ANSLinkedList *ANSAutoreleasePoolGetList(ANSAutoreleasePool *pool) {
 }
 
 
-ANSAutoreleasingStack *ANSAutoreleasePoolNewStackAddToList(ANSAutoreleasePool *pool) {
+ANSAutoreleasingStack *ANSAutoreleasePoolAddStackToList (ANSAutoreleasePool *pool) {
     assert(pool);
     
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
     ANSAutoreleasingStack *stack = ANSAutoreleasingStackCreateWithSize(kANSSizeOfStack);
     ANSLinkedListAddObject(list, stack);
     
+    ANSObjectRelease(stack);
     return stack;
 }
 
 ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) {
    return (ANSAutoreleasingStack *)ANSLinkedListGetFirstObject(ANSAutoreleasePoolGetList(pool));
+}
+
+ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool) {
+//    ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
+    return NULL;
+}
+
+
+ANSAutoreleasePool* ANSAutoreleasePoolGetPool(void) {
+    return __pool;
 }
