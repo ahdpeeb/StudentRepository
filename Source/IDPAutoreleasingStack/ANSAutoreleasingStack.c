@@ -60,10 +60,13 @@ bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
     assert(stack && !ANSAutoreleasingStackIsFull(stack));
-    void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    *headObject = object;
-    ANSAutoreleasingStackSetHead(stack, headObject);
-    puts("hi");
+    void **head = ANSAutoreleasingStackGetHead(stack);
+    if(*head) {
+        head = head + 1;
+    }
+  
+    *head = object;
+    ANSAutoreleasingStackSetHead(stack, head);
 }
 
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
