@@ -59,20 +59,19 @@ bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
-    assert(stack && !ANSAutoreleasingStackIsFull(stack)); // TESTING
-    if (!ANSAutoreleasingStackIsFull(stack)) {
+    assert(stack && !ANSAutoreleasingStackIsFull(stack));
     void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
     *headObject = object;
-    ANSAutoreleasingStackSetHead(stack, &headObject);
-    }
+    ANSAutoreleasingStackSetHead(stack, headObject);
+    puts("hi");
 }
 
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
     assert(stack && !ANSAutoreleasingStackIsEmpty(stack));
     
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **nextHead = ANSAutoreleasingStackGetHead(stack) - 1;
-    ANSAutoreleasingStackSetHead(stack, *nextHead);
+    void **previousHead = ANSAutoreleasingStackGetHead(stack) - 1;
+    ANSAutoreleasingStackSetHead(stack, previousHead);
     ANSAutoreleasingStackType type = (*head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
     ANSObjectRelease(*head);
     
@@ -94,7 +93,7 @@ ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleas
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     do {
         type = ANSAutoreleasingStackPopObject(stack);
-    } while (type != ANSAutoreleasingStackTypeNull || !ANSAutoreleasingStackIsEmpty(stack));
+    } while (type != ANSAutoreleasingStackTypeNull && !ANSAutoreleasingStackIsEmpty(stack));
     if (type == ANSAutoreleasingStackTypeNull) {
         puts("I fount NULL VALUE");
     }
