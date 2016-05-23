@@ -13,6 +13,7 @@
 #include "ANSAutoreleasingStack.h"
 
 void ANSRunPoolTest(uint64_t value);
+
 void ANSRunStackTest(uint64_t value);
 
 #endif /* ANSAutoreleasingStack_h */

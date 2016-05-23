@@ -24,7 +24,6 @@ void ANSRunPoolTest(uint64_t value) {
 
 void ANSRunStackTest(uint64_t value) {
     ANSAutoreleasingStack *stack = ANSAutoreleasingStackCreateWithSize(16);
-    ANSAutoreleasingStackPushObject(stack, NULL);
   
     ANSHuman *human0 = ANSObjectCreateWithType(ANSHuman);
     ANSAutoreleasingStackPushObject(stack, human0);
@@ -47,6 +46,7 @@ void ANSRunStackTest(uint64_t value) {
         if (ANSAutoreleasingStackIsFull(stack)) {
             puts("stack is Full");
         }
+    
     ANSAutoreleasingStackPopObjectsUntilNull(stack);
         puts("finish");
 }
