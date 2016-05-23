@@ -23,7 +23,7 @@ void ANSRunPoolTest(uint64_t value) {
 }
 
 void ANSRunStackTest(uint64_t value) {
-    ANSAutoreleasingStack *stack = ANSAutoreleasingStackCreateWithSize(16);
+    ANSAutoreleasingStack *stack = ANSAutoreleasingStackCreateWithSize(40);
   
     ANSHuman *human0 = ANSObjectCreateWithType(ANSHuman);
     ANSAutoreleasingStackPushObject(stack, human0);

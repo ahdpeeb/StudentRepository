@@ -20,7 +20,7 @@ size_t ANSAutoreleasingStackGetSize(ANSAutoreleasingStack *stack);
 
 void ANSAutoreleasingStackSetHead(ANSAutoreleasingStack *stack, void *head);
 
-void *ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack);
+void **ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack);
 
 void **ANSAutoreleasingStackGetData(ANSAutoreleasingStack *stack);
 
@@ -48,10 +48,7 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
     
     return ANSAutoreleasingStackGetHead(stack) == ANSAutoreleasingStackGetData(stack);
 }
-    /* 1) объекты пушит нормально, вот получает последний объект не нормально.
-     если я устанавливаю size = 8 - last object начало data
-     а если я ставлю размер 16, lastObject будет через 7 шагов и так далее 
-                            32  lastObject через 17 шагов */
+
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack);
     size_t size = ANSAutoreleasingStackGetSize(stack);
@@ -66,10 +63,10 @@ void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object)
     if (!ANSAutoreleasingStackIsFull(stack)) {
     void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
     *headObject = object;
-    ANSAutoreleasingStackSetHead(stack, headObject);
+    ANSAutoreleasingStackSetHead(stack, &headObject);
     }
 }
-// в значении nextHead захватываем два числа, следующий nextHead + еще 2 числа.
+
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
     assert(stack && !ANSAutoreleasingStackIsEmpty(stack));
     
@@ -138,7 +135,7 @@ void ANSAutoreleasingStackSetHead(ANSAutoreleasingStack *stack, void *head) {
     ANSAssignSetter(stack, _head, head);
 }
 
-void *ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack) {
+void **ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack) {
     assert(stack);
     
     return stack->_head;
