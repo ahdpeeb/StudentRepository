@@ -84,12 +84,14 @@ void ANSAutoreleasePoolDrain() {
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     do {
         type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
-    } while (type == ANSAutoreleasingStackTypeObject && ANSAutoreleasingStackIsEmpty(stack));
-    
-    if (1 != ANSLinkedListGetCount(list)) {
-        ANSLinkedListRemoveFirstObject(list);
-        stack = ANSAutoreleasePoolGetHeadStack(pool);
+        if (ANSAutoreleasingStackIsEmpty(stack)) {
+            if (1 != ANSLinkedListGetCount(list)) {
+                ANSLinkedListRemoveFirstObject(list);
+                stack = ANSAutoreleasePoolGetHeadStack(pool);
+            }
         }
+        
+    } while (type == ANSAutoreleasingStackTypeObject);
 }
 
 #pragma mark -
