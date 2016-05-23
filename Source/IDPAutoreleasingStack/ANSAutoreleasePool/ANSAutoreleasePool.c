@@ -14,7 +14,7 @@
 #pragma mark -
 #pragma mark Privat Declaration
 
-static const size_t kANSSizeOfStack = 80;
+static const size_t kANSSizeOfStack = 40;
 
 static ANSAutoreleasePool *__pool = NULL;
 
@@ -84,7 +84,7 @@ void ANSAutoreleasePoolDrain() {
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     do {
         type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
-    } while (type == ANSAutoreleasingStackTypeObject);
+    } while (type == ANSAutoreleasingStackTypeObject && ANSAutoreleasingStackIsEmpty(stack));
     
     if (1 != ANSLinkedListGetCount(list)) {
         ANSLinkedListRemoveFirstObject(list);

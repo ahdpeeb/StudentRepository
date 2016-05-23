@@ -53,29 +53,26 @@ bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack);
     size_t size = ANSAutoreleasingStackGetSize(stack);
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **lastObject = &data[size/sizeof(*data) - 1];
+    void **lastObject = &data[size/sizeof(*data)];
     bool value = lastObject == head;
     return value;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
     assert(stack && !ANSAutoreleasingStackIsFull(stack));
-    void **head = ANSAutoreleasingStackGetHead(stack);
-    if(*head) {
-        head = head + 1;
-    }
-  
-    *head = object;
-    ANSAutoreleasingStackSetHead(stack, head);
+    void **nextHead = ANSAutoreleasingStackGetHead(stack) + 1;
+    *nextHead = object;
+    ANSAutoreleasingStackSetHead(stack, nextHead);
 }
 
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
-    assert(stack && !ANSAutoreleasingStackIsEmpty(stack));
+    assert(stack);
     
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **previousHead = ANSAutoreleasingStackGetHead(stack) - 1;
+    void **previousHead = head - 1;
     ANSAutoreleasingStackSetHead(stack, previousHead);
     ANSAutoreleasingStackType type = (*head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
+    printf("%p\n", *head);
     ANSObjectRelease(*head);
     
     return type;
@@ -89,15 +86,14 @@ void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack) {
     }
 }
 
-
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleasingStack *stack) {
     assert(stack);
-    
+
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     do {
         type = ANSAutoreleasingStackPopObject(stack);
     } while (type != ANSAutoreleasingStackTypeNull && !ANSAutoreleasingStackIsEmpty(stack));
-    if (type == ANSAutoreleasingStackTypeNull) {
+    if (type == ANSAutoreleasingStackTypeNull ) {
         puts("I fount NULL VALUE");
     }
     return type;
