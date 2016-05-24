@@ -18,7 +18,7 @@ struct ANSAutoreleasePool {
     
     ANSLinkedList *_list;
     uint64_t _count;
-    bool _validity;
+    bool _valid;
 };
 
 extern
@@ -35,5 +35,11 @@ void ANSAutoreleasePoolDrain();
 
 extern
 ANSAutoreleasePool* ANSAutoreleasePoolGetPool(void);
+
+extern
+bool ANSAutoreleasePoolGetValid(ANSAutoreleasePool *pool);
+
+extern  //STATIC TESTING
+ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack();
 
 #endif /* ANSAutoreleasePool_h */

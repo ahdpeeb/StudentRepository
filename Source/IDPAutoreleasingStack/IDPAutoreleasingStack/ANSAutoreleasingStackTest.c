@@ -24,6 +24,7 @@ void ANSRunPoolTest(uint64_t value) {
     ANSAutoreleasePoolDrain();
     ANSAutoreleasingStack *stackarterdrain = ANSAutoreleasePoolGetTailStack(pool);
     bool isEmpty = ANSAutoreleasingStackIsEmpty(stackarterdrain);
+    bool valid = ANSAutoreleasePoolGetValid(pool);
     printf("laststack - %p\n", stackarterdrain);
     
 }
