@@ -48,13 +48,16 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool, 
 static //  return tail stack
 ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(void);
 
+static //get head stack, if it's empty remove curent stack, return next stack
 ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void);
+
+void ANSAutoreleasePoolDrainAllObject(void);
 
 #pragma mark -
 #pragma mark Publick Implementation
 
 void __ANSAutoreleasePoolDeallocate(ANSAutoreleasePool *pool) {
-     ANSAutoreleasePoolDrain();
+     ANSAutoreleasePoolDrainAllObject();
     
     __ANSObjectDeallocate(pool);
 }
@@ -207,3 +210,12 @@ ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void) {
     return stack;
 }
 
+void ANSAutoreleasePoolDrainAllObject(void) {
+    while (ANSAutoreleasePoolGetValid()) {
+        ANSAutoreleasePoolDrain();
+    }
+}
+
+void ANSAutoreleasePoolWipeOut(void) {
+    __ANSAutoreleasePoolDeallocate(ANSAutoreleasePoolGetPool());
+}
