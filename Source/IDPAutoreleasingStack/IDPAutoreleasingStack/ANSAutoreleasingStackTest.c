@@ -11,22 +11,32 @@
 #include "ANSHuman.h"
 
 void ANSRunPoolTest(uint64_t value) {
+    
     ANSAutoreleasePoolCreate();
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
+    
     for (uint64_t index = 0; index < value; index++) {
         ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
         ANSAutoreleasePoolAddObject(pool, human);
         printf("human %llu - %p \n", index, human);
     }
-    ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetTailStack(pool);
-    printf("laststack - %p\n", stack);
+    
+    ANSAutoreleasePoolCreate();
+    pool = ANSAutoreleasePoolGetPool();
+    
+    for (uint64_t index = 0; index < value; index++) {
+        ANSHuman *human = ANSObjectCreateWithType(ANSHuman);
+        ANSAutoreleasePoolAddObject(pool, human);
+        printf("human %llu - %p \n", index, human);
+    }
+    
+    ANSAutoreleasePoolDrain(); //
+    pool = ANSAutoreleasePoolGetPool();
+    bool validity1 = ANSAutoreleasePoolGetValid();
     
     ANSAutoreleasePoolDrain();
-    ANSAutoreleasingStack *stackarterdrain = ANSAutoreleasePoolGetTailStack(pool);
-    bool isEmpty = ANSAutoreleasingStackIsEmpty(stackarterdrain);
-    bool valid = ANSAutoreleasePoolGetValid(pool);
-    printf("laststack - %p\n", stackarterdrain);
-    
+    bool validity2 = ANSAutoreleasePoolGetValid();
+    pool = ANSAutoreleasePoolGetPool();
 }
 
 void ANSRunStackTest(uint64_t value) {

@@ -45,16 +45,16 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool);
 static  //return next stack after current stack
 ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack);
 
-//static TESTING return tail stack
-//ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool);
+static //  return tail stack
+ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(void);
 
-ANSAutoreleasingStack *ANSAutoreleasePoolRemoveStackIfEmptyGetNextStack();
+ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void);
 
 #pragma mark -
 #pragma mark Publick Implementation
 
 void __ANSAutoreleasePoolDeallocate(ANSAutoreleasePool *pool) {
-     ANSAutoreleasePoolDrain(pool);
+     ANSAutoreleasePoolDrain();
     
     __ANSObjectDeallocate(pool);
 }
@@ -87,7 +87,7 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
     }
     
     if (object) {
-        assert(ANSAutoreleasePoolGetValid(pool));
+        assert(ANSAutoreleasePoolGetValid());
     }
     
     ANSAutoreleasingStackPushObject(stack, object);
@@ -98,12 +98,11 @@ void ANSAutoreleasePoolDrain() {
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     
     do {
-        ANSAutoreleasingStack *stack = ANSAutoreleasePoolRemoveStackIfEmptyGetNextStack();
+        ANSAutoreleasingStack *stack = ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack();
         type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
     } while (type == ANSAutoreleasingStackTypeObject);
     
-    ANSAutoreleasingStack *tailStack = ANSAutoreleasePoolGetTailStack();
-    if (ANSAutoreleasingStackIsEmpty(tailStack)) {
+    if (ANSAutoreleasingStackIsEmpty(ANSAutoreleasePoolGetTailStack())) {
         ANSAutoreleasePoolSetValid(ANSAutoreleasePoolGetPool(), false);
     }
 }
@@ -148,14 +147,15 @@ void ANSAutoreleasePoolSetValid(ANSAutoreleasePool *pool, bool valid) {
     ANSAssignSetter(pool, _valid, valid);
 }
 
-bool ANSAutoreleasePoolGetValid(ANSAutoreleasePool *pool) {
+bool ANSAutoreleasePoolGetValid(void) {
+    ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     assert(pool);
     
     return pool->_valid;
 }
 
 #pragma mark -
-#pragma mark Other
+#pragma mark Auxiliary
 
 ANSAutoreleasingStack *ANSAutoreleasePoolAddStackToList (ANSAutoreleasePool *pool) {
     assert(pool);
@@ -174,12 +174,10 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) 
 }
 
 ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack) {
-    assert(pool && stack);
-    
     return ANSLinkedListGetNextObject(ANSAutoreleasePoolGetList(pool), stack);
 
 }
-ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack() {
+ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(void) {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
     assert(pool && stack);
@@ -193,7 +191,7 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack() {
     return curentStack;
 }
 
-ANSAutoreleasingStack *ANSAutoreleasePoolRemoveStackIfEmptyGetNextStack() {
+ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void) {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
@@ -208,4 +206,4 @@ ANSAutoreleasingStack *ANSAutoreleasePoolRemoveStackIfEmptyGetNextStack() {
     
     return stack;
 }
-// сделать poolDead метод, init, вынести в отдельный метод,
+

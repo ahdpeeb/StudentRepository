@@ -37,9 +37,6 @@ extern
 ANSAutoreleasePool* ANSAutoreleasePoolGetPool(void);
 
 extern
-bool ANSAutoreleasePoolGetValid(ANSAutoreleasePool *pool);
-
-extern  //STATIC TESTING
-ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack();
+bool ANSAutoreleasePoolGetValid(void);
 
 #endif /* ANSAutoreleasePool_h */
