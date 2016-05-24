@@ -18,9 +18,14 @@ void ANSRunPoolTest(uint64_t value) {
         ANSAutoreleasePoolAddObject(pool, human);
         printf("human %llu - %p \n", index, human);
     }
+    ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetTailStack(pool);
+    printf("laststack - %p\n", stack);
     
     ANSAutoreleasePoolDrain();
-    printf("hello");
+    ANSAutoreleasingStack *stackarterdrain = ANSAutoreleasePoolGetTailStack(pool);
+    bool isEmpty = ANSAutoreleasingStackIsEmpty(stackarterdrain);
+    printf("laststack - %p\n", stackarterdrain);
+    
 }
 
 void ANSRunStackTest(uint64_t value) {

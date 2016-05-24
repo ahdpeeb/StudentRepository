@@ -18,6 +18,7 @@ struct ANSAutoreleasePool {
     
     ANSLinkedList *_list;
     uint64_t _count;
+    bool _validity;
 };
 
 extern
