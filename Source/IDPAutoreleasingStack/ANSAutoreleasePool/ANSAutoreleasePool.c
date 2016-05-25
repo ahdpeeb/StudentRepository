@@ -108,7 +108,7 @@ void ANSAutoreleasePoolDrain() {
     do {
         type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
         stack = ANSAutoreleasePoolGetNextStack(ANSAutoreleasePoolGetPool(), stack);
-    } while (type == ANSAutoreleasingStackTypeObject);
+    } while (type == ANSAutoreleasingStackTypeObject && stack);
     
     
     if (ANSAutoreleasingStackIsEmpty(ANSAutoreleasePoolGetTailStack(ANSAutoreleasePoolGetPool()))) {
@@ -208,15 +208,15 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) 
 void ANSAutoreleasePoolResize(void) { // testing
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
-    ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool); //head
-    ANSAutoreleasingStack *tail = ANSAutoreleasePoolGetTailStack(pool); // tail test
-    ANSAutoreleasingStack *notEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack(); // first not empty
+    ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
+    ANSAutoreleasingStack *tail = ANSAutoreleasePoolGetTailStack(pool);
+    ANSAutoreleasingStack *FirstNotEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack();
     
     assert(pool && list && head);
     
-    ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, notEmpty);
+    ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, FirstNotEmpty);
     if (previousStack) {
-        while (head != previousStack) {
+        while (head != previousStack && ANSAutoreleasePoolGetValid(pool)) {
             ANSLinkedListRemoveFirstObject(list);
             head = ANSAutoreleasePoolGetHeadStack(pool);
         }

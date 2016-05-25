@@ -32,11 +32,11 @@ void ANSRunPoolTest(uint64_t value) {
     
     ANSAutoreleasePoolDrain(); 
     pool = ANSAutoreleasePoolGetPool();
-    bool validity1 = ANSAutoreleasePoolGetValid(pool);
+   __unused bool validity1 = ANSAutoreleasePoolGetValid(pool);
 
     
     ANSAutoreleasePoolDrain();
-    bool validity2 = ANSAutoreleasePoolGetValid(pool);
+   __unused bool validity2 = ANSAutoreleasePoolGetValid(pool);
     pool = ANSAutoreleasePoolGetPool();
 }
 
