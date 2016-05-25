@@ -60,7 +60,7 @@ void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     void *previousObject = NULL;
     ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
     ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
-        if (context->previousNode) {
+        if (node) {
         previousObject = ANSLinkedListNodeGetObject(context->previousNode);
     }
     

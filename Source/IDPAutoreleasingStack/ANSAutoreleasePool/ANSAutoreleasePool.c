@@ -49,10 +49,10 @@ static //return previous stack after current stack
 ANSAutoreleasingStack *ANSAutoreleasePoolGetPrevStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack);
 
 static //  return tail stack
-ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(void);
+ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool);
 
-static
-ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void);
+static //resize pool
+void ANSAutoreleasePoolResize(void);
 
 void ANSAutoreleasePoolDrainAllObject(void);
     //get first not empty stack
@@ -103,7 +103,6 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
 }
 
 void ANSAutoreleasePoolDrain() {
-    ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetFirstNotEmptyStack();
     do {
@@ -112,11 +111,11 @@ void ANSAutoreleasePoolDrain() {
     } while (type == ANSAutoreleasingStackTypeObject);
     
     
-    if (ANSAutoreleasingStackIsEmpty(ANSAutoreleasePoolGetTailStack())) {
+    if (ANSAutoreleasingStackIsEmpty(ANSAutoreleasePoolGetTailStack(ANSAutoreleasePoolGetPool()))) {
         ANSAutoreleasePoolSetValid(ANSAutoreleasePoolGetPool(), false);
     }
     
-    ANSAutoreleasingStack *test = ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(); // testing
+    ANSAutoreleasePoolResize(); // testing
 }
 
 #pragma mark -
@@ -188,13 +187,12 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) 
 ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack) {
     return ANSLinkedListGetNextObject(ANSAutoreleasePoolGetList(pool), stack);
 }
-    
+    // почему-то взял хвостовой стек ! 
 ANSAutoreleasingStack *ANSAutoreleasePoolGetPrevStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack) {
     return ANSLinkedListGetObjectBeforeObject(ANSAutoreleasePoolGetList(pool), stack);
 }
     
-ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(void) {
-    ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
+ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) {
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetHeadStack(pool);
     assert(pool && stack);
     
@@ -207,22 +205,22 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(void) {
     return curentStack;
 }
 
-ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void) {
+void ANSAutoreleasePoolResize(void) {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
-    ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool); //стек головы.
-    ANSAutoreleasingStack *notEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack(); // первый не пустой
+    ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool); //head
+    ANSAutoreleasingStack *tail = ANSAutoreleasePoolGetTailStack(pool); // tail test
+    ANSAutoreleasingStack *notEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack(); // first not empty
+    
     assert(pool && list && head);
     
     ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, notEmpty);
     if (previousStack) {
         while (head != previousStack) {
             ANSLinkedListRemoveFirstObject(list);
-            head = ANSAutoreleasePoolGetNextStack(pool, head);
+            head = ANSAutoreleasePoolGetHeadStack(pool);
         }
     }
-    
-    return notEmpty;
 }
 
 void ANSAutoreleasePoolDrainAllObject(void) {
