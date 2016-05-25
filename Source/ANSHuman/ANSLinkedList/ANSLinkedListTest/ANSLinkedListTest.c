@@ -36,8 +36,8 @@ void ANSLinkedListTest(void) {
     ANSHuman *firstObject = ANSLinkedListGetFirstObject(linkedList);
     assert(firstObject == human4);
     
-    __unused ANSHuman *nextObject = ANSLinkedListGetNextObject(linkedList, human1);
-    __unused ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human1);
+    __unused ANSHuman *nextObject = ANSLinkedListGetNextObject(linkedList, human2);
+    __unused ANSHuman *returnTest = ANSLinkedListGetObjectBeforeObject(linkedList, human2);
 //    ANSLinkedListRemoveFirstObject(linkedList); // удалил 4ый объект
 //    assert(human4);
     

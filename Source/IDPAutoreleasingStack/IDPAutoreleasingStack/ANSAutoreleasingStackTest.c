@@ -30,12 +30,13 @@ void ANSRunPoolTest(uint64_t value) {
         printf("human %llu - %p \n", index, human);
     }
     
-    ANSAutoreleasePoolDrain(); //
+    ANSAutoreleasePoolDrain(); 
     pool = ANSAutoreleasePoolGetPool();
-    bool validity1 = ANSAutoreleasePoolGetValid();
+    bool validity1 = ANSAutoreleasePoolGetValid(pool);
+
     
     ANSAutoreleasePoolDrain();
-    bool validity2 = ANSAutoreleasePoolGetValid();
+    bool validity2 = ANSAutoreleasePoolGetValid(pool);
     pool = ANSAutoreleasePoolGetPool();
 }
 

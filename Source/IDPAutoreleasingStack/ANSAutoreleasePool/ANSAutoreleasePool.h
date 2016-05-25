@@ -37,6 +37,6 @@ extern
 ANSAutoreleasePool* ANSAutoreleasePoolGetPool(void);
 
 extern
-bool ANSAutoreleasePoolGetValid(void);
+bool ANSAutoreleasePoolGetValid(ANSAutoreleasePool *pool);
 
 #endif /* ANSAutoreleasePool_h */
