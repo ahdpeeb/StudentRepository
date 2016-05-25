@@ -55,8 +55,9 @@ static
 ANSAutoreleasingStack *ANSAutoreleasePoolIfEmptyRemoveStackGetNextStack(void);
 
 void ANSAutoreleasePoolDrainAllObject(void);
-    //get first non empty stack
+    //get first not empty stack
 ANSAutoreleasingStack *ANSAutoreleasePoolGetFirstNotEmptyStack(void);
+
 #pragma mark -
 #pragma mark Publick Implementation
 
@@ -102,11 +103,12 @@ void ANSAutoreleasePoolAddObject(ANSAutoreleasePool *pool, void *object) {
 }
 
 void ANSAutoreleasePoolDrain() {
+    ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     ANSAutoreleasingStack *stack = ANSAutoreleasePoolGetFirstNotEmptyStack();
     do {
-        stack = ANSAutoreleasePoolGetNextStack(ANSAutoreleasePoolGetPool(), stack);
         type = ANSAutoreleasingStackPopObjectsUntilNull(stack);
+        stack = ANSAutoreleasePoolGetNextStack(ANSAutoreleasePoolGetPool(), stack);
     } while (type == ANSAutoreleasingStackTypeObject);
     
     

@@ -60,7 +60,7 @@ void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     void *previousObject = NULL;
     ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
     ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
-        if (node) {
+        if (context->previousNode) {
         previousObject = ANSLinkedListNodeGetObject(context->previousNode);
     }
     
@@ -73,16 +73,16 @@ void *ANSLinkedListGetNextObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     void *nextObject = NULL;
-    ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
-    if (node) {
-        ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(node);
-        if (nextNode) {
-            nextObject = ANSLinkedListNodeGetObject(nextNode);
+    ANSLinkedListNode *node = ANSLinkedListGetHead(list);
+    while (ANSLinkedListNodeGetNextNode(node)) {
+        void *curentObject = ANSLinkedListNodeGetObject(node);
+        if (object == curentObject) {
+            nextObject = ANSLinkedListNodeGetObject(ANSLinkedListNodeGetNextNode(node));
+            break;
         }
-    }
-    
-    free(context);
+        
+        node = ANSLinkedListNodeGetNextNode(node);
+    };
     
     return nextObject;
 }
