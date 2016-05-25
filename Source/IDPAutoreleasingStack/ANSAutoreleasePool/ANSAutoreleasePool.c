@@ -187,7 +187,7 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetHeadStack(ANSAutoreleasePool *pool) 
 ANSAutoreleasingStack *ANSAutoreleasePoolGetNextStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack) {
     return ANSLinkedListGetNextObject(ANSAutoreleasePoolGetList(pool), stack);
 }
-    // почему-то взял хвостовой стек ! 
+    
 ANSAutoreleasingStack *ANSAutoreleasePoolGetPrevStack(ANSAutoreleasePool *pool, ANSAutoreleasingStack *stack) {
     return ANSLinkedListGetObjectBeforeObject(ANSAutoreleasePoolGetList(pool), stack);
 }
@@ -205,7 +205,7 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) 
     return curentStack;
 }
 
-void ANSAutoreleasePoolResize(void) {
+void ANSAutoreleasePoolResize(void) { // testing
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
     ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool); //head

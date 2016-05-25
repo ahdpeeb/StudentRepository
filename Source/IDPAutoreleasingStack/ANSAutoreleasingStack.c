@@ -53,7 +53,7 @@ bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
     void **data = ANSAutoreleasingStackGetData(stack);
     size_t size = ANSAutoreleasingStackGetSize(stack);
     void **head = ANSAutoreleasingStackGetHead(stack);
-    void **lastObject = &data[size/sizeof(*data)];
+    void **lastObject = &data[size / sizeof(*data)];
     bool value = lastObject == head;
     return value;
 }
