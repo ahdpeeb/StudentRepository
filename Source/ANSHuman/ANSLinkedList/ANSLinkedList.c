@@ -58,9 +58,8 @@ void *ANSLinkedListGetObjectBeforeObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     void *previousObject = NULL;
-    ANSLinkedListContext *context = ANSLinkedListContextCreateWithObject(object);
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListNodeContainsObject, context);
-        if (node) {
+    ANSLinkedListContext *context = ANSLinkedListCreateContextFindNodeWithObject(list,object);
+        if (context->previousNode) {
         previousObject = ANSLinkedListNodeGetObject(context->previousNode);
     }
     
@@ -196,14 +195,14 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
         ANSLinkedListEnumerator *enumerator = ANSLinkedListEnumeratorCreateWithList(list);
         while (ANSLinkedListEnumeratorIsValid(enumerator) && ANSLinkedListEnumeratorGetNextObject(enumerator))  {
             ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
-            context->node = node;
             
             if (ANSLinkedListNodeContainsObject(node, context)) {
                 result = node;
                 break;
             }
-            
-            context->previousNode = node;
+                // перенести в компаратор! 
+            context->previousNode = context->node;
+            context->node = node;
         }
         
         ANSObjectRelease(enumerator);
@@ -223,9 +222,9 @@ bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListConte
     
     return result;
 }
-    // иногда нода возвщается с объектом NULL
+
 ANSLinkedListContext* ANSLinkedListContextCreateWithObject(void *object) {
-    ANSLinkedListContext *context = calloc(1, sizeof(context));
+    ANSLinkedListContext *context = calloc(1, sizeof(*context));
     context->object = object;
 
     return context;

@@ -115,11 +115,11 @@ void ANSAutoreleasePoolDrain() {
         ANSAutoreleasePoolSetValid(ANSAutoreleasePoolGetPool(), false);
     }
     
-    ANSAutoreleasePoolResize(); // testing
+    ANSAutoreleasePoolResize(); 
 }
 
 #pragma mark -
-#pragma mark Privat Implementation
+#pragma mark Private Implementation
 
 #pragma mark -
 #pragma mark Accessors
@@ -207,17 +207,15 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) 
 
 void ANSAutoreleasePoolResize(void) { // testing
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
-    ANSLinkedList *list = ANSAutoreleasePoolGetList(pool);
     ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
-    ANSAutoreleasingStack *tail = ANSAutoreleasePoolGetTailStack(pool);
     ANSAutoreleasingStack *FirstNotEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack();
     
-    assert(pool && list && head);
+    assert(pool && head);
     
     ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, FirstNotEmpty);
     if (previousStack) {
-        while (head != previousStack && ANSAutoreleasePoolGetValid(pool)) {
-            ANSLinkedListRemoveFirstObject(list);
+        while (head != previousStack && ANSAutoreleasePoolGetValid(pool)) { // делать пока голова != пред. от непустого
+            ANSLinkedListRemoveFirstObject(ANSAutoreleasePoolGetList(pool)); // или если хвост пустой.
             head = ANSAutoreleasePoolGetHeadStack(pool);
         }
     }
