@@ -72,18 +72,18 @@ void *ANSLinkedListGetNextObject(ANSLinkedList *list, void *object) {
     assert(list);
     
     void *nextObject = NULL;
-    ANSLinkedListNode *node = ANSLinkedListGetHead(list);
-    while (ANSLinkedListNodeGetNextNode(node)) {
-        void *curentObject = ANSLinkedListNodeGetObject(node);
-        if (object == curentObject) {
-            nextObject = ANSLinkedListNodeGetObject(ANSLinkedListNodeGetNextNode(node));
-            break;
+    ANSLinkedListContext *context = ANSLinkedListCreateContextFindNodeWithObject(list,object);
+    if (context->node) {
+        ANSLinkedListNode *nextNode = ANSLinkedListNodeGetNextNode(context->node);
+        if (nextNode) {
+            nextObject = ANSLinkedListNodeGetObject(nextNode);
         }
-        
-        node = ANSLinkedListNodeGetNextNode(node);
-    };
+    }
+    
+    free(context);
     
     return nextObject;
+
 }
 
 bool ANSLinkedListIsEmpty(ANSLinkedList *list) {
@@ -200,9 +200,6 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                 result = node;
                 break;
             }
-                // перенести в компаратор! 
-            context->previousNode = context->node;
-            context->node = node;
         }
         
         ANSObjectRelease(enumerator);
@@ -214,6 +211,10 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
 bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context) {
     bool result = false;
     if (node) {
+        
+        context->previousNode = context->node;
+        context->node = node;
+        
         void *object = ANSLinkedListNodeGetObject(node);
         if (context->object == object) {
             result = true;

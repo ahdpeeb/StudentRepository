@@ -208,11 +208,10 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) 
 void ANSAutoreleasePoolResize(void) { // testing
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
-    ANSAutoreleasingStack *FirstNotEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack();
-    
+    ANSAutoreleasingStack *firstNotEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack();
     assert(pool && head);
     
-    ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, FirstNotEmpty);
+    ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, firstNotEmpty);
     if (previousStack) {
         while (head != previousStack && ANSAutoreleasePoolGetValid(pool)) { // делать пока голова != пред. от непустого
             ANSLinkedListRemoveFirstObject(ANSAutoreleasePoolGetList(pool)); // или если хвост пустой.
@@ -234,8 +233,9 @@ void ANSAutoreleasePoolWipeOut(void) {
 ANSAutoreleasingStack *ANSAutoreleasePoolGetFirstNotEmptyStack(void) {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
-    assert(pool && head);
-    while (ANSAutoreleasingStackIsEmpty(head)) {
+    assert(pool)
+    ;
+    while (head && ANSAutoreleasingStackIsEmpty(head)) {
         head = ANSAutoreleasePoolGetNextStack(pool, head);
     }
     

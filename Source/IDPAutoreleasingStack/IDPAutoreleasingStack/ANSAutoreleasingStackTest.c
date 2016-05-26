@@ -36,7 +36,6 @@ void ANSRunPoolTest(uint64_t value) {
 
     
     ANSAutoreleasePoolDrain();
-   __unused bool validity2 = ANSAutoreleasePoolGetValid(pool);
     pool = ANSAutoreleasePoolGetPool();
 }
 
