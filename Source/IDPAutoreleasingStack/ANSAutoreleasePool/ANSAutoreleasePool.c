@@ -54,9 +54,14 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool);
 static //resize pool
 void ANSAutoreleasePoolResize(void);
 
+static
 void ANSAutoreleasePoolDrainAllObject(void);
-    //get first not empty stack
+
+static//get first not empty stack
 ANSAutoreleasingStack *ANSAutoreleasePoolGetFirstNotEmptyStack(void);
+
+static
+ANSAutoreleasingStack *ANSAutoreleasePoolRemoveHeadGetNextStack(ANSAutoreleasePool *pool);
 
 #pragma mark -
 #pragma mark Publick Implementation
@@ -208,14 +213,20 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) 
 void ANSAutoreleasePoolResize(void) { // testing
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
-    ANSAutoreleasingStack *firstNotEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack();
+
     assert(pool && head);
+    
+    ANSAutoreleasingStack *firstNotEmpty = ANSAutoreleasePoolGetFirstNotEmptyStack();
+    if (!firstNotEmpty) {
+        while (head != ANSAutoreleasePoolGetTailStack(pool)) {
+            head = ANSAutoreleasePoolRemoveHeadGetNextStack(pool);
+        }
+    }
     
     ANSAutoreleasingStack *previousStack = ANSAutoreleasePoolGetPrevStack(pool, firstNotEmpty);
     if (previousStack) {
-        while (head != previousStack && ANSAutoreleasePoolGetValid(pool)) { // делать пока голова != пред. от непустого
-            ANSLinkedListRemoveFirstObject(ANSAutoreleasePoolGetList(pool)); // или если хвост пустой.
-            head = ANSAutoreleasePoolGetHeadStack(pool);
+        while (head != previousStack) {
+            head = ANSAutoreleasePoolRemoveHeadGetNextStack(pool);
         }
     }
 }
@@ -238,6 +249,13 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetFirstNotEmptyStack(void) {
     while (head && ANSAutoreleasingStackIsEmpty(head)) {
         head = ANSAutoreleasePoolGetNextStack(pool, head);
     }
+    
+    return head;
+}
+
+ANSAutoreleasingStack *ANSAutoreleasePoolRemoveHeadGetNextStack(ANSAutoreleasePool *pool) {
+    ANSLinkedListRemoveFirstObject(ANSAutoreleasePoolGetList(pool));
+    ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
     
     return head;
 }
