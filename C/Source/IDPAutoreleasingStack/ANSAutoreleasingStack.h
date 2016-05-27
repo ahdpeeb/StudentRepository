@@ -18,7 +18,7 @@ struct ANSAutoreleasingStack {
     ANSObject _super;
     
     size_t _size;
-    void *_head;
+    void **_head;
     void **_data;
 };
 
@@ -27,6 +27,7 @@ enum ANSAutoreleasingStackType {
     ANSAutoreleasingStackTypeNull,
     ANSAutoreleasingStackTypeObject,
 };
+void __ANSAutoreleasingStackDeallocate(void *object);
 
 extern
 ANSAutoreleasingStack *ANSAutoreleasingStackCreateWithSize(size_t size);

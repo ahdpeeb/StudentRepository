@@ -1,5 +1,5 @@
 //
-//  IDPAutoreleasingStack.c
+//  ANSAutoreleasingStack.c
 //  LCHW
 //
 //  Created by Nikola Andriiev on 17.05.16.
@@ -7,8 +7,9 @@
 //
 #include <assert.h>
 #include <string.h>
+#include <stdio.h>
 
-#include "IDPAutoreleasingStack.h"
+#include "ANSAutoreleasingStack.h"
 
 #pragma mark -
 #pragma mark Accessors declaration
@@ -19,7 +20,7 @@ size_t ANSAutoreleasingStackGetSize(ANSAutoreleasingStack *stack);
 
 void ANSAutoreleasingStackSetHead(ANSAutoreleasingStack *stack, void *head);
 
-void *ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack);
+void **ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack);
 
 void **ANSAutoreleasingStackGetData(ANSAutoreleasingStack *stack);
 
@@ -33,7 +34,7 @@ void __ANSAutoreleasingStackDeallocate(void *object) {
 }
 
 ANSAutoreleasingStack *ANSAutoreleasingStackCreateWithSize(size_t size) {
-    assert(!size);
+    assert(size);
     
     ANSAutoreleasingStack *stack = ANSObjectCreateWithType(ANSAutoreleasingStack);
     ANSAutoreleasingStackSetSize(stack, size);
@@ -49,29 +50,30 @@ bool ANSAutoreleasingStackIsEmpty(ANSAutoreleasingStack *stack) {
 }
 
 bool ANSAutoreleasingStackIsFull(ANSAutoreleasingStack *stack) {
-    void **data = ANSAutoreleasingStackGetData(stack); //array of pointers
-    void *head = ANSAutoreleasingStackGetHead(stack);
+    void **data = ANSAutoreleasingStackGetData(stack);
     size_t size = ANSAutoreleasingStackGetSize(stack);
-    
-    return data[size / sizeof(*data) - 1] <= head; // last element in array <= head
+    void **head = ANSAutoreleasingStackGetHead(stack);
+    void **lastObject = &data[size / sizeof(*data)];
+    bool value = lastObject == head;
+    return value;
 }
 
 void ANSAutoreleasingStackPushObject(ANSAutoreleasingStack *stack, void *object) {
-    assert(stack);
-    
-    void **headObject = ANSAutoreleasingStackGetHead(stack) + 1;
-    headObject = object;
-    ANSAutoreleasingStackSetHead(stack, headObject);
+    assert(stack && !ANSAutoreleasingStackIsFull(stack));
+    void **nextHead = ANSAutoreleasingStackGetHead(stack) + 1;
+    *nextHead = object;
+    ANSAutoreleasingStackSetHead(stack, nextHead);
 }
 
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObject(ANSAutoreleasingStack *stack) {
-    assert(stack || !ANSAutoreleasingStackIsEmpty(stack));
+    assert(stack);
     
-    void *head = ANSAutoreleasingStackGetHead(stack);
-    void **nextHead = &head + 1;
-    ANSAutoreleasingStackSetHead(stack, nextHead);
-    ANSAutoreleasingStackType type = (head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
-    ANSObjectRelease(head);
+    void **head = ANSAutoreleasingStackGetHead(stack);
+    void **previousHead = head - 1;
+    ANSAutoreleasingStackSetHead(stack, previousHead);
+    ANSAutoreleasingStackType type = (*head) ? ANSAutoreleasingStackTypeObject : ANSAutoreleasingStackTypeNull;
+    printf("%p\n", *head);
+    ANSObjectRelease(*head);
     
     return type;
 }
@@ -84,15 +86,16 @@ void ANSAutoreleasingStackPopAllObjects(ANSAutoreleasingStack *stack) {
     }
 }
 
-
 ANSAutoreleasingStackType ANSAutoreleasingStackPopObjectsUntilNull(ANSAutoreleasingStack *stack) {
     assert(stack);
-    
+
     ANSAutoreleasingStackType type = ANSAutoreleasingStackTypeNull;
     do {
         type = ANSAutoreleasingStackPopObject(stack);
-    } while ((type =! ANSAutoreleasingStackTypeNull) || !ANSAutoreleasingStackIsEmpty(stack));
-    
+    } while (type != ANSAutoreleasingStackTypeNull && !ANSAutoreleasingStackIsEmpty(stack));
+    if (type == ANSAutoreleasingStackTypeNull ) {
+        puts("I fount NULL VALUE");
+    }
     return type;
 }
 
@@ -130,7 +133,7 @@ void ANSAutoreleasingStackSetHead(ANSAutoreleasingStack *stack, void *head) {
     ANSAssignSetter(stack, _head, head);
 }
 
-void *ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack) {
+void **ANSAutoreleasingStackGetHead(ANSAutoreleasingStack *stack) {
     assert(stack);
     
     return stack->_head;
