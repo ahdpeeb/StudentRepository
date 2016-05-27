@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93080C6D1CB6DA2000D52D9C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 93080C6C1CB6DA2000D52D9C /* main.c */; };
-		9327DE881CD8D615005AF895 /* ANSArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 9327DE861CD8D615005AF895 /* ANSArray.c */; };
-		939041CB1CE0B07000C16B9A /* ANSArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041C91CE0B07000C16B9A /* ANSArrayTest.c */; };
-		939041CF1CE4831000C16B9A /* ANSLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */; };
-		939041D31CE49A5E00C16B9A /* ANSLinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */; };
-		939041DB1CEB417400C16B9A /* ANSAutoreleasingStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041D91CEB417400C16B9A /* ANSAutoreleasingStack.c */; };
-		939041E01CEB4E7600C16B9A /* ANSAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 939041DE1CEB4E7600C16B9A /* ANSAutoreleasingStackTest.c */; };
-		93A1C6F71CDF674C001101D0 /* ANSString.c in Sources */ = {isa = PBXBuildFile; fileRef = 93A1C6F51CDF674C001101D0 /* ANSString.c */; };
-		93BAD7161CCE604900B29543 /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7051CCE604900B29543 /* ANSPrintFunctionValue.c */; };
-		93BAD7171CCE604900B29543 /* ANSPrintMamaPapaSolution.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7081CCE604900B29543 /* ANSPrintMamaPapaSolution.c */; };
-		93BAD7181CCE604900B29543 /* ANSStructureTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD70C1CCE604900B29543 /* ANSStructureTest.c */; };
-		93BAD7291CD4B99500B29543 /* ANSHuman.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD71E1CD4B99500B29543 /* ANSHuman.c */; };
-		93BAD72A1CD4B99500B29543 /* ANSHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7211CD4B99500B29543 /* ANSHumanTest.c */; };
-		93BAD72B1CD4B99500B29543 /* ANSLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7241CD4B99500B29543 /* ANSLinkedList.c */; };
-		93BAD72C1CD4B99500B29543 /* ANSObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD7271CD4B99500B29543 /* ANSObject.c */; };
-		93BAD7301CD4C7A200B29543 /* ANSLinkedListNode.c in Sources */ = {isa = PBXBuildFile; fileRef = 93BAD72E1CD4C7A200B29543 /* ANSLinkedListNode.c */; };
-		93E22A761CEE001D00542CC1 /* ANSAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 93E22A741CEE001D00542CC1 /* ANSAutoreleasePool.c */; };
+		931DCEAA1CF87DD600358C7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEA91CF87DD600358C7E /* main.m */; };
+		931DCEEA1CF87E7A00358C7E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEB01CF87E7A00358C7E /* main.c */; };
+		931DCEEB1CF87E7A00358C7E /* ANSArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEB41CF87E7A00358C7E /* ANSArray.c */; };
+		931DCEEC1CF87E7A00358C7E /* ANSArrayTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEB71CF87E7A00358C7E /* ANSArrayTest.c */; };
+		931DCEED1CF87E7A00358C7E /* ANSHuman.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEBA1CF87E7A00358C7E /* ANSHuman.c */; };
+		931DCEEE1CF87E7A00358C7E /* ANSHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEBD1CF87E7A00358C7E /* ANSHumanTest.c */; };
+		931DCEEF1CF87E7A00358C7E /* ANSLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEC01CF87E7A00358C7E /* ANSLinkedList.c */; };
+		931DCEF01CF87E7A00358C7E /* ANSLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEC31CF87E7A00358C7E /* ANSLinkedListEnumerator.c */; };
+		931DCEF11CF87E7A00358C7E /* ANSLinkedListNode.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEC71CF87E7A00358C7E /* ANSLinkedListNode.c */; };
+		931DCEF21CF87E7A00358C7E /* ANSLinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCECB1CF87E7A00358C7E /* ANSLinkedListTest.c */; };
+		931DCEF31CF87E7A00358C7E /* ANSString.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCECE1CF87E7A00358C7E /* ANSString.c */; };
+		931DCEF41CF87E7A00358C7E /* ANSObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCED11CF87E7A00358C7E /* ANSObject.c */; };
+		931DCEF51CF87E7A00358C7E /* ANSPrintFunctionValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCED51CF87E7A00358C7E /* ANSPrintFunctionValue.c */; };
+		931DCEF61CF87E7A00358C7E /* ANSPrintMamaPapaSolution.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCED81CF87E7A00358C7E /* ANSPrintMamaPapaSolution.c */; };
+		931DCEF71CF87E7A00358C7E /* ANSStructureTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEDC1CF87E7A00358C7E /* ANSStructureTest.c */; };
+		931DCEF81CF87E7A00358C7E /* ANSTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEDF1CF87E7A00358C7E /* ANSTest.c */; };
+		931DCEF91CF87E7A00358C7E /* ANSAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE31CF87E7A00358C7E /* ANSAutoreleasePool.c */; };
+		931DCEFA1CF87E7A00358C7E /* ANSAutoreleasingStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE51CF87E7A00358C7E /* ANSAutoreleasingStack.c */; };
+		931DCEFB1CF87E7A00358C7E /* ANSAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE81CF87E7A00358C7E /* ANSAutoreleasingStackTest.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,51 +38,71 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		931DCEA51CF87DD600358C7E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
-		93080C6C1CB6DA2000D52D9C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		9327DE861CD8D615005AF895 /* ANSArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSArray.c; path = Source/ANSHuman/ANSArray/ANSArray.c; sourceTree = "<group>"; };
-		9327DE871CD8D615005AF895 /* ANSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSArray.h; path = Source/ANSHuman/ANSArray/ANSArray.h; sourceTree = "<group>"; };
+		931DCEA71CF87DD600358C7E /* Objective-c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Objective-c"; sourceTree = BUILT_PRODUCTS_DIR; };
+		931DCEA91CF87DD600358C7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		931DCEB01CF87E7A00358C7E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		931DCEB41CF87E7A00358C7E /* ANSArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSArray.c; sourceTree = "<group>"; };
+		931DCEB51CF87E7A00358C7E /* ANSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSArray.h; sourceTree = "<group>"; };
+		931DCEB71CF87E7A00358C7E /* ANSArrayTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSArrayTest.c; sourceTree = "<group>"; };
+		931DCEB81CF87E7A00358C7E /* ANSArrayTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSArrayTest.h; sourceTree = "<group>"; };
+		931DCEBA1CF87E7A00358C7E /* ANSHuman.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSHuman.c; sourceTree = "<group>"; };
+		931DCEBB1CF87E7A00358C7E /* ANSHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSHuman.h; sourceTree = "<group>"; };
+		931DCEBD1CF87E7A00358C7E /* ANSHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSHumanTest.c; sourceTree = "<group>"; };
+		931DCEBE1CF87E7A00358C7E /* ANSHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSHumanTest.h; sourceTree = "<group>"; };
+		931DCEC01CF87E7A00358C7E /* ANSLinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSLinkedList.c; sourceTree = "<group>"; };
+		931DCEC11CF87E7A00358C7E /* ANSLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedList.h; sourceTree = "<group>"; };
+		931DCEC31CF87E7A00358C7E /* ANSLinkedListEnumerator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSLinkedListEnumerator.c; sourceTree = "<group>"; };
+		931DCEC41CF87E7A00358C7E /* ANSLinkedListEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListEnumerator.h; sourceTree = "<group>"; };
+		931DCEC51CF87E7A00358C7E /* ANSLinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
+		931DCEC71CF87E7A00358C7E /* ANSLinkedListNode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSLinkedListNode.c; sourceTree = "<group>"; };
+		931DCEC81CF87E7A00358C7E /* ANSLinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListNode.h; sourceTree = "<group>"; };
+		931DCEC91CF87E7A00358C7E /* ANSLinkedListPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListPrivate.h; sourceTree = "<group>"; };
+		931DCECB1CF87E7A00358C7E /* ANSLinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSLinkedListTest.c; sourceTree = "<group>"; };
+		931DCECC1CF87E7A00358C7E /* ANSLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListTest.h; sourceTree = "<group>"; };
+		931DCECE1CF87E7A00358C7E /* ANSString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSString.c; sourceTree = "<group>"; };
+		931DCECF1CF87E7A00358C7E /* ANSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSString.h; sourceTree = "<group>"; };
+		931DCED11CF87E7A00358C7E /* ANSObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSObject.c; sourceTree = "<group>"; };
+		931DCED21CF87E7A00358C7E /* ANSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSObject.h; sourceTree = "<group>"; };
+		931DCED41CF87E7A00358C7E /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
+		931DCED51CF87E7A00358C7E /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
+		931DCED61CF87E7A00358C7E /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
+		931DCED81CF87E7A00358C7E /* ANSPrintMamaPapaSolution.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintMamaPapaSolution.c; sourceTree = "<group>"; };
+		931DCED91CF87E7A00358C7E /* ANSPrintMamaPapaSolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintMamaPapaSolution.h; sourceTree = "<group>"; };
+		931DCEDC1CF87E7A00358C7E /* ANSStructureTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSStructureTest.c; sourceTree = "<group>"; };
+		931DCEDD1CF87E7A00358C7E /* ANSStructureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSStructureTest.h; sourceTree = "<group>"; };
+		931DCEDF1CF87E7A00358C7E /* ANSTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSTest.c; sourceTree = "<group>"; };
+		931DCEE01CF87E7A00358C7E /* ANSTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSTest.h; sourceTree = "<group>"; };
+		931DCEE31CF87E7A00358C7E /* ANSAutoreleasePool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSAutoreleasePool.c; sourceTree = "<group>"; };
+		931DCEE41CF87E7A00358C7E /* ANSAutoreleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSAutoreleasePool.h; sourceTree = "<group>"; };
+		931DCEE51CF87E7A00358C7E /* ANSAutoreleasingStack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSAutoreleasingStack.c; sourceTree = "<group>"; };
+		931DCEE61CF87E7A00358C7E /* ANSAutoreleasingStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSAutoreleasingStack.h; sourceTree = "<group>"; };
+		931DCEE81CF87E7A00358C7E /* ANSAutoreleasingStackTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSAutoreleasingStackTest.c; sourceTree = "<group>"; };
+		931DCEE91CF87E7A00358C7E /* ANSAutoreleasingStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSAutoreleasingStackTest.h; sourceTree = "<group>"; };
 		934811961CC7A9AF00708B80 /* iOS Study Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS Study Plan.txt"; sourceTree = "<group>"; };
-		939041C91CE0B07000C16B9A /* ANSArrayTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSArrayTest.c; sourceTree = "<group>"; };
-		939041CA1CE0B07000C16B9A /* ANSArrayTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSArrayTest.h; sourceTree = "<group>"; };
-		939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSLinkedListEnumerator.c; path = ANSLinkedListEnumerator/ANSLinkedListEnumerator.c; sourceTree = "<group>"; };
-		939041CE1CE4831000C16B9A /* ANSLinkedListEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListEnumerator.h; path = ANSLinkedListEnumerator/ANSLinkedListEnumerator.h; sourceTree = "<group>"; };
-		939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSLinkedListTest.c; path = ANSLinkedListTest/ANSLinkedListTest.c; sourceTree = "<group>"; };
-		939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListTest.h; path = ANSLinkedListTest/ANSLinkedListTest.h; sourceTree = "<group>"; };
-		939041D61CE8E7B300C16B9A /* ANSLinkedListEnumeratorPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListEnumeratorPrivate.h; sourceTree = "<group>"; };
-		939041D91CEB417400C16B9A /* ANSAutoreleasingStack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSAutoreleasingStack.c; path = Source/IDPAutoreleasingStack/ANSAutoreleasingStack.c; sourceTree = "<group>"; };
-		939041DA1CEB417400C16B9A /* ANSAutoreleasingStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSAutoreleasingStack.h; path = Source/IDPAutoreleasingStack/ANSAutoreleasingStack.h; sourceTree = "<group>"; };
-		939041DE1CEB4E7600C16B9A /* ANSAutoreleasingStackTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSAutoreleasingStackTest.c; path = Source/IDPAutoreleasingStack/IDPAutoreleasingStack/ANSAutoreleasingStackTest.c; sourceTree = "<group>"; };
-		939041DF1CEB4E7600C16B9A /* ANSAutoreleasingStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSAutoreleasingStackTest.h; path = Source/IDPAutoreleasingStack/IDPAutoreleasingStack/ANSAutoreleasingStackTest.h; sourceTree = "<group>"; };
-		93A1C6F51CDF674C001101D0 /* ANSString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSString.c; path = Source/ANSHuman/ANSString/ANSString.c; sourceTree = "<group>"; };
-		93A1C6F61CDF674C001101D0 /* ANSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSString.h; path = Source/ANSHuman/ANSString/ANSString.h; sourceTree = "<group>"; };
-		93BAD7041CCE604900B29543 /* ANSMacrosDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSMacrosDeclaration.h; sourceTree = "<group>"; };
-		93BAD7051CCE604900B29543 /* ANSPrintFunctionValue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintFunctionValue.c; sourceTree = "<group>"; };
-		93BAD7061CCE604900B29543 /* ANSPrintFunctionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintFunctionValue.h; sourceTree = "<group>"; };
-		93BAD7081CCE604900B29543 /* ANSPrintMamaPapaSolution.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSPrintMamaPapaSolution.c; sourceTree = "<group>"; };
-		93BAD7091CCE604900B29543 /* ANSPrintMamaPapaSolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSPrintMamaPapaSolution.h; sourceTree = "<group>"; };
-		93BAD70C1CCE604900B29543 /* ANSStructureTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSStructureTest.c; sourceTree = "<group>"; };
-		93BAD70D1CCE604900B29543 /* ANSStructureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSStructureTest.h; sourceTree = "<group>"; };
-		93BAD71E1CD4B99500B29543 /* ANSHuman.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSHuman.c; sourceTree = "<group>"; };
-		93BAD71F1CD4B99500B29543 /* ANSHuman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSHuman.h; sourceTree = "<group>"; };
-		93BAD7211CD4B99500B29543 /* ANSHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSHumanTest.c; sourceTree = "<group>"; };
-		93BAD7221CD4B99500B29543 /* ANSHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSHumanTest.h; sourceTree = "<group>"; };
-		93BAD7241CD4B99500B29543 /* ANSLinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSLinkedList.c; sourceTree = "<group>"; };
-		93BAD7251CD4B99500B29543 /* ANSLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedList.h; sourceTree = "<group>"; };
-		93BAD7271CD4B99500B29543 /* ANSObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSObject.c; sourceTree = "<group>"; };
-		93BAD7281CD4B99500B29543 /* ANSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSObject.h; sourceTree = "<group>"; };
-		93BAD72E1CD4C7A200B29543 /* ANSLinkedListNode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSLinkedListNode.c; path = ANSLinkedListNode/ANSLinkedListNode.c; sourceTree = "<group>"; };
-		93BAD72F1CD4C7A200B29543 /* ANSLinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSLinkedListNode.h; path = ANSLinkedListNode/ANSLinkedListNode.h; sourceTree = "<group>"; };
-		93E22A731CECD54B00542CC1 /* ANSLinkedListPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSLinkedListPrivate.h; sourceTree = "<group>"; };
-		93E22A741CEE001D00542CC1 /* ANSAutoreleasePool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ANSAutoreleasePool.c; path = Source/IDPAutoreleasingStack/ANSAutoreleasePool/ANSAutoreleasePool.c; sourceTree = "<group>"; };
-		93E22A751CEE001D00542CC1 /* ANSAutoreleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSAutoreleasePool.h; path = Source/IDPAutoreleasingStack/ANSAutoreleasePool/ANSAutoreleasePool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		93080C661CB6DA2000D52D9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931DCEA41CF87DD600358C7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -93,9 +115,9 @@
 		93080C601CB6DA2000D52D9C = {
 			isa = PBXGroup;
 			children = (
+				931DCEAE1CF87E7A00358C7E /* C */,
 				934811961CC7A9AF00708B80 /* iOS Study Plan.txt */,
-				93BAD6F21CCE604900B29543 /* Source */,
-				93080C6B1CB6DA2000D52D9C /* LCHW */,
+				931DCEA81CF87DD600358C7E /* Objective-c */,
 				93080C6A1CB6DA2000D52D9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,216 +126,230 @@
 			isa = PBXGroup;
 			children = (
 				93080C691CB6DA2000D52D9C /* LCHW */,
+				931DCEA71CF87DD600358C7E /* Objective-c */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		93080C6B1CB6DA2000D52D9C /* LCHW */ = {
+		931DCEA81CF87DD600358C7E /* Objective-c */ = {
 			isa = PBXGroup;
 			children = (
-				93080C6C1CB6DA2000D52D9C /* main.c */,
+				931DCEA91CF87DD600358C7E /* main.m */,
+			);
+			path = "Objective-c";
+			sourceTree = "<group>";
+		};
+		931DCEAE1CF87E7A00358C7E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEAF1CF87E7A00358C7E /* LCHW */,
+				931DCEB11CF87E7A00358C7E /* Source */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		931DCEAF1CF87E7A00358C7E /* LCHW */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEB01CF87E7A00358C7E /* main.c */,
 			);
 			path = LCHW;
 			sourceTree = "<group>";
 		};
-		9327DE891CD8D622005AF895 /* ANSArray */ = {
+		931DCEB11CF87E7A00358C7E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				9327DE871CD8D615005AF895 /* ANSArray.h */,
-				9327DE861CD8D615005AF895 /* ANSArray.c */,
-				939041C81CE0B07000C16B9A /* ANSArrayTest */,
-			);
-			name = ANSArray;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		939041C81CE0B07000C16B9A /* ANSArrayTest */ = {
-			isa = PBXGroup;
-			children = (
-				939041CA1CE0B07000C16B9A /* ANSArrayTest.h */,
-				939041C91CE0B07000C16B9A /* ANSArrayTest.c */,
-			);
-			name = ANSArrayTest;
-			path = Source/ANSHuman/ANSArray/ANSArrayTest;
-			sourceTree = "<group>";
-		};
-		939041CC1CE482C600C16B9A /* ANSLinkedListEnumerator */ = {
-			isa = PBXGroup;
-			children = (
-				939041CE1CE4831000C16B9A /* ANSLinkedListEnumerator.h */,
-				939041CD1CE4831000C16B9A /* ANSLinkedListEnumerator.c */,
-				939041D61CE8E7B300C16B9A /* ANSLinkedListEnumeratorPrivate.h */,
-			);
-			name = ANSLinkedListEnumerator;
-			sourceTree = "<group>";
-		};
-		939041D01CE49A2A00C16B9A /* ANSLinkedListTest */ = {
-			isa = PBXGroup;
-			children = (
-				939041D21CE49A5E00C16B9A /* ANSLinkedListTest.h */,
-				939041D11CE49A5E00C16B9A /* ANSLinkedListTest.c */,
-			);
-			name = ANSLinkedListTest;
-			sourceTree = "<group>";
-		};
-		939041D81CE9FB5D00C16B9A /* ANSLinkedList */ = {
-			isa = PBXGroup;
-			children = (
-				93BAD7251CD4B99500B29543 /* ANSLinkedList.h */,
-				93BAD7241CD4B99500B29543 /* ANSLinkedList.c */,
-				93E22A731CECD54B00542CC1 /* ANSLinkedListPrivate.h */,
-			);
-			name = ANSLinkedList;
-			sourceTree = "<group>";
-		};
-		939041DC1CEB417A00C16B9A /* ANSAutoreleasingStack */ = {
-			isa = PBXGroup;
-			children = (
-				939041DA1CEB417400C16B9A /* ANSAutoreleasingStack.h */,
-				939041D91CEB417400C16B9A /* ANSAutoreleasingStack.c */,
-				939041DD1CEB4E5F00C16B9A /* IDPAutoreleasingStackTest */,
-			);
-			name = ANSAutoreleasingStack;
-			sourceTree = "<group>";
-		};
-		939041DD1CEB4E5F00C16B9A /* IDPAutoreleasingStackTest */ = {
-			isa = PBXGroup;
-			children = (
-				939041DF1CEB4E7600C16B9A /* ANSAutoreleasingStackTest.h */,
-				939041DE1CEB4E7600C16B9A /* ANSAutoreleasingStackTest.c */,
-			);
-			name = IDPAutoreleasingStackTest;
-			sourceTree = "<group>";
-		};
-		93A1C6F81CDF6757001101D0 /* ANSString */ = {
-			isa = PBXGroup;
-			children = (
-				93A1C6F61CDF674C001101D0 /* ANSString.h */,
-				93A1C6F51CDF674C001101D0 /* ANSString.c */,
-			);
-			name = ANSString;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		93BAD6F21CCE604900B29543 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				93BAD7031CCE604900B29543 /* ANSMacrosDeclaration */,
-				93BAD7071CCE604900B29543 /* ANSPrintMamaPapaSolution */,
-				93BAD70A1CCE604900B29543 /* ANSStructureTest */,
-				93BAD6F31CCE604900B29543 /* ANSHuman */,
-				93BAD7231CD4B99500B29543 /* ANSLinkedList */,
-				93E22A771CEE002500542CC1 /* ANSAutoreleasePool */,
+				931DCEB21CF87E7A00358C7E /* ANSHuman */,
+				931DCED31CF87E7A00358C7E /* ANSMacrosDeclaration */,
+				931DCED71CF87E7A00358C7E /* ANSPrintMamaPapaSolution */,
+				931DCEDA1CF87E7A00358C7E /* ANSStructureTest */,
+				931DCEDE1CF87E7A00358C7E /* ANSTest */,
+				931DCEE11CF87E7A00358C7E /* IDPAutoreleasingStack */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		93BAD6F31CCE604900B29543 /* ANSHuman */ = {
+		931DCEB21CF87E7A00358C7E /* ANSHuman */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7261CD4B99500B29543 /* ASNObject */,
-				93A1C6F81CDF6757001101D0 /* ANSString */,
-				9327DE891CD8D622005AF895 /* ANSArray */,
-				93BAD71D1CD4B99500B29543 /* ANSHuman */,
+				931DCEB31CF87E7A00358C7E /* ANSArray */,
+				931DCEB91CF87E7A00358C7E /* ANSHuman */,
+				931DCEBC1CF87E7A00358C7E /* ANSHumanTest */,
+				931DCEBF1CF87E7A00358C7E /* ANSLinkedList */,
+				931DCECD1CF87E7A00358C7E /* ANSString */,
+				931DCED01CF87E7A00358C7E /* ASNObject */,
 			);
 			path = ANSHuman;
 			sourceTree = "<group>";
 		};
-		93BAD7031CCE604900B29543 /* ANSMacrosDeclaration */ = {
+		931DCEB31CF87E7A00358C7E /* ANSArray */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7041CCE604900B29543 /* ANSMacrosDeclaration.h */,
-				93BAD7051CCE604900B29543 /* ANSPrintFunctionValue.c */,
-				93BAD7061CCE604900B29543 /* ANSPrintFunctionValue.h */,
+				931DCEB41CF87E7A00358C7E /* ANSArray.c */,
+				931DCEB51CF87E7A00358C7E /* ANSArray.h */,
+				931DCEB61CF87E7A00358C7E /* ANSArrayTest */,
 			);
-			path = ANSMacrosDeclaration;
+			path = ANSArray;
 			sourceTree = "<group>";
 		};
-		93BAD7071CCE604900B29543 /* ANSPrintMamaPapaSolution */ = {
+		931DCEB61CF87E7A00358C7E /* ANSArrayTest */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7081CCE604900B29543 /* ANSPrintMamaPapaSolution.c */,
-				93BAD7091CCE604900B29543 /* ANSPrintMamaPapaSolution.h */,
+				931DCEB71CF87E7A00358C7E /* ANSArrayTest.c */,
+				931DCEB81CF87E7A00358C7E /* ANSArrayTest.h */,
 			);
-			path = ANSPrintMamaPapaSolution;
+			path = ANSArrayTest;
 			sourceTree = "<group>";
 		};
-		93BAD70A1CCE604900B29543 /* ANSStructureTest */ = {
+		931DCEB91CF87E7A00358C7E /* ANSHuman */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD70B1CCE604900B29543 /* ANSStructureTest */,
-			);
-			path = ANSStructureTest;
-			sourceTree = "<group>";
-		};
-		93BAD70B1CCE604900B29543 /* ANSStructureTest */ = {
-			isa = PBXGroup;
-			children = (
-				93BAD70C1CCE604900B29543 /* ANSStructureTest.c */,
-				93BAD70D1CCE604900B29543 /* ANSStructureTest.h */,
-			);
-			path = ANSStructureTest;
-			sourceTree = "<group>";
-		};
-		93BAD71D1CD4B99500B29543 /* ANSHuman */ = {
-			isa = PBXGroup;
-			children = (
-				93BAD7201CD4B99500B29543 /* ANSHumanTest */,
-				93BAD71F1CD4B99500B29543 /* ANSHuman.h */,
-				93BAD71E1CD4B99500B29543 /* ANSHuman.c */,
+				931DCEBA1CF87E7A00358C7E /* ANSHuman.c */,
+				931DCEBB1CF87E7A00358C7E /* ANSHuman.h */,
 			);
 			path = ANSHuman;
 			sourceTree = "<group>";
 		};
-		93BAD7201CD4B99500B29543 /* ANSHumanTest */ = {
+		931DCEBC1CF87E7A00358C7E /* ANSHumanTest */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7221CD4B99500B29543 /* ANSHumanTest.h */,
-				93BAD7211CD4B99500B29543 /* ANSHumanTest.c */,
+				931DCEBD1CF87E7A00358C7E /* ANSHumanTest.c */,
+				931DCEBE1CF87E7A00358C7E /* ANSHumanTest.h */,
 			);
-			name = ANSHumanTest;
-			path = Source/ANSHuman/ANSHumanTest;
-			sourceTree = SOURCE_ROOT;
-		};
-		93BAD7231CD4B99500B29543 /* ANSLinkedList */ = {
-			isa = PBXGroup;
-			children = (
-				939041D81CE9FB5D00C16B9A /* ANSLinkedList */,
-				93BAD72D1CD4C75500B29543 /* ANSLinkedListNode */,
-				939041CC1CE482C600C16B9A /* ANSLinkedListEnumerator */,
-				939041D01CE49A2A00C16B9A /* ANSLinkedListTest */,
-			);
-			name = ANSLinkedList;
-			path = ANSHuman/ANSLinkedList;
+			path = ANSHumanTest;
 			sourceTree = "<group>";
 		};
-		93BAD7261CD4B99500B29543 /* ASNObject */ = {
+		931DCEBF1CF87E7A00358C7E /* ANSLinkedList */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD7281CD4B99500B29543 /* ANSObject.h */,
-				93BAD7271CD4B99500B29543 /* ANSObject.c */,
+				931DCEC01CF87E7A00358C7E /* ANSLinkedList.c */,
+				931DCEC11CF87E7A00358C7E /* ANSLinkedList.h */,
+				931DCEC21CF87E7A00358C7E /* ANSLinkedListEnumerator */,
+				931DCEC51CF87E7A00358C7E /* ANSLinkedListEnumeratorPrivate.h */,
+				931DCEC61CF87E7A00358C7E /* ANSLinkedListNode */,
+				931DCEC91CF87E7A00358C7E /* ANSLinkedListPrivate.h */,
+				931DCECA1CF87E7A00358C7E /* ANSLinkedListTest */,
+			);
+			path = ANSLinkedList;
+			sourceTree = "<group>";
+		};
+		931DCEC21CF87E7A00358C7E /* ANSLinkedListEnumerator */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEC31CF87E7A00358C7E /* ANSLinkedListEnumerator.c */,
+				931DCEC41CF87E7A00358C7E /* ANSLinkedListEnumerator.h */,
+			);
+			path = ANSLinkedListEnumerator;
+			sourceTree = "<group>";
+		};
+		931DCEC61CF87E7A00358C7E /* ANSLinkedListNode */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEC71CF87E7A00358C7E /* ANSLinkedListNode.c */,
+				931DCEC81CF87E7A00358C7E /* ANSLinkedListNode.h */,
+			);
+			path = ANSLinkedListNode;
+			sourceTree = "<group>";
+		};
+		931DCECA1CF87E7A00358C7E /* ANSLinkedListTest */ = {
+			isa = PBXGroup;
+			children = (
+				931DCECB1CF87E7A00358C7E /* ANSLinkedListTest.c */,
+				931DCECC1CF87E7A00358C7E /* ANSLinkedListTest.h */,
+			);
+			path = ANSLinkedListTest;
+			sourceTree = "<group>";
+		};
+		931DCECD1CF87E7A00358C7E /* ANSString */ = {
+			isa = PBXGroup;
+			children = (
+				931DCECE1CF87E7A00358C7E /* ANSString.c */,
+				931DCECF1CF87E7A00358C7E /* ANSString.h */,
+			);
+			path = ANSString;
+			sourceTree = "<group>";
+		};
+		931DCED01CF87E7A00358C7E /* ASNObject */ = {
+			isa = PBXGroup;
+			children = (
+				931DCED11CF87E7A00358C7E /* ANSObject.c */,
+				931DCED21CF87E7A00358C7E /* ANSObject.h */,
 			);
 			path = ASNObject;
 			sourceTree = "<group>";
 		};
-		93BAD72D1CD4C75500B29543 /* ANSLinkedListNode */ = {
+		931DCED31CF87E7A00358C7E /* ANSMacrosDeclaration */ = {
 			isa = PBXGroup;
 			children = (
-				93BAD72F1CD4C7A200B29543 /* ANSLinkedListNode.h */,
-				93BAD72E1CD4C7A200B29543 /* ANSLinkedListNode.c */,
+				931DCED41CF87E7A00358C7E /* ANSMacrosDeclaration.h */,
+				931DCED51CF87E7A00358C7E /* ANSPrintFunctionValue.c */,
+				931DCED61CF87E7A00358C7E /* ANSPrintFunctionValue.h */,
 			);
-			name = ANSLinkedListNode;
+			path = ANSMacrosDeclaration;
 			sourceTree = "<group>";
 		};
-		93E22A771CEE002500542CC1 /* ANSAutoreleasePool */ = {
+		931DCED71CF87E7A00358C7E /* ANSPrintMamaPapaSolution */ = {
 			isa = PBXGroup;
 			children = (
-				93E22A751CEE001D00542CC1 /* ANSAutoreleasePool.h */,
-				93E22A741CEE001D00542CC1 /* ANSAutoreleasePool.c */,
-				939041DC1CEB417A00C16B9A /* ANSAutoreleasingStack */,
+				931DCED81CF87E7A00358C7E /* ANSPrintMamaPapaSolution.c */,
+				931DCED91CF87E7A00358C7E /* ANSPrintMamaPapaSolution.h */,
 			);
-			name = ANSAutoreleasePool;
-			path = ..;
+			path = ANSPrintMamaPapaSolution;
+			sourceTree = "<group>";
+		};
+		931DCEDA1CF87E7A00358C7E /* ANSStructureTest */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEDB1CF87E7A00358C7E /* ANSStructureTest */,
+			);
+			path = ANSStructureTest;
+			sourceTree = "<group>";
+		};
+		931DCEDB1CF87E7A00358C7E /* ANSStructureTest */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEDC1CF87E7A00358C7E /* ANSStructureTest.c */,
+				931DCEDD1CF87E7A00358C7E /* ANSStructureTest.h */,
+			);
+			path = ANSStructureTest;
+			sourceTree = "<group>";
+		};
+		931DCEDE1CF87E7A00358C7E /* ANSTest */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEDF1CF87E7A00358C7E /* ANSTest.c */,
+				931DCEE01CF87E7A00358C7E /* ANSTest.h */,
+			);
+			path = ANSTest;
+			sourceTree = "<group>";
+		};
+		931DCEE11CF87E7A00358C7E /* IDPAutoreleasingStack */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEE21CF87E7A00358C7E /* ANSAutoreleasePool */,
+				931DCEE51CF87E7A00358C7E /* ANSAutoreleasingStack.c */,
+				931DCEE61CF87E7A00358C7E /* ANSAutoreleasingStack.h */,
+				931DCEE71CF87E7A00358C7E /* IDPAutoreleasingStack */,
+			);
+			path = IDPAutoreleasingStack;
+			sourceTree = "<group>";
+		};
+		931DCEE21CF87E7A00358C7E /* ANSAutoreleasePool */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEE31CF87E7A00358C7E /* ANSAutoreleasePool.c */,
+				931DCEE41CF87E7A00358C7E /* ANSAutoreleasePool.h */,
+			);
+			path = ANSAutoreleasePool;
+			sourceTree = "<group>";
+		};
+		931DCEE71CF87E7A00358C7E /* IDPAutoreleasingStack */ = {
+			isa = PBXGroup;
+			children = (
+				931DCEE81CF87E7A00358C7E /* ANSAutoreleasingStackTest.c */,
+				931DCEE91CF87E7A00358C7E /* ANSAutoreleasingStackTest.h */,
+			);
+			path = IDPAutoreleasingStack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +372,23 @@
 			productReference = 93080C691CB6DA2000D52D9C /* LCHW */;
 			productType = "com.apple.product-type.tool";
 		};
+		931DCEA61CF87DD600358C7E /* Objective-c */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 931DCEAD1CF87DD600358C7E /* Build configuration list for PBXNativeTarget "Objective-c" */;
+			buildPhases = (
+				931DCEA31CF87DD600358C7E /* Sources */,
+				931DCEA41CF87DD600358C7E /* Frameworks */,
+				931DCEA51CF87DD600358C7E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Objective-c";
+			productName = "Objective-c";
+			productReference = 931DCEA71CF87DD600358C7E /* Objective-c */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -346,6 +399,9 @@
 				ORGANIZATIONNAME = Anfriiev.Mykola;
 				TargetAttributes = {
 					93080C681CB6DA2000D52D9C = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					931DCEA61CF87DD600358C7E = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
@@ -363,6 +419,7 @@
 			projectRoot = "";
 			targets = (
 				93080C681CB6DA2000D52D9C /* LCHW */,
+				931DCEA61CF87DD600358C7E /* Objective-c */,
 			);
 		};
 /* End PBXProject section */
@@ -372,23 +429,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9327DE881CD8D615005AF895 /* ANSArray.c in Sources */,
-				93BAD72A1CD4B99500B29543 /* ANSHumanTest.c in Sources */,
-				939041DB1CEB417400C16B9A /* ANSAutoreleasingStack.c in Sources */,
-				93BAD7291CD4B99500B29543 /* ANSHuman.c in Sources */,
-				93A1C6F71CDF674C001101D0 /* ANSString.c in Sources */,
-				939041CB1CE0B07000C16B9A /* ANSArrayTest.c in Sources */,
-				93E22A761CEE001D00542CC1 /* ANSAutoreleasePool.c in Sources */,
-				93BAD7161CCE604900B29543 /* ANSPrintFunctionValue.c in Sources */,
-				93BAD7301CD4C7A200B29543 /* ANSLinkedListNode.c in Sources */,
-				939041D31CE49A5E00C16B9A /* ANSLinkedListTest.c in Sources */,
-				93080C6D1CB6DA2000D52D9C /* main.c in Sources */,
-				93BAD7171CCE604900B29543 /* ANSPrintMamaPapaSolution.c in Sources */,
-				93BAD72C1CD4B99500B29543 /* ANSObject.c in Sources */,
-				93BAD7181CCE604900B29543 /* ANSStructureTest.c in Sources */,
-				939041CF1CE4831000C16B9A /* ANSLinkedListEnumerator.c in Sources */,
-				939041E01CEB4E7600C16B9A /* ANSAutoreleasingStackTest.c in Sources */,
-				93BAD72B1CD4B99500B29543 /* ANSLinkedList.c in Sources */,
+				931DCEF21CF87E7A00358C7E /* ANSLinkedListTest.c in Sources */,
+				931DCEF81CF87E7A00358C7E /* ANSTest.c in Sources */,
+				931DCEF01CF87E7A00358C7E /* ANSLinkedListEnumerator.c in Sources */,
+				931DCEF71CF87E7A00358C7E /* ANSStructureTest.c in Sources */,
+				931DCEF41CF87E7A00358C7E /* ANSObject.c in Sources */,
+				931DCEEB1CF87E7A00358C7E /* ANSArray.c in Sources */,
+				931DCEEC1CF87E7A00358C7E /* ANSArrayTest.c in Sources */,
+				931DCEEE1CF87E7A00358C7E /* ANSHumanTest.c in Sources */,
+				931DCEED1CF87E7A00358C7E /* ANSHuman.c in Sources */,
+				931DCEEA1CF87E7A00358C7E /* main.c in Sources */,
+				931DCEF31CF87E7A00358C7E /* ANSString.c in Sources */,
+				931DCEF91CF87E7A00358C7E /* ANSAutoreleasePool.c in Sources */,
+				931DCEEF1CF87E7A00358C7E /* ANSLinkedList.c in Sources */,
+				931DCEF61CF87E7A00358C7E /* ANSPrintMamaPapaSolution.c in Sources */,
+				931DCEF51CF87E7A00358C7E /* ANSPrintFunctionValue.c in Sources */,
+				931DCEF11CF87E7A00358C7E /* ANSLinkedListNode.c in Sources */,
+				931DCEFA1CF87E7A00358C7E /* ANSAutoreleasingStack.c in Sources */,
+				931DCEFB1CF87E7A00358C7E /* ANSAutoreleasingStackTest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		931DCEA31CF87DD600358C7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931DCEAA1CF87DD600358C7E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +554,24 @@
 			};
 			name = Release;
 		};
+		931DCEAB1CF87DD600358C7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		931DCEAC1CF87DD600358C7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,6 +592,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		931DCEAD1CF87DD600358C7E /* Build configuration list for PBXNativeTarget "Objective-c" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				931DCEAB1CF87DD600358C7E /* Debug */,
+				931DCEAC1CF87DD600358C7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
