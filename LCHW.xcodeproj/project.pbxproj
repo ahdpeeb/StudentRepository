@@ -27,6 +27,7 @@
 		931DCEFA1CF87E7A00358C7E /* ANSAutoreleasingStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE51CF87E7A00358C7E /* ANSAutoreleasingStack.c */; };
 		931DCEFB1CF87E7A00358C7E /* ANSAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE81CF87E7A00358C7E /* ANSAutoreleasingStackTest.c */; };
 		931DCF051CF9B8D500358C7E /* ANSSyntaxTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 931DCF041CF9B8D500358C7E /* ANSSyntaxTest.m */; };
+		931DCF081CFC192600358C7E /* ANSCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = 931DCF071CFC192600358C7E /* ANSCreature.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +95,8 @@
 		931DCEE91CF87E7A00358C7E /* ANSAutoreleasingStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSAutoreleasingStackTest.h; sourceTree = "<group>"; };
 		931DCF031CF9B8D500358C7E /* ANSSyntaxTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSSyntaxTest.h; path = "Objective-c/ANSSyntaxTest.h"; sourceTree = SOURCE_ROOT; };
 		931DCF041CF9B8D500358C7E /* ANSSyntaxTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANSSyntaxTest.m; path = "Objective-c/ANSSyntaxTest.m"; sourceTree = SOURCE_ROOT; };
+		931DCF061CFC192600358C7E /* ANSCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSCreature.h; path = "Objective-c/ANSCreature/ANSCreature.h"; sourceTree = "<group>"; };
+		931DCF071CFC192600358C7E /* ANSCreature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANSCreature.m; path = "Objective-c/ANSCreature/ANSCreature.m"; sourceTree = "<group>"; };
 		934811961CC7A9AF00708B80 /* iOS Study Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS Study Plan.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				931DCEFF1CF881BB00358C7E /* ANSSyntax */,
+				931DCF091CFC193000358C7E /* ANSCreature */,
 				931DCEA91CF87DD600358C7E /* main.m */,
 			);
 			path = "Objective-c";
@@ -365,6 +369,16 @@
 			path = ANSSyntax;
 			sourceTree = "<group>";
 		};
+		931DCF091CFC193000358C7E /* ANSCreature */ = {
+			isa = PBXGroup;
+			children = (
+				931DCF071CFC192600358C7E /* ANSCreature.m */,
+				931DCF061CFC192600358C7E /* ANSCreature.h */,
+			);
+			name = ANSCreature;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				931DCEAA1CF87DD600358C7E /* main.m in Sources */,
+				931DCF081CFC192600358C7E /* ANSCreature.m in Sources */,
 				931DCF051CF9B8D500358C7E /* ANSSyntaxTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
