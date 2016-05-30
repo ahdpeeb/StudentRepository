@@ -6,11 +6,13 @@
 //  Copyright © 2016 Anfriiev.Mykola. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#include "ANSSyntax.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSLog(@"Hello, World!");
+       
+        
+        
     }
     return 0;
 }

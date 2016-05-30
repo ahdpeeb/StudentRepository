@@ -26,6 +26,7 @@
 		931DCEF91CF87E7A00358C7E /* ANSAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE31CF87E7A00358C7E /* ANSAutoreleasePool.c */; };
 		931DCEFA1CF87E7A00358C7E /* ANSAutoreleasingStack.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE51CF87E7A00358C7E /* ANSAutoreleasingStack.c */; };
 		931DCEFB1CF87E7A00358C7E /* ANSAutoreleasingStackTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEE81CF87E7A00358C7E /* ANSAutoreleasingStackTest.c */; };
+		931DCF051CF9B8D500358C7E /* ANSSyntaxTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 931DCF041CF9B8D500358C7E /* ANSSyntaxTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +92,8 @@
 		931DCEE61CF87E7A00358C7E /* ANSAutoreleasingStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSAutoreleasingStack.h; sourceTree = "<group>"; };
 		931DCEE81CF87E7A00358C7E /* ANSAutoreleasingStackTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ANSAutoreleasingStackTest.c; sourceTree = "<group>"; };
 		931DCEE91CF87E7A00358C7E /* ANSAutoreleasingStackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSAutoreleasingStackTest.h; sourceTree = "<group>"; };
+		931DCF031CF9B8D500358C7E /* ANSSyntaxTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSSyntaxTest.h; path = "Objective-c/ANSSyntaxTest.h"; sourceTree = SOURCE_ROOT; };
+		931DCF041CF9B8D500358C7E /* ANSSyntaxTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANSSyntaxTest.m; path = "Objective-c/ANSSyntaxTest.m"; sourceTree = SOURCE_ROOT; };
 		934811961CC7A9AF00708B80 /* iOS Study Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS Study Plan.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +137,7 @@
 		931DCEA81CF87DD600358C7E /* Objective-c */ = {
 			isa = PBXGroup;
 			children = (
+				931DCEFF1CF881BB00358C7E /* ANSSyntax */,
 				931DCEA91CF87DD600358C7E /* main.m */,
 			);
 			path = "Objective-c";
@@ -352,6 +356,15 @@
 			path = IDPAutoreleasingStack;
 			sourceTree = "<group>";
 		};
+		931DCEFF1CF881BB00358C7E /* ANSSyntax */ = {
+			isa = PBXGroup;
+			children = (
+				931DCF031CF9B8D500358C7E /* ANSSyntaxTest.h */,
+				931DCF041CF9B8D500358C7E /* ANSSyntaxTest.m */,
+			);
+			path = ANSSyntax;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -455,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				931DCEAA1CF87DD600358C7E /* main.m in Sources */,
+				931DCF051CF9B8D500358C7E /* ANSSyntaxTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +614,7 @@
 				931DCEAC1CF87DD600358C7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
