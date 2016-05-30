@@ -11,7 +11,7 @@
 @interface ANSCreature ()
 @property (nonatomic, retain) NSMutableArray *mutableArray;
 
-- (NSArray *) children;
+- (NSArray *) _children;
 
 @end
 
@@ -21,8 +21,8 @@
 #pragma mark -
 #pragma mark private implementation
 
-@dynamic children; //am responsible for property implementation,
-- (NSArray *) children {
+@dynamic children; //I'am responsible for property implementation, do not create new field
+- (NSArray *) _children {
     return [[[self mutableArray] copy] autorelease];
 }
 
@@ -56,16 +56,18 @@
     NSLog(@"Privet");
 }
 
-- (NSString *) description {
-    return [NSString stringWithFormat:@"Name - %@, Age - %d, Children - %@", self.name, self.age, self.children];
-}
-
 - (void)goFight:(ANSCreature *) creature {
     NSLog(@"%@ - i'am go to fing", creature.name);
 }
 
 - (ANSCreature *)goGiveBirth:(ANSCreature *) creature {
+    NSLog(@"%@ - i'am can give birth" , creature.name);
+    
     return [[ANSCreature new] autorelease];
+}
+
+- (NSString *) description {
+    return [NSString stringWithFormat:@"Name - %@, Age - %d, Children - %@", self.name, self.age, self.children];
 }
 
 @end

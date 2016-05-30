@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931D0F111CFC81B500DF749C /* ANSCreatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 931D0F101CFC81B500DF749C /* ANSCreatureTest.m */; };
 		931DCEAA1CF87DD600358C7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEA91CF87DD600358C7E /* main.m */; };
 		931DCEEA1CF87E7A00358C7E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEB01CF87E7A00358C7E /* main.c */; };
 		931DCEEB1CF87E7A00358C7E /* ANSArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCEB41CF87E7A00358C7E /* ANSArray.c */; };
@@ -53,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		93080C691CB6DA2000D52D9C /* LCHW */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LCHW; sourceTree = BUILT_PRODUCTS_DIR; };
+		931D0F0F1CFC81B500DF749C /* ANSCreatureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANSCreatureTest.h; path = "Objective-c/ANSCreature/ANSCreatureTest/ANSCreatureTest.h"; sourceTree = "<group>"; };
+		931D0F101CFC81B500DF749C /* ANSCreatureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANSCreatureTest.m; path = "Objective-c/ANSCreature/ANSCreatureTest/ANSCreatureTest.m"; sourceTree = "<group>"; };
 		931DCEA71CF87DD600358C7E /* Objective-c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Objective-c"; sourceTree = BUILT_PRODUCTS_DIR; };
 		931DCEA91CF87DD600358C7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		931DCEB01CF87E7A00358C7E /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -135,6 +138,15 @@
 				931DCEA71CF87DD600358C7E /* Objective-c */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		931D0F121CFC81BC00DF749C /* ANSCreatureTest */ = {
+			isa = PBXGroup;
+			children = (
+				931D0F0F1CFC81B500DF749C /* ANSCreatureTest.h */,
+				931D0F101CFC81B500DF749C /* ANSCreatureTest.m */,
+			);
+			name = ANSCreatureTest;
 			sourceTree = "<group>";
 		};
 		931DCEA81CF87DD600358C7E /* Objective-c */ = {
@@ -230,8 +242,8 @@
 		931DCEBF1CF87E7A00358C7E /* ANSLinkedList */ = {
 			isa = PBXGroup;
 			children = (
-				931DCEC01CF87E7A00358C7E /* ANSLinkedList.c */,
 				931DCEC11CF87E7A00358C7E /* ANSLinkedList.h */,
+				931DCEC01CF87E7A00358C7E /* ANSLinkedList.c */,
 				931DCEC21CF87E7A00358C7E /* ANSLinkedListEnumerator */,
 				931DCEC51CF87E7A00358C7E /* ANSLinkedListEnumeratorPrivate.h */,
 				931DCEC61CF87E7A00358C7E /* ANSLinkedListNode */,
@@ -374,6 +386,7 @@
 			children = (
 				931DCF061CFC192600358C7E /* ANSCreature.h */,
 				931DCF071CFC192600358C7E /* ANSCreature.m */,
+				931D0F121CFC81BC00DF749C /* ANSCreatureTest */,
 			);
 			name = ANSCreature;
 			path = ..;
@@ -482,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				931DCEAA1CF87DD600358C7E /* main.m in Sources */,
+				931D0F111CFC81B500DF749C /* ANSCreatureTest.m in Sources */,
 				931DCF081CFC192600358C7E /* ANSCreature.m in Sources */,
 				931DCF051CF9B8D500358C7E /* ANSSyntaxTest.m in Sources */,
 			);

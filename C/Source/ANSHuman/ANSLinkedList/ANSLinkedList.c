@@ -18,6 +18,12 @@
 #pragma mark -
 #pragma mark Private Declaration
 
+typedef struct ANSNodeToObjectContext ANSNodeToObjectContext;
+struct ANSNodeToObjectContext {
+    ANSLinkedListNodeComparisonFunction compare;
+    ANSLinkedListContext *context;
+};
+
 static
 void ANSLinkedListCountAddValue(ANSLinkedList *list, short value);
 
@@ -187,9 +193,15 @@ void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value) {
     ANSLinkedListSetMutationsCount(list, count += value);
 }
 
+bool ANSNodeToObjectBringeFunction(ANSLinkedListNode *node, ANSLinkedListContext *context) {
+    ANSNodeToObjectContext *wrapperContext = (void *)context;
+    
+    return wrapperContext->compare(ANSLinkedListNodeGetObject(node), wrapperContext->context);
+}
+
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListNodeComparisonFunction comparator,
-                                                   ANSLinkedListContext *context) {
+                                                   void *context) {
     ANSLinkedListNode *result = NULL;
     if (list) {
         ANSLinkedListEnumerator *enumerator = ANSLinkedListEnumeratorCreateWithList(list);
@@ -207,6 +219,18 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
     
     return result;
 }
+
+ANSLinkedListNode *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
+                                                      ANSLinkedListNodeComparisonFunction comparator,
+                                                      void *context) {
+    ANSNodeToObjectContext wrapperContext;
+    memset(&wrapperContext, 0, sizeof(wrapperContext));
+    wrapperContext.compare = comparator;
+    wrapperContext.context = context;
+    
+    return ANSLinkedListFindNodeWithContext(list, ANSNodeToObjectBringeFunction, &wrapperContext);
+}
+
 // comparator function
 bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context) {
     bool result = false;

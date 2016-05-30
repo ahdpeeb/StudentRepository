@@ -38,8 +38,11 @@ void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value);
 extern
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListNodeComparisonFunction comparator,
-                                                   ANSLinkedListContext *context);
-
+                                                   void *context);
+extern
+ANSLinkedListNode *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
+                                                      ANSLinkedListNodeComparisonFunction comparator,
+                                                      void *context);
 extern
 bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context);
 
