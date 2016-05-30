@@ -10,6 +10,4 @@
 
 @interface ANSSyntaxTest : NSObject
 
-- (void)sayWithString:(NSString *) string;
-- (void)sayWithString:(NSString *) string name: (NSString *) NameString;
 @end

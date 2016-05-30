@@ -10,4 +10,24 @@
 
 @interface ANSCreature : NSObject
 
+typedef NSString * creatureGender;
+
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, assign) unsigned short age;
+@property (nonatomic, assign) float weight;
+@property (nonatomic, retain) creatureGender gender;
+@property (nonatomic, retain, readonly) NSArray *children;
+
+- (instancetype)initWithNameArray:(NSString*) name;
+
+- (void)addChild:(ANSCreature *)creature;
+
+- (void)removeChild:(ANSCreature *)creature;
+
+- (void)sayPrivet;
+
+- (void)goFight:(ANSCreature *) creature;
+
+- (ANSCreature *)goGiveBirth:(ANSCreature *) creature;
+
 @end

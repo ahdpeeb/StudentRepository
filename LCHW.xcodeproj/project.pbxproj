@@ -372,8 +372,8 @@
 		931DCF091CFC193000358C7E /* ANSCreature */ = {
 			isa = PBXGroup;
 			children = (
-				931DCF071CFC192600358C7E /* ANSCreature.m */,
 				931DCF061CFC192600358C7E /* ANSCreature.h */,
+				931DCF071CFC192600358C7E /* ANSCreature.m */,
 			);
 			name = ANSCreature;
 			path = ..;
