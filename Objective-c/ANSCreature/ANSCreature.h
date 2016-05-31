@@ -20,6 +20,8 @@ typedef NSString * creatureGender;
 
 - (instancetype)initWithNameArray:(NSString*) name;
 
++ (instancetype)createAutoreleaseObject;
+
 - (void)addChild:(ANSCreature *)creature;
 
 - (void)removeChild:(ANSCreature *)creature;
@@ -29,5 +31,7 @@ typedef NSString * creatureGender;
 - (void)goFight:(ANSCreature *) creature;
 
 - (ANSCreature *)goGiveBirth:(ANSCreature *) creature;
+
+- (void) performGenderSpecificOperation;
 
 @end

@@ -12,6 +12,7 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         ANSCreatureTest *test = [[ANSCreatureTest new]autorelease];
+        [test performGenderSpecificOperation];
         [test runTest];
     }
     

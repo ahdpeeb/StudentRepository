@@ -11,5 +11,6 @@
 @interface ANSCreatureTest : ANSCreature
 
 - (void)runTest;
+- (void) performGenderSpecificOperation;
 
 @end

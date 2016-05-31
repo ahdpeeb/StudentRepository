@@ -40,6 +40,10 @@
     return self;
 }
 
++ (instancetype)createAutoreleaseObject {
+    return [[[self alloc] init] autorelease];
+}
+
 - (void)addChild:(ANSCreature *)creature {
     if(![self.mutableArray containsObject:creature]) {
         [self.mutableArray addObject:creature];
@@ -68,6 +72,10 @@
 
 - (NSString *) description {
     return [NSString stringWithFormat:@"Name - %@, Age - %d, Children - %@", self.name, self.age, self.children];
+}
+
+- (void) performGenderSpecificOperation {
+    NSLog(@"performGenderSpecificOperation");
 }
 
 @end
