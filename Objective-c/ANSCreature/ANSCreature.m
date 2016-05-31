@@ -9,23 +9,22 @@
 #import "ANSCreature.h"
 
 @interface ANSCreature ()
+
 @property (nonatomic, retain) NSMutableArray *_mutableArray;
 
 @end
 
 @implementation ANSCreature
+
 @synthesize age, weight, gender, _mutableArray;
+@dynamic children; //I'am responsible for property implementation, do not create new field
 
 #pragma mark -
-#pragma mark private implementation
+#pragma mark Public implementation
 
-@dynamic children; //I'am responsible for property implementation, do not create new field
 - (NSArray *) children {
     return [[[self _mutableArray] copy] autorelease];
 }
-
-#pragma mark -
-#pragma mark public implementation
 
 - (instancetype)initWithNameArray:(NSString*) name {
     self = [super init];
