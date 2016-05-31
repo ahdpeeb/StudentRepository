@@ -34,4 +34,5 @@ typedef NSString * creatureGender;
 
 - (void) performGenderSpecificOperation;
 
+- (NSArray *) children;
 @end

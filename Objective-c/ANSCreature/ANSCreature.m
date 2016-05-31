@@ -9,21 +9,19 @@
 #import "ANSCreature.h"
 
 @interface ANSCreature ()
-@property (nonatomic, retain) NSMutableArray *mutableArray;
-
-- (NSArray *) _children;
+@property (nonatomic, retain) NSMutableArray *_mutableArray;
 
 @end
 
 @implementation ANSCreature
-@synthesize age, weight, gender, mutableArray;
+@synthesize age, weight, gender, _mutableArray;
 
 #pragma mark -
 #pragma mark private implementation
 
 @dynamic children; //I'am responsible for property implementation, do not create new field
-- (NSArray *) _children {
-    return [[[self mutableArray] copy] autorelease];
+- (NSArray *) children {
+    return [[[self _mutableArray] copy] autorelease];
 }
 
 #pragma mark -
@@ -33,7 +31,7 @@
     self = [super init];
     if (self) {
         NSMutableArray *array = [[NSMutableArray new] autorelease];
-        [self setMutableArray:array];
+        [self set_mutableArray:array];
         [self setName:name];
     }
     
@@ -45,19 +43,24 @@
 }
 
 - (void)addChild:(ANSCreature *)creature {
-    if(![self.mutableArray containsObject:creature]) {
-        [self.mutableArray addObject:creature];
+    if(![self._mutableArray containsObject:creature]) {
+        [self._mutableArray addObject:creature];
     }
 }
 
 - (void)removeChild:(ANSCreature *)creature {
-    if ([self.mutableArray containsObject:creature]) {
-        [self.mutableArray removeObject:creature];
+    if ([self._mutableArray containsObject:creature]) {
+        [self._mutableArray removeObject:creature];
     }
 }
 
 - (void)sayPrivet {
     NSLog(@"Privet");
+}
+
+- (void)famylySayPrivet {
+    [self sayPrivet];
+    [self.children makeObjectsPerformSelector:@selector(sayPrivet)];
 }
 
 - (void)goFight:(ANSCreature *) creature {
