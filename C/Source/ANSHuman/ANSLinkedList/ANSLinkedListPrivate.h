@@ -46,6 +46,7 @@ ANSLinkedListNode *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
 extern
 bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context);
 
+extern
 ANSLinkedListContext *ANSLinkedListContextCreateWithObject(void *object);
 
 #endif /* ANSLinkedLisetPrivate_h */

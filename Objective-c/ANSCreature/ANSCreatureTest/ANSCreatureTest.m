@@ -21,7 +21,7 @@
         ANSCreature *creature = [[ANSCreature alloc] initWithNameArray:name];
         
         BOOL value = arc4random() % 2;
-        NSString *gender = [[NSString new] autorelease];
+        NSString *gender = [[NSString new]autorelease];
         gender = (value) ? @"Male" : @"Female";
         creature.gender = gender;
       
@@ -45,7 +45,7 @@
     }
 }
 
-- (void) performGenderSpecificOperation {
+- (void)performGenderSpecificOperation {
     NSLog(@"overridden method");
 }
 

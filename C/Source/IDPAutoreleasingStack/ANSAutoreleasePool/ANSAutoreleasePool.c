@@ -210,7 +210,7 @@ ANSAutoreleasingStack *ANSAutoreleasePoolGetTailStack(ANSAutoreleasePool *pool) 
     return curentStack;
 }
 
-void ANSAutoreleasePoolResize(void) { // testing
+void ANSAutoreleasePoolResize(void) {
     ANSAutoreleasePool *pool = ANSAutoreleasePoolGetPool();
     ANSAutoreleasingStack *head = ANSAutoreleasePoolGetHeadStack(pool);
 

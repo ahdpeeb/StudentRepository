@@ -69,7 +69,7 @@
 - (ANSCreature *)goGiveBirth:(ANSCreature *) creature {
     NSLog(@"%@ - i'am can give birth" , creature.name);
     
-    return [[ANSCreature new] autorelease];
+    return [ANSCreature createAutoreleaseObject];
 }
 
 - (NSString *) description {
