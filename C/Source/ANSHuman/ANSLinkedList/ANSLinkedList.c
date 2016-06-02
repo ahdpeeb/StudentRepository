@@ -200,7 +200,7 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
         while (ANSLinkedListEnumeratorIsValid(enumerator) && ANSLinkedListEnumeratorGetNextObject(enumerator))  {
             ANSLinkedListNode *node = ANSLinkedListEnumeratorGetNode(enumerator);
             
-            if (ANSLinkedListNodeContainsObject(node, context)) {
+            if (comparator(node, context)) {
                 result = node;
                 break;
             }
