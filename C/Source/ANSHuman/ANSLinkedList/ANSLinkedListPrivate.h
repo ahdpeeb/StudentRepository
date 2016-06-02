@@ -20,6 +20,12 @@ struct ANSLinkedListContext {
 
 typedef bool (*ANSLinkedListNodeComparisonFunction)(ANSLinkedListNode *node, ANSLinkedListContext *context);
 
+typedef struct ANSNodeToObjectContext ANSNodeToObjectContext;
+struct ANSNodeToObjectContext {
+    void *context;
+    ANSLinkedListNodeComparisonFunction compare;
+};
+
 extern
 void ANSLinkedListSetHead(ANSLinkedList *list, ANSLinkedListNode *head);
 

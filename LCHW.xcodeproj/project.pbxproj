@@ -203,10 +203,10 @@
 			children = (
 				931DCEB31CF87E7A00358C7E /* ANSArray */,
 				931DCEB91CF87E7A00358C7E /* ANSHuman */,
-				931DCEBC1CF87E7A00358C7E /* ANSHumanTest */,
 				931DCEBF1CF87E7A00358C7E /* ANSLinkedList */,
 				931DCECD1CF87E7A00358C7E /* ANSString */,
 				931DCED01CF87E7A00358C7E /* ASNObject */,
+				931DCEBC1CF87E7A00358C7E /* ANSHumanTest */,
 			);
 			path = ANSHuman;
 			sourceTree = "<group>";

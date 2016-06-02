@@ -18,17 +18,14 @@
 #pragma mark -
 #pragma mark Private Declaration
 
-typedef struct ANSNodeToObjectContext ANSNodeToObjectContext;
-struct ANSNodeToObjectContext {
-    ANSLinkedListNodeComparisonFunction compare;
-    ANSLinkedListContext *context;
-};
-
 static
 void ANSLinkedListCountAddValue(ANSLinkedList *list, short value);
 
 static
 void ANSLinkedListSetCount(ANSLinkedList *list, uint64_t value);
+
+static
+bool ANSLinkedListTransitionNodeToObject(ANSLinkedListNode *node, void *context);
 
 static
 ANSLinkedListContext *ANSLinkedListCreateContextFindNodeWithObject(ANSLinkedList *list, void *object);
@@ -193,11 +190,6 @@ void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value) {
     ANSLinkedListSetMutationsCount(list, count += value);
 }
 
-bool ANSNodeToObjectBringeFunction(ANSLinkedListNode *node, ANSLinkedListContext *context) {
-    ANSNodeToObjectContext *wrapperContext = (void *)context;
-    
-    return wrapperContext->compare(ANSLinkedListNodeGetObject(node), wrapperContext->context);
-}
 
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListNodeComparisonFunction comparator,
@@ -220,6 +212,12 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
     return result;
 }
 
+bool ANSLinkedListTransitionNodeToObject(ANSLinkedListNode *node, void *context) {
+    ANSNodeToObjectContext *wrapperContext = context;
+    
+    return wrapperContext->compare(ANSLinkedListNodeGetObject(node), wrapperContext->context);
+}
+
 ANSLinkedListNode *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
                                                       ANSLinkedListNodeComparisonFunction comparator,
                                                       void *context) {
@@ -228,7 +226,7 @@ ANSLinkedListNode *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
     wrapperContext.compare = comparator;
     wrapperContext.context = context;
     
-    return ANSLinkedListFindNodeWithContext(list, ANSNodeToObjectBringeFunction, &wrapperContext);
+    return ANSLinkedListFindNodeWithContext(list, ANSLinkedListTransitionNodeToObject, &wrapperContext);
 }
 
 // comparator function
