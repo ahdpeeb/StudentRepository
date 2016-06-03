@@ -26,7 +26,7 @@ static
 void ANSLinkedListSetCount(ANSLinkedList *list, uint64_t value);
 
 static
-bool ANSLinkedListTransitionNodeToObject(ANSLinkedListNode *node, void *context);
+bool ANSLinkedListTransitionNodeToObject(void *node, void *context);
 
 static
 ANSLinkedListContext *ANSLinkedListCreateContextFindNodeWithObject(ANSLinkedList *list, void *object);
@@ -205,9 +205,10 @@ ANSLinkedListContext *ANSLinkedListCreateContextFindNodeWithObject(ANSLinkedList
     return context;
 }
 
-//_____________________________________________________________________________
+//______________________________________________________________________________________________________________//
+
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
-                                                   ANSLinkedListNodeComparisonFunction comparator,
+                                                   ANSLinkedListComparisonFunction comparator,
                                                    void *context)
 {
     ANSLinkedListNode *result = NULL;
@@ -229,15 +230,18 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
 }
 
 // node comparator function
-bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context) {
+bool ANSLinkedListNodeContainsObject(void *objec, void *context) {
     bool result = false;
+    
+    ANSLinkedListNode *node = (ANSLinkedListNode *)objec;
+    ANSLinkedListContext *contextNode = (ANSLinkedListContext *)context;
     if (node) {
         
-        context->previousNode = context->node;
-        context->node = node;
+        contextNode->previousNode = contextNode->node;
+        contextNode->node = node;
         
         void *object = ANSLinkedListNodeGetObject(node);
-        if (context->object == object) {
+        if (contextNode->object == object) {
             result = true;
         }
     }
@@ -245,26 +249,26 @@ bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListConte
     return result;
 }
 
-// transition node compara to object compare
-bool ANSLinkedListTransitionNodeToObject(ANSLinkedListNode *node, void *context) {
+//   transition node => object
+bool ANSLinkedListTransitionNodeToObject(void *node, void *context) {
     ANSNodeToObjectContext *wrapperContext = context;
     
-    return wrapperContext->objectComporator(ANSLinkedListNodeGetObject(node), wrapperContext->context);
+    return wrapperContext->comporator(ANSLinkedListNodeGetObject((ANSLinkedListNode *)node), wrapperContext->context);
 }
 
-void *ANSLinkedListFindObjectWithContext(ANSLinkedList *list, // list
-                                         ANSLinkedListObjectComparisonFunction comparator, //comporator
-                                         void *context) // array
+void *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
+                                         ANSLinkedListComparisonFunction comparator,
+                                         void *context)
 {
     ANSNodeToObjectContext wrapperContext;
-    memset(&wrapperContext, 0, sizeof(wrapperContext)); //
+    memset(&wrapperContext, 0, sizeof(wrapperContext));
     wrapperContext.context = context;
-    wrapperContext.objectComporator = comparator;
+    wrapperContext.comporator = comparator;
     
     
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListTransitionNodeToObject, &wrapperContext.context);
+    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListTransitionNodeToObject, wrapperContext.context);
     
-    return ANSLinkedListNodeGetObject(node); //должно веруть первый пустой стек перед полным.
+    return ANSLinkedListNodeGetObject(node);
 }
 
 bool ANSLinkedListSortFunction(void *object, void *context) {
@@ -276,13 +280,11 @@ bool ANSLinkedListSortFunction(void *object, void *context) {
     return resul;
 }
 
-ANSArray* ANSLinkedListSortObjectsDependsOnComporator(ANSLinkedList *list,
-                                                      ANSLinkedListObjectComparisonFunction comparator)
+ANSArray *ANSLinkedListSortObjectsDependsOnComporator(ANSLinkedList *list,
+                                                      ANSLinkedListComparisonFunction comparator)
 {
     ANSArray *array = (ANSArrayCreateWithCapacity(512));
     ANSLinkedListFindObjectWithContext(list, comparator, array);
     
     return array;
 }
-
-

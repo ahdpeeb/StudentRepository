@@ -19,13 +19,12 @@ struct ANSLinkedListContext {
     void *object;
 };
 
-typedef bool (*ANSLinkedListNodeComparisonFunction)(ANSLinkedListNode *node, ANSLinkedListContext *context);
-typedef bool (*ANSLinkedListObjectComparisonFunction)(void *object, void *context);
+typedef bool (*ANSLinkedListComparisonFunction)(void *object, void *context);
 
 typedef struct ANSNodeToObjectContext ANSNodeToObjectContext;
 struct ANSNodeToObjectContext {
     void *context;
-    ANSLinkedListObjectComparisonFunction objectComporator;
+    ANSLinkedListComparisonFunction comporator;
 };
 
 extern
@@ -45,19 +44,23 @@ void ANSLinkedListMutationsCountAddValue(ANSLinkedList *list, uint64_t value);
 
 extern
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
-                                                   ANSLinkedListNodeComparisonFunction comparator,
+                                                   ANSLinkedListComparisonFunction comporator,
                                                    void *context);
 extern
 void *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
-                                         ANSLinkedListObjectComparisonFunction objectComporator,
+                                         ANSLinkedListComparisonFunction comporator,
                                          void *context);
 extern
-bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context);
+bool ANSLinkedListNodeContainsObject(void *object, void *context);
 
 extern
 bool ANSLinkedListSortFunction(void *object, void *context);
 
 extern
 ANSLinkedListContext *ANSLinkedListContextCreateWithObject(void *object);
+
+extern
+ANSArray *ANSLinkedListSortObjectsDependsOnComporator(ANSLinkedList *list,
+                                                      ANSLinkedListComparisonFunction comparator);
 
 #endif /* ANSLinkedLisetPrivate_h */
