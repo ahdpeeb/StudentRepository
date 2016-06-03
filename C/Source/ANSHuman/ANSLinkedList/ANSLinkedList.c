@@ -31,6 +31,12 @@ bool ANSLinkedListTransitionNodeToObject(void *node, void *context);
 static
 ANSLinkedListContext *ANSLinkedListCreateContextFindNodeWithObject(ANSLinkedList *list, void *object);
 
+static
+bool ANSLinkedListSortFunction(void *object, void *context);
+
+static
+bool ANSLinkedListNodeContainsObject(void *object, void *context);
+
 #pragma mark -
 #pragma mark Public Implementation 
 
@@ -205,7 +211,7 @@ ANSLinkedListContext *ANSLinkedListCreateContextFindNodeWithObject(ANSLinkedList
     return context;
 }
 
-//______________________________________________________________________________________________________________//
+//___________________________________________________________________________________________________________________//
 
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListComparisonFunction comparator,
@@ -232,9 +238,9 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
 // node comparator function
 bool ANSLinkedListNodeContainsObject(void *objec, void *context) {
     bool result = false;
-    
     ANSLinkedListNode *node = (ANSLinkedListNode *)objec;
     ANSLinkedListContext *contextNode = (ANSLinkedListContext *)context;
+    
     if (node) {
         
         contextNode->previousNode = contextNode->node;
@@ -280,11 +286,11 @@ bool ANSLinkedListSortFunction(void *object, void *context) {
     return resul;
 }
 
-ANSArray *ANSLinkedListSortObjectsDependsOnComporator(ANSLinkedList *list,
+ANSArray *ANSLinkedListSortObjectsDependOnComporator(ANSLinkedList *list,
                                                       ANSLinkedListComparisonFunction comparator)
 {
     ANSArray *array = (ANSArrayCreateWithCapacity(512));
-    ANSLinkedListFindObjectWithContext(list, comparator, array);
+    ANSLinkedListFindObjectWithContext(list, ANSLinkedListSortFunction, array);
     
     return array;
 }

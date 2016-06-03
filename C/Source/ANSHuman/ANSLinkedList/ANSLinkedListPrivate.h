@@ -51,16 +51,10 @@ void *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
                                          ANSLinkedListComparisonFunction comporator,
                                          void *context);
 extern
-bool ANSLinkedListNodeContainsObject(void *object, void *context);
-
-extern
-bool ANSLinkedListSortFunction(void *object, void *context);
-
-extern
 ANSLinkedListContext *ANSLinkedListContextCreateWithObject(void *object);
 
 extern
-ANSArray *ANSLinkedListSortObjectsDependsOnComporator(ANSLinkedList *list,
-                                                      ANSLinkedListComparisonFunction comparator);
+ANSArray *ANSLinkedListSortObjectsDependOnComporator(ANSLinkedList *list,
+                                                     ANSLinkedListComparisonFunction comparator);
 
 #endif /* ANSLinkedLisetPrivate_h */
