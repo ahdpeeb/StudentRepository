@@ -10,11 +10,5 @@
 #include "ANSCreatureTest.h"
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        ANSCreatureTest *test = [ANSCreatureTest createAutoreleaseObject];
-        [test performGenderSpecificOperation];
-        [test runTest];
-    }
     
-    return 0;
 }

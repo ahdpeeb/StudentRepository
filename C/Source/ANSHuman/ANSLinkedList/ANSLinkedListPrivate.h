@@ -10,6 +10,7 @@
 #define ANSLinkedLisetPrivate_h
 
 #include "ANSLinkedList.h"
+#include "ANSArray.h"
 
 typedef struct ANSLinkedListContext ANSLinkedListContext;
 struct ANSLinkedListContext {
@@ -19,11 +20,12 @@ struct ANSLinkedListContext {
 };
 
 typedef bool (*ANSLinkedListNodeComparisonFunction)(ANSLinkedListNode *node, ANSLinkedListContext *context);
+typedef bool (*ANSLinkedListObjectComparisonFunction)(void *object, void *context);
 
 typedef struct ANSNodeToObjectContext ANSNodeToObjectContext;
 struct ANSNodeToObjectContext {
     void *context;
-    ANSLinkedListNodeComparisonFunction compare;
+    ANSLinkedListObjectComparisonFunction objectComporator;
 };
 
 extern
@@ -46,11 +48,14 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListNodeComparisonFunction comparator,
                                                    void *context);
 extern
-ANSLinkedListNode *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
-                                                      ANSLinkedListNodeComparisonFunction comparator,
-                                                      void *context);
+void *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
+                                         ANSLinkedListObjectComparisonFunction objectComporator,
+                                         void *context);
 extern
 bool ANSLinkedListNodeContainsObject(ANSLinkedListNode *node, ANSLinkedListContext *context);
+
+extern
+bool ANSLinkedListSortFunction(void *object, void *context);
 
 extern
 ANSLinkedListContext *ANSLinkedListContextCreateWithObject(void *object);
