@@ -211,7 +211,7 @@ ANSLinkedListContext *ANSLinkedListCreateContextFindNodeWithObject(ANSLinkedList
     return context;
 }
 
-//___________________________________________________________________________________________________________________//
+//_____________________________________________________________________________________________________________//
 
 ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
                                                    ANSLinkedListComparisonFunction comparator,
@@ -236,9 +236,10 @@ ANSLinkedListNode *ANSLinkedListFindNodeWithContext(ANSLinkedList *list,
 }
 
 // node comparator function
-bool ANSLinkedListNodeContainsObject(void *objec, void *context) {
+bool ANSLinkedListNodeContainsObject(void *object, void *context) {
     bool result = false;
-    ANSLinkedListNode *node = (ANSLinkedListNode *)objec;
+    
+    ANSLinkedListNode *node = (ANSLinkedListNode *)object;
     ANSLinkedListContext *contextNode = (ANSLinkedListContext *)context;
     
     if (node) {
@@ -272,17 +273,20 @@ void *ANSLinkedListFindObjectWithContext(ANSLinkedList *list,
     wrapperContext.comporator = comparator;
     
     
-    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListTransitionNodeToObject, wrapperContext.context);
+    ANSLinkedListNode *node = ANSLinkedListFindNodeWithContext(list, ANSLinkedListTransitionNodeToObject, &wrapperContext);
     
     return ANSLinkedListNodeGetObject(node);
 }
 
 bool ANSLinkedListSortFunction(void *object, void *context) {
     bool resul = false;
-    if (ANSAutoreleasingStackIsEmpty(object)) {
-        (ANSArrayAddObject(context, object));
-    }
     
+    if (object) {
+        if (ANSAutoreleasingStackIsEmpty(object)) {
+            (ANSArrayAddObject(context, object));
+        }
+    }
+
     return resul;
 }
 
